@@ -18,6 +18,9 @@
 		683B50811440B784000A62E1 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B507C1440B784000A62E1 /* WPSTableViewCell.m */; };
 		683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50831440B7CB000A62E1 /* NSStringTests.m */; };
 		683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50851440B8BE000A62E1 /* CoreData.framework */; };
+		683B50931440C51C000A62E1 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 683B50921440C51C000A62E1 /* readme.md */; };
+		683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50981440C640000A62E1 /* SystemConfiguration.framework */; };
+		683B509C1440C6E6000A62E1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B509B1440C6E6000A62E1 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +44,10 @@
 		683B50821440B7CB000A62E1 /* NSStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringTests.h; sourceTree = "<group>"; };
 		683B50831440B7CB000A62E1 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
 		683B50851440B8BE000A62E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		683B50921440C51C000A62E1 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		683B50981440C640000A62E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		683B509A1440C6E6000A62E1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		683B509B1440C6E6000A62E1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */,
 				683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */,
 				683B505D1440B73A000A62E1 /* SenTestingKit.framework in Frameworks */,
 				683B505F1440B73A000A62E1 /* UIKit.framework in Frameworks */,
@@ -79,6 +87,7 @@
 		683B505B1440B73A000A62E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				683B50981440C640000A62E1 /* SystemConfiguration.framework */,
 				683B50851440B8BE000A62E1 /* CoreData.framework */,
 				683B505C1440B73A000A62E1 /* SenTestingKit.framework */,
 				683B505E1440B73A000A62E1 /* UIKit.framework */,
@@ -110,6 +119,7 @@
 		683B506F1440B784000A62E1 /* WPSKit */ = {
 			isa = PBXGroup;
 			children = (
+				683B50921440C51C000A62E1 /* readme.md */,
 				683B50701440B784000A62E1 /* CoreData */,
 				683B50731440B784000A62E1 /* Foundation */,
 				683B507A1440B784000A62E1 /* UIKit */,
@@ -134,6 +144,8 @@
 				683B50751440B784000A62E1 /* NSFileManager+WPSCategory.m */,
 				683B50761440B784000A62E1 /* NSString+WPSCategory.h */,
 				683B50771440B784000A62E1 /* NSString+WPSCategory.m */,
+				683B509A1440C6E6000A62E1 /* Reachability.h */,
+				683B509B1440C6E6000A62E1 /* Reachability.m */,
 				683B50781440B784000A62E1 /* UIApplication+WPSCategory.h */,
 				683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */,
 			);
@@ -202,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */,
+				683B50931440C51C000A62E1 /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +247,7 @@
 				683B50801440B784000A62E1 /* UIApplication+WPSCategory.m in Sources */,
 				683B50811440B784000A62E1 /* WPSTableViewCell.m in Sources */,
 				683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */,
+				683B509C1440C6E6000A62E1 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
