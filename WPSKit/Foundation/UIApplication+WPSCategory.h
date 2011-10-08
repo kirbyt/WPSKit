@@ -112,4 +112,12 @@
  */
 + (NSURL *)wps_temporaryDirectoryURLByAppendingPathComponent:(NSString *)pathComponent;
 
+
+#pragma mark - Network Activity
+@property (nonatomic, assign, readonly) NSInteger wps_networkActivityCount;
+
+- (void)wps_pushNetworkActivity;
+- (void)wps_popNetworkActivity;
+- (void)wps_resetNetworkActivity;
+
 @end

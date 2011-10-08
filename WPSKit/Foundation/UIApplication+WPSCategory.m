@@ -28,6 +28,8 @@
 #import "UIApplication+WPSCategory.h"
 #import "NSFileManager+WPSCategory.h"
 
+static NSInteger wps_networkActivityCount = 0;
+
 @implementation UIApplication (WPSCategory)
 
 #pragma mark - User Domain Methods
@@ -127,6 +129,55 @@
       URL = [URL URLByAppendingPathComponent:pathComponent];
    }
    return URL;
+}
+
+#pragma mark - Network Activity
+/**
+ ** This work is based on the network activity recipe found in the
+ ** book iOS Recipes.
+ **/
+
+- (void)wps_refreshNetworkActivityIndicator {
+   if (![NSThread isMainThread]) {
+      SEL sel_refresh = @selector(wps_refreshNetworkActivityIndicator);
+      [self performSelectorOnMainThread:sel_refresh withObject:nil waitUntilDone:NO];
+      return;
+   }
+   
+   BOOL active = ([self wps_networkActivityCount] > 0);
+   [self setNetworkActivityIndicatorVisible:active];
+}
+
+- (NSInteger)wps_networkActivityCount {
+   @synchronized(self) {
+      return wps_networkActivityCount;        
+   }
+}
+
+- (void)wps_pushNetworkActivity {
+   @synchronized(self) {
+      wps_networkActivityCount++;
+   }
+   [self wps_refreshNetworkActivityIndicator];
+}
+
+- (void)wps_popNetworkActivity {
+   @synchronized(self) {
+      if (wps_networkActivityCount > 0) {
+         wps_networkActivityCount--;
+      } else {
+         wps_networkActivityCount = 0;
+         NSLog(@"%s Unbalanced network activity: count already 0.", __PRETTY_FUNCTION__);
+      }        
+   }
+   [self wps_refreshNetworkActivityIndicator];
+}
+
+- (void)wps_resetNetworkActivity {
+   @synchronized(self) {
+      wps_networkActivityCount = 0;
+   }
+   [self wps_refreshNetworkActivityIndicator];        
 }
 
 @end
