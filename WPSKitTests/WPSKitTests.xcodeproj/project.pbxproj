@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		683B505D1440B73A000A62E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B505C1440B73A000A62E1 /* SenTestingKit.framework */; };
+		683B505F1440B73A000A62E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B505E1440B73A000A62E1 /* UIKit.framework */; };
+		683B50611440B73A000A62E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50601440B73A000A62E1 /* Foundation.framework */; };
+		683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 683B50651440B73A000A62E1 /* InfoPlist.strings */; };
+		683B507D1440B784000A62E1 /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50721440B784000A62E1 /* WPSCoreDataStack.m */; };
+		683B507E1440B784000A62E1 /* NSFileManager+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50751440B784000A62E1 /* NSFileManager+WPSCategory.m */; };
+		683B507F1440B784000A62E1 /* NSString+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50771440B784000A62E1 /* NSString+WPSCategory.m */; };
+		683B50801440B784000A62E1 /* UIApplication+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */; };
+		683B50811440B784000A62E1 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B507C1440B784000A62E1 /* WPSTableViewCell.m */; };
+		683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50831440B7CB000A62E1 /* NSStringTests.m */; };
+		683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50851440B8BE000A62E1 /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		683B50591440B73A000A62E1 /* WPSKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPSKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		683B505C1440B73A000A62E1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		683B505E1440B73A000A62E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		683B50601440B73A000A62E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		683B50641440B73A000A62E1 /* WPSKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WPSKitTests-Info.plist"; sourceTree = "<group>"; };
+		683B50661440B73A000A62E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		683B506B1440B73A000A62E1 /* WPSKitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WPSKitTests-Prefix.pch"; sourceTree = "<group>"; };
+		683B50711440B784000A62E1 /* WPSCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCoreDataStack.h; sourceTree = "<group>"; };
+		683B50721440B784000A62E1 /* WPSCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCoreDataStack.m; sourceTree = "<group>"; };
+		683B50741440B784000A62E1 /* NSFileManager+WPSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+WPSCategory.h"; sourceTree = "<group>"; };
+		683B50751440B784000A62E1 /* NSFileManager+WPSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+WPSCategory.m"; sourceTree = "<group>"; };
+		683B50761440B784000A62E1 /* NSString+WPSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WPSCategory.h"; sourceTree = "<group>"; };
+		683B50771440B784000A62E1 /* NSString+WPSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WPSCategory.m"; sourceTree = "<group>"; };
+		683B50781440B784000A62E1 /* UIApplication+WPSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+WPSCategory.h"; sourceTree = "<group>"; };
+		683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+WPSCategory.m"; sourceTree = "<group>"; };
+		683B507B1440B784000A62E1 /* WPSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTableViewCell.h; sourceTree = "<group>"; };
+		683B507C1440B784000A62E1 /* WPSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTableViewCell.m; sourceTree = "<group>"; };
+		683B50821440B7CB000A62E1 /* NSStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringTests.h; sourceTree = "<group>"; };
+		683B50831440B7CB000A62E1 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
+		683B50851440B8BE000A62E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		683B50551440B73A000A62E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */,
+				683B505D1440B73A000A62E1 /* SenTestingKit.framework in Frameworks */,
+				683B505F1440B73A000A62E1 /* UIKit.framework in Frameworks */,
+				683B50611440B73A000A62E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		683B504B1440B703000A62E1 = {
+			isa = PBXGroup;
+			children = (
+				683B506F1440B784000A62E1 /* WPSKit */,
+				683B50621440B73A000A62E1 /* WPSKitTests */,
+				683B505B1440B73A000A62E1 /* Frameworks */,
+				683B505A1440B73A000A62E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		683B505A1440B73A000A62E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				683B50591440B73A000A62E1 /* WPSKitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		683B505B1440B73A000A62E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				683B50851440B8BE000A62E1 /* CoreData.framework */,
+				683B505C1440B73A000A62E1 /* SenTestingKit.framework */,
+				683B505E1440B73A000A62E1 /* UIKit.framework */,
+				683B50601440B73A000A62E1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		683B50621440B73A000A62E1 /* WPSKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				683B50631440B73A000A62E1 /* Supporting Files */,
+				683B50821440B7CB000A62E1 /* NSStringTests.h */,
+				683B50831440B7CB000A62E1 /* NSStringTests.m */,
+			);
+			path = WPSKitTests;
+			sourceTree = "<group>";
+		};
+		683B50631440B73A000A62E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				683B50641440B73A000A62E1 /* WPSKitTests-Info.plist */,
+				683B50651440B73A000A62E1 /* InfoPlist.strings */,
+				683B506B1440B73A000A62E1 /* WPSKitTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		683B506F1440B784000A62E1 /* WPSKit */ = {
+			isa = PBXGroup;
+			children = (
+				683B50701440B784000A62E1 /* CoreData */,
+				683B50731440B784000A62E1 /* Foundation */,
+				683B507A1440B784000A62E1 /* UIKit */,
+			);
+			name = WPSKit;
+			path = ../WPSKit;
+			sourceTree = "<group>";
+		};
+		683B50701440B784000A62E1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				683B50711440B784000A62E1 /* WPSCoreDataStack.h */,
+				683B50721440B784000A62E1 /* WPSCoreDataStack.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		683B50731440B784000A62E1 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				683B50741440B784000A62E1 /* NSFileManager+WPSCategory.h */,
+				683B50751440B784000A62E1 /* NSFileManager+WPSCategory.m */,
+				683B50761440B784000A62E1 /* NSString+WPSCategory.h */,
+				683B50771440B784000A62E1 /* NSString+WPSCategory.m */,
+				683B50781440B784000A62E1 /* UIApplication+WPSCategory.h */,
+				683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		683B507A1440B784000A62E1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				683B507B1440B784000A62E1 /* WPSTableViewCell.h */,
+				683B507C1440B784000A62E1 /* WPSTableViewCell.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		683B50581440B73A000A62E1 /* WPSKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 683B506C1440B73A000A62E1 /* Build configuration list for PBXNativeTarget "WPSKitTests" */;
+			buildPhases = (
+				683B50541440B73A000A62E1 /* Sources */,
+				683B50551440B73A000A62E1 /* Frameworks */,
+				683B50561440B73A000A62E1 /* Resources */,
+				683B50571440B73A000A62E1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WPSKitTests;
+			productName = WPSKitTests;
+			productReference = 683B50591440B73A000A62E1 /* WPSKitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		683B504D1440B703000A62E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "White Peak Software Inc.";
+			};
+			buildConfigurationList = 683B50501440B703000A62E1 /* Build configuration list for PBXProject "WPSKitTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 683B504B1440B703000A62E1;
+			productRefGroup = 683B505A1440B73A000A62E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				683B50581440B73A000A62E1 /* WPSKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		683B50561440B73A000A62E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		683B50571440B73A000A62E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		683B50541440B73A000A62E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683B507D1440B784000A62E1 /* WPSCoreDataStack.m in Sources */,
+				683B507E1440B784000A62E1 /* NSFileManager+WPSCategory.m in Sources */,
+				683B507F1440B784000A62E1 /* NSString+WPSCategory.m in Sources */,
+				683B50801440B784000A62E1 /* UIApplication+WPSCategory.m in Sources */,
+				683B50811440B784000A62E1 /* WPSTableViewCell.m in Sources */,
+				683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		683B50651440B73A000A62E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				683B50661440B73A000A62E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		683B50521440B703000A62E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		683B50531440B703000A62E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		683B506D1440B73A000A62E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WPSKitTests/WPSKitTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "WPSKitTests/WPSKitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		683B506E1440B73A000A62E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WPSKitTests/WPSKitTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "WPSKitTests/WPSKitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		683B50501440B703000A62E1 /* Build configuration list for PBXProject "WPSKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				683B50521440B703000A62E1 /* Debug */,
+				683B50531440B703000A62E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		683B506C1440B73A000A62E1 /* Build configuration list for PBXNativeTarget "WPSKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				683B506D1440B73A000A62E1 /* Debug */,
+				683B506E1440B73A000A62E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 683B504D1440B703000A62E1 /* Project object */;
+}
