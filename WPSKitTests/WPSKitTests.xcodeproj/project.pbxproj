@@ -21,6 +21,8 @@
 		683B50931440C51C000A62E1 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 683B50921440C51C000A62E1 /* readme.md */; };
 		683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50981440C640000A62E1 /* SystemConfiguration.framework */; };
 		683B509C1440C6E6000A62E1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B509B1440C6E6000A62E1 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		684C80CF14433F1200DAAB9B /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80CE14433F1200DAAB9B /* WPSCache.m */; };
+		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,10 @@
 		683B50981440C640000A62E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		683B509A1440C6E6000A62E1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		683B509B1440C6E6000A62E1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		684C80CD14433F1200DAAB9B /* WPSCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCache.h; sourceTree = "<group>"; };
+		684C80CE14433F1200DAAB9B /* WPSCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCache.m; sourceTree = "<group>"; };
+		684C80D914434F0500DAAB9B /* WPSCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCacheTests.h; sourceTree = "<group>"; };
+		684C80DA14434F0500DAAB9B /* WPSCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCacheTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,8 @@
 				683B50631440B73A000A62E1 /* Supporting Files */,
 				683B50821440B7CB000A62E1 /* NSStringTests.h */,
 				683B50831440B7CB000A62E1 /* NSStringTests.m */,
+				684C80D914434F0500DAAB9B /* WPSCacheTests.h */,
+				684C80DA14434F0500DAAB9B /* WPSCacheTests.m */,
 			);
 			path = WPSKitTests;
 			sourceTree = "<group>";
@@ -148,6 +156,8 @@
 				683B509B1440C6E6000A62E1 /* Reachability.m */,
 				683B50781440B784000A62E1 /* UIApplication+WPSCategory.h */,
 				683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */,
+				684C80CD14433F1200DAAB9B /* WPSCache.h */,
+				684C80CE14433F1200DAAB9B /* WPSCache.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -248,6 +258,8 @@
 				683B50811440B784000A62E1 /* WPSTableViewCell.m in Sources */,
 				683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */,
 				683B509C1440C6E6000A62E1 /* Reachability.m in Sources */,
+				684C80CF14433F1200DAAB9B /* WPSCache.m in Sources */,
+				684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +368,7 @@
 				683B506E1440B73A000A62E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
