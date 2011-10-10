@@ -173,7 +173,7 @@
    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"WPSCache"];
    [self setCachePath:path];
-
+   
    NSFileManager *fileManager = [[NSFileManager alloc] init];
    if (![fileManager  fileExistsAtPath:path]) {
       NSError *error = nil;
@@ -225,16 +225,14 @@
 
 - (void)persistData:(NSData *)data forKey:(NSString *)key withCacheAge:(NSInteger)cacheAge;
 {
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      NSString *path = [self cachePathForKey:key];
-      NSFileManager *fileManager = [[NSFileManager alloc] init];
-      [fileManager createFileAtPath:path contents:data attributes:nil];
-
-      // The modified date is the expiration date for the cached item.
-      NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAge];
-      NSDictionary *modifiedDict = [NSDictionary dictionaryWithObject:expirationDate forKey:NSFileModificationDate];
-      [fileManager setAttributes:modifiedDict ofItemAtPath:path error:NULL];
-   });
+   NSString *path = [self cachePathForKey:key];
+   NSFileManager *fileManager = [[NSFileManager alloc] init];
+   [fileManager createFileAtPath:path contents:data attributes:nil];
+   
+   // The modified date is the expiration date for the cached item.
+   NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAge];
+   NSDictionary *modifiedDict = [NSDictionary dictionaryWithObject:expirationDate forKey:NSFileModificationDate];
+   [fileManager setAttributes:modifiedDict ofItemAtPath:path error:NULL];
 }
 
 
