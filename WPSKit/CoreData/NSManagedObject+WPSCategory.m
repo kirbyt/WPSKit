@@ -40,6 +40,9 @@
       if (userInfo) {
          // Look up the key for this attribute.
          key = [userInfo objectForKey:attribute];
+         if (key == nil) {
+            continue;
+         }
       } else {
          key = attribute;
       }
