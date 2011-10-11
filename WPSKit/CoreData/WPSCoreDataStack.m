@@ -45,6 +45,7 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
+@synthesize recreatePersistentStoreOnError = _recreatePersistentStoreOnError;
 
 - (void)dealloc
 {
@@ -142,7 +143,22 @@
 - (NSManagedObjectContext *)mainManagedObjectContext 
 {
    if (_mainManagedObjectContext == nil) {
-      NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+      NSPersistentStoreCoordinator *coordinator = nil;
+      @try {
+         coordinator = [self persistentStoreCoordinator];
+      }
+      @catch (NSException *exception) {
+         if (![self recreatePersistentStoreOnError]) {
+            @throw exception;
+         } else {
+            // Delete the persisted store and try again one time.
+            NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
+            NSFileManager *fileManager = [[NSFileManager alloc] init];
+            [fileManager removeItemAtURL:storeURL error:NULL];
+            coordinator = [self persistentStoreCoordinator];
+         }
+      }
+
       if (coordinator) {
          _mainManagedObjectContext = [[NSManagedObjectContext alloc] init];
          [_mainManagedObjectContext setPersistentStoreCoordinator:coordinator];
