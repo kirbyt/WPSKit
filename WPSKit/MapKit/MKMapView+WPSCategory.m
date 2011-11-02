@@ -105,7 +105,7 @@
 
 #pragma mark - Public methods
 
-- (void)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated
+- (void)wps_setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated
 {
    // clamp large numbers to 28
    zoomLevel = MIN(zoomLevel, 28);
@@ -119,7 +119,7 @@
 }
 
 // MKMapView cannot display tiles that cross the pole (as these would involve wrapping the map from top to bottom, something that a Mercator projection just cannot do).
--(MKCoordinateRegion)coordinateRegionWithMapView:(MKMapView *)mapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate andZoomLevel:(NSUInteger)zoomLevel
+-(MKCoordinateRegion)wps_coordinateRegionWithMapView:(MKMapView *)mapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate andZoomLevel:(NSUInteger)zoomLevel
 {
 	// clamp lat/long values to appropriate ranges
 	centerCoordinate.latitude = MIN(MAX(-90.0, centerCoordinate.latitude), 90.0);
@@ -174,7 +174,7 @@
 	return region;
 }
 
-- (NSUInteger) zoomLevel 
+- (NSUInteger)wps_zoomLevel 
 {
    MKCoordinateRegion region = self.region;
    
