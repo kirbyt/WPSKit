@@ -16,4 +16,5 @@ WPSKit relies on additional frameworks from Apple. The following frameworks must
 
 - CoreData.framework (to use source code in the CoreData directory)
 - CoreLocation.framework (to use source code in the CoreLocation directory) 
+- MapKit.framework (to use source code in the MapKit directory)
 - SystemConfiguration.framework

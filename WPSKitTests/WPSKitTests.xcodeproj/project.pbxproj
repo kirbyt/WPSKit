@@ -28,6 +28,8 @@
 		684C80EC1443719800DAAB9B /* NSManagedObject+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80EB1443719800DAAB9B /* NSManagedObject+WPSCategory.m */; };
 		686062DE1460F086001FFB49 /* WPSImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062DD1460F086001FFB49 /* WPSImageDownloader.m */; };
 		686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */; };
+		6882A9821461D9D4005AAC6E /* MKMapView+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6882A9811461D9D4005AAC6E /* MKMapView+WPSCategory.m */; };
+		6882A9841461DA02005AAC6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6882A9831461DA02005AAC6E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,9 @@
 		686062DD1460F086001FFB49 /* WPSImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSImageDownloader.m; sourceTree = "<group>"; };
 		686062E01460F962001FFB49 /* WPSImageDownloaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSImageDownloaderTests.h; sourceTree = "<group>"; };
 		686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSImageDownloaderTests.m; sourceTree = "<group>"; };
+		6882A9801461D9D4005AAC6E /* MKMapView+WPSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+WPSCategory.h"; sourceTree = "<group>"; };
+		6882A9811461D9D4005AAC6E /* MKMapView+WPSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+WPSCategory.m"; sourceTree = "<group>"; };
+		6882A9831461DA02005AAC6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6882A9841461DA02005AAC6E /* MapKit.framework in Frameworks */,
 				68102D8E14560CB100E0BDC9 /* CoreLocation.framework in Frameworks */,
 				683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */,
 				683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */,
@@ -99,6 +105,7 @@
 		683B504B1440B703000A62E1 = {
 			isa = PBXGroup;
 			children = (
+				6882A9831461DA02005AAC6E /* MapKit.framework */,
 				683B506F1440B784000A62E1 /* WPSKit */,
 				683B50621440B73A000A62E1 /* WPSKitTests */,
 				683B505B1440B73A000A62E1 /* Frameworks */,
@@ -158,6 +165,7 @@
 				683B50701440B784000A62E1 /* CoreData */,
 				68102D8814560AE600E0BDC9 /* CoreLocation */,
 				683B50731440B784000A62E1 /* Foundation */,
+				6882A97E1461D9A5005AAC6E /* MapKit */,
 				683B507A1440B784000A62E1 /* UIKit */,
 			);
 			name = WPSKit;
@@ -201,6 +209,15 @@
 				683B507C1440B784000A62E1 /* WPSTableViewCell.m */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		6882A97E1461D9A5005AAC6E /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				6882A9801461D9D4005AAC6E /* MKMapView+WPSCategory.h */,
+				6882A9811461D9D4005AAC6E /* MKMapView+WPSCategory.m */,
+			);
+			path = MapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +313,7 @@
 				68102D8B14560AE600E0BDC9 /* CLLocation+WPSCategory.m in Sources */,
 				686062DE1460F086001FFB49 /* WPSImageDownloader.m in Sources */,
 				686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */,
+				6882A9821461D9D4005AAC6E /* MKMapView+WPSCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
