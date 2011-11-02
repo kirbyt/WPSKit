@@ -26,6 +26,8 @@
 		684C80CF14433F1200DAAB9B /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80CE14433F1200DAAB9B /* WPSCache.m */; };
 		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 		684C80EC1443719800DAAB9B /* NSManagedObject+WPSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80EB1443719800DAAB9B /* NSManagedObject+WPSCategory.m */; };
+		686062DE1460F086001FFB49 /* WPSImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062DD1460F086001FFB49 /* WPSImageDownloader.m */; };
+		686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,10 @@
 		684C80DA14434F0500DAAB9B /* WPSCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCacheTests.m; sourceTree = "<group>"; };
 		684C80EA1443719800DAAB9B /* NSManagedObject+WPSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+WPSCategory.h"; sourceTree = "<group>"; };
 		684C80EB1443719800DAAB9B /* NSManagedObject+WPSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+WPSCategory.m"; sourceTree = "<group>"; };
+		686062DC1460F085001FFB49 /* WPSImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSImageDownloader.h; sourceTree = "<group>"; };
+		686062DD1460F086001FFB49 /* WPSImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSImageDownloader.m; sourceTree = "<group>"; };
+		686062E01460F962001FFB49 /* WPSImageDownloaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSImageDownloaderTests.h; sourceTree = "<group>"; };
+		686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSImageDownloaderTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 				683B50831440B7CB000A62E1 /* NSStringTests.m */,
 				684C80D914434F0500DAAB9B /* WPSCacheTests.h */,
 				684C80DA14434F0500DAAB9B /* WPSCacheTests.m */,
+				686062E01460F962001FFB49 /* WPSImageDownloaderTests.h */,
+				686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */,
 			);
 			path = WPSKitTests;
 			sourceTree = "<group>";
@@ -180,6 +188,8 @@
 				683B50791440B784000A62E1 /* UIApplication+WPSCategory.m */,
 				684C80CD14433F1200DAAB9B /* WPSCache.h */,
 				684C80CE14433F1200DAAB9B /* WPSCache.m */,
+				686062DC1460F085001FFB49 /* WPSImageDownloader.h */,
+				686062DD1460F086001FFB49 /* WPSImageDownloader.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -284,6 +294,8 @@
 				684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */,
 				684C80EC1443719800DAAB9B /* NSManagedObject+WPSCategory.m in Sources */,
 				68102D8B14560AE600E0BDC9 /* CLLocation+WPSCategory.m in Sources */,
+				686062DE1460F086001FFB49 /* WPSImageDownloader.m in Sources */,
+				686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,8 @@ typedef enum {
 
 #define kWPSCacheMaxCacheAge 60*60*24*7 // 1 week
 
-@interface WPSCache : NSObject
+@protocol WPSCache <NSObject>
+@optional
 
 /**
  Caches the data for the key to the location.
@@ -83,5 +84,10 @@ typedef enum {
  */
 - (void)cleanStaleCacheFromFileSystem;
 
+@end
+
+
+@interface WPSCache : NSObject <WPSCache>
 
 @end
+
