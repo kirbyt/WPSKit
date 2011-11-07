@@ -35,10 +35,6 @@
 #import "WPSCoreDataStack.h"
 #import "UIApplication+WPSCategory.h"
 
-@interface WPSCoreDataStack ()
-@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
-@end
-
 
 @implementation WPSCoreDataStack
 
