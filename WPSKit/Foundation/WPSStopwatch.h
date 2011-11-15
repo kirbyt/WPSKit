@@ -37,6 +37,8 @@ extern NSString * const kWPSStopwatchDidReset;
 @property(nonatomic, assign, readonly) NSTimeInterval lastStartTimeInterval;
 @property(nonatomic, assign, readonly, getter = isStated) BOOL started;
 
++ (WPSStopwatch *)stopwatch;
+
 - (id)initWithLastStart:(uint64_t)lastStart;
 - (id)initForWallClockTime;
 - (id)initForWallClockTimeWithLastStart:(NSTimeInterval)lastStart;

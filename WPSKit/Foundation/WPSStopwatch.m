@@ -60,6 +60,11 @@ NSString * const kWPSStopwatchDidReset = @"WPSStopwatch.didReset";
 @synthesize sum = _sum;
 @synthesize sumTimeInterval = _sumTimeInterval;
 
++ (WPSStopwatch *)stopwatch
+{
+   WPSStopwatch *stopwatch = [[WPSStopwatch alloc] init];
+   return stopwatch;
+}
 
 - (id)init 
 {
@@ -181,7 +186,7 @@ NSString * const kWPSStopwatchDidReset = @"WPSStopwatch.didReset";
    double minutes;
    double seconds;
 
-   seconds = round([self elapsedSeconds]);
+   seconds = [self elapsedSeconds];
    
    hours = floor(seconds / 3600.);
    seconds -= 3600. * hours;
@@ -192,15 +197,11 @@ NSString * const kWPSStopwatchDidReset = @"WPSStopwatch.didReset";
    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
    [formatter setFormatterBehavior:NSNumberFormatterBehaviorDefault];
    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-   [formatter setMaximumFractionDigits:1];
-   [formatter setPositiveFormat:@"#00.0"];  // Use @"#00.0" to display milliseconds as decimal value.
+   [formatter setMaximumFractionDigits:2];
+   [formatter setPositiveFormat:@"#00.00"];  // Use @"#00.0" to display milliseconds as decimal value.
    NSString *secondsAsString = [formatter stringFromNumber:[NSNumber numberWithDouble:seconds]];
    
-   if (hours == 0) {
-      elapsedTime = [NSString stringWithFormat:@"%02.0f:%@", minutes, secondsAsString];
-   } else {
-      elapsedTime = [NSString stringWithFormat:@"%.0f:%02.0f:%@", hours, minutes, secondsAsString];
-   }
+   elapsedTime = [NSString stringWithFormat:@"%.0f:%02.0f:%@", hours, minutes, secondsAsString];
    return elapsedTime;
 }
 
