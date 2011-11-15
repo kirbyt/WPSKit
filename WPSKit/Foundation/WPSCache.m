@@ -40,6 +40,7 @@
 - (NSString *)pathExtensionWithKey:(NSString *)key;
 - (NSString *)cachePathForKey:(NSString *)key;
 - (void)persistData:(NSData *)data forKey:(NSString *)key withCacheAge:(NSInteger)cacheAge;
+- (BOOL)isStalePath:(NSString *)path;
 @end
 
 @implementation WPSCache
@@ -96,7 +97,9 @@
    NSData *data = [[self memoryCache] objectForKey:key];
    if (!data) {
       NSString *path = [self cachePathForKey:key];
-      data = [NSData dataWithContentsOfFile:path];
+      if ([self isStalePath:path] == NO) {
+         data = [NSData dataWithContentsOfFile:path];
+      }
    }
    
    return data;
@@ -235,6 +238,17 @@
    [fileManager setAttributes:modifiedDict ofItemAtPath:path error:NULL];
 }
 
-
+- (BOOL)isStalePath:(NSString *)path
+{
+   BOOL stale = NO;
+   NSFileManager *fileManager = [[NSFileManager alloc] init];
+   NSDate *now = [NSDate date];
+   NSDictionary *attrs = [fileManager attributesOfItemAtPath:path error:NULL];
+   if ([[[attrs fileModificationDate] laterDate:now] isEqualToDate:now]) { 
+      [fileManager removeItemAtPath:path error:nil];
+      stale = YES;
+   }
+   return stale;
+}
 
 @end
