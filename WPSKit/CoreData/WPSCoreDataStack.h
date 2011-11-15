@@ -31,19 +31,31 @@
 @interface WPSCoreDataStack : NSObject
 
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainManagedObjectContext;
-@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, assign) BOOL recreatePersistentStoreOnError;
 
 - (void)saveMainContext;
 
 #pragma mark - Model file info
+/**
+ You must override the following before accessing the Core Data Stack
+ if you wish to change the default behavior.
+ */
 - (NSString *)modelName;
 - (NSString *)pathToModel;
 
 - (NSString *)storeFileName;
 - (NSString *)pathToLocalStore;
 - (NSString *)pathToDefaultStore;
+
+#pragma mark - Persistent Store Coordinator Info
+/**
+ You must override the following before accessing the Core Data Stack
+ if you wish to change the default behavior.
+ */
+- (NSDictionary *)persistentStoreOptions;
+- (NSString *)persistentStoreConfiguration;
 
 #pragma mark - Basic fetching
 

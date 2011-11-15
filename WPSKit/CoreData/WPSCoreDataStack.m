@@ -35,6 +35,9 @@
 #import "WPSCoreDataStack.h"
 #import "UIApplication+WPSCategory.h"
 
+@interface WPSCoreDataStack ()
+@end
+
 
 @implementation WPSCoreDataStack
 
@@ -42,22 +45,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
 @synthesize recreatePersistentStoreOnError = _recreatePersistentStoreOnError;
-
-- (void)dealloc
-{
-   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-   [nc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:nil];
-}  
-
-- (id)init
-{
-   self = [super init];
-   if (self) {
-      NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; 
-      [nc addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
-   }
-   return self;
-}
 
 #pragma mark - Basic fetching
 
@@ -134,27 +121,28 @@
    return [[NSBundle mainBundle] pathForResource:storeName ofType:nil];
 }
 
+#pragma mark - Persistent Store Coordinator Info
+
+- (NSDictionary *)persistentStoreOptions
+{
+   NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                            [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
+                            nil];
+   return options;
+}
+
+- (NSString *)persistentStoreConfiguration
+{
+   return nil;
+}
+
 #pragma mark - Core Data Stack
 
 - (NSManagedObjectContext *)mainManagedObjectContext 
 {
    if (_mainManagedObjectContext == nil) {
-      NSPersistentStoreCoordinator *coordinator = nil;
-      @try {
-         coordinator = [self persistentStoreCoordinator];
-      }
-      @catch (NSException *exception) {
-         if (![self recreatePersistentStoreOnError]) {
-            @throw exception;
-         } else {
-            // Delete the persisted store and try again one time.
-            NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
-            NSFileManager *fileManager = [[NSFileManager alloc] init];
-            [fileManager removeItemAtURL:storeURL error:NULL];
-            coordinator = [self persistentStoreCoordinator];
-         }
-      }
-
+      NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
       if (coordinator) {
          _mainManagedObjectContext = [[NSManagedObjectContext alloc] init];
          [_mainManagedObjectContext setPersistentStoreCoordinator:coordinator];
@@ -193,17 +181,22 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator 
 {
    if (_persistentStoreCoordinator == nil) {
-      // Verify the DB exists in the Documents directory, and copy it from the app bundle if not
-      
+      static NSInteger attemptCount = 0;
+
       NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
       NSPersistentStoreCoordinator *coordinator;
       coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-      NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                               [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
-                               nil];
+      NSDictionary *options = [self persistentStoreOptions];
+      NSString *configuration = [self persistentStoreConfiguration];
+
       NSError *error = nil;
-      if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+      if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:configuration URL:storeURL options:options error:&error]) {
+         if (attemptCount < 1 && [self recreatePersistentStoreOnError]) {
+            NSFileManager *fileManager = [[NSFileManager alloc] init];
+            [fileManager removeItemAtURL:storeURL error:NULL];
+            attemptCount++;
+            coordinator = [self persistentStoreCoordinator];
+         }
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
          NSException *exc = nil;
          NSString *reason = @"Could not create persistent store.";
@@ -233,14 +226,6 @@
          @throw exc;
       } 
    }
-}
-
-#pragma mark - Save Notification Handler
-
-- (void)contextDidSave:(NSNotification *)notification
-{
-   NSManagedObjectContext *context = [self mainManagedObjectContext];
-   [context performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:) withObject:notification waitUntilDone:YES];
 }
 
 @end
