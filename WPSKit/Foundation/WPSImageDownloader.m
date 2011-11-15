@@ -26,6 +26,7 @@
  **/
 
 #import "WPSImageDownloader.h"
+#import "UIApplication+WPSCategory.h"
 
 @interface WPSImageDownloader ()
 @property (nonatomic, strong, readwrite) UIImage *image;
@@ -64,6 +65,7 @@
       NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
       [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
       [connection start];
+      [[UIApplication sharedApplication] wps_pushNetworkActivity];
    }
 }
 
@@ -87,6 +89,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+   [[UIApplication sharedApplication] wps_popNetworkActivity];
+   
    [self setImage:[UIImage imageWithData:[self receivedData]]];
    if ([self cache]) {
       [[self cache] cacheData:[self receivedData] forKey:[self cacheKey] cacheLocation:WPSCacheLocationFileSystem];
@@ -99,6 +103,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+   [[UIApplication sharedApplication] wps_popNetworkActivity];
    [self setReceivedData:nil];
    
    ImageDownloaderCompletionBlock completion = [self completion];
