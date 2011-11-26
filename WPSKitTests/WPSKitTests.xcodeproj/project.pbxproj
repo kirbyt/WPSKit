@@ -32,6 +32,7 @@
 		6882A9841461DA02005AAC6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6882A9831461DA02005AAC6E /* MapKit.framework */; };
 		688DF6B81468507200732A7C /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 688DF6B71468507200732A7C /* WPSStopwatch.m */; };
 		688DF6BC14685BE800732A7C /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */; };
+		68C255EA148121F000194E88 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C255E9148121F000194E88 /* WPSTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		688DF6B71468507200732A7C /* WPSStopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSStopwatch.m; sourceTree = "<group>"; };
 		688DF6BA14685BE800732A7C /* WPSStopwatchTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSStopwatchTests.h; sourceTree = "<group>"; };
 		688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSStopwatchTests.m; sourceTree = "<group>"; };
+		68C255E8148121F000194E88 /* WPSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTextView.h; sourceTree = "<group>"; };
+		68C255E9148121F000194E88 /* WPSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,8 @@
 			children = (
 				683B507B1440B784000A62E1 /* WPSTableViewCell.h */,
 				683B507C1440B784000A62E1 /* WPSTableViewCell.m */,
+				68C255E8148121F000194E88 /* WPSTextView.h */,
+				68C255E9148121F000194E88 /* WPSTextView.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				6882A9821461D9D4005AAC6E /* MKMapView+WPSCategory.m in Sources */,
 				688DF6B81468507200732A7C /* WPSStopwatch.m in Sources */,
 				688DF6BC14685BE800732A7C /* WPSStopwatchTests.m in Sources */,
+				68C255EA148121F000194E88 /* WPSTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
