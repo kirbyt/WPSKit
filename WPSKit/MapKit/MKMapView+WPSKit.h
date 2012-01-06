@@ -1,8 +1,8 @@
 /**
- **   NSFileManager+WPSCategory
+ **   MKMapView+WPSKit
  **
  **   Created by Kirby Turner.
- **   Copyright 2011 White Peak Software. All rights reserved.
+ **   Copyright (c) 2011 White Peak Software. All rights reserved.
  **
  **   Permission is hereby granted, free of charge, to any person obtaining 
  **   a copy of this software and associated documentation files (the 
@@ -25,10 +25,12 @@
  **
  **/
 
-#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface NSFileManager (WPSCategory)
+@interface MKMapView (WPSKit)
 
-+ (void)wps_createDirectoryAtPath:(NSString *)path;
+- (void)wps_setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated;
+-(MKCoordinateRegion)wps_coordinateRegionWithMapView:(MKMapView *)mapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate andZoomLevel:(NSUInteger)zoomLevel;
+- (NSUInteger)wps_zoomLevel;
 
 @end

@@ -1,5 +1,5 @@
 /**
- **   UIApplication+WPSCategory
+ **   UIApplication+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -25,12 +25,12 @@
  **
  **/
 
-#import "UIApplication+WPSCategory.h"
-#import "NSFileManager+WPSCategory.h"
+#import "UIApplication+WPSKit.h"
+#import "NSFileManager+WPSKit.h"
 
 static NSInteger wps_networkActivityCount = 0;
 
-@implementation UIApplication (WPSCategory)
+@implementation UIApplication (WPSKit)
 
 #pragma mark - User Domain Methods
 

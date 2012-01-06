@@ -26,7 +26,7 @@
  **/
 
 #import "WPSImageDownloader.h"
-#import "UIApplication+WPSCategory.h"
+#import "UIApplication+WPSKit.h"
 
 @interface WPSImageDownloader ()
 @property (nonatomic, strong, readwrite) UIImage *image;

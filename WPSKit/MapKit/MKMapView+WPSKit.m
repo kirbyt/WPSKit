@@ -1,5 +1,5 @@
 /**
- **   MKMapView+WPSCategory
+ **   MKMapView+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright (c) 2011 White Peak Software. All rights reserved.
@@ -32,12 +32,12 @@
  **   http://troybrant.net/blog/2010/01/set-the-zoom-level-of-an-mkmapview/
  **/
 
-#import "MKMapView+WPSCategory.h"
+#import "MKMapView+WPSKit.h"
 
 #define MERCATOR_OFFSET 268435456
 #define MERCATOR_RADIUS 85445659.44705395
 
-@implementation MKMapView (WPSCategory)
+@implementation MKMapView (WPSKit)
 
 #pragma mark - Map conversion methods
 

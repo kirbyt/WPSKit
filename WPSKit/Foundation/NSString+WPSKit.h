@@ -1,5 +1,5 @@
 /**
- **   NSString+WPSCategory
+ **   NSString+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (WPSCategory)
+@interface NSString (WPSKit)
 
 /**
  Returns a string with data using the specific string encoding.

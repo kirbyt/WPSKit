@@ -1,5 +1,5 @@
 /**
- **   UIApplication+WPSCategory
+ **   UIApplication+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -27,7 +27,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIApplication (WPSCategory)
+@interface UIApplication (WPSKit)
 
 #pragma mark - User Domain
 

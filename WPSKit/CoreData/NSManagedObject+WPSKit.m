@@ -1,5 +1,5 @@
 /**
- **   NSManagedObject+WPSCategory
+ **   NSManagedObject+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -25,9 +25,9 @@
  **
  **/
 
-#import "NSManagedObject+WPSCategory.h"
+#import "NSManagedObject+WPSKit.h"
 
-@implementation NSManagedObject (WPSCategory)
+@implementation NSManagedObject (WPSKit)
 
 - (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(NSDateFormatter *)dateFormatter;
 {

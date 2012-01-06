@@ -1,8 +1,8 @@
 /**
- **   MKMapView+WPSCategory
+ **   NSManagedObject+WPSKit
  **
  **   Created by Kirby Turner.
- **   Copyright (c) 2011 White Peak Software. All rights reserved.
+ **   Copyright 2011 White Peak Software. All rights reserved.
  **
  **   Permission is hereby granted, free of charge, to any person obtaining 
  **   a copy of this software and associated documentation files (the 
@@ -25,12 +25,11 @@
  **
  **/
 
-#import <MapKit/MapKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface MKMapView (WPSCategory)
+@interface NSManagedObject (WPSKit)
 
-- (void)wps_setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated;
--(MKCoordinateRegion)wps_coordinateRegionWithMapView:(MKMapView *)mapView centerCoordinate:(CLLocationCoordinate2D)centerCoordinate andZoomLevel:(NSUInteger)zoomLevel;
-- (NSUInteger)wps_zoomLevel;
+- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(NSDateFormatter *)dateFormatter;
 
 @end

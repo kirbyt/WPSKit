@@ -1,5 +1,5 @@
 /**
- **   NSManagedObject+WPSCategory
+ **   NSFileManager+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -25,11 +25,23 @@
  **
  **/
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "NSFileManager+WPSKit.h"
 
-@interface NSManagedObject (WPSCategory)
+@implementation NSFileManager (WPSKit)
 
-- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(NSDateFormatter *)dateFormatter;
++ (void)wps_createDirectoryAtPath:(NSString *)path
+{
+   NSFileManager *fileManager = [[NSFileManager alloc] init];
+   if (![fileManager fileExistsAtPath:path]) {
+      NSError *error = nil;
+      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
+         NSString *errorMsg = [NSString stringWithFormat:@"Could not find or create directory at path '%@'.", path];
+         NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+         NSException *directoryException = [NSException exceptionWithName:NSInternalInconsistencyException reason:errorMsg userInfo:errorInfo];
+         
+         @throw directoryException;
+      }
+   }
+}
 
 @end

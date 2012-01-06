@@ -1,5 +1,5 @@
 /**
- **   NSString+WPSCategory
+ **   NSString+WPSKit
  **
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
@@ -25,9 +25,9 @@
  **
  **/
 
-#import "NSString+WPSCategory.h"
+#import "NSString+WPSKit.h"
 
-@implementation NSString (WPSCategory)
+@implementation NSString (WPSKit)
 
 + (NSString *)wps_stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding
 {

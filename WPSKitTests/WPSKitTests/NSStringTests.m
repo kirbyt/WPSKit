@@ -26,7 +26,7 @@
  **/
 
 #import "NSStringTests.h"
-#import "NSString+WPSCategory.h"
+#import "NSString+WPSKit.h"
 
 @implementation NSStringTests
 

@@ -33,7 +33,7 @@
  **/
 
 #import "WPSCoreDataStack.h"
-#import "UIApplication+WPSCategory.h"
+#import "UIApplication+WPSKit.h"
 
 @interface WPSCoreDataStack ()
 @end

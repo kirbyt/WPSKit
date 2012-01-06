@@ -27,7 +27,7 @@
 
 #import "WPSCacheTests.h"
 #import "WPSCache.h"
-#import "NSString+WPSCategory.h"
+#import "NSString+WPSKit.h"
 
 @interface WPSCacheTests ()
 @property (nonatomic, strong) WPSCache *cache;
