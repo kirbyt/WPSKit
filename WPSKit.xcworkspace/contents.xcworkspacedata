@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:WPSKitSamples/WPSKitSamples.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:WPSKitTests/WPSKitTests.xcodeproj">
    </FileRef>
 </Workspace>
