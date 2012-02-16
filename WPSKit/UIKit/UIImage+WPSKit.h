@@ -29,7 +29,20 @@
 
 @interface UIImage (WPSKit)
 
+- (UIImage *)wps_scaleToSize:(CGSize)newSize;
 - (UIImage *)wps_scaleAspectToMaxSize:(CGFloat)newSize;
-- (UIImage *)wps_scaleAndCropToMaxSize:(CGSize)newSize;
+/**
+ Scales the image to fill the size. Some portion of the image may be clipped 
+ to fill the image's bounds.
+ */
+- (UIImage *)wps_scaleAspectFillToSize:(CGSize)newSize;
+/**
+ Scales the image to fit the size by maintaining the aspect ratio. Any
+ remaining area of the image's bounds is transparent.
+ */
+- (UIImage *)wps_scaleAspectFitToSize:(CGSize)newSize;
+
+- (UIImage *)wps_cropToRect:(CGRect)cropRect;
+- (UIImage *)wps_scaleAndCropToSize:(CGSize)newSize;
 
 @end

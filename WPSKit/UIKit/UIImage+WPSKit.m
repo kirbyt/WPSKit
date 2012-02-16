@@ -29,6 +29,16 @@
 
 @implementation UIImage (WPSKit)
 
+- (UIImage *)wps_scaleToSize:(CGSize)newSize 
+{
+   UIGraphicsBeginImageContextWithOptions(newSize, 1.0f, 1.0f);
+   CGRect rect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
+   [self drawInRect:rect];
+   UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+   return scaledImage;
+}
+
 - (UIImage *)wps_scaleAspectToMaxSize:(CGFloat)newSize 
 {
    CGSize size = [self size];
@@ -38,56 +48,56 @@
    } else {
       ratio = newSize / size.height;
    }
-   
-   CGRect rect = CGRectMake(0.0, 0.0, ratio * size.width, ratio * size.height);
-   UIGraphicsBeginImageContext(rect.size);
-   [self drawInRect:rect];
-   UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-   return scaledImage;
+
+   CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
+   return [self wps_scaleToSize:scaleToSize];
 }
 
-- (UIImage *)wps_scaleAndCropToMaxSize:(CGSize)newSize 
+- (UIImage *)wps_scaleAspectFillToSize:(CGSize)newSize
 {
-   CGFloat largestSize = 
-   (newSize.width > newSize.height) ? newSize.width : newSize.height;
    CGSize imageSize = [self size];
+   CGFloat horizontalRatio = newSize.width / imageSize.width;
+   CGFloat verticalRatio = newSize.height / imageSize.height;
+   CGFloat ratio = MAX(horizontalRatio, verticalRatio);   
+
+   CGSize scaleToSize = CGSizeMake(imageSize.width * ratio, imageSize.height * ratio);
+   return [self wps_scaleToSize:scaleToSize];
+}
+
+- (UIImage *)wps_scaleAspectFitToSize:(CGSize)newSize
+{
+   CGSize imageSize = [self size];
+   CGFloat horizontalRatio = newSize.width / imageSize.width;
+   CGFloat verticalRatio = newSize.height / imageSize.height;
+   CGFloat ratio = MIN(horizontalRatio, verticalRatio);   
    
-   // Scale the image while mainting the aspect and making sure the 
-   // the scaled image is not smaller then the given new size. In
-   // other words we calculate the aspect ratio using the largest
-   // dimension from the new size and the smaller dimension from the
-   // actual size.
-   CGFloat ratio;
-   if (imageSize.width > imageSize.height) {
-      ratio = largestSize / imageSize.height;
-   } else {
-      ratio = largestSize / imageSize.width;
-   }
+   CGSize scaleToSize = CGSizeMake(imageSize.width * ratio, imageSize.height * ratio);
+   return [self wps_scaleToSize:scaleToSize];
+}
+
+- (UIImage *)wps_cropToRect:(CGRect)cropRect
+{
+   CGRect cropRectIntegral = CGRectIntegral(cropRect);
+   CGImageRef croppedImageRef = CGImageCreateWithImageInRect([self CGImage], cropRectIntegral);
+   UIImage *croppedImage = [UIImage imageWithCGImage:croppedImageRef];
+   CGImageRelease(croppedImageRef);
    
-   CGRect rect = 
-   CGRectMake(0.0, 0.0, ratio * imageSize.width, ratio * imageSize.height);
-   UIGraphicsBeginImageContext(rect.size);
-   [self drawInRect:rect];
-   UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+   return croppedImage;
+}
+
+- (UIImage *)wps_scaleAndCropToSize:(CGSize)newSize 
+{
+   UIImage *scaledImage = [self wps_scaleAspectFillToSize:newSize];
    
    // Crop the image to the requested new size maintaining
    // the inner most parts of the image.
-   CGFloat offsetX = 0;
-   CGFloat offsetY = 0;
-   imageSize = [scaledImage size];
-   if (imageSize.width < imageSize.height) {
-      offsetY = (imageSize.height / 2) - (imageSize.width / 2);
-   } else {
-      offsetX = (imageSize.width / 2) - (imageSize.height / 2);
-   }
+   CGSize imageSize = [scaledImage size];
+   CGFloat offsetX = round((imageSize.width / 2) - (newSize.width / 2));
+   CGFloat offsetY = round((imageSize.height / 2) - (newSize.height / 2));
    
-   CGRect cropRect = CGRectMake(offsetX, offsetY, imageSize.width - (offsetX * 2), imageSize.height - (offsetY * 2));
-   
-   CGImageRef croppedImageRef = CGImageCreateWithImageInRect([scaledImage CGImage], cropRect);
-   UIImage *newImage = [UIImage imageWithCGImage:croppedImageRef];
-   CGImageRelease(croppedImageRef);
-   
-   return newImage;
+   CGRect cropRect = CGRectMake(offsetX, offsetY, newSize.width, newSize.height);
+   UIImage *croppedImage = [scaledImage wps_cropToRect:cropRect];
+   return croppedImage;
 }
 
 @end
