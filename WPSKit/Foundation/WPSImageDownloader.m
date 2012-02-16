@@ -32,9 +32,12 @@
 @property (nonatomic, strong, readwrite) UIImage *image;
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSURL *URL;
-@property (nonatomic, copy) ImageDownloaderCompletionBlock completion;
+@property (nonatomic, copy) WPSImageDownloaderCompletionBlock completion;
+@property (nonatomic, assign) NSInteger numberOfAttempts;
 
 - (NSString *)cacheKey;
+- (void)startConnection;
+- (void)incrementNumberOfAttempts;
 @end
 
 @implementation WPSImageDownloader
@@ -44,10 +47,13 @@
 @synthesize URL = _URL;
 @synthesize completion = _completion;
 @synthesize receivedData = _receivedData;
+@synthesize retryCount = _retryCount;
+@synthesize numberOfAttempts = _numberOfAttempts;
 
 - (void)downloadImageAtURL:(NSURL *)URL completion:(void(^)(UIImage *image, NSError*))completion
 {
    if (URL) {
+      [self setNumberOfAttempts:0];
       [self setURL:URL];
       [self setCompletion:completion];
       
@@ -59,20 +65,31 @@
             return;
          }
       }
-      
-      [self setReceivedData:[[NSMutableData alloc] init]];
-      NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-      NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-      [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-      [connection start];
-      [[UIApplication sharedApplication] wps_pushNetworkActivity];
+      [self startConnection];
    }
+}
+
+- (void)startConnection
+{
+   [self setReceivedData:[[NSMutableData alloc] init]];
+   NSURLRequest *request = [NSURLRequest requestWithURL:[self URL]];
+   NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+   [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+   [connection start];
+   [[UIApplication sharedApplication] wps_pushNetworkActivity];
+   [self incrementNumberOfAttempts];
 }
 
 - (NSString *)cacheKey
 {
    NSString *cacheKey = [[self URL] absoluteString];
    return cacheKey;
+}
+
+- (void)incrementNumberOfAttempts
+{
+   NSInteger numberOfAttempts = [self numberOfAttempts];
+   [self setNumberOfAttempts:numberOfAttempts + 1];
 }
 
 #pragma mark - NSURLConnection delegate methods
@@ -97,7 +114,7 @@
    }
    [self setReceivedData:nil];
    
-   ImageDownloaderCompletionBlock completion = [self completion];
+   WPSImageDownloaderCompletionBlock completion = [self completion];
    completion([self image], nil);
 }
 
@@ -106,8 +123,12 @@
    [[UIApplication sharedApplication] wps_popNetworkActivity];
    [self setReceivedData:nil];
    
-   ImageDownloaderCompletionBlock completion = [self completion];
-   completion(nil, error);
+   if ([self numberOfAttempts] < [self retryCount]) {
+      [self performSelector:@selector(startConnection) withObject:nil afterDelay:1.0];
+   } else {
+      WPSImageDownloaderCompletionBlock completion = [self completion];
+      completion(nil, error);
+   }
 }
 
 @end

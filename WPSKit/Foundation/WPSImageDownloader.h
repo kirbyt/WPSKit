@@ -28,13 +28,15 @@
 #import <Foundation/Foundation.h>
 #import "WPSCache.h"
 
-typedef void(^ImageDownloaderCompletionBlock)(UIImage *image, NSError *);
+typedef void(^WPSImageDownloaderCompletionBlock)(UIImage *image, NSError *);
 
 @interface WPSImageDownloader : NSObject
+
+@property (nonatomic, assign) NSInteger retryCount;   // Defaults to 0.
 
 @property (nonatomic, strong, readonly) UIImage *image;
 @property (nonatomic, strong) id<WPSCache> cache;
 
-- (void)downloadImageAtURL:(NSURL *)URL completion:(ImageDownloaderCompletionBlock)completion;
+- (void)downloadImageAtURL:(NSURL *)URL completion:(WPSImageDownloaderCompletionBlock)completion;
 
 @end
