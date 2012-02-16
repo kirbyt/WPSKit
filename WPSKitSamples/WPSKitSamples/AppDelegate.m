@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "FeatureModelObject.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,8 @@
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    
    RootViewController *rootViewController = [[RootViewController alloc] initWithDefaultNib];
+   [rootViewController setData:[FeatureModelObject features]];
+   
    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
    [[self window] setRootViewController:navController];
    

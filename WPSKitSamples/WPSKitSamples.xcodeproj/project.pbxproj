@@ -11,6 +11,8 @@
 		680EE75A14EDB68B00F84CD3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75914EDB68B00F84CD3 /* MapKit.framework */; };
 		680EE75C14EDB69B00F84CD3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75B14EDB69B00F84CD3 /* CoreLocation.framework */; };
 		680EE75E14EDB6A700F84CD3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75D14EDB6A700F84CD3 /* SystemConfiguration.framework */; };
+		680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */; };
+		680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76B14EDBFE800F84CD3 /* CustomViewController.m */; };
 		682CE5F414EDAE1C00F0AF2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F314EDAE1C00F0AF2E /* UIKit.framework */; };
 		682CE5F614EDAE1C00F0AF2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F514EDAE1C00F0AF2E /* Foundation.framework */; };
 		682CE5F814EDAE1C00F0AF2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F714EDAE1C00F0AF2E /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 		680EE75914EDB68B00F84CD3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		680EE75B14EDB69B00F84CD3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		680EE75D14EDB6A700F84CD3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		680EE76614EDBB9A00F84CD3 /* FeatureModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureModelObject.h; sourceTree = "<group>"; };
+		680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureModelObject.m; sourceTree = "<group>"; };
+		680EE76A14EDBFE800F84CD3 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
+		680EE76B14EDBFE800F84CD3 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		682CE5EF14EDAE1C00F0AF2E /* WPSKitSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPSKitSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682CE5F314EDAE1C00F0AF2E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		682CE5F514EDAE1C00F0AF2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +158,10 @@
 			children = (
 				682CE60214EDAE1C00F0AF2E /* AppDelegate.h */,
 				682CE60314EDAE1C00F0AF2E /* AppDelegate.m */,
+				680EE76614EDBB9A00F84CD3 /* FeatureModelObject.h */,
+				680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */,
+				680EE76A14EDBFE800F84CD3 /* CustomViewController.h */,
+				680EE76B14EDBFE800F84CD3 /* CustomViewController.m */,
 				682CE64A14EDAEC300F0AF2E /* RootViewController.h */,
 				682CE64B14EDAEC300F0AF2E /* RootViewController.m */,
 				682CE64D14EDAEF200F0AF2E /* RootView.xib */,
@@ -341,6 +351,8 @@
 				682CE64814EDAE7D00F0AF2E /* WPSTableViewCell.m in Sources */,
 				682CE64914EDAE7D00F0AF2E /* WPSTextView.m in Sources */,
 				682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */,
+				680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */,
+				680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
