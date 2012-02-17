@@ -22,6 +22,7 @@ NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassNa
    NSArray *uiKitItems = [NSArray arrayWithObjects:
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIApplication+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIColor+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
+                          [NSDictionary dictionaryWithObjectsAndKeys:@"WPSTextView", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, @"TextViewViewController", kWPSFeatureKeyViewControllerClassName, nil],
                           nil];
    
    NSArray *foundationItems = [NSArray arrayWithObjects:

@@ -54,6 +54,7 @@
    [placeholder setNumberOfLines:0];
    [placeholder setBackgroundColor:[UIColor clearColor]];
    [placeholder setAlpha:0];
+   [placeholder setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
    [self addSubview:placeholder];
    [placeholder sizeToFit];
    [self sendSubviewToBack:placeholder];
