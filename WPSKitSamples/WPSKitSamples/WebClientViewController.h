@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 White Peak Software Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CustomViewController.h"
 
-@interface WebClientViewController : UIViewController
+@interface WebClientViewController : CustomViewController
 
 @end

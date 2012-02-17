@@ -13,6 +13,9 @@
 		680EE75E14EDB6A700F84CD3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75D14EDB6A700F84CD3 /* SystemConfiguration.framework */; };
 		680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */; };
 		680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76B14EDBFE800F84CD3 /* CustomViewController.m */; };
+		680EE77314EDD86800F84CD3 /* WPSWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE77214EDD86800F84CD3 /* WPSWebClient.m */; };
+		680EE77614EDDCFC00F84CD3 /* WebClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE77514EDDCFB00F84CD3 /* WebClientViewController.m */; };
+		680EE77814EDDD3D00F84CD3 /* WebClientView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77714EDDD3D00F84CD3 /* WebClientView.xib */; };
 		682CE5F414EDAE1C00F0AF2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F314EDAE1C00F0AF2E /* UIKit.framework */; };
 		682CE5F614EDAE1C00F0AF2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F514EDAE1C00F0AF2E /* Foundation.framework */; };
 		682CE5F814EDAE1C00F0AF2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F714EDAE1C00F0AF2E /* CoreGraphics.framework */; };
@@ -51,6 +54,11 @@
 		680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureModelObject.m; sourceTree = "<group>"; };
 		680EE76A14EDBFE800F84CD3 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		680EE76B14EDBFE800F84CD3 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
+		680EE77114EDD86800F84CD3 /* WPSWebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSWebClient.h; sourceTree = "<group>"; };
+		680EE77214EDD86800F84CD3 /* WPSWebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebClient.m; sourceTree = "<group>"; };
+		680EE77414EDDCFB00F84CD3 /* WebClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebClientViewController.h; sourceTree = "<group>"; };
+		680EE77514EDDCFB00F84CD3 /* WebClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebClientViewController.m; sourceTree = "<group>"; };
+		680EE77714EDDD3D00F84CD3 /* WebClientView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebClientView.xib; sourceTree = "<group>"; };
 		682CE5EF14EDAE1C00F0AF2E /* WPSKitSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPSKitSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682CE5F314EDAE1C00F0AF2E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		682CE5F514EDAE1C00F0AF2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +173,9 @@
 				682CE64A14EDAEC300F0AF2E /* RootViewController.h */,
 				682CE64B14EDAEC300F0AF2E /* RootViewController.m */,
 				682CE64D14EDAEF200F0AF2E /* RootView.xib */,
+				680EE77414EDDCFB00F84CD3 /* WebClientViewController.h */,
+				680EE77514EDDCFB00F84CD3 /* WebClientViewController.m */,
+				680EE77714EDDD3D00F84CD3 /* WebClientView.xib */,
 				682CE5FA14EDAE1C00F0AF2E /* Supporting Files */,
 			);
 			path = WPSKitSamples;
@@ -232,6 +243,8 @@
 				682CE62114EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m */,
 				682CE62214EDAE7C00F0AF2E /* WPSStopwatch.h */,
 				682CE62314EDAE7C00F0AF2E /* WPSStopwatch.m */,
+				680EE77114EDD86800F84CD3 /* WPSWebClient.h */,
+				680EE77214EDD86800F84CD3 /* WPSWebClient.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -320,6 +333,7 @@
 				682CE5FE14EDAE1C00F0AF2E /* InfoPlist.strings in Resources */,
 				682CE64214EDAE7C00F0AF2E /* readme.md in Resources */,
 				682CE64E14EDAEF200F0AF2E /* RootView.xib in Resources */,
+				680EE77814EDDD3D00F84CD3 /* WebClientView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +367,8 @@
 				682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */,
 				680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */,
 				680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */,
+				680EE77314EDD86800F84CD3 /* WPSWebClient.m in Sources */,
+				680EE77614EDDCFC00F84CD3 /* WebClientViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

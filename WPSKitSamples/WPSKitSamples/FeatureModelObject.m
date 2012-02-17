@@ -7,7 +7,6 @@
 //
 
 #import "FeatureModelObject.h"
-#import "RootViewController.h"
 
 NSString * const kWPSFeatureKeyTitle = @"title";
 NSString * const kWPSFeatureKeyItems = @"items";
@@ -18,17 +17,21 @@ NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassNa
 
 + (NSArray *)features
 {
-   NSString *rootViewControllerClassName = NSStringFromClass([RootViewController class]);
+   NSString *rootViewControllerClassName = @"RootViewController";
    
    NSArray *uiKitItems = [NSArray arrayWithObjects:
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIApplication+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIColor+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                           nil];
    
+   NSArray *foundationItems = [NSArray arrayWithObjects:
+                               [NSDictionary dictionaryWithObjectsAndKeys:@"WPSWebClient", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, @"WebClientViewController", kWPSFeatureKeyViewControllerClassName, nil],
+                               nil];
+   
    NSArray *data = [NSArray arrayWithObjects:
                     [NSDictionary dictionaryWithObjectsAndKeys:@"Core Data", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, nil],
                     [NSDictionary dictionaryWithObjectsAndKeys:@"Core Location", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, nil],
-                    [NSDictionary dictionaryWithObjectsAndKeys:@"Foundation", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, nil],
+                    [NSDictionary dictionaryWithObjectsAndKeys:@"Foundation", kWPSFeatureKeyTitle, foundationItems, kWPSFeatureKeyItems, nil],
                     [NSDictionary dictionaryWithObjectsAndKeys:@"MapKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, nil],
                     [NSDictionary dictionaryWithObjectsAndKeys:@"UIKit", kWPSFeatureKeyTitle, uiKitItems, kWPSFeatureKeyItems, nil],
                     nil];

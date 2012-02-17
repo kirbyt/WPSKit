@@ -10,4 +10,13 @@
 
 @implementation WebClientViewController
 
+- (id)initWithDefaultNib
+{
+   self = [super initWithNibName:@"WebClientView" bundle:nil];
+   if (self) {
+      
+   }
+   return self;
+}
+
 @end
