@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "WPSCache.h"
 
-typedef void(^WPSWebClientCompletionBlock)(NSData *, BOOL, NSString *, NSError *);  // (Response data, hit cache, cache key, error)
+typedef void(^WPSWebClientCompletionBlock)(NSData *, BOOL, NSError *);  // (Response data, hit cache, error)
 
 @interface WPSWebClient : NSObject
 

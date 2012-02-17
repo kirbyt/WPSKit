@@ -8,6 +8,11 @@
 
 #import "CustomViewController.h"
 
+@class WPSTextView;
+
 @interface WebClientViewController : CustomViewController
+
+@property (nonatomic, strong) IBOutlet WPSTextView *textView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
