@@ -286,7 +286,7 @@
 		683B504D1440B703000A62E1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "White Peak Software Inc.";
 			};
 			buildConfigurationList = 683B50501440B703000A62E1 /* Build configuration list for PBXProject "WPSKitTests" */;

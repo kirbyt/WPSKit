@@ -45,4 +45,16 @@
    STAssertTrue([uuid length] > 0, @"Unexpected zero-length string.");
 }
 
+- (void)testIsURL
+{
+   NSString *string = @"http://thecave.com";
+   STAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
+   
+   string = @"thecave.com";
+   STAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
+
+   string = @"THis is most certainly not a URL.";
+   STAssertFalse([string wps_isURL], @"'%@' is not a URL.'", string);
+}
+
 @end

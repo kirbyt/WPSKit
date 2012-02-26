@@ -43,4 +43,9 @@
  */
 + (NSString *)wps_stringWithUUID;
 
+/** 
+ Returns YES if the string is a validate URL; otherwise NO is returned.
+ */
+- (BOOL)wps_isURL;
+
 @end

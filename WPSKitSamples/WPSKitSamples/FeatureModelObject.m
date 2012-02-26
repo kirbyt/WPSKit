@@ -26,6 +26,7 @@ NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassNa
                           nil];
    
    NSArray *foundationItems = [NSArray arrayWithObjects:
+                               [NSDictionary dictionaryWithObjectsAndKeys:@"NSString+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                                [NSDictionary dictionaryWithObjectsAndKeys:@"WPSWebClient", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, @"WebClientViewController", kWPSFeatureKeyViewControllerClassName, nil],
                                nil];
    

@@ -62,4 +62,11 @@
    
    return result;
 }
+
+- (BOOL)wps_isURL
+{
+   NSURL *URL = [NSURL URLWithString:self];
+   return (URL != nil);
+}
+
 @end
