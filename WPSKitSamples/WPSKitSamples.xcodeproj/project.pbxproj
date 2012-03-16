@@ -47,6 +47,7 @@
 		682CE64914EDAE7D00F0AF2E /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE63614EDAE7C00F0AF2E /* WPSTextView.m */; };
 		682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE64B14EDAEC300F0AF2E /* RootViewController.m */; };
 		682CE64E14EDAEF200F0AF2E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682CE64D14EDAEF200F0AF2E /* RootView.xib */; };
+		68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,8 @@
 		682CE64A14EDAEC300F0AF2E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		682CE64B14EDAEC300F0AF2E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		682CE64D14EDAEF200F0AF2E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		68E7FF211512E0EA0011FEF2 /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
+		68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WPSKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,8 @@
 				682CE63414EDAE7C00F0AF2E /* WPSTableViewCell.m */,
 				682CE63514EDAE7C00F0AF2E /* WPSTextView.h */,
 				682CE63614EDAE7C00F0AF2E /* WPSTextView.m */,
+				68E7FF211512E0EA0011FEF2 /* UIDevice+WPSKit.h */,
+				68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				680EE77314EDD86800F84CD3 /* WPSWebClient.m in Sources */,
 				680EE77614EDDCFC00F84CD3 /* WebClientViewController.m in Sources */,
 				680EE77B14EDEF8E00F84CD3 /* TextViewViewController.m in Sources */,
+				68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
