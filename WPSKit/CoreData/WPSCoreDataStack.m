@@ -44,7 +44,6 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
-@synthesize recreatePersistentStoreOnError = _recreatePersistentStoreOnError;
 
 #pragma mark - Basic fetching
 
@@ -181,8 +180,6 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator 
 {
    if (_persistentStoreCoordinator == nil) {
-      static NSInteger attemptCount = 0;
-      
       NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
       NSPersistentStoreCoordinator *coordinator;
       coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -191,12 +188,6 @@
       
       NSError *error = nil;
       if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:configuration URL:storeURL options:options error:&error]) {
-         if (attemptCount < 1 && [self recreatePersistentStoreOnError]) {
-            NSFileManager *fileManager = [[NSFileManager alloc] init];
-            [fileManager removeItemAtURL:storeURL error:NULL];
-            attemptCount++;
-            coordinator = [self persistentStoreCoordinator];
-         }
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
          NSException *exc = nil;
          NSString *reason = @"Could not create persistent store.";

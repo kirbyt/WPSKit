@@ -33,7 +33,6 @@
 @property (nonatomic, strong, readonly) NSManagedObjectContext *mainManagedObjectContext;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, assign) BOOL recreatePersistentStoreOnError;
 
 - (void)saveMainContext;
 
