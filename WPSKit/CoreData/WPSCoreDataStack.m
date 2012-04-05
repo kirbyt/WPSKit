@@ -33,9 +33,9 @@
  **/
 
 #import "WPSCoreDataStack.h"
-#import "UIApplication+WPSKit.h"
 
 @interface WPSCoreDataStack ()
+- (NSString *)documentsDirectory;
 @end
 
 
@@ -111,7 +111,7 @@
 - (NSString *)pathToLocalStore 
 {
    NSString *storeName = [self storeFileName];
-   NSString *docPath = [UIApplication wps_documentDirectory];
+   NSString *docPath = [self documentsDirectory];
    return [docPath stringByAppendingPathComponent:storeName];
 }
 
@@ -182,13 +182,13 @@
 {
    if (_persistentStoreCoordinator == nil) {
       static NSInteger attemptCount = 0;
-
+      
       NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
       NSPersistentStoreCoordinator *coordinator;
       coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
       NSDictionary *options = [self persistentStoreOptions];
       NSString *configuration = [self persistentStoreConfiguration];
-
+      
       NSError *error = nil;
       if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:configuration URL:storeURL options:options error:&error]) {
          if (attemptCount < 1 && [self recreatePersistentStoreOnError]) {
@@ -226,6 +226,29 @@
          @throw exc;
       } 
    }
+}
+
+#pragma mark - Helpers
+
+- (NSString *)documentsDirectory 
+{
+   NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+   if (![[NSFileManager defaultManager] fileExistsAtPath:docDir]) {
+      NSError *error = nil;
+      if (![[NSFileManager defaultManager] createDirectoryAtPath:docDir
+                                     withIntermediateDirectories:YES
+                                                      attributes:nil 
+                                                           error:&error]) {
+         NSString *errorMsg = @"Could not find or create a Documents directory.";
+         NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+         NSException *directoryException = [NSException exceptionWithName:NSInternalInconsistencyException
+                                                                   reason:errorMsg
+                                                                 userInfo:errorInfo];
+         
+         @throw directoryException;
+      }
+   }
+   return docDir;
 }
 
 @end
