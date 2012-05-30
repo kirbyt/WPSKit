@@ -202,21 +202,18 @@
 
 #pragma mark - Basic Operations
 
-- (void)saveMainContext
+- (BOOL)saveMainContext:(NSError **)error;
 {
-   NSError *error = nil;
+   BOOL success = YES;
    NSManagedObjectContext *managedObjectContext = [self mainManagedObjectContext];
    if (managedObjectContext != nil)
    {
-      if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error])
+      if ([managedObjectContext hasChanges] && ![managedObjectContext save:error])
       {
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
-         NSException *exc = nil;
-         NSString *reason = @"Could not save main context.";
-         exc = [NSException exceptionWithName:NSGenericException reason:reason userInfo:userInfo];
-         @throw exc;
+         success = NO;
       } 
    }
+   return success;
 }
 
 #pragma mark - Helpers

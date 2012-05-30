@@ -34,7 +34,10 @@
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 
-- (void)saveMainContext;
+/*
+ Returns YES if successful, otherwise returns NO and sets the error.
+ */
+- (BOOL)saveMainContext:(NSError **)error;
 
 #pragma mark - Model file info
 /**
