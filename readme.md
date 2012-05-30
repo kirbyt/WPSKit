@@ -1,6 +1,6 @@
 # WPSKit
 
-WPSKit contains various tidbits of Objective-C code for iOS and Mac. This library is used at White Peak Software in in-house and client projects. WPSKit is licensed under the MIT license unless stated differently in the individual source files.
+WPSKit contains various tidbits of Objective-C code for iOS and Mac apps. This library is used at [White Peak Software](http://whitepeaksoftware.com) in in-house and client projects. WPSKit is licensed under the MIT license unless stated differently in the individual source files.
 
 ## Automatic Reference Counting
 
