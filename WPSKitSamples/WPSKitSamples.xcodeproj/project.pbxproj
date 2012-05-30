@@ -37,7 +37,6 @@
 		682CE63F14EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62114EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m */; };
 		682CE64014EDAE7C00F0AF2E /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62314EDAE7C00F0AF2E /* WPSStopwatch.m */; };
 		682CE64114EDAE7C00F0AF2E /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62614EDAE7C00F0AF2E /* MKMapView+WPSKit.m */; };
-		682CE64214EDAE7C00F0AF2E /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 682CE62714EDAE7C00F0AF2E /* readme.md */; };
 		682CE64314EDAE7D00F0AF2E /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62A14EDAE7C00F0AF2E /* UIApplication+WPSKit.m */; };
 		682CE64414EDAE7D00F0AF2E /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62C14EDAE7C00F0AF2E /* UIColor+WPSKit.m */; };
 		682CE64514EDAE7D00F0AF2E /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62E14EDAE7C00F0AF2E /* UIImage+WPSKit.m */; };
@@ -101,7 +100,6 @@
 		682CE62314EDAE7C00F0AF2E /* WPSStopwatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSStopwatch.m; sourceTree = "<group>"; };
 		682CE62514EDAE7C00F0AF2E /* MKMapView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+WPSKit.h"; sourceTree = "<group>"; };
 		682CE62614EDAE7C00F0AF2E /* MKMapView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+WPSKit.m"; sourceTree = "<group>"; };
-		682CE62714EDAE7C00F0AF2E /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		682CE62914EDAE7C00F0AF2E /* UIApplication+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+WPSKit.h"; sourceTree = "<group>"; };
 		682CE62A14EDAE7C00F0AF2E /* UIApplication+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+WPSKit.m"; sourceTree = "<group>"; };
 		682CE62B14EDAE7C00F0AF2E /* UIColor+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WPSKit.h"; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 		682CE60C14EDAE7C00F0AF2E /* WPSKit */ = {
 			isa = PBXGroup;
 			children = (
-				682CE62714EDAE7C00F0AF2E /* readme.md */,
 				682CE60D14EDAE7C00F0AF2E /* CoreData */,
 				682CE61214EDAE7C00F0AF2E /* CoreLocation */,
 				682CE61514EDAE7C00F0AF2E /* Foundation */,
@@ -358,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				682CE5FE14EDAE1C00F0AF2E /* InfoPlist.strings in Resources */,
-				682CE64214EDAE7C00F0AF2E /* readme.md in Resources */,
 				682CE64E14EDAEF200F0AF2E /* RootView.xib in Resources */,
 				680EE77814EDDD3D00F84CD3 /* WebClientView.xib in Resources */,
 				680EE77D14EDF00100F84CD3 /* TextViewView.xib in Resources */,

@@ -32,7 +32,6 @@
 		683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 683B50651440B73A000A62E1 /* InfoPlist.strings */; };
 		683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50831440B7CB000A62E1 /* NSStringTests.m */; };
 		683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50851440B8BE000A62E1 /* CoreData.framework */; };
-		683B50931440C51C000A62E1 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 683B50921440C51C000A62E1 /* readme.md */; };
 		683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50981440C640000A62E1 /* SystemConfiguration.framework */; };
 		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 		686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */; };
@@ -87,7 +86,6 @@
 		683B50821440B7CB000A62E1 /* NSStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringTests.h; sourceTree = "<group>"; };
 		683B50831440B7CB000A62E1 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
 		683B50851440B8BE000A62E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		683B50921440C51C000A62E1 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		683B50981440C640000A62E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		684C80D914434F0500DAAB9B /* WPSCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCacheTests.h; sourceTree = "<group>"; };
 		684C80DA14434F0500DAAB9B /* WPSCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCacheTests.m; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 		683B506F1440B784000A62E1 /* WPSKit */ = {
 			isa = PBXGroup;
 			children = (
-				683B50921440C51C000A62E1 /* readme.md */,
 				6819B5B314B756FD00BDFDCD /* CoreData */,
 				6819B5B814B756FD00BDFDCD /* CoreLocation */,
 				6819B5BB14B756FD00BDFDCD /* Foundation */,
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */,
-				683B50931440C51C000A62E1 /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
