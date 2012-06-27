@@ -145,7 +145,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    [self setNumberOfAttempts:0];
    
    NSData *postData = [self postDataWithParameters:parameters];
-   NSString *postLength = [NSString stringWithFormat:@"%li", [postData length]];
+   NSString *postLength = [NSString stringWithFormat:@"%i", [postData length]];
    
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
    [request setHTTPMethod:HTTPMethod];
