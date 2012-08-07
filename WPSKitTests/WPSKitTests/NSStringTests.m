@@ -57,4 +57,18 @@
    STAssertFalse([string wps_isURL], @"'%@' is not a URL.'", string);
 }
 
+- (void)testStringContainsSubstring
+{
+   NSString *string = @"The rain in Spain falls mainly on the plains.";
+   NSString *substring = @"Spain";
+   STAssertTrue([string wps_containsSubstring:substring], @"Substring not found.");
+}
+
+- (void)testStringDoesNotContainSubstring
+{
+   NSString *string = @"The rain in Spain falls mainly on the plains.";
+   NSString *substring = @"Sprain";
+   STAssertFalse([string wps_containsSubstring:substring], @"Substring found unexpectedly.");
+}
+
 @end

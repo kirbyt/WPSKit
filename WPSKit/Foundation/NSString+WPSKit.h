@@ -48,4 +48,10 @@
  */
 - (BOOL)wps_isURL;
 
+/**
+ Returns YES if the string contains the substring.
+ Note: The search for the substring is case insensitive.
+ */
+- (BOOL)wps_containsSubstring:(NSString*)substring;
+
 @end

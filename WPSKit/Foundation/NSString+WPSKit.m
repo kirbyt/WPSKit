@@ -69,4 +69,10 @@
    return (URL != nil);
 }
 
+- (BOOL)wps_containsSubstring:(NSString*)substring
+{
+   NSRange textRange = [[self lowercaseString] rangeOfString:[substring lowercaseString]];
+   return (textRange.location != NSNotFound);
+}
+
 @end
