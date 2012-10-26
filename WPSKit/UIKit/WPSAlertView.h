@@ -27,7 +27,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^WPSAlertViewCompletionBlock)(NSInteger);
+@class WPSAlertView;
+
+typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *, NSInteger);
 
 @interface WPSAlertView : UIAlertView <UIAlertViewDelegate>
 
