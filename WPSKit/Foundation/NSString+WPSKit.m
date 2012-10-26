@@ -75,4 +75,15 @@
    return (textRange.location != NSNotFound);
 }
 
+- (NSString*)wps_URLEncodedStringWithEncoding:(NSStringEncoding)encoding
+{
+   static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
+   
+   CFStringRef encodedStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)kTMLegalCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
+   NSString *encodedString = (__bridge_transfer NSString *)encodedStringRef;
+   // Note: Do not need to call CFRelease(encodedStringRef). This is done
+   // for us by using __bridge_transfer.
+   return [encodedString copy];
+}
+
 @end

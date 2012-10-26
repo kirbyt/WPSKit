@@ -71,4 +71,10 @@
    STAssertFalse([string wps_containsSubstring:substring], @"Substring found unexpectedly.");
 }
 
+- (void)testURLEncodedString
+{
+   NSString *encodedString = [@"The rain & Spain." wps_URLEncodedStringWithEncoding:NSUTF8StringEncoding];
+   STAssertTrue([encodedString isEqualToString:@"The%20rain%20%26%20Spain."], @"Unexcepted URL encoded string value.");
+}
+
 @end

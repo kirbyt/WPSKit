@@ -54,4 +54,10 @@
  */
 - (BOOL)wps_containsSubstring:(NSString*)substring;
 
+/**
+ Returns a URL encoded string. 
+ The string is safe to be used as part of a URL.
+ */
+- (NSString*)wps_URLEncodedStringWithEncoding:(NSStringEncoding)encoding;
+
 @end
