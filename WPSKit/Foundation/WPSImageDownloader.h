@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "WPSCache.h"
 
-typedef void(^WPSImageDownloaderCompletionBlock)(UIImage *image, NSError *);
+typedef void(^WPSImageDownloaderCompletionBlock)(UIImage *image, NSURL *URL, NSError *);
 
 @interface WPSImageDownloader : NSObject
 

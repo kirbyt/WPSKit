@@ -31,58 +31,51 @@
 @interface WPSImageDownloader ()
 @property (nonatomic, strong, readwrite) UIImage *image;
 @property (nonatomic, strong) NSMutableData *receivedData;
-@property (nonatomic, strong) NSURL *URL;
 @property (nonatomic, copy) WPSImageDownloaderCompletionBlock completion;
 @property (nonatomic, assign) NSInteger numberOfAttempts;
-
-- (NSString *)cacheKey;
-- (void)startConnection;
-- (void)incrementNumberOfAttempts;
+@property (nonatomic, strong) NSURLConnection *connection;
 @end
 
 @implementation WPSImageDownloader
 
-@synthesize cache = _cache;
-@synthesize image = _image;
-@synthesize URL = _URL;
-@synthesize completion = _completion;
-@synthesize receivedData = _receivedData;
-@synthesize retryCount = _retryCount;
-@synthesize numberOfAttempts = _numberOfAttempts;
-
-- (void)downloadImageAtURL:(NSURL *)URL completion:(void(^)(UIImage *image, NSError*))completion
+- (void)downloadImageAtURL:(NSURL *)URL completion:(WPSImageDownloaderCompletionBlock)completion
 {
    if (URL) {
       [self setNumberOfAttempts:0];
-      [self setURL:URL];
       [self setCompletion:completion];
       
       if ([self cache]) {
-         NSData *data = [[self cache] dataForKey:[self cacheKey]];
+         NSData *data = [[self cache] dataForKey:[self cacheKeyforURL:URL]];
          if (data) {
             UIImage *image = [UIImage imageWithData:data];
-            completion(image, nil);
+            completion(image, URL, nil);
             return;
          }
       }
-      [self startConnection];
+       [self startConnectionWithURL:URL];
    }
 }
 
-- (void)startConnection
+- (void)startConnectionWithURL:(NSURL*)URL
 {
+   if ([self connection]) {
+      [[self connection] cancel];
+      [self setConnection:nil];
+   }
+    
    [self setReceivedData:[[NSMutableData alloc] init]];
-   NSURLRequest *request = [NSURLRequest requestWithURL:[self URL]];
+   NSURLRequest *request = [NSURLRequest requestWithURL:URL];
    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
    [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
    [connection start];
+   [self setConnection:connection];
    [[UIApplication sharedApplication] wps_pushNetworkActivity];
    [self incrementNumberOfAttempts];
 }
 
-- (NSString *)cacheKey
+- (NSString *)cacheKeyforURL:(NSURL*)URL
 {
-   NSString *cacheKey = [[self URL] absoluteString];
+   NSString *cacheKey = [URL absoluteString];
    return cacheKey;
 }
 
@@ -109,25 +102,27 @@
    [[UIApplication sharedApplication] wps_popNetworkActivity];
    
    [self setImage:[UIImage imageWithData:[self receivedData]]];
+    NSURL *URL = [[connection originalRequest] URL];
    if ([self cache]) {
-      [[self cache] cacheData:[self receivedData] forKey:[self cacheKey] cacheLocation:WPSCacheLocationFileSystem];
+      [[self cache] cacheData:[self receivedData] forKey:[self cacheKeyforURL:URL] cacheLocation:WPSCacheLocationFileSystem];
    }
    [self setReceivedData:nil];
    
    WPSImageDownloaderCompletionBlock completion = [self completion];
-   completion([self image], nil);
+   completion([self image], URL, nil);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
    [[UIApplication sharedApplication] wps_popNetworkActivity];
    [self setReceivedData:nil];
-   
+
+    NSURL *URL = [[connection originalRequest] URL];
    if ([self numberOfAttempts] < [self retryCount]) {
-      [self performSelector:@selector(startConnection) withObject:nil afterDelay:1.0];
+      [self performSelector:@selector(startConnectionWithURL:) withObject:URL afterDelay:1.0];
    } else {
       WPSImageDownloaderCompletionBlock completion = [self completion];
-      completion(nil, error);
+      completion(nil, URL, error);
    }
 }
 

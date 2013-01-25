@@ -26,6 +26,7 @@
  **/
 
 #import "UIColor+WPSKit.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation UIColor (WPSKit)
 
@@ -77,7 +78,19 @@
    return color;
 }
 
-- (NSString *)wps_hexString  
++ (UIImage *)wps_imageFromColor:(UIColor *)color
+{
+   CGRect rect = CGRectMake(0, 0, 1, 1);
+   UIGraphicsBeginImageContext(rect.size);
+   CGContextRef context = UIGraphicsGetCurrentContext();
+   CGContextSetFillColorWithColor(context, [color CGColor]);
+   CGContextFillRect(context, rect);
+   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+   return image;
+}
+
+- (NSString *)wps_hexString
 {  
    const CGFloat *components = CGColorGetComponents([self CGColor]);  
    CGFloat red = components[0];

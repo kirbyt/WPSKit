@@ -31,6 +31,7 @@
 
 + (UIColor *)wps_colorWithHexString:(NSString *)hexString;
 + (UIColor *)wps_colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
++ (UIImage *)wps_imageFromColor:(UIColor *)color;
 - (NSString *)wps_hexString;
 
 @end

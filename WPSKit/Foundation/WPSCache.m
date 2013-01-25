@@ -50,6 +50,17 @@
 
 #pragma mark - Public Methods
 
++ (id)sharedCache
+{
+    static WPSCache *sharedCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedCache = [[self alloc] init];
+    });
+    
+    return sharedCache;
+}
+
 - (void)dealloc
 {
    UIApplication *app = [UIApplication sharedApplication];

@@ -89,5 +89,7 @@ typedef enum {
 
 @interface WPSCache : NSObject <WPSCache>
 
++ (id)sharedCache;
+
 @end
 

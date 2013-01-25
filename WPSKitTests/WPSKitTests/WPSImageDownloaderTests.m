@@ -34,7 +34,7 @@
 - (void)testWithoutCache
 {
    __block BOOL done = NO;
-   WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSError *error) {
+   WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSURL *URL, NSError *error) {
       STAssertNotNil(image, @"Received nil image.");
       STAssertNil(error, @"Received error: %@", [error localizedDescription]);
       done = YES;
@@ -59,11 +59,11 @@
    NSURL *URL = [NSURL URLWithString:@"http://farm5.static.flickr.com/4027/4438046129_1ef4a244bd_o.png"];
 
    __block BOOL done = NO;
-   WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSError *error) {
+   WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSURL *URL, NSError *error) {
       STAssertNotNil(image, @"Received nil image.");
       STAssertNil(error, @"Received error: %@", [error localizedDescription]);
       
-      WPSImageDownloaderCompletionBlock interCompletion = ^(UIImage *image, NSError *error) {
+      WPSImageDownloaderCompletionBlock interCompletion = ^(UIImage *image, NSURL *URL, NSError *error) {
          STAssertNotNil(image, @"Received nil image.");
          STAssertNil(error, @"Received error: %@", [error localizedDescription]);
          done = YES;
