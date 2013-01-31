@@ -29,7 +29,7 @@
 
 @class WPSAlertView;
 
-typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *, NSInteger);
+typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *alertView, NSInteger buttonIndex);
 
 @interface WPSAlertView : UIAlertView <UIAlertViewDelegate>
 

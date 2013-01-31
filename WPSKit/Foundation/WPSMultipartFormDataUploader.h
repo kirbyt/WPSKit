@@ -27,7 +27,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^WPSMultipartFormDataUploaderCompletionBlock)(NSData *, NSError *);
+typedef void(^WPSMultipartFormDataUploaderCompletionBlock)(NSData *responseData, NSError *error);
 
 @interface WPSMultipartFormDataUploader : NSObject
 
