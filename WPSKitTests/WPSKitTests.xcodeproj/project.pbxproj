@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		68102D8E14560CB100E0BDC9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68102D8D14560CB100E0BDC9 /* CoreLocation.framework */; };
+		6814402016E6995F009D91C6 /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6814401F16E6995F009D91C6 /* NSArrayTests.m */; };
+		6814402816E69B1F009D91C6 /* NSArray+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6814402716E69B1F009D91C6 /* NSArray+WPSKit.m */; };
 		6819B5DA14B756FD00BDFDCD /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6819B5B514B756FD00BDFDCD /* NSManagedObject+WPSKit.m */; };
 		6819B5DB14B756FD00BDFDCD /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 6819B5B714B756FD00BDFDCD /* WPSCoreDataStack.m */; };
 		6819B5DC14B756FD00BDFDCD /* CLLocation+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6819B5BA14B756FD00BDFDCD /* CLLocation+WPSKit.m */; };
@@ -41,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		68102D8D14560CB100E0BDC9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		6814401E16E6995F009D91C6 /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayTests.h; sourceTree = "<group>"; };
+		6814401F16E6995F009D91C6 /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayTests.m; sourceTree = "<group>"; };
+		6814402616E69B1F009D91C6 /* NSArray+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+WPSKit.h"; sourceTree = "<group>"; };
+		6814402716E69B1F009D91C6 /* NSArray+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+WPSKit.m"; sourceTree = "<group>"; };
 		6819B5B414B756FD00BDFDCD /* NSManagedObject+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+WPSKit.h"; sourceTree = "<group>"; };
 		6819B5B514B756FD00BDFDCD /* NSManagedObject+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+WPSKit.m"; sourceTree = "<group>"; };
 		6819B5B614B756FD00BDFDCD /* WPSCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCoreDataStack.h; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 		6819B5BB14B756FD00BDFDCD /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				6814402616E69B1F009D91C6 /* NSArray+WPSKit.h */,
+				6814402716E69B1F009D91C6 /* NSArray+WPSKit.m */,
 				6819B5BC14B756FD00BDFDCD /* NSFileManager+WPSKit.h */,
 				6819B5BD14B756FD00BDFDCD /* NSFileManager+WPSKit.m */,
 				6819B5BE14B756FD00BDFDCD /* NSString+WPSKit.h */,
@@ -221,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				683B50631440B73A000A62E1 /* Supporting Files */,
+				6814401E16E6995F009D91C6 /* NSArrayTests.h */,
+				6814401F16E6995F009D91C6 /* NSArrayTests.m */,
 				683B50821440B7CB000A62E1 /* NSStringTests.h */,
 				683B50831440B7CB000A62E1 /* NSStringTests.m */,
 				684C80D914434F0500DAAB9B /* WPSCacheTests.h */,
@@ -356,6 +366,8 @@
 				6819B5E814B756FD00BDFDCD /* WPSAlertView.m in Sources */,
 				6819B5E914B756FD00BDFDCD /* WPSTableViewCell.m in Sources */,
 				6819B5EA14B756FD00BDFDCD /* WPSTextView.m in Sources */,
+				6814402016E6995F009D91C6 /* NSArrayTests.m in Sources */,
+				6814402816E69B1F009D91C6 /* NSArray+WPSKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
