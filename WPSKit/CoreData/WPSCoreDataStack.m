@@ -44,6 +44,7 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
+@synthesize childManagedObjectContext = _childManagedObjectContext;
 
 #pragma mark - Basic fetching
 
@@ -143,15 +144,31 @@
    if (_mainManagedObjectContext == nil) {
       NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
       if (coordinator) {
-         _mainManagedObjectContext = [[NSManagedObjectContext alloc] init];
-         [_mainManagedObjectContext setPersistentStoreCoordinator:coordinator];
+         _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+         [_mainManagedObjectContext performBlockAndWait:^{
+            [_mainManagedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
+            [_mainManagedObjectContext setPersistentStoreCoordinator:coordinator];
+         }];
       }
    }
    
    return _mainManagedObjectContext;
 }
 
-- (NSManagedObjectModel *)managedObjectModel 
+- (NSManagedObjectContext *)childManagedObjectContext
+{
+   if (_childManagedObjectContext != nil) {
+      return _childManagedObjectContext;
+   }
+   NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+   if (coordinator) {
+      _childManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+      [_childManagedObjectContext setParentContext:[self mainManagedObjectContext]];
+   }
+   return _childManagedObjectContext;
+}
+
+- (NSManagedObjectModel *)managedObjectModel
 {
    if (_managedObjectModel == nil) {
       NSURL *storeURL = [NSURL fileURLWithPath:[self pathToModel]];
