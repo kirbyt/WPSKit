@@ -81,7 +81,9 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
    WPSActionSheetCompletionBlock completion = [self completion];
-   completion(buttonIndex);
+   if (completion) {
+      completion(self, buttonIndex);
+   }
 }
 
 @end

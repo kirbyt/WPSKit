@@ -27,7 +27,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^WPSActionSheetCompletionBlock)(NSInteger buttonIndex);
+@class WPSActionSheet;
+
+typedef void(^WPSActionSheetCompletionBlock)(WPSActionSheet *actionSheet, NSInteger buttonIndex);
 
 @interface WPSActionSheet : UIActionSheet <UIActionSheetDelegate>
 
