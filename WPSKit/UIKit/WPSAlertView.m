@@ -78,7 +78,9 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
    WPSAlertViewCompletionBlock completion = [self completion];
-   completion(self, buttonIndex);
+   if (completion) {
+      completion(self, buttonIndex);
+   }
 }
 
 @end
