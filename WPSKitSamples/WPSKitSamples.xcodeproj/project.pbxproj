@@ -47,6 +47,7 @@
 		682CE64914EDAE7D00F0AF2E /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE63614EDAE7C00F0AF2E /* WPSTextView.m */; };
 		682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE64B14EDAEC300F0AF2E /* RootViewController.m */; };
 		682CE64E14EDAEF200F0AF2E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682CE64D14EDAEF200F0AF2E /* RootView.xib */; };
+		684DDBB916F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 684DDBB816F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m */; };
 		68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,8 @@
 		682CE64A14EDAEC300F0AF2E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		682CE64B14EDAEC300F0AF2E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		682CE64D14EDAEF200F0AF2E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		684DDBB716F6BCB80076DE9E /* WPSManagedObjectContextWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSManagedObjectContextWatcher.h; sourceTree = "<group>"; };
+		684DDBB816F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSManagedObjectContextWatcher.m; sourceTree = "<group>"; };
 		68E7FF211512E0EA0011FEF2 /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
 		68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WPSKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,6 +241,8 @@
 				682CE60F14EDAE7C00F0AF2E /* NSManagedObject+WPSKit.m */,
 				682CE61014EDAE7C00F0AF2E /* WPSCoreDataStack.h */,
 				682CE61114EDAE7C00F0AF2E /* WPSCoreDataStack.m */,
+				684DDBB716F6BCB80076DE9E /* WPSManagedObjectContextWatcher.h */,
+				684DDBB816F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				680EE77B14EDEF8E00F84CD3 /* TextViewViewController.m in Sources */,
 				68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */,
 				6814401A16E698CF009D91C6 /* NSArray+WPSKit.m in Sources */,
+				684DDBB916F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
