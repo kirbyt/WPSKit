@@ -41,6 +41,8 @@
 @property (nonatomic, strong) NSString *reference;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext*)context target:(id)target action:(SEL)action;
+
 - (void)addEntityToWatch:(NSEntityDescription*)description withPredicate:(NSPredicate*)predicate;
 
 @end

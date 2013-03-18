@@ -45,6 +45,16 @@
    return self;
 }
 
+- (id)initWithManagedObjectContext:(NSManagedObjectContext*)context target:(id)target action:(SEL)action
+{
+    self = [self initWithManagedObjectContext:context];
+    if (self) {
+        [self setTarget:target];
+        [self setAction:action];
+    }
+    return self;
+}
+
 - (void) dealloc
 {
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -119,7 +129,7 @@
          NSLog(@"%@++++++++++firing action", [self reference]);
       }
 #endif
-      [[self target] performSelectorOnMainThread:[self action] withObject:self waitUntilDone:YES];
+      [[self target] performSelectorOnMainThread:[self action] withObject:results waitUntilDone:YES];
    } else {
 #if DEBUG
       if ([self reference]) {
