@@ -50,7 +50,7 @@
    CGRect frame = CGRectMake(8, 8, self.bounds.size.width - 16, 0);
    
    UILabel *placeholder = [[UILabel alloc] initWithFrame:frame];
-   [placeholder setLineBreakMode:UILineBreakModeWordWrap];
+   [placeholder setLineBreakMode:NSLineBreakByWordWrapping];
    [placeholder setNumberOfLines:0];
    [placeholder setBackgroundColor:[UIColor clearColor]];
    [placeholder setAlpha:0];
