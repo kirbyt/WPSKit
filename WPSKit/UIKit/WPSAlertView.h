@@ -38,3 +38,9 @@ typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *alertView, NSInteger bu
 - (id)initWithTitle:(NSString *)title message:(NSString *)message completion:(WPSAlertViewCompletionBlock)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end
+
+@interface UIViewController (WPSKitAlertView)
+
+- (void)wps_alertUserWithError:(NSError *)error;
+
+@end

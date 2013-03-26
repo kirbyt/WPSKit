@@ -84,3 +84,17 @@
 }
 
 @end
+
+#pragma mark - UIViewController Category
+
+@implementation UIViewController (WPSKitAlertView)
+
+- (void)wps_alertUserWithError:(NSError *)error
+{
+   NSString *title = NSLocalizedString(@"Error", @"Error title.");
+   NSString *message = [error localizedDescription];
+   WPSAlertView *alert = [[WPSAlertView alloc] initWithTitle:title message:message completion:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   [alert show];
+}
+
+@end
