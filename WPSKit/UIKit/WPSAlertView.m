@@ -33,7 +33,20 @@
 
 @implementation WPSAlertView
 
-@synthesize completion = _completion;
++ (WPSAlertView *)okayAlertViewWithTitle:(NSString *)title message:(NSString *)message
+{
+   NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK button title.");
+   WPSAlertView *alert = [[WPSAlertView alloc] initWithTitle:title message:message completion:nil cancelButtonTitle:okButtonTitle otherButtonTitles:nil];
+   return alert;
+}
+
++ (WPSAlertView *)cancelOkayAlertViewWithTitle:(NSString *)title message:(NSString *)message
+{
+   NSString *okButtonTitle = NSLocalizedString(@"OK", @"OK button title for WPSAlertView.");
+   NSString *cancelButtonTitle = NSLocalizedString(@"Cancel", @"Cancel button title for WPSAlertView.");
+   WPSAlertView *alert = [[WPSAlertView alloc] initWithTitle:title message:message completion:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:okButtonTitle, nil];
+   return alert;
+}
 
 - (id)initWithCompletion:(WPSAlertViewCompletionBlock)completion
 {
@@ -93,7 +106,7 @@
 {
    NSString *title = NSLocalizedString(@"Error", @"Error title.");
    NSString *message = [error localizedDescription];
-   WPSAlertView *alert = [[WPSAlertView alloc] initWithTitle:title message:message completion:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+   WPSAlertView *alert = [WPSAlertView okayAlertViewWithTitle:title message:message];
    [alert show];
 }
 

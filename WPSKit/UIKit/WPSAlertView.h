@@ -33,6 +33,9 @@ typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *alertView, NSInteger bu
 
 @interface WPSAlertView : UIAlertView <UIAlertViewDelegate>
 
++ (WPSAlertView *)okayAlertViewWithTitle:(NSString *)title message:(NSString *)message;
++ (WPSAlertView *)cancelOkayAlertViewWithTitle:(NSString *)title message:(NSString *)message;
+
 - (id)initWithCompletion:(WPSAlertViewCompletionBlock)completion;
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message completion:(WPSAlertViewCompletionBlock)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
