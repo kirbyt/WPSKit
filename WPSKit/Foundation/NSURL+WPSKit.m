@@ -73,17 +73,27 @@
 - (BOOL)wps_isEqualToURL:(NSURL *)URL
 {
    BOOL isEqual = NO;
-   if ([[self scheme] isEqualToString:[URL scheme]] &&
-       [[self host] isEqualToString:[URL host]] &&
-       [[self path] isEqualToString:[URL path]]) {
-      
-      NSNumber *port = [self portWithDefault:@80];
-      NSNumber *compareToPort = [URL portWithDefault:@80];
-      if ([port isEqualToNumber:compareToPort]) {
-         isEqual = YES;
+   if ([[self scheme] isEqualToString:[URL scheme]] && [[self host] isEqualToString:[URL host]]) {
+      NSString *path = [self pathWithDefault:@"/"];
+      NSString *compareToPath = [URL  pathWithDefault:@"/"];
+      if ([path isEqualToString:compareToPath]) {
+         NSNumber *port = [self portWithDefault:@80];
+         NSNumber *compareToPort = [URL portWithDefault:@80];
+         if ([port isEqualToNumber:compareToPort]) {
+            isEqual = YES;
+         }
       }
    }
    return isEqual;
+}
+
+- (NSString *)pathWithDefault:(NSString *)defaultPath
+{
+   NSString *path = [self path];
+   if (path == nil || [path length] == 0) {
+      path = @"/";
+   }
+   return path;
 }
 
 - (NSNumber *)portWithDefault:(NSNumber *)defaultPort

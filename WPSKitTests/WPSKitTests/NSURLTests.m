@@ -19,4 +19,18 @@
    STAssertTrue([queryDict count] == 2, @"Unexpected count.");
 }
 
+- (void)testIsEqualToURL
+{
+   NSURL *url1 = [NSURL URLWithString:@"http://www.thecave.com"];
+   NSURL *url2 = [NSURL URLWithString:@"http://www.thecave.com/"];
+   STAssertTrue([url1 wps_isEqualToURL:url2], @"Expected URLs to be equal.");
+   
+   url1 = [NSURL URLWithString:@"http://www.thecave.com/a/b/c"];
+   url2 = [NSURL URLWithString:@"http://www.thecave.com/a/b/c/"];
+   STAssertTrue([url1 wps_isEqualToURL:url2], @"Expected URLs to be equal.");
+   
+   url1 = [NSURL URLWithString:@"http://www.thecave.com/a/b/"];
+   url2 = [NSURL URLWithString:@"http://www.thecave.com/a/b/c/"];
+   STAssertFalse([url1 wps_isEqualToURL:url2], @"Expected URLs to not be equal.");
+}
 @end
