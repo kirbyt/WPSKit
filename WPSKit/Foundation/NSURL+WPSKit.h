@@ -29,6 +29,15 @@
 
 @interface NSURL (WPSKit)
 
+/**
+ Returns a dictionary containing the query string parameters of the URL.
+ */
 - (NSDictionary *)wps_queryDictionary;
+
+/**
+ Compares the scheme, host, port, and path to determine if the URLs
+ are equal. Query string parameters are ignored.
+ */
+- (BOOL)wps_isEqualToURL:(NSURL *)URL;
 
 @end

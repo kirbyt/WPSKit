@@ -70,6 +70,31 @@
 	return result;
 }
 
+- (BOOL)wps_isEqualToURL:(NSURL *)URL
+{
+   BOOL isEqual = NO;
+   if ([[self scheme] isEqualToString:[URL scheme]] &&
+       [[self host] isEqualToString:[URL host]] &&
+       [[self path] isEqualToString:[URL path]]) {
+      
+      NSNumber *port = [self portWithDefault:@80];
+      NSNumber *compareToPort = [URL portWithDefault:@80];
+      if ([port isEqualToNumber:compareToPort]) {
+         isEqual = YES;
+      }
+   }
+   return isEqual;
+}
+
+- (NSNumber *)portWithDefault:(NSNumber *)defaultPort
+{
+   NSNumber *port = [self port];
+   if (!port) {
+      port = defaultPort;
+   }
+   return port;
+}
+
 #pragma mark - URL Escaping and Unescaping
 
 - (NSString *)stringByUnescapingFromURLQuery:(NSString *)string
