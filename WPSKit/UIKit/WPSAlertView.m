@@ -48,6 +48,12 @@
    return alert;
 }
 
++ (void)presentOkayAlertViewWithTitle:(NSString *)title message:(NSString *)message
+{
+    WPSAlertView *alert = [self okayAlertViewWithTitle:title message:message];
+    [alert show];
+}
+
 - (id)initWithCompletion:(WPSAlertViewCompletionBlock)completion
 {
    self = [super init];
