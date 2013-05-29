@@ -219,7 +219,7 @@
 
 #pragma mark - Basic Operations
 
-- (BOOL)saveMainContext:(NSError **)error;
+- (BOOL)saveMainContext:(NSError **)error
 {
    BOOL success = YES;
    NSManagedObjectContext *managedObjectContext = [self mainManagedObjectContext];
