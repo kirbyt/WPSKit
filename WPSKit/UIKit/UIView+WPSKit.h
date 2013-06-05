@@ -46,4 +46,7 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
 - (void)wps_constrainToHeightGreaterThanOrEqualTo:(CGFloat)height;
 - (void)wps_constrainToWidthGreaterThanOrEqualTo:(CGFloat)width;
 
+-(void)wps_centerInView:(UIView *)superview;
+-(void)wps_centerInContainerOnAxis:(NSLayoutAttribute)axis;
+
 @end
