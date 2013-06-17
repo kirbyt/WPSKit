@@ -22,6 +22,9 @@
    CGRect frame = [self frame];
    frame.size.height = 36;
    [self setFrame:frame];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:36.0f]];
+    
    [self setBackgroundColor:[UIColor clearColor]];
 }
 
