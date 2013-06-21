@@ -202,7 +202,7 @@ static const short _base64DecodingTable[256] = {
 		}
 	}
    
-	NSString *strToReturn = [[NSString alloc] initWithBytesNoCopy:strResult length:objPointer - strResult encoding:NSASCIIStringEncoding freeWhenDone:YES];
+	NSString *strToReturn = [[NSString alloc] initWithBytesNoCopy:strResult length:(NSUInteger)(objPointer - strResult) encoding:NSASCIIStringEncoding freeWhenDone:YES];
 	return strToReturn;
 }
 
@@ -214,7 +214,7 @@ static const short _base64DecodingTable[256] = {
 	int i = 0, j = 0, k;
    
 	unsigned char * objResult;
-	objResult = calloc(intLength, sizeof(char));
+	objResult = calloc(intLength, sizeof(unsigned char));
    
 	// Run through the whole string, converting as we go
 	while ( ((intCurrent = *objPointer++) != '\0') && (intLength-- > 0) ) {
@@ -239,17 +239,17 @@ static const short _base64DecodingTable[256] = {
       
 		switch (i % 4) {
 			case 0:
-				objResult[j] = intCurrent << 2;
+				objResult[j] = (unsigned char)(intCurrent << 2);
 				break;
             
 			case 1:
 				objResult[j++] |= intCurrent >> 4;
-				objResult[j] = (intCurrent & 0x0f) << 4;
+				objResult[j] = (unsigned char)((intCurrent & 0x0f) << 4);
 				break;
             
 			case 2:
 				objResult[j++] |= intCurrent >>2;
-				objResult[j] = (intCurrent & 0x03) << 6;
+				objResult[j] = (unsigned char)((intCurrent & 0x03) << 6);
 				break;
             
 			case 3:
@@ -277,7 +277,7 @@ static const short _base64DecodingTable[256] = {
 	}
    
 	// Cleanup and setup the return NSData
-	return [[NSData alloc] initWithBytesNoCopy:objResult length:j freeWhenDone:YES];
+	return [[NSData alloc] initWithBytesNoCopy:objResult length:(NSUInteger)j freeWhenDone:YES];
 }
 
 @end
