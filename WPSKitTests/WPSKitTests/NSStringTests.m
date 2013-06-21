@@ -87,4 +87,20 @@
    STAssertTrue([decodedString isEqualToString:string], @"decodedString '%@' is not equal to expected string '%@'.", decodedString, string);
 }
 
+- (void)testEmptyStringIfNil
+{
+   NSString *string = nil;
+   NSString *emtpyString = wps_emptyStringIfNil(string);
+   STAssertNotNil(emtpyString, @"A nil string value was returned.");
+   STAssertTrue([emtpyString isEqualToString:@""], @"Unexcepted string value.");
+}
+
+- (void)testEmptyStringIfNilWhenNotNil
+{
+   NSString *string = @"chicken lips";
+   NSString *emtpyString = [NSString wps_emptyStringIfNil:string];
+   STAssertNotNil(emtpyString, @"A nil string value was returned.");
+   STAssertTrue([emtpyString isEqualToString:string], @"Unexcepted string value.");
+}
+
 @end

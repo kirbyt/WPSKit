@@ -27,6 +27,14 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Returns an empty string if the current value is nil.
+ */
+static inline NSString* wps_emptyStringIfNil(NSString *s)
+{
+   return s ? s : @"";
+}
+
 @interface NSString (WPSKit)
 
 /**
@@ -42,6 +50,11 @@
  Returns a string containing a new UUID.
  */
 + (NSString *)wps_stringWithUUID;
+
+/**
+ Returns an empty string if the current value is nil.
+ */
++ (NSString *)wps_emptyStringIfNil:(NSString *)string;
 
 /** 
  Returns YES if the string is a validate URL; otherwise NO is returned.

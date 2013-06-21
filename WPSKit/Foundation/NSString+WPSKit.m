@@ -83,6 +83,11 @@ static const short _base64DecodingTable[256] = {
    return result;
 }
 
++ (NSString *)wps_emptyStringIfNil:(NSString *)string
+{
+   return wps_emptyStringIfNil(string);
+}
+
 - (BOOL)wps_isURL
 {
    NSURL *URL = [NSURL URLWithString:self];
