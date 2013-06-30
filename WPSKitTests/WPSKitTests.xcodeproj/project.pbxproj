@@ -41,6 +41,8 @@
 		686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */; };
 		6882A9841461DA02005AAC6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6882A9831461DA02005AAC6E /* MapKit.framework */; };
 		688DF6BC14685BE800732A7C /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */; };
+		68942350178082F4009EAC3A /* NSData+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6894234F178082F4009EAC3A /* NSData+WPSKit.m */; };
+		6894235317808425009EAC3A /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6894235217808425009EAC3A /* Base64Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,10 @@
 		6882A9831461DA02005AAC6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		688DF6BA14685BE800732A7C /* WPSStopwatchTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSStopwatchTests.h; sourceTree = "<group>"; };
 		688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSStopwatchTests.m; sourceTree = "<group>"; };
+		6894234E178082F4009EAC3A /* NSData+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+WPSKit.h"; sourceTree = "<group>"; };
+		6894234F178082F4009EAC3A /* NSData+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+WPSKit.m"; sourceTree = "<group>"; };
+		6894235117808425009EAC3A /* Base64Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Tests.h; sourceTree = "<group>"; };
+		6894235217808425009EAC3A /* Base64Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,8 @@
 			children = (
 				6814402616E69B1F009D91C6 /* NSArray+WPSKit.h */,
 				6814402716E69B1F009D91C6 /* NSArray+WPSKit.m */,
+				6894234E178082F4009EAC3A /* NSData+WPSKit.h */,
+				6894234F178082F4009EAC3A /* NSData+WPSKit.m */,
 				6819B5BC14B756FD00BDFDCD /* NSFileManager+WPSKit.h */,
 				6819B5BD14B756FD00BDFDCD /* NSFileManager+WPSKit.m */,
 				6819B5BE14B756FD00BDFDCD /* NSString+WPSKit.h */,
@@ -237,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				683B50631440B73A000A62E1 /* Supporting Files */,
+				6894235117808425009EAC3A /* Base64Tests.h */,
+				6894235217808425009EAC3A /* Base64Tests.m */,
 				6814401E16E6995F009D91C6 /* NSArrayTests.h */,
 				6814401F16E6995F009D91C6 /* NSArrayTests.m */,
 				683B50821440B7CB000A62E1 /* NSStringTests.h */,
@@ -380,6 +390,8 @@
 				6814402816E69B1F009D91C6 /* NSArray+WPSKit.m in Sources */,
 				684DDBAA16F54B6E0076DE9E /* NSURL+WPSKit.m in Sources */,
 				684DDBAD16F54C480076DE9E /* NSURLTests.m in Sources */,
+				68942350178082F4009EAC3A /* NSData+WPSKit.m in Sources */,
+				6894235317808425009EAC3A /* Base64Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

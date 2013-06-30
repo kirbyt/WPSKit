@@ -77,16 +77,6 @@
    STAssertTrue([encodedString isEqualToString:@"The%20rain%20%26%20Spain."], @"Unexcepted URL encoded string value.");
 }
 
-- (void)testBase64
-{
-   NSString *string = @"Howdy folks.";
-   NSString *base64String = [NSString wps_encodeBase64WithString:string];
-   NSData *decodedData = [NSString wps_decodeBase64WithString:base64String];
-   NSString *decodedString = [[NSString alloc] initWithBytes:[decodedData bytes] length:[decodedData length] encoding:NSUTF8StringEncoding];
-   
-   STAssertTrue([decodedString isEqualToString:string], @"decodedString '%@' is not equal to expected string '%@'.", decodedString, string);
-}
-
 - (void)testEmptyStringIfNil
 {
    NSString *string = nil;

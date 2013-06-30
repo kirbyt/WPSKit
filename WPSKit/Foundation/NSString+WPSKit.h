@@ -73,8 +73,7 @@ static inline NSString* wps_emptyStringIfNil(NSString *s)
  */
 - (NSString*)wps_URLEncodedStringWithEncoding:(NSStringEncoding)encoding;
 
-+ (NSString *)wps_encodeBase64WithString:(NSString *)strData;
-+ (NSString *)wps_encodeBase64WithData:(NSData *)objData;
-+ (NSData *)wps_decodeBase64WithString:(NSString *)strBase64;
++ (NSString *)wps_base64StringWithString:(NSString *)string;
++ (NSString *)wps_base64StringWithData:(NSData *)data;
 
 @end
