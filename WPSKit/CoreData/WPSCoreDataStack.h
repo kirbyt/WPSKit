@@ -40,6 +40,8 @@
  */
 - (BOOL)saveMainContext:(NSError **)error;
 
+- (void)preinstallDefaultDatabase;
+
 #pragma mark - Model file info
 /**
  You must override the following before accessing the Core Data Stack
