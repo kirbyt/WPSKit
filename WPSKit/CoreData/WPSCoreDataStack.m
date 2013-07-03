@@ -4,29 +4,29 @@
  **   Created by Kirby Turner.
  **   Copyright 2011 White Peak Software. All rights reserved.
  **
- **   Permission is hereby granted, free of charge, to any person obtaining 
- **   a copy of this software and associated documentation files (the 
- **   "Software"), to deal in the Software without restriction, including 
- **   without limitation the rights to use, copy, modify, merge, publish, 
- **   distribute, sublicense, and/or sell copies of the Software, and to permit 
- **   persons to whom the Software is furnished to do so, subject to the 
+ **   Permission is hereby granted, free of charge, to any person obtaining
+ **   a copy of this software and associated documentation files (the
+ **   "Software"), to deal in the Software without restriction, including
+ **   without limitation the rights to use, copy, modify, merge, publish,
+ **   distribute, sublicense, and/or sell copies of the Software, and to permit
+ **   persons to whom the Software is furnished to do so, subject to the
  **   following conditions:
  **
- **   The above copyright notice and this permission notice shall be included 
+ **   The above copyright notice and this permission notice shall be included
  **   in all copies or substantial portions of the Software.
  **
- **   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- **   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- **   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- **   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- **   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- **   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+ **   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ **   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ **   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ **   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ **   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ **   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  **   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  **
  **   This code is based on the PRPBasicDataModel code
  **   presented in the book iOS Receipts.
  **   http://pragprog.com/titles/cdirec/ios-recipes
- ** 
+ **
  **   Portions created by Matt Drance.
  **   Portions copyright 2010 Bookhouse Software, LLC. All rights reserved.
  **
@@ -46,9 +46,18 @@
 @synthesize mainManagedObjectContext = _mainManagedObjectContext;
 @synthesize childManagedObjectContext = _childManagedObjectContext;
 
+- (id)init
+{
+   self = [super init];
+   if (self) {
+      [self setMigrateStoreIfNeeded:YES];
+   }
+   return self;
+}
+
 #pragma mark - Basic fetching
 
-- (NSUInteger)countForEntityName:(NSString *)entityName error:(NSError **)error 
+- (NSUInteger)countForEntityName:(NSString *)entityName error:(NSError **)error
 {
    NSManagedObjectContext *context = [self mainManagedObjectContext];
    NSUInteger count = 0;
@@ -59,7 +68,7 @@
    return count;
 }
 
-- (NSArray *)objectsWithEntityName:(NSString *)entityName matchingPredicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error 
+- (NSArray *)objectsWithEntityName:(NSString *)entityName matchingPredicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error
 {
    NSManagedObjectContext *context = [self mainManagedObjectContext];
    NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -70,32 +79,32 @@
    [request setPredicate:predicate];
    NSArray *results = [context executeFetchRequest:request error:error];
    
-   return results;    
+   return results;
 }
 
-- (NSArray *)objectsWithEntityName:(NSString *)entityName limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error 
+- (NSArray *)objectsWithEntityName:(NSString *)entityName limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error
 {
    return [self objectsWithEntityName:entityName matchingPredicate:nil limit:limit batchSize:batchSize sortDescriptors:descriptors error:error];
 }
 
-- (NSArray *)allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError **)error 
+- (NSArray *)allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError **)error
 {
    return [self objectsWithEntityName:entityName matchingPredicate:nil limit:0 batchSize:0 sortDescriptors:descriptors error:error];
 }
 
-- (NSArray *)objectsWithEntityName:(NSString *)entityName values:(NSArray *)values matchingKey:(NSString *)key error:(NSError **)error 
+- (NSArray *)objectsWithEntityName:(NSString *)entityName values:(NSArray *)values matchingKey:(NSString *)key error:(NSError **)error
 {
    return [self objectsWithEntityName:entityName matchingPredicate:[NSPredicate predicateWithFormat:@"%@ in %@", key, values] limit:0 batchSize:0 sortDescriptors:nil error:error];
 }
 
 #pragma mark - Filesystem hooks
 
-- (NSString *)modelName 
+- (NSString *)modelName
 {
    return [[[NSBundle mainBundle] bundleIdentifier] pathExtension];
 }
 
-- (NSString *)pathToModel 
+- (NSString *)pathToModel
 {
    NSString *filename = [self modelName];
    NSString *localModelPath = [[NSBundle mainBundle] pathForResource:filename ofType:@"momd"];
@@ -103,19 +112,19 @@
    return localModelPath;
 }
 
-- (NSString *)storeFileName 
+- (NSString *)storeFileName
 {
    return [[self modelName] stringByAppendingPathExtension:@"sqlite"];
 }
 
-- (NSString *)pathToLocalStore 
+- (NSString *)pathToLocalStore
 {
    NSString *storeName = [self storeFileName];
    NSString *docPath = [self documentsDirectory];
    return [docPath stringByAppendingPathComponent:storeName];
 }
 
-- (NSString *)pathToDefaultStore 
+- (NSString *)pathToDefaultStore
 {
    NSString *storeName = [self storeFileName];
    return [[NSBundle mainBundle] pathForResource:storeName ofType:nil];
@@ -139,7 +148,7 @@
 
 #pragma mark - Core Data Stack
 
-- (NSManagedObjectContext *)mainManagedObjectContext 
+- (NSManagedObjectContext *)mainManagedObjectContext
 {
    if (_mainManagedObjectContext == nil) {
       NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
@@ -177,9 +186,9 @@
    return _managedObjectModel;
 }
 
-- (void)preinstallDefaultDatabase 
+- (void)preinstallDefaultDatabase
 {
-   // Copy the default DB from the app bundle if none exists (either 
+   // Copy the default DB from the app bundle if none exists (either
    // first launch or just removed above)
    NSString *pathToLocalStore = [self pathToLocalStore];
    NSString *pathToDefaultStore = [self pathToDefaultStore];
@@ -194,16 +203,25 @@
    }
 }
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator 
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
    if (_persistentStoreCoordinator == nil) {
       NSURL *storeURL = [NSURL fileURLWithPath:[self pathToLocalStore]];
+      
+      NSError *error = nil;
+      NSManagedObjectModel *model = [self managedObjectModel];
+      BOOL success = [self progressivelyMigrateURL:storeURL ofType:NSSQLiteStoreType toModel:model error:&error];
+      if (!success) {
+         // TODO: Alert the user.
+         NSLog(@"Migration error: %@", [error localizedDescription]);
+      }
+      
       NSPersistentStoreCoordinator *coordinator;
-      coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+      coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
       NSDictionary *options = [self persistentStoreOptions];
       NSString *configuration = [self persistentStoreConfiguration];
       
-      NSError *error = nil;
+      error = nil;
       if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:configuration URL:storeURL options:options error:&error]) {
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
          NSException *exc = nil;
@@ -228,21 +246,21 @@
       if ([managedObjectContext hasChanges] && ![managedObjectContext save:error])
       {
          success = NO;
-      } 
+      }
    }
    return success;
 }
 
 #pragma mark - Helpers
 
-- (NSString *)documentsDirectory 
+- (NSString *)documentsDirectory
 {
    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
    if (![[NSFileManager defaultManager] fileExistsAtPath:docDir]) {
       NSError *error = nil;
       if (![[NSFileManager defaultManager] createDirectoryAtPath:docDir
                                      withIntermediateDirectories:YES
-                                                      attributes:nil 
+                                                      attributes:nil
                                                            error:&error]) {
          NSString *errorMsg = @"Could not find or create a Documents directory.";
          NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
@@ -254,6 +272,99 @@
       }
    }
    return docDir;
+}
+
+#pragma mark - Progressive Migration -
+
+- (BOOL)progressivelyMigrateURL:(NSURL*)sourceStoreURL ofType:(NSString*)type toModel:(NSManagedObjectModel*)finalModel error:(NSError**)error
+{
+   NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:type URL:sourceStoreURL error:error];
+   if (!sourceMetadata) {
+      return NO;
+   }
+   
+   if ([finalModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata]) {
+      *error = nil;
+      return YES;
+   }
+   
+   //Find the source model
+   NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:nil forStoreMetadata:sourceMetadata];
+   NSAssert(sourceModel != nil, @"Failed to find source model\n%@", sourceMetadata);
+   
+   //Find all of the mom and momd files in the Resources directory
+   NSMutableArray *modelPaths = [NSMutableArray array];
+   NSArray *momdArray = [[NSBundle mainBundle] pathsForResourcesOfType:@"momd" inDirectory:nil];
+   for (NSString *momdPath in momdArray) {
+      NSString *resourceSubpath = [momdPath lastPathComponent];
+      NSArray *array = [[NSBundle mainBundle] pathsForResourcesOfType:@"mom" inDirectory:resourceSubpath];
+      [modelPaths addObjectsFromArray:array];
+   }
+   NSArray* otherModels = [[NSBundle mainBundle] pathsForResourcesOfType:@"mom" inDirectory:nil];
+   [modelPaths addObjectsFromArray:otherModels];
+   if (!modelPaths || ![modelPaths count]) {
+      //Throw an error if there are no models
+      NSDictionary *dict = @{NSLocalizedDescriptionKey:@"No models found in bundle."};
+      *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      return NO;
+   }
+   
+   //See if we can find a matching destination model
+   NSMappingModel *mappingModel = nil;
+   NSManagedObjectModel *targetModel = nil;
+   NSString *modelPath = nil;
+   for (modelPath in modelPaths) {
+      targetModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:modelPath]];
+      mappingModel = [NSMappingModel mappingModelFromBundles:nil forSourceModel:sourceModel destinationModel:targetModel];
+      //If we found a mapping model then proceed
+      if (mappingModel) {
+         break;
+      }
+   }
+   //We have tested every model, if nil here we failed
+   if (!mappingModel) {
+      NSDictionary *dict = @{NSLocalizedDescriptionKey:@"No models found in bundle."};
+      *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      return NO;
+   }
+   //We have a mapping model and a destination model.  Time to migrate
+   NSMigrationManager *manager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel destinationModel:targetModel];
+   NSString *modelName = [[modelPath lastPathComponent] stringByDeletingPathExtension];
+   NSString *storeExtension = [[sourceStoreURL path] pathExtension];
+   NSString *storePath = [[sourceStoreURL path] stringByDeletingPathExtension];
+   //Build a path to write the new store
+   storePath = [NSString stringWithFormat:@"%@.%@.%@", storePath, modelName, storeExtension];
+   NSURL *destinationStoreURL = [NSURL fileURLWithPath:storePath];
+   if (![manager migrateStoreFromURL:sourceStoreURL
+                                type:type
+                             options:nil
+                    withMappingModel:mappingModel
+                    toDestinationURL:destinationStoreURL
+                     destinationType:type
+                  destinationOptions:nil
+                               error:error]) {
+      return NO;
+   }
+   //Migration was successful, move the files around to preserve the source
+   NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
+   guid = [guid stringByAppendingPathExtension:modelName];
+   guid = [guid stringByAppendingPathExtension:storeExtension];
+   NSString *appSupportPath = [storePath stringByDeletingLastPathComponent];
+   NSString *backupPath = [appSupportPath stringByAppendingPathComponent:guid];
+   
+   NSFileManager *fileManager = [NSFileManager defaultManager];
+   if (![fileManager moveItemAtPath:[sourceStoreURL path] toPath:backupPath error:error]) {
+      //Failed to copy the file
+      return NO;
+   }
+   //Move the destination to the source path
+   if (![fileManager moveItemAtPath:storePath toPath:[sourceStoreURL path] error:error]) {
+      //Try to back out the source move first, no point in checking it for errors
+      [fileManager moveItemAtPath:backupPath toPath:[sourceStoreURL path] error:nil];
+      return NO;
+   }
+   //We may not be at the "current" model yet, so recurse
+   return [self progressivelyMigrateURL:sourceStoreURL ofType:type toModel:finalModel error:error];
 }
 
 @end

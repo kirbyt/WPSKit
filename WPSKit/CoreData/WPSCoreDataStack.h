@@ -34,6 +34,7 @@
 @property (nonatomic, strong, readonly) NSManagedObjectContext *childManagedObjectContext;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, assign) BOOL migrateStoreIfNeeded; // Prepares a progressive migration of the Core Data store. The default is YES.
 
 /*
  Returns YES if successful, otherwise returns NO and sets the error.
