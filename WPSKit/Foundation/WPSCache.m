@@ -237,7 +237,7 @@
    return [[self cachePath] stringByAppendingPathComponent:filename];
 }
 
-- (void)persistData:(NSData *)data forKey:(NSString *)key withCacheAge:(NSInteger)cacheAge;
+- (void)persistData:(NSData *)data forKey:(NSString *)key withCacheAge:(NSInteger)cacheAge
 {
    NSString *path = [self cachePathForKey:key];
    NSFileManager *fileManager = [[NSFileManager alloc] init];
