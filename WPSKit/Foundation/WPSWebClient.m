@@ -34,8 +34,8 @@
  HTTPError function provided by 0xced.
  https://github.com/0xced/CLURLConnection
  */
-NSString *const HTTPErrorDomain = @"HTTPErrorDomain";
-NSString *const HTTPBody = @"HTTPBody";
+NSString *const kWPSHTTPErrorDomain = @"HTTPErrorDomain";
+NSString *const kWPSHTTPBody = @"HTTPBody";
 
 static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, NSData *httpBody)
 {
@@ -46,9 +46,9 @@ static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, N
                              [responseURL absoluteString], @"NSErrorFailingURLStringKey",
                              [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode], NSLocalizedDescriptionKey,
                              [NSNumber numberWithInteger:httpStatusCode], @"HTTPStatusCode",
-                             httpBodyString, HTTPBody, nil];
+                             httpBodyString, kWPSHTTPBody, nil];
    
-	return [NSError errorWithDomain:HTTPErrorDomain code:httpStatusCode userInfo:userInfo];
+	return [NSError errorWithDomain:kWPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
 }
 
 @interface WPSWebClient ()
