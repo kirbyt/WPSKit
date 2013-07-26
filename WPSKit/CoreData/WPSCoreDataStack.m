@@ -284,7 +284,9 @@
    }
    
    if ([finalModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata]) {
-      *error = nil;
+      if (error != NULL) {
+         *error = nil;
+      }
       return YES;
    }
    
@@ -305,7 +307,9 @@
    if (!modelPaths || ![modelPaths count]) {
       //Throw an error if there are no models
       NSDictionary *dict = @{NSLocalizedDescriptionKey:@"No models found in bundle."};
-      *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      if (error != NULL) {
+         *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      }
       return NO;
    }
    
@@ -324,7 +328,9 @@
    //We have tested every model, if nil here we failed
    if (!mappingModel) {
       NSDictionary *dict = @{NSLocalizedDescriptionKey:@"No models found in bundle."};
-      *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      if (error != NULL) {
+         *error = [NSError errorWithDomain:@"PhotoWheel" code:8001 userInfo:dict];
+      }
       return NO;
    }
    //We have a mapping model and a destination model.  Time to migrate
