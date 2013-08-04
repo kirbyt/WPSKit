@@ -33,6 +33,14 @@ typedef void(^WPSActionSheetCompletionBlock)(WPSActionSheet *actionSheet, NSInte
 
 @interface WPSActionSheet : UIActionSheet <UIActionSheetDelegate>
 
+/**
+ Set to YES to automatically dismiss the action sheet when the application
+ enters the background. The default is NO.
+ 
+ Note: You must specify a cancel button to dismiss on the background.
+ */
+@property (nonatomic, assign) BOOL dismissOnBackground;
+
 - (id)initWithCompletion:(WPSActionSheetCompletionBlock)completion;
 
 - (id)initWithTitle:(NSString *)title completion:(WPSActionSheetCompletionBlock)completion cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;

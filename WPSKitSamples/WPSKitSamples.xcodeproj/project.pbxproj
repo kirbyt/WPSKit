@@ -165,7 +165,9 @@
 				682CE5F214EDAE1C00F0AF2E /* Frameworks */,
 				682CE5F014EDAE1C00F0AF2E /* Products */,
 			);
+			indentWidth = 3;
 			sourceTree = "<group>";
+			tabWidth = 3;
 		};
 		682CE5F014EDAE1C00F0AF2E /* Products */ = {
 			isa = PBXGroup;

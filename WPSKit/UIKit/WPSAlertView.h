@@ -42,6 +42,14 @@ typedef void(^WPSAlertViewCompletionBlock)(WPSAlertView *alertView, NSInteger bu
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message completion:(WPSAlertViewCompletionBlock)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
+/**
+ Set to YES to automatically dismiss the action sheet when the application
+ enters the background. The default is NO.
+
+ Note: You must specify a cancel button to dismiss on the background.
+ */
+@property (nonatomic, assign) BOOL dismissOnBackground;
+
 @end
 
 @interface UIViewController (WPSKitAlertView)
