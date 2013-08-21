@@ -114,13 +114,13 @@
    
    NSMutableDictionary *results = [[NSMutableDictionary alloc] init];
    if (inserted) {
-      [results setObject:inserted forKey:NSInsertedObjectsKey];
+      [results setObject:[inserted copy] forKey:NSInsertedObjectsKey];
    }
    if (deleted) {
-      [results setObject:deleted forKey:NSDeletedObjectsKey];
+      [results setObject:[deleted copy] forKey:NSDeletedObjectsKey];
    }
    if (updated) {
-      [results setObject:updated forKey:NSUpdatedObjectsKey];
+      [results setObject:[updated copy] forKey:NSUpdatedObjectsKey];
    }
    
    if ([[self target] respondsToSelector:[self action]]) {
@@ -129,7 +129,7 @@
          NSLog(@"%@++++++++++firing action", [self reference]);
       }
 #endif
-      [[self target] performSelectorOnMainThread:[self action] withObject:results waitUntilDone:YES];
+      [[self target] performSelectorOnMainThread:[self action] withObject:[results copy] waitUntilDone:YES];
    } else {
 #if DEBUG
       if ([self reference]) {
