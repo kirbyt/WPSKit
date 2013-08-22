@@ -38,4 +38,6 @@
 + (UINib *)nib;
 + (NSString *)nibName;
 
+- (void)setDetailDisclosureButtonImage:(UIImage *)detailDisclosureButtonImage detailDisclosureButtonHighlightedImage:(UIImage *)detailDisclosureButtonHighlightedImage;
+
 @end

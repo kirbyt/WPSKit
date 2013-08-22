@@ -48,6 +48,16 @@
 		682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE64B14EDAEC300F0AF2E /* RootViewController.m */; };
 		682CE64E14EDAEF200F0AF2E /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682CE64D14EDAEF200F0AF2E /* RootView.xib */; };
 		684DDBB916F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 684DDBB816F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m */; };
+		685A9B8C17C63E8A0086688F /* TableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B8A17C63E8A0086688F /* TableViewViewController.m */; };
+		685A9B8D17C63E8A0086688F /* TableViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B8B17C63E8A0086688F /* TableViewViewController.xib */; };
+		685A9B9117C63F0B0086688F /* CustomDetailDisclosureButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */; };
+		685A9B9217C63F0B0086688F /* CustomDetailDisclosureButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */; };
+		685A9B9717C640B70086688F /* btn-detaildisclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9317C640B70086688F /* btn-detaildisclosure.png */; };
+		685A9B9817C640B70086688F /* btn-detaildisclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9417C640B70086688F /* btn-detaildisclosure@2x.png */; };
+		685A9B9917C640B70086688F /* btn-detaildisclosurepressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9517C640B70086688F /* btn-detaildisclosurepressed.png */; };
+		685A9B9A17C640B70086688F /* btn-detaildisclosurepressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9617C640B70086688F /* btn-detaildisclosurepressed@2x.png */; };
+		685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */; };
+		685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */; };
 		6895A88E176A2C4B00739803 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6895A88D176A2C4B00739803 /* WPSPageControl.m */; };
 		68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */; };
 /* End PBXBuildFile section */
@@ -124,6 +134,19 @@
 		682CE64D14EDAEF200F0AF2E /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		684DDBB716F6BCB80076DE9E /* WPSManagedObjectContextWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSManagedObjectContextWatcher.h; sourceTree = "<group>"; };
 		684DDBB816F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSManagedObjectContextWatcher.m; sourceTree = "<group>"; };
+		685A9B8917C63E8A0086688F /* TableViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewViewController.h; sourceTree = "<group>"; };
+		685A9B8A17C63E8A0086688F /* TableViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewViewController.m; sourceTree = "<group>"; };
+		685A9B8B17C63E8A0086688F /* TableViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewViewController.xib; sourceTree = "<group>"; };
+		685A9B8E17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailDisclosureButtonViewController.h; sourceTree = "<group>"; };
+		685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailDisclosureButtonViewController.m; sourceTree = "<group>"; };
+		685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureButtonViewController.xib; sourceTree = "<group>"; };
+		685A9B9317C640B70086688F /* btn-detaildisclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-detaildisclosure.png"; sourceTree = "<group>"; };
+		685A9B9417C640B70086688F /* btn-detaildisclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-detaildisclosure@2x.png"; sourceTree = "<group>"; };
+		685A9B9517C640B70086688F /* btn-detaildisclosurepressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-detaildisclosurepressed.png"; sourceTree = "<group>"; };
+		685A9B9617C640B70086688F /* btn-detaildisclosurepressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-detaildisclosurepressed@2x.png"; sourceTree = "<group>"; };
+		685A9B9B17C643020086688F /* CustomDetailDisclosureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailDisclosureCell.h; sourceTree = "<group>"; };
+		685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailDisclosureCell.m; sourceTree = "<group>"; };
+		685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureCell.xib; sourceTree = "<group>"; };
 		6895A88C176A2C4B00739803 /* WPSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSPageControl.h; sourceTree = "<group>"; };
 		6895A88D176A2C4B00739803 /* WPSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSPageControl.m; sourceTree = "<group>"; };
 		68E7FF211512E0EA0011FEF2 /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
@@ -153,6 +176,10 @@
 			children = (
 				680EE77F14EDF1FE00F84CD3 /* roundedbox.png */,
 				680EE78014EDF1FE00F84CD3 /* roundedbox@2x.png */,
+				685A9B9317C640B70086688F /* btn-detaildisclosure.png */,
+				685A9B9417C640B70086688F /* btn-detaildisclosure@2x.png */,
+				685A9B9517C640B70086688F /* btn-detaildisclosurepressed.png */,
+				685A9B9617C640B70086688F /* btn-detaildisclosurepressed@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -209,6 +236,15 @@
 				680EE77414EDDCFB00F84CD3 /* WebClientViewController.h */,
 				680EE77514EDDCFB00F84CD3 /* WebClientViewController.m */,
 				680EE77714EDDD3D00F84CD3 /* WebClientView.xib */,
+				685A9B8917C63E8A0086688F /* TableViewViewController.h */,
+				685A9B8A17C63E8A0086688F /* TableViewViewController.m */,
+				685A9B8B17C63E8A0086688F /* TableViewViewController.xib */,
+				685A9B8E17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.h */,
+				685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */,
+				685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */,
+				685A9B9B17C643020086688F /* CustomDetailDisclosureCell.h */,
+				685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */,
+				685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */,
 				680EE77E14EDF1FE00F84CD3 /* images */,
 				682CE5FA14EDAE1C00F0AF2E /* Supporting Files */,
 			);
@@ -377,6 +413,13 @@
 				680EE77D14EDF00100F84CD3 /* TextViewView.xib in Resources */,
 				680EE78114EDF1FE00F84CD3 /* roundedbox.png in Resources */,
 				680EE78214EDF1FE00F84CD3 /* roundedbox@2x.png in Resources */,
+				685A9B8D17C63E8A0086688F /* TableViewViewController.xib in Resources */,
+				685A9B9217C63F0B0086688F /* CustomDetailDisclosureButtonViewController.xib in Resources */,
+				685A9B9717C640B70086688F /* btn-detaildisclosure.png in Resources */,
+				685A9B9817C640B70086688F /* btn-detaildisclosure@2x.png in Resources */,
+				685A9B9917C640B70086688F /* btn-detaildisclosurepressed.png in Resources */,
+				685A9B9A17C640B70086688F /* btn-detaildisclosurepressed@2x.png in Resources */,
+				685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +460,9 @@
 				6814401A16E698CF009D91C6 /* NSArray+WPSKit.m in Sources */,
 				684DDBB916F6BCB80076DE9E /* WPSManagedObjectContextWatcher.m in Sources */,
 				6895A88E176A2C4B00739803 /* WPSPageControl.m in Sources */,
+				685A9B8C17C63E8A0086688F /* TableViewViewController.m in Sources */,
+				685A9B9117C63F0B0086688F /* CustomDetailDisclosureButtonViewController.m in Sources */,
+				685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

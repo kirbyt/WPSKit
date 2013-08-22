@@ -19,10 +19,18 @@ NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassNa
 {
    NSString *rootViewControllerClassName = @"RootViewController";
    
+   NSArray *tableViewItems = @[@{kWPSFeatureKeyTitle:@"Customizations",
+                                 kWPSFeatureKeyItems:@[
+                                       @{kWPSFeatureKeyTitle:@"Custom Detail Disclosure Button",
+                                         kWPSFeatureKeyItems:@[],
+                                         kWPSFeatureKeyViewControllerClassName:@"CustomDetailDisclosureButtonViewController"}
+                                       ]}];
+   
    NSArray *uiKitItems = [NSArray arrayWithObjects:
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIApplication+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                           [NSDictionary dictionaryWithObjectsAndKeys:@"UIColor+WPSKit", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, rootViewControllerClassName, kWPSFeatureKeyViewControllerClassName, nil],
                           [NSDictionary dictionaryWithObjectsAndKeys:@"WPSTextView", kWPSFeatureKeyTitle, [NSArray array], kWPSFeatureKeyItems, @"TextViewViewController", kWPSFeatureKeyViewControllerClassName, nil],
+                          @{kWPSFeatureKeyTitle:@"UITableView", kWPSFeatureKeyItems:tableViewItems, kWPSFeatureKeyViewControllerClassName:@"TableViewViewController"},
                           nil];
    
    NSArray *foundationItems = [NSArray arrayWithObjects:
