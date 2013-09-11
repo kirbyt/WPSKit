@@ -191,7 +191,7 @@
    NSFileManager *fileManager = [[NSFileManager alloc] init];
    if (![fileManager  fileExistsAtPath:path]) {
       NSError *error = nil;
-      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL]) {
+      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
          NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
          NSException *exc = nil;
          NSString *reason = @"Cannot create cache directory.";
