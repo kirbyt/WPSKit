@@ -93,6 +93,9 @@
 - (void)setDetailDisclosureButtonImage:(UIImage *)detailDisclosureButtonImage detailDisclosureButtonHighlightedImage:(UIImage *)detailDisclosureButtonHighlightedImage
 {
    CGSize size = [detailDisclosureButtonImage size];
+   if (size.width < 44.0 && size.height < 44.0) {
+      size = CGSizeMake(44.0f, 44.0f);
+   }
    
    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
    [button setImage:detailDisclosureButtonImage forState:UIControlStateNormal];
