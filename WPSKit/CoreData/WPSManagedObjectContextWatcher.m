@@ -102,7 +102,7 @@
       [updated filterUsingPredicate:[self masterPredicate]];
    }
    
-   NSInteger totalCount = [inserted count] + [deleted count]  + [updated count];
+   NSUInteger totalCount = [inserted count] + [deleted count]  + [updated count];
    if (totalCount == 0) {
 #if DEBUG
       if ([self reference]) {
@@ -122,14 +122,15 @@
    if (updated) {
       [results setObject:[updated copy] forKey:NSUpdatedObjectsKey];
    }
-   
-   if ([[self target] respondsToSelector:[self action]]) {
+  
+  id target = [self target];
+  if ([target respondsToSelector:[self action]]) {
 #if DEBUG
       if ([self reference]) {
          NSLog(@"%@++++++++++firing action", [self reference]);
       }
 #endif
-      [[self target] performSelectorOnMainThread:[self action] withObject:[results copy] waitUntilDone:YES];
+      [target performSelectorOnMainThread:[self action] withObject:[results copy] waitUntilDone:YES];
    } else {
 #if DEBUG
       if ([self reference]) {
