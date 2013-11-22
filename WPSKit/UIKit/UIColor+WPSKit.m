@@ -30,6 +30,27 @@
 
 @implementation UIColor (WPSKit)
 
++ (UIColor *)wps_colorWithHex:(unsigned long long)color
+{
+   return [self wps_colorWithHex:color alpha:1.0f];
+}
+
++ (UIColor *)wps_colorWithHex:(unsigned long long)color alpha:(CGFloat)alpha
+{
+   // The following code is from Graham Lee.
+   // https://gist.github.com/iamleeg/7605110
+   
+   unsigned long long redComponent = (color & 0xff0000) >> 16;
+   unsigned long long greenComponent = (color & 0x00ff00) >> 8;
+   unsigned long long blueComponent = (color & 0xff);
+   float red = redComponent / 255.0;
+   float green = greenComponent / 255.0;
+   float blue = blueComponent / 255.0;
+
+   return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
+
 + (UIColor *)wps_colorWithHexString:(NSString *)hexString
 {
    return [self wps_colorWithHexString:hexString alpha:1.0];
@@ -90,12 +111,31 @@
    return image;
 }
 
++ (UIColor *)wps_iOSDefaultBlue
+{
+   return [self wps_colorWithHex:0x007aff];
+}
+
 - (NSString *)wps_hexString
-{  
-   const CGFloat *components = CGColorGetComponents([self CGColor]);  
-   CGFloat red = components[0];
-   CGFloat green = components[1];
-   CGFloat blue = components[2];  
+{
+   CGFloat red = 0.0f;
+   CGFloat green = 0.0f;
+   CGFloat blue = 0.0f;
+
+   size_t numberOfComponents = CGColorGetNumberOfComponents([self CGColor]);
+   const CGFloat *components = CGColorGetComponents([self CGColor]);
+
+   if (numberOfComponents == 2) {
+      // Assume white color space.
+      CGFloat white = components[0];
+      red = green = blue = white;
+      
+   } else if (numberOfComponents == 4) {
+      // RGB plus Alpha.
+      red = components[0];
+      green = components[1];
+      blue = components[2];
+   }
    
    // Fix range if needed  
    if (red < 0.0f) red = 0.0f;  
