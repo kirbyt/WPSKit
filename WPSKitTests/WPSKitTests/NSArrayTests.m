@@ -26,4 +26,21 @@
    STAssertNotNil(value, @"Unassigned object reference");
    STAssertTrue([value isEqualToString:@"one"], @"Unexpected object reference");
 }
+
+- (void)testSafeObjectAtIndex
+{
+  NSArray *array = nil;
+  id value = [array wps_safeObjectAtIndex:0];
+  STAssertNil(value, @"Expected nil object reference.");
+
+  array = @[];
+  value = [array wps_safeObjectAtIndex:0];
+  STAssertNil(value, @"Expected nil object reference.");
+  
+  array = @[@"one", @"two"];
+  value = [array wps_safeObjectAtIndex:0];
+  STAssertNotNil(value, @"Unassigned object reference");
+  STAssertTrue([value isEqualToString:@"one"], @"Unexpected object reference");
+}
+
 @end

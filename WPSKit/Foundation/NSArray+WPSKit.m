@@ -19,4 +19,13 @@
    }
 }
 
+- (id)wps_safeObjectAtIndex:(NSUInteger)index
+{
+  if ([self count] < 1 || index >= [self count]) {
+    return nil;
+  } else {
+    return [self objectAtIndex:index];
+  }
+}
+
 @end

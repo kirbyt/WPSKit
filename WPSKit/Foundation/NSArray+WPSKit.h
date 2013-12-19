@@ -11,5 +11,6 @@
 @interface NSArray (WPSKit)
 
 - (id)wps_firstObject;
+- (id)wps_safeObjectAtIndex:(NSUInteger)index;
 
 @end
