@@ -29,7 +29,7 @@
 {
    [super viewDidLoad];
    
-   WPSWebClientCompletionBlock completion = ^(NSURL *responseURL, NSData *data, BOOL hitCache, NSError *error) {
+   WPSWebClientCompletionBlock completion = ^(NSURL *responseURL, NSData *data, BOOL hitCache, NSString *cacheKey, NSError *error) {
       NSString *text;
       if (data) {
          text = [NSString wps_stringWithData:data];

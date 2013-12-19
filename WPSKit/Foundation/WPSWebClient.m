@@ -137,7 +137,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 {
    NSData *cachedData = [self cachedDataForURL:URL parameters:parameters];
    if (cachedData) {
-      completion(URL, cachedData, YES, nil);
+      completion(URL, cachedData, YES, [self cacheKey], nil);
       return;
    }
    
@@ -197,7 +197,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 {
    NSData *cachedData = [self cachedDataForURL:URL parameters:parameters];
    if (cachedData) {
-      completion(URL, cachedData, YES, nil);
+      completion(URL, cachedData, YES, [self cacheKey], nil);
       return;
    }
    
@@ -278,11 +278,11 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
          [[self cache] cacheData:[self receivedData] forKey:[self cacheKey] cacheLocation:WPSCacheLocationFileSystem cacheAge:[self cacheAge]];
       }
       
-      completion([self responseURL], [self receivedData], NO, nil);
+      completion([self responseURL], [self receivedData], NO, [self cacheKey], nil);
       
    } else {
       NSError *error = httpError([self responseURL], [self HTTPStatusCode], [self receivedData]);
-      completion(nil, nil, NO, error);
+      completion(nil, nil, NO, nil, error);
    }
    
    [self setReceivedData:nil];
@@ -297,7 +297,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
       [self performSelector:@selector(startConnection) withObject:nil afterDelay:1.0];
    } else {
       WPSWebClientCompletionBlock completion = [self completion];
-      completion(nil, nil, NO, error);
+      completion(nil, nil, NO, nil, error);
    }
 }
 
