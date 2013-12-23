@@ -120,4 +120,10 @@
 - (void)wps_popNetworkActivity;
 - (void)wps_resetNetworkActivity;
 
+#pragma mark - App Version
+
++ (NSString *)wps_appName;
++ (NSString *)wps_appVersion;
++ (NSString *)wps_appVersionShort;
+
 @end

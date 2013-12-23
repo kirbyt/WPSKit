@@ -180,4 +180,31 @@ static NSInteger wps_networkActivityCount = 0;
    [self wps_refreshNetworkActivityIndicator];        
 }
 
+#pragma mark - App Version
+
++ (NSString *)wps_appName
+{
+  NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+  NSString *name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+  return name;
+}
+
++ (NSString *)wps_appVersion
+{
+  NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+  NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+  NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+  NSString *fullVersion = [NSString stringWithFormat:@"Version %@ (build %@)", version, build];
+  return fullVersion;
+}
+
++ (NSString *)wps_appVersionShort
+{
+  NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+  NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+  NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+  NSString *fullVersion = [NSString stringWithFormat:@"%@.%@", version, build];
+  return fullVersion;
+}
+
 @end
