@@ -32,7 +32,6 @@
 		682CE63914EDAE7C00F0AF2E /* CLLocation+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61414EDAE7C00F0AF2E /* CLLocation+WPSKit.m */; };
 		682CE63A14EDAE7C00F0AF2E /* NSFileManager+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61714EDAE7C00F0AF2E /* NSFileManager+WPSKit.m */; };
 		682CE63B14EDAE7C00F0AF2E /* NSString+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61914EDAE7C00F0AF2E /* NSString+WPSKit.m */; };
-		682CE63C14EDAE7C00F0AF2E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61B14EDAE7C00F0AF2E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		682CE63D14EDAE7C00F0AF2E /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61D14EDAE7C00F0AF2E /* WPSCache.m */; };
 		682CE63E14EDAE7C00F0AF2E /* WPSImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE61F14EDAE7C00F0AF2E /* WPSImageDownloader.m */; };
 		682CE63F14EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE62114EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m */; };
@@ -103,8 +102,6 @@
 		682CE61714EDAE7C00F0AF2E /* NSFileManager+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+WPSKit.m"; sourceTree = "<group>"; };
 		682CE61814EDAE7C00F0AF2E /* NSString+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+WPSKit.h"; sourceTree = "<group>"; };
 		682CE61914EDAE7C00F0AF2E /* NSString+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+WPSKit.m"; sourceTree = "<group>"; };
-		682CE61A14EDAE7C00F0AF2E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		682CE61B14EDAE7C00F0AF2E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		682CE61C14EDAE7C00F0AF2E /* WPSCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCache.h; sourceTree = "<group>"; };
 		682CE61D14EDAE7C00F0AF2E /* WPSCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCache.m; sourceTree = "<group>"; };
 		682CE61E14EDAE7C00F0AF2E /* WPSImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSImageDownloader.h; sourceTree = "<group>"; };
@@ -306,8 +303,6 @@
 				682CE61714EDAE7C00F0AF2E /* NSFileManager+WPSKit.m */,
 				682CE61814EDAE7C00F0AF2E /* NSString+WPSKit.h */,
 				682CE61914EDAE7C00F0AF2E /* NSString+WPSKit.m */,
-				682CE61A14EDAE7C00F0AF2E /* Reachability.h */,
-				682CE61B14EDAE7C00F0AF2E /* Reachability.m */,
 				682CE61C14EDAE7C00F0AF2E /* WPSCache.h */,
 				682CE61D14EDAE7C00F0AF2E /* WPSCache.m */,
 				682CE61E14EDAE7C00F0AF2E /* WPSImageDownloader.h */,
@@ -437,7 +432,6 @@
 				682CE63914EDAE7C00F0AF2E /* CLLocation+WPSKit.m in Sources */,
 				682CE63A14EDAE7C00F0AF2E /* NSFileManager+WPSKit.m in Sources */,
 				682CE63B14EDAE7C00F0AF2E /* NSString+WPSKit.m in Sources */,
-				682CE63C14EDAE7C00F0AF2E /* Reachability.m in Sources */,
 				682CE63D14EDAE7C00F0AF2E /* WPSCache.m in Sources */,
 				682CE63E14EDAE7C00F0AF2E /* WPSImageDownloader.m in Sources */,
 				682CE63F14EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m in Sources */,
