@@ -58,6 +58,7 @@
 		685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */; };
 		685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */; };
 		6895A88E176A2C4B00739803 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6895A88D176A2C4B00739803 /* WPSPageControl.m */; };
+		68AEC7DE1877B56D0013F1BE /* NSNull+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AEC7DD1877B56D0013F1BE /* NSNull+WPSKit.m */; };
 		68E7FF231512E0EA0011FEF2 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,8 @@
 		685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureCell.xib; sourceTree = "<group>"; };
 		6895A88C176A2C4B00739803 /* WPSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSPageControl.h; sourceTree = "<group>"; };
 		6895A88D176A2C4B00739803 /* WPSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSPageControl.m; sourceTree = "<group>"; };
+		68AEC7DC1877B56D0013F1BE /* NSNull+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+WPSKit.h"; sourceTree = "<group>"; };
+		68AEC7DD1877B56D0013F1BE /* NSNull+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+WPSKit.m"; sourceTree = "<group>"; };
 		68E7FF211512E0EA0011FEF2 /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
 		68E7FF221512E0EA0011FEF2 /* UIDevice+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WPSKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -301,6 +304,8 @@
 				6814401916E698CF009D91C6 /* NSArray+WPSKit.m */,
 				682CE61614EDAE7C00F0AF2E /* NSFileManager+WPSKit.h */,
 				682CE61714EDAE7C00F0AF2E /* NSFileManager+WPSKit.m */,
+				68AEC7DC1877B56D0013F1BE /* NSNull+WPSKit.h */,
+				68AEC7DD1877B56D0013F1BE /* NSNull+WPSKit.m */,
 				682CE61814EDAE7C00F0AF2E /* NSString+WPSKit.h */,
 				682CE61914EDAE7C00F0AF2E /* NSString+WPSKit.m */,
 				682CE61C14EDAE7C00F0AF2E /* WPSCache.h */,
@@ -432,6 +437,7 @@
 				682CE63914EDAE7C00F0AF2E /* CLLocation+WPSKit.m in Sources */,
 				682CE63A14EDAE7C00F0AF2E /* NSFileManager+WPSKit.m in Sources */,
 				682CE63B14EDAE7C00F0AF2E /* NSString+WPSKit.m in Sources */,
+				68AEC7DE1877B56D0013F1BE /* NSNull+WPSKit.m in Sources */,
 				682CE63D14EDAE7C00F0AF2E /* WPSCache.m in Sources */,
 				682CE63E14EDAE7C00F0AF2E /* WPSImageDownloader.m in Sources */,
 				682CE63F14EDAE7C00F0AF2E /* WPSMultipartFormDataUploader.m in Sources */,
