@@ -33,8 +33,13 @@
 + (UIColor *)wps_colorWithHex:(unsigned long long)color alpha:(CGFloat)alpha;
 + (UIColor *)wps_colorWithHexString:(NSString *)hexString;
 + (UIColor *)wps_colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
-+ (UIImage *)wps_imageFromColor:(UIColor *)color;
 + (UIColor *)wps_iOSDefaultBlue;
 - (NSString *)wps_hexString;
+
+@end
+
+@interface UIImage (WPSKitColor)
+
++ (UIImage *)wps_imageFromColor:(UIColor *)color;
 
 @end

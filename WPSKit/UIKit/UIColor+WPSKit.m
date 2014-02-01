@@ -99,18 +99,6 @@
    return color;
 }
 
-+ (UIImage *)wps_imageFromColor:(UIColor *)color
-{
-   CGRect rect = CGRectMake(0, 0, 1, 1);
-   UIGraphicsBeginImageContext(rect.size);
-   CGContextRef context = UIGraphicsGetCurrentContext();
-   CGContextSetFillColorWithColor(context, [color CGColor]);
-   CGContextFillRect(context, rect);
-   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-   UIGraphicsEndImageContext();
-   return image;
-}
-
 + (UIColor *)wps_iOSDefaultBlue
 {
    return [self wps_colorWithHex:0x007aff];
@@ -148,6 +136,22 @@
    
    NSString *hex = [NSString stringWithFormat:@"%02X%02X%02X", (int)(red * 255), (int)(green * 255), (int)(blue * 255)];
    return hex;
+}
+
+@end
+
+@implementation UIImage (WPSKitColor)
+
++ (UIImage *)wps_imageFromColor:(UIColor *)color
+{
+  CGRect rect = CGRectMake(0, 0, 1, 1);
+  UIGraphicsBeginImageContext(rect.size);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  CGContextSetFillColorWithColor(context, [color CGColor]);
+  CGContextFillRect(context, rect);
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return image;
 }
 
 @end
