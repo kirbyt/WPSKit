@@ -39,6 +39,15 @@ typedef enum {
 @optional
 
 /**
+ Creates a new instance with the given cacheName.
+ The cache name is used as part of the path to the file system where cached
+ items are stored. 
+ 
+ Note: init() uses the default cacheName value WPSCache.
+ */
+- (id)initWithCacheName:(NSString *)cacheName;
+
+/**
  Caches the data for the key to the location.
  The cache age defaults to kWPSCacheMaxCacheAge for items cached to the
  file system.

@@ -36,6 +36,7 @@
 @interface WPSCache ()
 @property (nonatomic, strong) NSMutableDictionary *memoryCache;
 @property (nonatomic, strong) NSString *cachePath;
+@property (nonatomic, copy) NSString *cacheName;
 - (void)commonInit;
 - (NSString *)pathExtensionWithKey:(NSString *)key;
 - (NSString *)cachePathForKey:(NSString *)key;
@@ -47,6 +48,7 @@
 
 @synthesize memoryCache = _memoryCache;
 @synthesize cachePath = _cachePath;
+@synthesize cacheName = _cacheName;
 
 #pragma mark - Public Methods
 
@@ -72,12 +74,23 @@
 
 - (id)init
 {
+   self = [self initWithCacheName:@"WPSCache"];
+   if (self) {
+      
+   }
+   return self;
+}
+
+- (id)initWithCacheName:(NSString *)cacheName
+{
    self = [super init];
    if (self) {
+      [self setCacheName:cacheName];
       [self commonInit];
    }
    return self;
 }
+
 
 - (void)cacheData:(NSData *)data forKey:(NSString *)key cacheLocation:(WPSCacheLocation)cacheLocation
 {
@@ -185,7 +198,7 @@
    
    // Initialize the disk cache.
    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-   NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"WPSCache"];
+   NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[self cacheName]];
    [self setCachePath:path];
    
    NSFileManager *fileManager = [[NSFileManager alloc] init];
