@@ -31,7 +31,7 @@
 
 - (UIImage *)wps_scaleToSize:(CGSize)newSize 
 {
-   UIGraphicsBeginImageContextWithOptions(newSize, 1.0f, 1.0f);
+   UIGraphicsBeginImageContextWithOptions(newSize, YES, 1.0f);
    CGRect rect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
    [self drawInRect:rect];
    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
