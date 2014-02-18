@@ -43,9 +43,9 @@
    unsigned long long redComponent = (color & 0xff0000) >> 16;
    unsigned long long greenComponent = (color & 0x00ff00) >> 8;
    unsigned long long blueComponent = (color & 0xff);
-   float red = redComponent / 255.0;
-   float green = greenComponent / 255.0;
-   float blue = blueComponent / 255.0;
+   CGFloat red = redComponent / 255.0f;
+   CGFloat green = greenComponent / 255.0f;
+   CGFloat blue = blueComponent / 255.0f;
 
    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
