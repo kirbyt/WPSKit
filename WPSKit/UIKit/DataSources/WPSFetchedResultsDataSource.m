@@ -33,15 +33,15 @@
 - (NSInteger)numberOfSections
 {
    NSFetchedResultsController *frc = [self fetchedResultsController];
-   NSInteger count = [[frc sections] count];
+   NSInteger count = (NSInteger)[[frc sections] count];
    return count;
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
 {
    NSFetchedResultsController *frc = [self fetchedResultsController];
-   id <NSFetchedResultsSectionInfo> sectionInfo = [[frc sections] objectAtIndex:section];
-   NSInteger count = [sectionInfo numberOfObjects];
+   id <NSFetchedResultsSectionInfo> sectionInfo = [[frc sections] objectAtIndex:(NSUInteger)section];
+   NSInteger count = (NSInteger)[sectionInfo numberOfObjects];
    
    return count;
 }
@@ -95,7 +95,7 @@
    NSString *title = nil;
    NSArray *titles = [self sectionHeaderTitles];
    if (titles) {
-      id value = [titles wps_safeObjectAtIndex:section];
+      id value = [titles wps_safeObjectAtIndex:(NSUInteger)section];
       if ([value isKindOfClass:[NSString class]]) {
          title = value;
       }

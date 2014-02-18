@@ -38,7 +38,7 @@
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath
 {
-   NSArray *array = [[self array] wps_safeObjectAtIndex:[indexPath section]];
+   NSArray *array = [[self array] wps_safeObjectAtIndex:(NSUInteger)[indexPath section]];
    NSUInteger index = (NSUInteger)[indexPath item];
    id object = [array wps_safeObjectAtIndex:index];
    return object;
@@ -57,10 +57,10 @@
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath
 {
    NSMutableArray *allObjects = [[self array] mutableCopy];
-   NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:[indexPath section]] mutableCopy];
+   NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:(NSUInteger)[indexPath section]] mutableCopy];
    NSUInteger index = (NSUInteger)[indexPath item];
    [sectionObjects removeObjectAtIndex:index];
-   [allObjects replaceObjectAtIndex:[indexPath section] withObject:sectionObjects];
+   [allObjects replaceObjectAtIndex:(NSUInteger)[indexPath section] withObject:sectionObjects];
    
    [self setArray:[allObjects copy]];
 }
@@ -69,14 +69,14 @@
 
 - (NSInteger)numberOfSections
 {
-   NSInteger count = [[self array] count];
+   NSInteger count = (NSInteger)[[self array] count];
    return count;
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
 {
-   NSArray *sectionItems = [[self array] wps_safeObjectAtIndex:section];
-   NSInteger count = [sectionItems count];
+   NSArray *sectionItems = [[self array] wps_safeObjectAtIndex:(NSUInteger)section];
+   NSInteger count = (NSInteger)[sectionItems count];
    return count;
 }
 
@@ -129,7 +129,7 @@
    NSString *title = nil;
    NSArray *titles = [self sectionHeaderTitles];
    if (titles) {
-      id value = [titles wps_safeObjectAtIndex:section];
+      id value = [titles wps_safeObjectAtIndex:(NSUInteger)section];
       if ([value isKindOfClass:[NSString class]]) {
          title = value;
       }
