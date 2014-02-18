@@ -34,6 +34,7 @@ typedef enum {
 } WPSCacheLocation;
 
 #define kWPSCacheMaxCacheAge 60*60*24*7 // 1 week
+#define kWPSCacheOneDayCacheAge 60*60*24 // 1 day
 
 @protocol WPSCache <NSObject>
 @optional
