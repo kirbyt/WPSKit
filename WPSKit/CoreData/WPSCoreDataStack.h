@@ -36,11 +36,6 @@
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, assign) BOOL migrateStoreIfNeeded; // Prepares a progressive migration of the Core Data store. The default is YES.
 
-/*
- Returns YES if successful, otherwise returns NO and sets the error.
- */
-- (BOOL)saveMainContext:(NSError **)error;
-
 - (void)preinstallDefaultDatabase;
 
 #pragma mark - Model file info
@@ -62,14 +57,5 @@
  */
 - (NSDictionary *)persistentStoreOptions;
 - (NSString *)persistentStoreConfiguration;
-
-#pragma mark - Basic fetching
-
-- (NSUInteger)countForEntityName:(NSString *)entityName error:(NSError **)error;
-- (NSArray *)objectsWithEntityName:(NSString *)entityName matchingPredicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
-- (NSArray *)objectsWithEntityName:(NSString *)entityName limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
-- (NSArray *)allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
-- (NSArray *)objectsWithEntityName:(NSString *)entityName values:(NSArray *)values matchingKey:(NSString *)key error:(NSError **)error;
-
 
 @end

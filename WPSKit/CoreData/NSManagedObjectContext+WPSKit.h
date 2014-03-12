@@ -1,8 +1,8 @@
 /**
- **   WPSFetchedResultsDelegate.h
+ **   NSManagedObjectContext+WPSKit.h
  **
  **   Created by Kirby Turner.
- **   Copyright (c) 2013 White Peak Software. All rights reserved.
+ **   Copyright (c) 2014 White Peak Software. All rights reserved.
  **
  **   Permission is hereby granted, free of charge, to any person obtaining
  **   a copy of this software and associated documentation files (the
@@ -25,13 +25,26 @@
  **
  **/
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface WPSFetchedResultsDelegate : NSObject <NSFetchedResultsControllerDelegate>
+@interface NSManagedObjectContext (WPSKit)
 
-@property (nonatomic, copy) void (^configureCellBlock)(UITableView *tableView, NSIndexPath *indexPath);
+#pragma mark - Basic Fetch
+- (NSUInteger)wps_countForEntityName:(NSString *)entityName error:(NSError **)error;
 
-- (id)initWithTableView:(UITableView *)tableView;
+- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
+
+- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
+
+- (NSArray *)wps_allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError **)error;
+
+#pragma mark - Basic Operations
+
+/*
+ Returns YES if successful, otherwise returns NO and sets the error.
+ */
+- (BOOL)wps_saveContext:(NSError **)error;
+
+- (void)wps_saveContextAndParentContextWithCompletionBlock:(void(^)(BOOL success, NSError *error))completion;
 
 @end

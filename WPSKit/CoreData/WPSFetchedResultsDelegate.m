@@ -69,7 +69,9 @@
       break;
       
     case NSFetchedResultsChangeUpdate:
-      //      [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+      if (self.configureCellBlock) {
+        self.configureCellBlock(tableView, indexPath);
+      }
       break;
       
     case NSFetchedResultsChangeMove:
