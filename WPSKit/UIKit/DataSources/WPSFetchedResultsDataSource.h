@@ -24,4 +24,12 @@
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ * Helper Methods
+ * These helper methods are exposed here so they can be used
+ * by subclasses. These methods are intended to NOT be overriden.
+ */
+- (NSInteger)numberOfSections;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+
 @end
