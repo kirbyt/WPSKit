@@ -214,7 +214,7 @@
       NSError *error = nil;
       NSManagedObjectModel *model = [self managedObjectModel];
       BOOL success = [self progressivelyMigrateURL:storeURL ofType:NSSQLiteStoreType toModel:model error:&error];
-      if (!success) {
+      if (!success && error) {
          // TODO: Alert the user.
          NSLog(@"Migration error: %@", [error localizedDescription]);
       }
@@ -283,9 +283,12 @@
 {
    NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:type URL:sourceStoreURL error:error];
    if (!sourceMetadata) {
+     if (error != NULL) {
+       *error = nil;
+     }
       return NO;
    }
-   
+  
    if ([finalModel isConfiguration:nil compatibleWithStoreMetadata:sourceMetadata]) {
       if (error != NULL) {
          *error = nil;
