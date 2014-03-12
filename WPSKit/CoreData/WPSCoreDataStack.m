@@ -65,9 +65,10 @@
 - (NSString *)pathToModel
 {
   NSString *filename = [self modelName];
-  NSString *localModelPath = [[NSBundle mainBundle] pathForResource:filename ofType:@"momd"];
+  NSBundle *mainBundle = [NSBundle mainBundle];
+  NSString *localModelPath = [mainBundle pathForResource:filename ofType:@"momd"];
   if (localModelPath == nil) {
-    localModelPath = [[NSBundle mainBundle] pathForResource:filename ofType:@"mom"];
+    localModelPath = [mainBundle pathForResource:filename ofType:@"mom"];
   }
   NSAssert2(localModelPath, @"Could not find '%@.momd' or '%@.mom'", filename, filename);
   return localModelPath;
@@ -130,11 +131,16 @@
   if (_childManagedObjectContext != nil) {
     return _childManagedObjectContext;
   }
-  NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-  if (coordinator) {
-    _childManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [_childManagedObjectContext setParentContext:[self mainManagedObjectContext]];
-  }
+  
+  // Make sure we create the child context on the main thread.
+  dispatch_sync(dispatch_get_main_queue(), ^{
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator) {
+      _childManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+      [_childManagedObjectContext setParentContext:[self mainManagedObjectContext]];
+    }
+  });
+
   return _childManagedObjectContext;
 }
 
