@@ -111,7 +111,7 @@
    if (localModelPath == nil) {
      localModelPath = [[NSBundle mainBundle] pathForResource:filename ofType:@"mom"];
    }
-   NSAssert1(localModelPath, @"Could not find '%@.momd' or '%@.mom'", filename), filename;
+   NSAssert2(localModelPath, @"Could not find '%@.momd' or '%@.mom'", filename, filename);
    return localModelPath;
 }
 
