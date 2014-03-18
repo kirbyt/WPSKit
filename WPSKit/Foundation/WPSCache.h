@@ -28,10 +28,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, WPSCacheLocation) {
    WPSCacheLocationMemory = 1,
    WPSCacheLocationFileSystem
-} WPSCacheLocation;
+};
 
 #define kWPSCacheMaxCacheAge 60*60*24*7 // 1 week
 #define kWPSCacheOneDayCacheAge 60*60*24 // 1 day
@@ -99,7 +99,7 @@ typedef enum {
 
 @interface WPSCache : NSObject <WPSCache>
 
-+ (id)sharedCache;
++ (instancetype)sharedCache;
 
 @end
 

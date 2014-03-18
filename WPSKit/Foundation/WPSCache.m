@@ -34,7 +34,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 @interface WPSCache ()
-@property (nonatomic, strong) NSMutableDictionary *memoryCache;
+@property (nonatomic, strong) NSCache *memoryCache;
 @property (nonatomic, strong) NSString *cachePath;
 @property (nonatomic, copy) NSString *cacheName;
 - (void)commonInit;
@@ -50,9 +50,9 @@
 @synthesize cachePath = _cachePath;
 @synthesize cacheName = _cacheName;
 
-#pragma mark - Public Methods
+#pragma mark - Create and Init Methods
 
-+ (id)sharedCache
++ (instancetype)sharedCache
 {
     static WPSCache *sharedCache = nil;
     static dispatch_once_t onceToken;
@@ -65,11 +65,33 @@
 
 - (void)dealloc
 {
-   UIApplication *app = [UIApplication sharedApplication];
-   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-   [nc removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:app];
-   [nc removeObserver:self name:UIApplicationWillTerminateNotification object:app];  
-   [nc removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:app];
+   [self removeObservers];
+}
+
+- (void)commonInit
+{
+   // Initialize the memory cache.
+   [self setMemoryCache:[[NSCache alloc] init]];
+   
+   // Initialize the disk cache.
+   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+   NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[self cacheName]];
+   [self setCachePath:path];
+   
+   NSFileManager *fileManager = [[NSFileManager alloc] init];
+   if (![fileManager  fileExistsAtPath:path]) {
+      NSError *error = nil;
+      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
+         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+         NSException *exc = nil;
+         NSString *reason = @"Cannot create cache directory.";
+         exc = [NSException exceptionWithName:NSInternalInconsistencyException reason:reason userInfo:userInfo];
+         @throw exc;
+      }
+   }
+   
+   // Subscribe to application events.
+   [self addObservers];
 }
 
 - (id)init
@@ -91,6 +113,7 @@
    return self;
 }
 
+#pragma mark - Public Methods
 
 - (void)cacheData:(NSData *)data forKey:(NSString *)key cacheLocation:(WPSCacheLocation)cacheLocation
 {
@@ -177,11 +200,22 @@
    }
 }
 
-#pragma mark Application Event Handlers
+#pragma mark - Notification Handlers
 
-- (void)didReceiveMemoryWarning:(NSNotification *)notification
+- (void)addObservers
 {
-   [self flushMemoryCache];
+   UIApplication *app = [UIApplication sharedApplication];
+   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+   [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationWillTerminateNotification object:app];
+   [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationDidEnterBackgroundNotification object:app];
+}
+
+- (void)removeObservers
+{
+   UIApplication *app = [UIApplication sharedApplication];
+   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+   [nc removeObserver:self name:UIApplicationWillTerminateNotification object:app];
+   [nc removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:app];
 }
 
 - (void)willTerminate:(NSNotification *)notification
@@ -190,36 +224,6 @@
 }
 
 #pragma mark - Private Methods
-
-- (void)commonInit
-{
-   // Initialize the memory cache.
-   [self setMemoryCache:[[NSMutableDictionary alloc] init]];
-   
-   // Initialize the disk cache.
-   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-   NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[self cacheName]];
-   [self setCachePath:path];
-   
-   NSFileManager *fileManager = [[NSFileManager alloc] init];
-   if (![fileManager  fileExistsAtPath:path]) {
-      NSError *error = nil;
-      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
-         NSException *exc = nil;
-         NSString *reason = @"Cannot create cache directory.";
-         exc = [NSException exceptionWithName:NSInternalInconsistencyException reason:reason userInfo:userInfo];
-         @throw exc;
-      }
-   }
-   
-   // Subscribe to application events.
-   UIApplication *app = [UIApplication sharedApplication];
-   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-   [nc addObserver:self selector:@selector(didReceiveMemoryWarning:) name:UIApplicationDidReceiveMemoryWarningNotification object:app];
-   [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationWillTerminateNotification object:app];
-   [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationDidEnterBackgroundNotification object:app];
-}
 
 - (NSString *)pathExtensionWithKey:(NSString *)key
 {
