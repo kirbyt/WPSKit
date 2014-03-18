@@ -4,11 +4,7 @@ WPSKit contains various tidbits of Objective-C code for iOS and Mac apps. This l
 
 ## Automatic Reference Counting
 
-All code in WPSKit is ARC compatible with the following exceptions:
-
-- Foundation/Reachability.m
-
-You must include the compiler flag -fno-objc-arc for each of these files.
+All code in WPSKit is ARC compatible.
 
 ## Additional Apple Frameworks
 
@@ -31,7 +27,7 @@ Please don't submit bug reports without fixes!
 
 The MIT License  
 
-Copyright (c) 2010-2012 White Peak Software Inc
+Copyright (c) 2010-2014 White Peak Software Inc
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
