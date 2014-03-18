@@ -67,8 +67,6 @@
    NSURL *fileURL = [cache fileURLForKey:key];
    STAssertNotNil(fileURL, @"Unassigned file URL for cached item.");
    
-   [cache cleanStaleCacheFromFileSystem];
-
    cachedData = [cache dataForKey:key];
    stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
    STAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
@@ -90,6 +88,27 @@
    cachedData = [cache dataForKey:key];
    stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
    STAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
+}
+
+- (void)testCleanStaleCacheFromFileSystem
+{
+  WPSCache *cache = [self cache];
+  
+  NSString *key = @"cachedData";
+  NSString *string = @"This is a test of the WPSCache class.";
+  NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+  // Cache the data to the file system making it stale as soon as possible.
+  [cache cacheData:data forKey:key cacheLocation:WPSCacheLocationFileSystem cacheAge:1.0f];
+
+  NSData *cacheData = [cache dataForKey:key];
+  STAssertNotNil(cacheData, @"Missing cached data.");
+
+  [NSThread sleepForTimeInterval:2.0f];
+  
+  [cache cleanStaleCacheFromFileSystemWithCompletion:^{
+    NSData *data = [cache dataForKey:key];
+    STAssertNil(data, @"Received an unexpected cached item.");
+  }];
 }
 
 @end

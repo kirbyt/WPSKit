@@ -92,7 +92,7 @@ typedef NS_ENUM(NSUInteger, WPSCacheLocation) {
  You do not have to call this method directly. It is called for you
  when the app is terminated or enters the background.
  */
-- (void)cleanStaleCacheFromFileSystem;
+- (void)cleanStaleCacheFromFileSystemWithCompletion:(void(^)())completion;
 
 @end
 

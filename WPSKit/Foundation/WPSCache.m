@@ -185,19 +185,28 @@
    [fileManager createDirectoryAtPath:[self cachePath] withIntermediateDirectories:YES attributes:nil error:NULL];
 }
 
-- (void)cleanStaleCacheFromFileSystem
+- (void)cleanStaleCacheFromFileSystemWithCompletion:(void(^)())completion
 {
    NSString *cachePath = [self cachePath];
-   NSDate *now = [NSDate date];
-   NSFileManager *fileManager = [[NSFileManager alloc] init];
-   NSDirectoryEnumerator *fileEnumerator = [fileManager enumeratorAtPath:cachePath];
-   for (NSString *fileName in fileEnumerator) {
-      NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
-      NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:NULL];
-      if ([[[attrs fileModificationDate] laterDate:now] isEqualToDate:now]) { 
-         [fileManager removeItemAtPath:filePath error:nil];
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      NSDate *now = [NSDate date];
+      NSFileManager *fileManager = [[NSFileManager alloc] init];
+      NSDirectoryEnumerator *fileEnumerator = [fileManager enumeratorAtPath:cachePath];
+      for (NSString *fileName in fileEnumerator) {
+         NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
+         NSDictionary *attrs = [fileManager attributesOfItemAtPath:filePath error:NULL];
+         if ([[[attrs fileModificationDate] laterDate:now] isEqualToDate:now]) {
+            [fileManager removeItemAtPath:filePath error:nil];
+         }
       }
-   }
+      
+      if (completion) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+            completion();
+         });
+
+      }
+   });
 }
 
 #pragma mark - Notification Handlers
@@ -220,7 +229,7 @@
 
 - (void)willTerminate:(NSNotification *)notification
 {
-   [self cleanStaleCacheFromFileSystem];
+   [self cleanStaleCacheFromFileSystemWithCompletion:nil];
 }
 
 #pragma mark - Private Methods
