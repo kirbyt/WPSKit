@@ -34,6 +34,23 @@
 
 #import "WPSCoreDataStack.h"
 
+static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
+{
+  /**
+   Run on the main thread without causing a deadlock.
+   This function is from Brad Larson, who posted it at:
+   http://stackoverflow.com/questions/5225130/grand-central-dispatch-gcd-vs-performselector-need-a-better-explanation/5226271#5226271
+   */
+  if ([NSThread isMainThread])
+  {
+    block();
+  }
+  else
+  {
+    dispatch_sync(dispatch_get_main_queue(), block);
+  }
+}
+
 @interface WPSCoreDataStack ()
 - (NSString *)documentsDirectory;
 @end
@@ -133,11 +150,12 @@
   }
   
   // Make sure we create the child context on the main thread.
-  dispatch_sync(dispatch_get_main_queue(), ^{
+  NSManagedObjectContext *mainContext = [self mainManagedObjectContext];
+  wps_runOnMainQueueWithoutDeadlocking(^{
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator) {
       _childManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-      [_childManagedObjectContext setParentContext:[self mainManagedObjectContext]];
+      [_childManagedObjectContext setParentContext:mainContext];
     }
   });
 
