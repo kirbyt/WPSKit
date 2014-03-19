@@ -30,7 +30,7 @@
 /**
  Returns an empty string if the current value is nil.
  */
-static inline NSString* wps_emptyStringIfNil(NSString *s)
+static inline id wps_emptyStringIfNil(id s)
 {
    return s ? s : @"";
 }
@@ -54,7 +54,7 @@ static inline NSString* wps_emptyStringIfNil(NSString *s)
 /**
  Returns an empty string if the current value is nil.
  */
-+ (NSString *)wps_emptyStringIfNil:(NSString *)string;
++ (id)wps_emptyStringIfNil:(id)value;
 
 /** 
  Returns YES if the string is a validate URL; otherwise NO is returned.

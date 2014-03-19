@@ -44,16 +44,19 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
 
 + (NSString *)wps_stringWithUUID
 {
+#ifdef __IPHONE_6_0 
+   NSString *result = [[NSUUID UUID] UUIDString];
+#else
    CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
    CFStringRef	uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
    
    // Create a new auto-release NSString to hold the UUID. This approach
    // is used to avoid leaking in a garbage collected environment.
-   // 
+   //
    // From the Apple docs:
-   // It is important to appreciate the asymmetry between Core Foundation and 
-   // Cocoa—where retain, release, and autorelease are no-ops. If, for example, 
-   // you have balanced a CFCreate… with release or autorelease, you will leak 
+   // It is important to appreciate the asymmetry between Core Foundation and
+   // Cocoa—where retain, release, and autorelease are no-ops. If, for example,
+   // you have balanced a CFCreate… with release or autorelease, you will leak
    // the object in a garbage collected environment:
    // http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/GarbageCollection/Articles/gcCoreFoundation.html
    //
@@ -61,13 +64,14 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
    
    CFRelease(uuidRef);
    CFRelease(uuidString);
+#endif
    
    return result;
 }
 
-+ (NSString *)wps_emptyStringIfNil:(NSString *)string
++ (id)wps_emptyStringIfNil:(id)value
 {
-   return wps_emptyStringIfNil(string);
+   return wps_emptyStringIfNil(value);
 }
 
 - (BOOL)wps_isURL
