@@ -1,42 +1,46 @@
-/**
- **   WPSCoreDataStack
- **
- **   Created by Kirby Turner.
- **   Copyright 2011 White Peak Software. All rights reserved.
- **
- **   Permission is hereby granted, free of charge, to any person obtaining
- **   a copy of this software and associated documentation files (the
- **   "Software"), to deal in the Software without restriction, including
- **   without limitation the rights to use, copy, modify, merge, publish,
- **   distribute, sublicense, and/or sell copies of the Software, and to permit
- **   persons to whom the Software is furnished to do so, subject to the
- **   following conditions:
- **
- **   The above copyright notice and this permission notice shall be included
- **   in all copies or substantial portions of the Software.
- **
- **   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- **   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- **   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- **   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
- **   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- **   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- **   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- **
- **   This code is based on the PRPBasicDataModel code
- **   presented in the book iOS Receipts.
- **   http://pragprog.com/titles/cdirec/ios-recipes
- **
- **   Portions created by Matt Drance.
- **   Portions copyright 2010 Bookhouse Software, LLC. All rights reserved.
- **
- **/
+//
+// WPSKit
+// WPSCoreDataStack.m
+//
+// Created by Kirby Turner.
+// Copyright 2011 White Peak Software. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// ----------------
+// Acknowledgements
+// ----------------
+//
+// This code is based on the PRPBasicDataModel code
+// presented in the book iOS Receipts.
+// http://pragprog.com/titles/cdirec/ios-recipes
+//
+// Portions created by Matt Drance.
+// Portions copyright 2010 Bookhouse Software, LLC. All rights reserved.
+//
 
 #import "WPSCoreDataStack.h"
 
 static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
 {
-  /**
+  /*
    Run on the main thread without causing a deadlock.
    This function is from Brad Larson, who posted it at:
    http://stackoverflow.com/questions/5225130/grand-central-dispatch-gcd-vs-performselector-need-a-better-explanation/5226271#5226271
