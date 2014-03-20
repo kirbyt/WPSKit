@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		68EEF56C18DA959D002B7034 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 68EEF56D18DA959D002B7034 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				68EEF57018DA95D2002B7034 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		680EE75814EDB67E00F84CD3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75714EDB67E00F84CD3 /* CoreData.framework */; };
 		680EE75A14EDB68B00F84CD3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75914EDB68B00F84CD3 /* MapKit.framework */; };
@@ -453,6 +467,7 @@
 			projectRoot = "";
 			targets = (
 				682CE5EE14EDAE1C00F0AF2E /* WPSKitSamples */,
+				68EEF56C18DA959D002B7034 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +494,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		68EEF57018DA95D2002B7034 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# appledoc Xcode script\n# Run script only if appledoc is available.\nif [ -e ~/bin/appledoc ];\nthen\n\n# Start constants\ncompany=\"wps\";\ncompanyID=\"com.whitepeaksoftware\";\ncompanyURL=\"http://www.whitepeaksoftware.com\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"~/help\";\n# End constants\n~/bin/appledoc \\\n--project-name \"WPSKit\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n--verbose 6 \\\n\"${PROJECT_DIR}/../WPSKit\"\n\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		682CE5EB14EDAE1C00F0AF2E /* Sources */ = {
@@ -613,6 +644,20 @@
 			};
 			name = Release;
 		};
+		68EEF56E18DA959D002B7034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		68EEF56F18DA959D002B7034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -633,6 +678,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		68EEF56D18DA959D002B7034 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68EEF56E18DA959D002B7034 /* Debug */,
+				68EEF56F18DA959D002B7034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
