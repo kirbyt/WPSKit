@@ -37,6 +37,9 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
 
 @interface UIView (WPSKit)
 
+#pragma mark - Auto Layout Methods
+/// @name Auto Layout Methods
+
 - (NSArray *)wps_pinToSuperviewEdges:(WPSViewPinEdges)edges inset:(CGFloat)inset;
 - (NSArray *)wps_pinToSuperviewEdgesWithInset:(UIEdgeInsets)insets;
 - (void)wps_removeAllConstraints;
@@ -48,5 +51,15 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
 
 -(void)wps_centerInView:(UIView *)superview;
 -(void)wps_centerInContainerOnAxis:(NSLayoutAttribute)axis;
+
+#pragma mark - View Snapshot
+/// @name View Snapshot
+
+/**
+ Returns a snapshot image of the view in its current state.
+ 
+ @return A snapshot image.
+ */
+- (UIImage *)wps_imageSnapshot;
 
 @end
