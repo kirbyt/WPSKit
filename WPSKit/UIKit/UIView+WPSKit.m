@@ -120,4 +120,16 @@
     [superview addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:axis relatedBy:NSLayoutRelationEqual toItem:superview attribute:axis multiplier:1.0 constant:0.0]];
 }
 
+#pragma mark - View Snapshot
+
+- (UIImage *)wps_imageSnapshot
+{
+  UIGraphicsBeginImageContextWithOptions([self bounds].size, YES, 0.0f);
+  [[self layer] renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return image;
+}
+
 @end
