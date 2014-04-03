@@ -91,7 +91,13 @@
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
    [request setTimeoutInterval:10];
    [request setHTTPMethod:@"POST"];
-   
+  
+   if ([self additionalHTTPHeaderFields]) {
+     [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+       [request setValue:value forHTTPHeaderField:key];
+     }];
+   }
+
    NSString *boundary = @"0xKhTmLbOuNdArY";
    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
@@ -110,9 +116,9 @@
             [body appendData:value];
 
          } else if ([value isKindOfClass:[NSURL class]] && [value isFileURL]) {
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, [[value path] lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, [[(NSURL *)value path] lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[NSData dataWithContentsOfFile:[value path]]];
+            [body appendData:[NSData dataWithContentsOfFile:[(NSURL *)value path]]];
             
          } else {
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -123,7 +129,7 @@
       }
    }];
    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-   
+  
    [request setHTTPBody:body];
    return request;
 }
@@ -160,6 +166,19 @@
       WPSMultipartFormDataUploaderCompletionBlock completion = [self completion];
       completion(nil, error);
    }
+}
+
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+  BOOL canAuthenticate = ([self defaultCredential] != nil);
+  return canAuthenticate;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+  if ([self defaultCredential]) {
+    [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+  }
 }
 
 @end
