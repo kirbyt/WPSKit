@@ -301,5 +301,25 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    }
 }
 
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+  BOOL canAuthenticate = NO;
+  if (self.canAuthenticateBlock) {
+    canAuthenticate = self.canAuthenticateBlock(protectionSpace);
+  } else if ([self defaultCredential]) {
+    canAuthenticate = YES;
+  }
+  return canAuthenticate;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+  if (self.didReceiveAuthenticationChallengeBlock) {
+    self.didReceiveAuthenticationChallengeBlock(challenge);
+  } else if ([self defaultCredential]) {
+    [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+  }
+}
+
 @end
 

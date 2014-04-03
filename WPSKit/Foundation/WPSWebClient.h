@@ -29,6 +29,9 @@
 #import "WPSCache.h"
 
 typedef void(^WPSWebClientCompletionBlock)(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error);  // (Response data, hit cache, error)
+typedef BOOL(^WPSWebClientCanAuthenticate)(NSURLProtectionSpace *protectionSpace);
+typedef void(^WPSWebClientDidReceiveAuthenticationChallenge)(NSURLAuthenticationChallenge *challenge);
+
 
 @interface WPSWebClient : NSObject
 
@@ -36,6 +39,9 @@ typedef void(^WPSWebClientCompletionBlock)(NSURL *responseURL, NSData *responseD
 @property (nonatomic, assign) NSInteger cacheAge;     // Defaults to 5 minutes.
 @property (nonatomic, assign) NSInteger retryCount;   // Defaults to 5.
 @property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
+@property (nonatomic, strong) NSURLCredential *defaultCredential;
+@property (nonatomic, copy) WPSWebClientCanAuthenticate canAuthenticateBlock;
+@property (nonatomic, copy) WPSWebClientDidReceiveAuthenticationChallenge didReceiveAuthenticationChallengeBlock;
 
 - (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
 - (void)put:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
