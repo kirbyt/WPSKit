@@ -85,24 +85,32 @@
     [self removeConstraints:constraints];
 }
 
-- (void)wps_constrainToHeight:(CGFloat)height
+- (NSLayoutConstraint *)wps_constrainToHeight:(CGFloat)height
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:height]];
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:height];
+  [self addConstraint:constraint];
+  return constraint;
 }
 
-- (void)wps_constrainToWidth:(CGFloat)width
+- (NSLayoutConstraint *)wps_constrainToWidth:(CGFloat)width
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:width]];
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:width];
+  [self addConstraint:constraint];
+  return constraint;
 }
 
-- (void)wps_constrainToHeightGreaterThanOrEqualTo:(CGFloat)height
+- (NSLayoutConstraint *)wps_constrainToHeightGreaterThanOrEqualTo:(CGFloat)height
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0 multiplier:0 constant:height]];
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0 multiplier:0 constant:height];
+  [self addConstraint:constraint];
+  return constraint;
 }
 
-- (void)wps_constrainToWidthGreaterThanOrEqualTo:(CGFloat)width
+- (NSLayoutConstraint *)wps_constrainToWidthGreaterThanOrEqualTo:(CGFloat)width
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0 multiplier:0 constant:width]];
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:0 multiplier:0 constant:width];
+  [self addConstraint:constraint];
+  return constraint;
 }
 
 -(void)wps_centerInView:(UIView *)superview

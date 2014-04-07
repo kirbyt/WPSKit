@@ -44,10 +44,10 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
 - (NSArray *)wps_pinToSuperviewEdgesWithInset:(UIEdgeInsets)insets;
 - (void)wps_removeAllConstraints;
 
-- (void)wps_constrainToHeight:(CGFloat)height;
-- (void)wps_constrainToWidth:(CGFloat)width;
-- (void)wps_constrainToHeightGreaterThanOrEqualTo:(CGFloat)height;
-- (void)wps_constrainToWidthGreaterThanOrEqualTo:(CGFloat)width;
+- (NSLayoutConstraint *)wps_constrainToHeight:(CGFloat)height;
+- (NSLayoutConstraint *)wps_constrainToWidth:(CGFloat)width;
+- (NSLayoutConstraint *)wps_constrainToHeightGreaterThanOrEqualTo:(CGFloat)height;
+- (NSLayoutConstraint *)wps_constrainToWidthGreaterThanOrEqualTo:(CGFloat)width;
 
 -(void)wps_centerInView:(UIView *)superview;
 -(void)wps_centerInContainerOnAxis:(NSLayoutAttribute)axis;
