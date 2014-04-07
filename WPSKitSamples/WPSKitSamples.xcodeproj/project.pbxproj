@@ -51,6 +51,7 @@
 		685A9B9A17C640B70086688F /* btn-detaildisclosurepressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9617C640B70086688F /* btn-detaildisclosurepressed@2x.png */; };
 		685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */; };
 		685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */; };
+		6882D23118F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6882D23018F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m */; };
 		68EEF54C18DA952F002B7034 /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF50718DA952F002B7034 /* NSManagedObject+WPSKit.m */; };
 		68EEF54D18DA952F002B7034 /* NSManagedObjectContext+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF50918DA952F002B7034 /* NSManagedObjectContext+WPSKit.m */; };
 		68EEF54E18DA952F002B7034 /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF50B18DA952F002B7034 /* WPSCoreDataStack.m */; };
@@ -128,6 +129,8 @@
 		685A9B9B17C643020086688F /* CustomDetailDisclosureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailDisclosureCell.h; sourceTree = "<group>"; };
 		685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailDisclosureCell.m; sourceTree = "<group>"; };
 		685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureCell.xib; sourceTree = "<group>"; };
+		6882D22F18F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+WPSKit.h"; sourceTree = "<group>"; };
+		6882D23018F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+WPSKit.m"; sourceTree = "<group>"; };
 		68EEF50618DA952F002B7034 /* NSManagedObject+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+WPSKit.h"; sourceTree = "<group>"; };
 		68EEF50718DA952F002B7034 /* NSManagedObject+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+WPSKit.m"; sourceTree = "<group>"; };
 		68EEF50818DA952F002B7034 /* NSManagedObjectContext+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+WPSKit.h"; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				68EEF51718DA952F002B7034 /* NSData+WPSKit.m */,
 				68EEF51818DA952F002B7034 /* NSFileManager+WPSKit.h */,
 				68EEF51918DA952F002B7034 /* NSFileManager+WPSKit.m */,
+				6882D22F18F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.h */,
+				6882D23018F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m */,
 				68EEF51A18DA952F002B7034 /* NSNull+WPSKit.h */,
 				68EEF51B18DA952F002B7034 /* NSNull+WPSKit.m */,
 				68EEF51C18DA952F002B7034 /* NSString+WPSKit.h */,
@@ -556,6 +561,7 @@
 				68EEF56918DA952F002B7034 /* WPSPageControl.m in Sources */,
 				68EEF56218DA952F002B7034 /* UIDevice+WPSKit.m in Sources */,
 				685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */,
+				6882D23118F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m in Sources */,
 				68EEF56518DA952F002B7034 /* UIViewController+WPSKit.m in Sources */,
 				68EEF55C18DA952F002B7034 /* WPSWebClient.m in Sources */,
 			);
@@ -686,6 +692,7 @@
 				68EEF56F18DA959D002B7034 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
