@@ -118,7 +118,7 @@ static NSInteger wps_networkActivityCount = 0;
 + (NSURL *)wps_temporaryDirectoryURL
 {
    NSString *directory = [self wps_temporaryDirectory];
-   NSURL *URL = [NSURL URLWithString:directory];
+   NSURL *URL = [NSURL fileURLWithPath:directory];
    return URL;
 }
 
