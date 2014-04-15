@@ -317,7 +317,25 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
   if (self.didReceiveAuthenticationChallengeBlock) {
     self.didReceiveAuthenticationChallengeBlock(challenge);
   } else if ([self defaultCredential]) {
-    [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+    if ([challenge previousFailureCount] > 0) {
+      WPSWebClientCompletionBlock completion = [self completion];
+      if (completion) {
+        NSURLResponse *response = [challenge failureResponse];
+        NSInteger statusCode = 0;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+          statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+        
+        if (statusCode >= 400) {
+          [[UIApplication sharedApplication] wps_popNetworkActivity];
+          NSError *error = httpError([response URL], statusCode, nil);
+          completion(nil, nil, NO, nil, error);
+        }
+      }
+      
+    } else {
+      [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+    }
   }
 }
 
