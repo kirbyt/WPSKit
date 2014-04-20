@@ -129,8 +129,8 @@
    // Crop the image to the requested new size maintaining
    // the inner most parts of the image.
    CGSize imageSize = [scaledImage size];
-   CGFloat offsetX = round((imageSize.width / 2) - (newSize.width / 2));
-   CGFloat offsetY = round((imageSize.height / 2) - (newSize.height / 2));
+   CGFloat offsetX = roundf((imageSize.width / 2) - (newSize.width / 2));
+   CGFloat offsetY = roundf((imageSize.height / 2) - (newSize.height / 2));
    
    CGRect cropRect = CGRectMake(offsetX, offsetY, newSize.width, newSize.height);
    UIImage *croppedImage = [scaledImage wps_cropToRect:cropRect];

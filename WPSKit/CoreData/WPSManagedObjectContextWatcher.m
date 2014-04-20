@@ -36,7 +36,7 @@
 
 @implementation WPSManagedObjectContextWatcher
 
-- (id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext*)context
 {
    NSParameterAssert(context);
 

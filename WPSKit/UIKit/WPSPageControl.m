@@ -8,8 +8,8 @@
 
 #import "WPSPageControl.h"
 
-#define kWFMDotDiameter 7.0
-#define kWFMDotSpacer 7.0
+#define kWFMDotDiameter 7.0f
+#define kWFMDotSpacer 7.0f
 
 @interface WPSPageControl ()
 
