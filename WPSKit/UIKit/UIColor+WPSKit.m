@@ -104,6 +104,16 @@
    return [self wps_colorWithHex:0x007aff];
 }
 
++ (UIColor *)wps_facebookBlue
+{
+  return [self wps_colorWithHex:0x3B5999];
+}
+
++ (UIColor *)wps_twitterBlue
+{
+  return [self wps_colorWithHex:0x55acee];
+}
+
 - (NSString *)wps_hexString
 {
    CGFloat red = 0.0f;
@@ -136,22 +146,6 @@
    
    NSString *hex = [NSString stringWithFormat:@"%02X%02X%02X", (int)(red * 255), (int)(green * 255), (int)(blue * 255)];
    return hex;
-}
-
-@end
-
-@implementation UIImage (WPSKitColor)
-
-+ (UIImage *)wps_imageFromColor:(UIColor *)color
-{
-  CGRect rect = CGRectMake(0, 0, 1, 1);
-  UIGraphicsBeginImageContext(rect.size);
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  CGContextSetFillColorWithColor(context, [color CGColor]);
-  CGContextFillRect(context, rect);
-  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  return image;
 }
 
 @end
