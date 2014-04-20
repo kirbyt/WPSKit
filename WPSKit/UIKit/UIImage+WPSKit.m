@@ -1,33 +1,76 @@
-/**
- **   UIImage+WPSKit
- **
- **   Created by Kirby Turner.
- **   Copyright (c) 2011 White Peak Software. All rights reserved.
- **
- **   Permission is hereby granted, free of charge, to any person obtaining 
- **   a copy of this software and associated documentation files (the 
- **   "Software"), to deal in the Software without restriction, including 
- **   without limitation the rights to use, copy, modify, merge, publish, 
- **   distribute, sublicense, and/or sell copies of the Software, and to permit 
- **   persons to whom the Software is furnished to do so, subject to the 
- **   following conditions:
- **
- **   The above copyright notice and this permission notice shall be included 
- **   in all copies or substantial portions of the Software.
- **
- **   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- **   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- **   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- **   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- **   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- **   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
- **   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- **
- **/
+//
+// UIImage+WPSKit.m
+//
+// Created by Kirby Turner.
+// Copyright 2011-2014 White Peak Software. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 
 #import "UIImage+WPSKit.h"
 
 @implementation UIImage (WPSKit)
+
+#pragma mark - Sizes
+
+- (CGSize)wps_suggestedSizeWithWidth:(CGFloat)width
+{
+  CGSize size = [self size];
+  CGFloat ratio;
+  if (size.width > width) {
+    ratio = width / size.width;
+  } else {
+    ratio = size.width / width;
+  }
+  
+  CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
+  return scaleToSize;
+}
+
+- (CGSize)wps_suggestedSizeWithHeight:(CGFloat)height
+{
+  CGSize size = [self size];
+  CGFloat ratio;
+  if (size.height > height) {
+    ratio = height / size.height;
+  } else {
+    ratio = size.height / height;
+  }
+  
+  CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
+  return scaleToSize;
+}
+
+- (CGSize)wps_suggestedSizeWithMaxDimension:(CGFloat)dimension
+{
+  CGSize scaleToSize;
+  CGSize size = [self size];
+  if (size.width > size.height) {
+    scaleToSize = [self wps_suggestedSizeWithWidth:dimension];
+  } else {
+    scaleToSize = [self wps_suggestedSizeWithHeight:dimension];
+  }
+  return scaleToSize;
+}
+
+#pragma mark - Scaling
 
 - (UIImage *)wps_scaleToSize:(CGSize)newSize 
 {
@@ -39,17 +82,9 @@
    return scaledImage;
 }
 
-- (UIImage *)wps_scaleAspectToMaxSize:(CGFloat)newSize 
+- (UIImage *)wps_scaleAspectToMaxSize:(CGFloat)newSize
 {
-   CGSize size = [self size];
-   CGFloat ratio;
-   if (size.width > size.height) {
-      ratio = newSize / size.width;
-   } else {
-      ratio = newSize / size.height;
-   }
-
-   CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
+   CGSize scaleToSize = [self wps_suggestedSizeWithMaxDimension:newSize];
    return [self wps_scaleToSize:scaleToSize];
 }
 
@@ -74,6 +109,8 @@
    CGSize scaleToSize = CGSizeMake(imageSize.width * ratio, imageSize.height * ratio);
    return [self wps_scaleToSize:scaleToSize];
 }
+
+#pragma mark - Cropping
 
 - (UIImage *)wps_cropToRect:(CGRect)cropRect
 {
