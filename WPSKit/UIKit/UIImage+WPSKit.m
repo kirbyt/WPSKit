@@ -142,4 +142,38 @@
    return croppedImage;
 }
 
+#pragma mark - Colors
+
++ (UIImage *)wps_imageFromColor:(UIColor *)color
+{
+  return [self wps_imageFromColor:color size:CGSizeMake(1.0f, 1.0f)];
+}
+
++ (UIImage *)wps_imageFromColor:(UIColor *)color size:(CGSize)size
+{
+  CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
+  UIGraphicsBeginImageContext(rect.size);
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  CGContextSetFillColorWithColor(context, [color CGColor]);
+  CGContextFillRect(context, rect);
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return image;
+}
+
++ (UIImage *)wps_imageNamed:(NSString *)name withMaskColor:(UIColor *)color
+{
+  UIImage *image = [UIImage imageNamed:name];
+  CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+  UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
+  CGContextRef c = UIGraphicsGetCurrentContext();
+  [image drawInRect:rect];
+  CGContextSetFillColorWithColor(c, [color CGColor]);
+  CGContextSetBlendMode(c, kCGBlendModeSourceAtop);
+  CGContextFillRect(c, rect);
+  UIImage *maskedImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return maskedImage;
+}
+
 @end

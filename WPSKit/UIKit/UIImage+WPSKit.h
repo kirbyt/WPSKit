@@ -28,6 +28,11 @@
 
 @interface UIImage (WPSKit)
 
+#pragma mark - Sizes
+/// -----------------
+/// @name Sizes
+/// -----------------
+
 /**
  Returns the suggested image size with the specified width. The size returned maintains the image aspect ratio.
  
@@ -50,6 +55,11 @@
  @param dimension The maximum dimension, either width or height.
  */
 - (CGSize)wps_suggestedSizeWithMaxDimension:(CGFloat)dimension;
+
+#pragma mark - Scaling
+/// -----------------
+/// @name Scaling
+/// -----------------
 
 /**
  Scales the image to the specified size.
@@ -79,6 +89,11 @@
  */
 - (UIImage *)wps_scaleAspectFitToSize:(CGSize)newSize;
 
+#pragma mark - Cropping
+/// -----------------
+/// @name Cropping
+/// -----------------
+
 /**
  Crops an image to the specified rect.
  
@@ -94,5 +109,37 @@
  @param newSize Size of the new image.
  */
 - (UIImage *)wps_scaleAndCropToSize:(CGSize)newSize;
+
+#pragma mark - Color
+/// -----------------
+/// @name Color
+/// -----------------
+
+/**
+ Returns an image of the specified color.
+ 
+ The image returned is 1x1, but can be stretched as needed by the caller.
+ 
+ @param color The color drawn in the image.
+ @return `UIImage` of the color.
+ */
++ (UIImage *)wps_imageFromColor:(UIColor *)color;
+
+/**
+ Returns an image of the specified color.
+ 
+ @param color The color drawn in the image.
+ @param size Size of the image.
+ @return `UIImage` of the color.
+ */
++ (UIImage *)wps_imageFromColor:(UIColor *)color size:(CGSize)size;
+
+/**
+ Returns an image masked with the specified color.
+ 
+ @param color Mask color.
+ @param `UIImage` masked with the specified color.
+ */
++ (UIImage *)wps_imageNamed:(NSString *)name withMaskColor:(UIColor *)color;
 
 @end
