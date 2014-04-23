@@ -33,4 +33,23 @@
    url2 = [NSURL URLWithString:@"http://www.thecave.com/a/b/c/"];
    STAssertFalse([url1 wps_isEqualToURL:url2], @"Expected URLs to not be equal.");
 }
+
+- (void)testHTTPURLWithString
+{
+  NSURL *URL;
+  URL = [NSURL wps_HTTPURLWithString:@"thecave.com" secure:NO];
+  STAssertTrue([[URL scheme] isEqualToString:@"http"], @"Unexpected scheme.");
+  STAssertTrue([[URL host] isEqualToString:@"thecave.com"], @"Unexpected host.");
+  
+  URL = [NSURL wps_HTTPURLWithString:@"thecave.com:80" secure:YES];
+  STAssertTrue([[URL scheme] isEqualToString:@"https"], @"Unexpected scheme.");
+  STAssertTrue([[URL host] isEqualToString:@"thecave.com"], @"Unexpected host.");
+  STAssertEquals([[URL port] integerValue], 80, @"Unexpected port number.");
+
+  URL = [NSURL wps_HTTPURLWithString:@"http://thecave.com:80" secure:NO];
+  STAssertTrue([[URL scheme] isEqualToString:@"http"], @"Unexpected scheme.");
+  STAssertTrue([[URL host] isEqualToString:@"thecave.com"], @"Unexpected host.");
+  STAssertEquals([[URL port] integerValue], 80, @"Unexpected port number.");
+}
+
 @end

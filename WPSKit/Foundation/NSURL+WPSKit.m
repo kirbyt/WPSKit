@@ -113,4 +113,25 @@
    return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
+#pragma mark - Creators
+
++ (NSURL *)wps_HTTPURLWithString:(NSString *)URLString secure:(BOOL)secure
+{
+   NSURL *URL = [NSURL URLWithString:URLString];
+   if (URL == nil) {
+      URLString = [URLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+      URL = [NSURL URLWithString:URLString];
+   }
+   NSString *scheme = [[URL scheme] lowercaseString];
+   if ([scheme length] < 1 || ([scheme isEqual:@"http"] == NO && [scheme isEqual:@"https"] == NO)) {
+      if (secure) {
+         URLString = [NSString stringWithFormat:@"https://%@", URLString];
+      } else {
+         URLString = [NSString stringWithFormat:@"http://%@", URLString];
+      }
+      URL = [NSURL URLWithString:URLString];
+   }
+   return URL;
+}
+
 @end

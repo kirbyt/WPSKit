@@ -48,4 +48,16 @@
  */
 - (BOOL)wps_isEqualToURL:(NSURL *)URL;
 
+/**
+ Creates and returns an NSURL object initialized with a provided URL string. This method ensures the scheme is HTTP or HTTPS when no scheme is provided in the URL string.
+ 
+ This class method is ideal for cleaning up a user-entered web address.
+ 
+ @param URLString The URL string with which to initialize the NSURL object.
+ @param secure Set to `YES` to use HTTPS, `NO` for HTTP.
+ 
+ @return An NSURL object initialized with URLString. If the URL string was malformed or nil, returns nil.
+ */
++ (NSURL *)wps_HTTPURLWithString:(NSString *)URLString secure:(BOOL)secure;
+
 @end
