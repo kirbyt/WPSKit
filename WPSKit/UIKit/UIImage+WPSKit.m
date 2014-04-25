@@ -164,6 +164,7 @@
 + (UIImage *)wps_imageNamed:(NSString *)name withMaskColor:(UIColor *)color
 {
   UIImage *image = [UIImage imageNamed:name];
+  NSAssert(image, @"nil image. Check the image name.");
   CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
   UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
   CGContextRef c = UIGraphicsGetCurrentContext();
