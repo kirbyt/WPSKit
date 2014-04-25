@@ -81,6 +81,9 @@
 - (void)wps_setShouldReturn:(BOOL (^)(UITextField *textField))block;
 
 /**
+ Tells the block that the text or attributes in the specified text view were changed by the user.
+ 
+ The text view calls this method in response to user-initiated changes to the text. This method is not called in response to programmatically initiated changes.
  */
 - (void)wps_setDidChange:(void (^)(UITextField *textField))block;
 
