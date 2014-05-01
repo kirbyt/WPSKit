@@ -249,7 +249,7 @@ static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
 
 #pragma mark - Progressive Migration -
 
-- (BOOL)progressivelyMigrateURL:(NSURL*)sourceStoreURL ofType:(NSString*)type toModel:(NSManagedObjectModel*)finalModel error:(NSError**)error
+- (BOOL)progressivelyMigrateURL:(NSURL*)sourceStoreURL ofType:(NSString*)type toModel:(NSManagedObjectModel*)finalModel error:(NSError *__autoreleasing *)error
 {
   NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:type URL:sourceStoreURL error:error];
   if (!sourceMetadata) {

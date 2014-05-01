@@ -31,19 +31,19 @@
 
 #pragma mark - Basic Fetching
 
-- (NSUInteger)wps_countForEntityName:(NSString *)entityName error:(NSError **)error
+- (NSUInteger)wps_countForEntityName:(NSString *)entityName error:(NSError *__autoreleasing *)error
 {
   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
   NSUInteger count = [self countForFetchRequest:request error:error];
   return count;
 }
 
-- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)descriptors error:(NSError **)error
+- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate sortDescriptors:(NSArray *)descriptors error:(NSError *__autoreleasing *)error
 {
   return [self wps_objectsWithEntityName:entityName predicate:predicate limit:0 batchSize:0 sortDescriptors:descriptors error:error];
 }
 
-- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError **)error
+- (NSArray *)wps_objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate limit:(NSUInteger)limit batchSize:(NSUInteger)batchSize sortDescriptors:(NSArray *)descriptors error:(NSError *__autoreleasing *)error
 {
   NSFetchRequest *request = [[NSFetchRequest alloc] init];
   [request setEntity:[NSEntityDescription entityForName:entityName inManagedObjectContext:self]];
@@ -56,14 +56,14 @@
   return results;
 }
 
-- (NSArray *)wps_allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError **)error
+- (NSArray *)wps_allObjectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)descriptors error:(NSError *__autoreleasing *)error
 {
   return [self wps_objectsWithEntityName:entityName predicate:nil limit:0 batchSize:0 sortDescriptors:descriptors error:error];
 }
 
 #pragma mark - Basic Operations
 
-- (BOOL)wps_saveContext:(NSError **)error
+- (BOOL)wps_saveContext:(NSError *__autoreleasing *)error
 {
   BOOL success = YES;
   if ([self hasChanges] && ![self save:error])
