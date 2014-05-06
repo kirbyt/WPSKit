@@ -30,6 +30,23 @@
 
 /**
  `WPSFeedbackEmailController` is used to present and send feedback email.
+ 
+ Example usage:
+ 
+   WPSFeedbackEmailController *feedbackController = [[WPSFeedbackEmailController alloc] init];
+   [feedbackController setToRecipients:@[@"support@whitepeaksoftware.com"]];
+   [feedbackController setWebsiteURL:[NSURL URLWithString:@"http://www.whitepeaksoftware.com/support/"]];
+   [feedbackController setStyleMailComposer:^(MFMailComposeViewController *mailer) {
+     [[mailer navigationBar] setBarTintColor:[UIColor blackColor]];
+     [[mailer navigationBar] setTintColor:[UIColor wps_colorWithHex:0x4eb88c]];
+     UIFont *font = [UIFont wps_defaultFontWithSize:17.0];
+     [[mailer navigationBar] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:font}];
+   }];
+   [feedbackController presentFromViewController:self completion:^{
+     [self setFeedbackController:nil];
+   }];
+   [self setFeedbackController:feedbackController];
+ 
  */
 @interface WPSFeedbackEmailController : NSObject <MFMailComposeViewControllerDelegate>
 
