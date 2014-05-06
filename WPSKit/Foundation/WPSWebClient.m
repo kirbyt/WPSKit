@@ -1,29 +1,28 @@
-/**
- **   WPSWebClient
- **
- **   Created by Kirby Turner.
- **   Copyright (c) 2012 White Peak Software. All rights reserved.
- **
- **   Permission is hereby granted, free of charge, to any person obtaining 
- **   a copy of this software and associated documentation files (the 
- **   "Software"), to deal in the Software without restriction, including 
- **   without limitation the rights to use, copy, modify, merge, publish, 
- **   distribute, sublicense, and/or sell copies of the Software, and to permit 
- **   persons to whom the Software is furnished to do so, subject to the 
- **   following conditions:
- **
- **   The above copyright notice and this permission notice shall be included 
- **   in all copies or substantial portions of the Software.
- **
- **   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- **   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- **   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- **   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- **   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- **   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
- **   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- **
- **/
+//
+// WPSWebClient.m
+//
+// Created by Kirby Turner.
+// Copyright 2012 White Peak Software. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 
 #import "WPSWebClient.h"
 #import "UIApplication+WPSKit.h"
@@ -89,7 +88,7 @@ static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, N
    return self;
 }
 
-static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStringEncoding encoding) 
+static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStringEncoding encoding)
 {
    static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
    
@@ -108,20 +107,20 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    for (id key in [parameters allKeys]) {
       id value = [parameters valueForKey:key];
       if ([value isKindOfClass:[NSArray class]] == NO) {
-         NSString *component = [NSString stringWithFormat:@"%@=%@", 
-                                URLEncodedStringFromStringWithEncoding([key description], encoding), 
+         NSString *component = [NSString stringWithFormat:@"%@=%@",
+                                URLEncodedStringFromStringWithEncoding([key description], encoding),
                                 URLEncodedStringFromStringWithEncoding([[parameters valueForKey:key] description], encoding)];
          [mutableParameterComponents addObject:component];
       } else {
          for (id item in value) {
-            NSString *component = [NSString stringWithFormat:@"%@[]=%@", 
-                                   URLEncodedStringFromStringWithEncoding([key description], encoding), 
+            NSString *component = [NSString stringWithFormat:@"%@[]=%@",
+                                   URLEncodedStringFromStringWithEncoding([key description], encoding),
                                    URLEncodedStringFromStringWithEncoding([item description], encoding)];
             [mutableParameterComponents addObject:component];
          }
       }
    }
-   NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];   
+   NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];
    return queryString;
 }
 
@@ -153,7 +152,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
       [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
          [request setValue:value forHTTPHeaderField:key];
       }];
-    }
+   }
    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
    [request setHTTPBody:postData];
@@ -207,11 +206,14 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
    // Add the queryString to the URL. Be sure to append either ? or & if
    // ? is not already present.
-   NSString *path = [URL absoluteString];
-   NSUInteger location = [path rangeOfString:@"?"].location;
-   NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
-   NSString *getURLString = [path stringByAppendingFormat:stringFormat, queryString];
-   NSURL *getURL = [NSURL URLWithString:getURLString];
+   NSURL *getURL = URL;
+   if (queryString) {
+      NSString *path = [URL absoluteString];
+      NSUInteger location = [path rangeOfString:@"?"].location;
+      NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
+      NSString *getURLString = [path stringByAppendingFormat:stringFormat, queryString];
+      getURL = [NSURL URLWithString:getURLString];
+   }
    
    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:getURL];
    [request setHTTPMethod: @"GET"];
@@ -229,14 +231,16 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (NSString *)cacheKeyForURL:(NSURL *)URL parameters:(NSDictionary *)parameters
 {
+   NSString *path = [URL absoluteString];
    NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
    // Add the queryString to the URL. Be sure to append either ? or & if
    // ? is not already present.
-   NSString *path = [URL absoluteString];
-   NSUInteger location = [path rangeOfString:@"?"].location;
-   NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
-   NSString *getURLString = [path stringByAppendingFormat:stringFormat, queryString];
-   return getURLString;
+   if (queryString) {
+      NSUInteger location = [path rangeOfString:@"?"].location;
+      NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
+      path = [path stringByAppendingFormat:stringFormat, queryString];
+   }
+   return path;
 }
 
 - (NSData *)cachedDataForURL:(NSURL *)URL parameters:(NSDictionary *)parameters
@@ -249,7 +253,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 #pragma mark - NSURLConnection delegate Methods
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
    [[self receivedData] setLength:0];
    
@@ -262,12 +266,12 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    [self setHTTPStatusCode:statusCode];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
    [[self receivedData] appendData:data];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection 
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
    [[UIApplication sharedApplication] wps_popNetworkActivity];
    
@@ -288,7 +292,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    [self setReceivedData:nil];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
    [[UIApplication sharedApplication] wps_popNetworkActivity];
    [self setReceivedData:nil];
@@ -303,40 +307,40 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
-  BOOL canAuthenticate = NO;
-  if (self.canAuthenticateBlock) {
-    canAuthenticate = self.canAuthenticateBlock(protectionSpace);
-  } else if ([self defaultCredential]) {
-    canAuthenticate = YES;
-  }
-  return canAuthenticate;
+   BOOL canAuthenticate = NO;
+   if (self.canAuthenticateBlock) {
+      canAuthenticate = self.canAuthenticateBlock(protectionSpace);
+   } else if ([self defaultCredential]) {
+      canAuthenticate = YES;
+   }
+   return canAuthenticate;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-  if (self.didReceiveAuthenticationChallengeBlock) {
-    self.didReceiveAuthenticationChallengeBlock(challenge);
-  } else if ([self defaultCredential]) {
-    if ([challenge previousFailureCount] > 0) {
-      WPSWebClientCompletionBlock completion = [self completion];
-      if (completion) {
-        NSURLResponse *response = [challenge failureResponse];
-        NSInteger statusCode = 0;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-          statusCode = [(NSHTTPURLResponse *)response statusCode];
-        }
-        
-        if (statusCode >= 400) {
-          [[UIApplication sharedApplication] wps_popNetworkActivity];
-          NSError *error = httpError([response URL], statusCode, nil);
-          completion(nil, nil, NO, nil, error);
-        }
+   if (self.didReceiveAuthenticationChallengeBlock) {
+      self.didReceiveAuthenticationChallengeBlock(challenge);
+   } else if ([self defaultCredential]) {
+      if ([challenge previousFailureCount] > 0) {
+         WPSWebClientCompletionBlock completion = [self completion];
+         if (completion) {
+            NSURLResponse *response = [challenge failureResponse];
+            NSInteger statusCode = 0;
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+               statusCode = [(NSHTTPURLResponse *)response statusCode];
+            }
+            
+            if (statusCode >= 400) {
+               [[UIApplication sharedApplication] wps_popNetworkActivity];
+               NSError *error = httpError([response URL], statusCode, nil);
+               completion(nil, nil, NO, nil, error);
+            }
+         }
+         
+      } else {
+         [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
       }
-      
-    } else {
-      [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
-    }
-  }
+   }
 }
 
 @end
