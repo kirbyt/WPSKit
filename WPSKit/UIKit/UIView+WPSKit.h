@@ -37,6 +37,13 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
 
 @interface UIView (WPSKit)
 
+/**
+ Displays the view's frame in the provided color.
+ 
+ This is used as a debugging tool. It provides a visual aid to show you the frame of the view while the app is running.
+ */
+- (void)wps_showFrameWithColor:(UIColor *)color;
+
 #pragma mark - Auto Layout Methods
 /// @name Auto Layout Methods
 

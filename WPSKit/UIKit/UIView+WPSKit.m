@@ -29,6 +29,13 @@
 
 @implementation UIView (WPSKit)
 
+- (void)wps_showFrameWithColor:(UIColor *)color
+{
+  CALayer *layer = [self layer];
+  layer.borderColor = [color CGColor];
+  layer.borderWidth = 1.0f;
+}
+
 #pragma mark - Auto Layout Methods
 
 /**
