@@ -97,6 +97,16 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
    return [encodedString copy];
 }
 
++ (NSString *)wps_stringWithJSONObject:(id)object encoding:(NSStringEncoding)encoding error:(NSError *__autoreleasing *)error
+{
+  NSString *jsonString = nil;
+  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:error];
+  if (jsonData) {
+    jsonString = [[NSString alloc] initWithData:jsonData encoding:encoding];
+  }
+  return jsonString;
+}
+
 #pragma mark - Base64
 
 /**

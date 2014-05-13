@@ -76,4 +76,14 @@ static inline id wps_emptyStringIfNil(id s)
 + (NSString *)wps_base64StringWithString:(NSString *)string;
 + (NSString *)wps_base64StringWithData:(NSData *)data;
 
+/**
+ A string representing the provided JSON object.
+ 
+ @param object The object from which to generate JSON data. Must not be nil. Must be an `NSArray` or `NSDictionary` object.
+ @param encoding The encoding used by data.
+ @param error The error that occured while processing the request. `nil` if no error occurred.
+ @return Returns a string representingn the JSON object. Returns `nil` if an error occurred.
+ */
++ (NSString *)wps_stringWithJSONObject:(id)object encoding:(NSStringEncoding)encoding error:(NSError *__autoreleasing *)error;
+
 @end
