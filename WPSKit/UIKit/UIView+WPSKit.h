@@ -69,4 +69,39 @@ typedef NS_OPTIONS(unsigned long, WPSViewPinEdges){
  */
 - (UIImage *)wps_imageSnapshot;
 
+#pragma mark - Borders
+/// @name Borders
+
+/**
+ Adds a 1 pixel border in the provided color to the top of the view's frame.
+ 
+ @param color The color of the border.
+ @return The `CALayer` that is used to draw the border.
+ */
+- (CALayer *)wps_addTopBorderWithColor:(UIColor *)color;
+
+/**
+ Adds a 1 pixel border in the provided color to the left side of the view's frame.
+ 
+ @param color The color of the border.
+ @return The `CALayer` that is used to draw the border.
+ */
+- (CALayer *)wps_addLeftBorderWithColor:(UIColor *)color;
+
+/**
+ Adds a 1 pixel border in the provided color to the right side of the view's frame.
+ 
+ @param color The color of the border.
+ @return The `CALayer` that is used to draw the border.
+ */
+- (CALayer *)wps_addRightBorderWithColor:(UIColor *)color;
+
+/**
+ Adds a 1 pixel border in the provided color to the bottom of the view's frame.
+ 
+ @param color The color of the border.
+ @return The `CALayer` that is used to draw the border.
+ */
+- (CALayer *)wps_addBottomBorderWithColor:(UIColor *)color;
+
 @end

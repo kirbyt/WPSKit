@@ -147,4 +147,54 @@
   return image;
 }
 
+#pragma mark - Borders
+
+- (CALayer *)wps_newBorderWithColor:(UIColor *)color
+{
+  CALayer *border = [CALayer layer];
+  [border setBorderColor:[color CGColor]];
+  [border setBorderWidth:1.0];
+  return border;
+}
+
+- (CALayer *)wps_addTopBorderWithColor:(UIColor *)color
+{
+  CGRect bounds = [self bounds];
+  CALayer *border = [self wps_newBorderWithColor:color];
+
+  [border setFrame:CGRectMake(0, 0, bounds.size.width, 1)];
+  [[self layer] addSublayer:border];
+  return border;
+}
+
+- (CALayer *)wps_addLeftBorderWithColor:(UIColor *)color
+{
+  CGRect bounds = [self bounds];
+  CALayer *border = [self wps_newBorderWithColor:color];
+  
+  [border setFrame:CGRectMake(0, 0, 1, bounds.size.height)];
+  [[self layer] addSublayer:border];
+  return border;
+}
+
+- (CALayer *)wps_addRightBorderWithColor:(UIColor *)color
+{
+  CGRect bounds = [self bounds];
+  CALayer *border = [self wps_newBorderWithColor:color];
+  
+  [border setFrame:CGRectMake(bounds.size.width-1, bounds.origin.y-1, 1, bounds.size.height)];
+  [[self layer] addSublayer:border];
+  return border;
+}
+
+- (CALayer *)wps_addBottomBorderWithColor:(UIColor *)color
+{
+  CGRect bounds = [self bounds];
+  CALayer *border = [self wps_newBorderWithColor:color];
+
+  [border setFrame:CGRectMake(0, bounds.size.height - 1, bounds.size.width, 1)];
+  [[self layer] addSublayer:border];
+  return border;
+}
+
 @end
