@@ -54,6 +54,37 @@
    return cellId;
 }
 
+- (void)addObjects:(NSArray *)array toSection:(NSUInteger)section
+{
+  NSMutableArray *allObjects = [[self array] mutableCopy];
+  NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
+  [sectionObjects addObjectsFromArray:array];
+  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  
+  [self setArray:[allObjects copy]];
+}
+
+- (void)insertObject:(id)object atIndexPath:(NSIndexPath *)indexPath
+{
+  NSUInteger section = (NSUInteger)[indexPath section];
+  NSUInteger index = (NSUInteger)[indexPath row];
+  
+  NSMutableArray *allObjects = [[self array] mutableCopy];
+  NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
+  [sectionObjects insertObject:object atIndex:index];
+  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  
+  [self setArray:[allObjects copy]];
+}
+
+- (void)removeAllObjectsInSection:(NSUInteger)section
+{
+  NSMutableArray *allObjects = [[self array] mutableCopy];
+  [allObjects removeObjectAtIndex:section];
+  
+  [self setArray:[allObjects copy]];
+}
+
 - (void)removeObjectAtIndexPath:(NSIndexPath *)indexPath
 {
    NSMutableArray *allObjects = [[self array] mutableCopy];
@@ -63,6 +94,27 @@
    [allObjects replaceObjectAtIndex:(NSUInteger)[indexPath section] withObject:sectionObjects];
    
    [self setArray:[allObjects copy]];
+}
+
+- (void)replaceAllObjectsInSection:(NSUInteger)section withArray:(NSArray *)array
+{
+  NSMutableArray *allObjects = [[self array] mutableCopy];
+  [allObjects replaceObjectAtIndex:section withObject:array];
+  
+  [self setArray:[allObjects copy]];
+}
+
+- (void)replaceObjectAtIndexPath:(NSIndexPath *)indexPath withObject:(id)object
+{
+  NSUInteger section = (NSUInteger)[indexPath section];
+  NSUInteger index = (NSUInteger)[indexPath row];
+  
+  NSMutableArray *allObjects = [[self array] mutableCopy];
+  NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
+  [sectionObjects replaceObjectAtIndex:index withObject:object];
+  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  
+  [self setArray:[allObjects copy]];
 }
 
 #pragma mark - Helpers
