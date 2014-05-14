@@ -29,7 +29,7 @@
 
 @implementation NSManagedObject (WPSKit)
 
-- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(NSDateFormatter *)dateFormatter
+- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(id)dateFormatter
 {
    NSDictionary *attributes = [[self entity] attributesByName];
    for (NSString *attribute in attributes) {

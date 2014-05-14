@@ -40,8 +40,8 @@
  
  @param keyedValues `NSDictionary` containing values that are imported into Core Data.
  @param userInfo Maps entity attributes to keys used to look up the keyed value. `nil` specifies no mapping.
- @param dateFormatter `NSDateFormatter` used to format date values. `nil` specifies no date formatter.
+ @param dateFormatter `NSDateFormatter` or `ISO8601DateFormatter` used to format date values. `nil` specifies no date formatter.
  */
-- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(NSDateFormatter *)dateFormatter;
+- (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(id)dateFormatter;
 
 @end
