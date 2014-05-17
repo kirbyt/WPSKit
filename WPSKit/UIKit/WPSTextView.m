@@ -112,6 +112,12 @@
   [placeholder setText:[self placeholderText]];
 }
 
+- (void)setText:(NSString *)text
+{
+  [super setText:text];
+  [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect
 {
   CGFloat alpha = 0.0f;
