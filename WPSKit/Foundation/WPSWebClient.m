@@ -203,29 +203,37 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
    [self setCompletion:completion];
    [self setNumberOfAttempts:0];
    
-   NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
-   // Add the queryString to the URL. Be sure to append either ? or & if
-   // ? is not already present.
-   NSURL *getURL = URL;
-   if (queryString) {
-      NSString *path = [URL absoluteString];
-      NSUInteger location = [path rangeOfString:@"?"].location;
-      NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
-      NSString *getURLString = [path stringByAppendingFormat:stringFormat, queryString];
-      getURL = [NSURL URLWithString:getURLString];
-   }
-   
-   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:getURL];
-   [request setHTTPMethod: @"GET"];
-   if ([self additionalHTTPHeaderFields]) {
-      [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
-         [request setValue:value forHTTPHeaderField:key];
-      }];
-   }
+   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
    [self setRequest:request];
    
    [self startConnection];
 }
+
+- (NSMutableURLRequest *)getRequestWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters
+{
+  NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
+  // Add the queryString to the URL. Be sure to append either ? or & if
+  // ? is not already present.
+  NSURL *getURL = URL;
+  if (queryString) {
+    NSString *path = [URL absoluteString];
+    NSUInteger location = [path rangeOfString:@"?"].location;
+    NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
+    NSString *getURLString = [path stringByAppendingFormat:stringFormat, queryString];
+    getURL = [NSURL URLWithString:getURLString];
+  }
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:getURL];
+  [request setHTTPMethod: @"GET"];
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  return request;
+}
+
 
 #pragma mark - Caching
 

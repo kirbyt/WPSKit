@@ -46,4 +46,12 @@ typedef void(^WPSWebClientDidReceiveAuthenticationChallenge)(NSURLAuthentication
 - (void)put:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
 - (void)get:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
 
+/**
+ Returns a properly configured `NSURLRequest` object for an HTTP GET request.
+ 
+ @param URL The URL that is called in the GET request.
+ @param parameters The `NSDictionary` containing the parameters to include in the query string. The key is the parameter name, and the value is the parameter value. Pass `nil` if there are no query string parameters.
+ */
+- (NSMutableURLRequest *)getRequestWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters;
+
 @end
