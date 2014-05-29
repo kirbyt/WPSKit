@@ -43,6 +43,8 @@ typedef void(^WPSWebClientDidReceiveAuthenticationChallenge)(NSURLAuthentication
 @property (nonatomic, copy) WPSWebClientDidReceiveAuthenticationChallenge didReceiveAuthenticationChallengeBlock;
 
 - (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
+- (void)post:(NSURL *)URL contentType:(NSString *)contentType data:(NSData *)data completion:(WPSWebClientCompletionBlock)completion;
+
 - (void)put:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
 - (void)get:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion;
 

@@ -134,32 +134,38 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (void)post:(NSURL *)URL HTTPmethod:(NSString *)HTTPMethod parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
 {
-   NSData *cachedData = [self cachedDataForURL:URL parameters:parameters];
-   if (cachedData) {
-      completion(URL, cachedData, YES, [self cacheKey], nil);
-      return;
-   }
-   
-   [self setCompletion:completion];
-   [self setNumberOfAttempts:0];
-   
-   NSData *postData = [self postDataWithParameters:parameters];
-   NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-   
-   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-   [request setHTTPMethod:HTTPMethod];
-   if ([self additionalHTTPHeaderFields]) {
-      [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
-         [request setValue:value forHTTPHeaderField:key];
-      }];
-   }
-   [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-   [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-   [request setHTTPBody:postData];
-   [self setRequest:request];
-   
-   [self startConnection];
+  NSDictionary *header = @{@"content-type":@"application/x-www-form-urlencoded"};
+  NSData *postData = [self postDataWithParameters:parameters];
+  [self post:URL HTTPmethod:HTTPMethod HTTPHeaders:header data:postData completion:completion];
 }
+
+- (void)post:(NSURL *)URL HTTPmethod:(NSString *)HTTPMethod HTTPHeaders:(NSDictionary *)headerFields data:(NSData *)postData completion:(WPSWebClientCompletionBlock)completion
+{
+  [self setCompletion:completion];
+  [self setNumberOfAttempts:0];
+  
+  NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  [request setHTTPMethod:HTTPMethod];
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  if (headerFields) {
+    [headerFields enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+  [request setHTTPBody:postData];
+  [self setRequest:request];
+  
+  [self startConnection];
+}
+
 
 - (void)startConnection
 {
@@ -185,6 +191,12 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 - (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
 {
    [self post:URL HTTPmethod:@"POST" parameters:parameters completion:completion];
+}
+
+- (void)post:(NSURL *)URL contentType:(NSString *)contentType data:(NSData *)data completion:(WPSWebClientCompletionBlock)completion
+{
+  NSDictionary *header = @{@"content-type":contentType};
+  [self post:URL HTTPmethod:@"POST" HTTPHeaders:header data:data completion:completion];
 }
 
 - (void)put:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
@@ -233,7 +245,6 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
   
   return request;
 }
-
 
 #pragma mark - Caching
 
