@@ -116,10 +116,20 @@
             [body appendData:value];
 
          } else if ([value isKindOfClass:[NSURL class]] && [value isFileURL]) {
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, [[(NSURL *)value path] lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithFormat:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[NSData dataWithContentsOfFile:[(NSURL *)value path]]];
-            
+           NSString *fileName = [[(NSURL *)value path] lastPathComponent];
+           NSString *fileExt = [[fileName pathExtension] lowercaseString];
+           NSString *fileContentType = @"application/octet-stream";
+           if ([fileExt isEqualToString:@"jpg"] || [fileExt isEqualToString:@"jpeg"]) {
+             fileContentType = @"image/jpeg";
+           } else if ([fileExt isEqualToString:@"png"]) {
+             fileContentType = @"image/png";
+           }
+           
+           [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+           
+           [body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n",fileContentType] dataUsingEncoding:NSUTF8StringEncoding]];
+           [body appendData:[NSData dataWithContentsOfFile:[(NSURL *)value path]]];
+           
          } else {
             [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[[NSString stringWithFormat:@"%@", value] dataUsingEncoding:NSUTF8StringEncoding]];
