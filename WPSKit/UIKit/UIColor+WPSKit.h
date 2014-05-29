@@ -37,6 +37,7 @@
 + (UIColor *)wps_iOSDefaultBlue;
 + (UIColor *)wps_facebookBlue;
 + (UIColor *)wps_twitterBlue;
++ (UIColor *)wps_randomColor;
 
 - (NSString *)wps_hexString;
 

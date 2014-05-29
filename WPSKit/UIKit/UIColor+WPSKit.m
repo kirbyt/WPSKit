@@ -114,6 +114,19 @@
   return [self wps_colorWithHex:0x55acee];
 }
 
++ (UIColor *)wps_randomColor
+{
+  // Modified version.
+  // Original version copyright Kyle Fox.
+  // Original version available at: https://gist.github.com/kylefox/1689973
+  
+  CGFloat hue = ( arc4random_uniform(256) / 256.0f );  //  0.0 to 1.0
+  CGFloat saturation = ( arc4random_uniform(128) / 256.0f ) + 0.5f;  //  0.5 to 1.0, away from white
+  CGFloat brightness = ( arc4random_uniform(128) / 256.0f ) + 0.5f;  //  0.5 to 1.0, away from black
+  UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+  return color;
+}
+
 - (NSString *)wps_hexString
 {
    CGFloat red = 0.0f;
