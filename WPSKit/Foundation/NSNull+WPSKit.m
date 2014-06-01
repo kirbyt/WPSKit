@@ -34,4 +34,9 @@
    return wps_nullIfNil(v);
 }
 
+- (id)wps_nilIfNull:(id)v
+{
+  return wps_nilIfNull(v);
+}
+
 @end

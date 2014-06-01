@@ -28,11 +28,15 @@
 #import <Foundation/Foundation.h>
 
 /**
- Returns an empty string if the current value is nil.
+ Returns an empty string if the current value is nil or `NSNULL`.
  */
 static inline id wps_emptyStringIfNil(id s)
 {
-   return s ? s : @"";
+  if (s == nil || s == [NSNull null]) {
+    return @"";
+  } else {
+    return s;
+  }
 }
 
 @interface NSString (WPSKit)

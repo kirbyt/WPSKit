@@ -35,8 +35,17 @@ static inline id wps_nullIfNil(id v)
    return v ? v : [NSNull null];
 }
 
+/**
+ Returns `nil` if the current value is an instance of `NSNull`.
+ */
+static inline id wps_nilIfNull(id v)
+{
+  return (v == [NSNull null]) ? nil : v;
+}
+
 @interface NSNull (WPSKit)
 
 - (id)wps_nullIfNil:(id)v;
+- (id)wps_nilIfNull:(id)v;
 
 @end
