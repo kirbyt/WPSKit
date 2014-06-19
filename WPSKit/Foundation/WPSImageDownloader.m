@@ -47,7 +47,7 @@
       if ([self cache]) {
          NSData *data = [[self cache] dataForKey:[self cacheKeyforURL:URL]];
          if (data) {
-            UIImage *image = [UIImage imageWithData:data];
+            UIImage *image = [UIImage imageWithData:data scale:[[UIScreen mainScreen] scale]];
             completion(image, URL, nil);
             return;
          }
@@ -100,8 +100,8 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
    [[UIApplication sharedApplication] wps_popNetworkActivity];
-   
-   [self setImage:[UIImage imageWithData:[self receivedData]]];
+  
+   [self setImage:[UIImage imageWithData:[self receivedData] scale:[[UIScreen mainScreen] scale]]];
     NSURL *URL = [[connection originalRequest] URL];
    if ([self cache]) {
       [[self cache] cacheData:[self receivedData] forKey:[self cacheKeyforURL:URL] cacheLocation:WPSCacheLocationFileSystem];
