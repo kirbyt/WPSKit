@@ -90,4 +90,19 @@
 */
 - (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ Returns the number of sections in the data source.
+ 
+ @return Returns the number of sections.
+ */
+- (NSInteger)numberOfSections;
+
+/**
+ Returns the number of items in the given section.
+ 
+ @param section The index to the section.
+ @retrun Returns the number of items in the section.
+ */
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+
 @end
