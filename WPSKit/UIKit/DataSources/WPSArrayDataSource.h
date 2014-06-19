@@ -82,4 +82,12 @@
  */
 - (void)replaceObjectAtIndexPath:(NSIndexPath *)indexPath withObject:(id)object;
 
+/**
+ Returns the cell identifier for the cell at the provided index path.
+
+ @param indexPath The index path to the cell.
+ @return Returns a string representing the cell identifier.
+*/
+- (NSString *)cellIdentifierAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
