@@ -58,6 +58,15 @@
 - (void)cancelActivity;
 
 /**
+ Immediately ends the activity.
+ 
+ Calling this will execute the `activityCompletedBlock` block.
+ 
+ @param error The error reported by the task that is canceling the activity.
+ */
+- (void)cancelActivityWithError:(NSError *)error;
+
+/**
  Tells the activity tracker that a task has started.
  
  This increments the task counter.

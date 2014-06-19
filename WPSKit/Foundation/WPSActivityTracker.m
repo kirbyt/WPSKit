@@ -59,6 +59,12 @@
   }
 }
 
+- (void)cancelActivityWithError:(NSError *)error
+{
+  [[self taskErrors] addObject:[error copy]];
+  [self cancelActivity];
+}
+
 - (void)beginTask
 {
   NSUInteger taskCount = [self taskCount] + 1;
