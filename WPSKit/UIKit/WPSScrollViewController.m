@@ -254,19 +254,29 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-  if ([self infiniteScrollingEnabled] == NO) {
-    return;
-  }
-  
   CGFloat pageWidth = scrollView.bounds.size.width;
   CGFloat fractionalPage = scrollView.contentOffset.x / pageWidth;
   NSUInteger page = (NSUInteger)floor(fractionalPage);
+
+  void (^dispatchDidChangePage)(NSUInteger pageIndex) = ^(NSUInteger pageIndex) {
+    if (self.didChangePage) {
+      self.didChangePage(pageIndex);
+    }
+  };
+
+  if ([self infiniteScrollingEnabled] == NO) {
+    dispatchDidChangePage(page);
+    return;
+  }
+  
   NSUInteger pageCount = [self adjustedPageCount];
   if (page == (pageCount - 1)) {
     [self _scrollToIndex:1 animated:NO];
   } else if (page == 0) {
     [self _scrollToIndex:(pageCount - 2) animated:NO];
   }
+  
+  dispatchDidChangePage(page);
 }
 
 @end

@@ -32,6 +32,7 @@
 @property (nonatomic, assign) CGFloat pagePadding;
 @property (nonatomic, assign) NSUInteger pageCount;
 @property (nonatomic, copy) void (^configurePageItem)(id item, NSUInteger index, CGRect frame);
+@property (nonatomic, copy) void (^didChangePage)(NSUInteger pageIndex);
 
 - (void)scrollToPageAtIndex:(NSUInteger)index animated:(BOOL)animated;
 - (void)reloadData;
