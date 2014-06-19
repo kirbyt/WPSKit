@@ -40,6 +40,13 @@
 - (NSDictionary *)wps_queryDictionary;
 
 /**
+ Returns a dictionary containing the query string parameters of the provided string.
+ 
+ @return An `NSDictionary` containing the query string parameters.
+ */
++ (NSDictionary *)wps_queryDictionaryWithString:(NSString *)queryString;
+
+/**
  Compares the scheme, host, port, and path to determine if the URLs are equal. Query string parameters are ignored.
  
  @param URL A URL to compare to the receiver.

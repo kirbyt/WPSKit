@@ -31,18 +31,22 @@
 
 - (NSDictionary *)wps_queryDictionary
 {
+  return [[self class] wps_queryDictionaryWithString:[self query]];
+}
+
++ (NSDictionary *)wps_queryDictionaryWithString:(NSString *)queryString
+{
    /**
     The following code is derived from the SSToolKit (under MIT).
     https://github.com/samsoffes/sstoolkit
     */
    
-   NSString *encodedString = [self query];
-   if (!encodedString) {
+   if (!queryString) {
       return nil;
    }
    
 	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	NSArray *pairs = [encodedString componentsSeparatedByString:@"&"];
+	NSArray *pairs = [queryString componentsSeparatedByString:@"&"];
    
 	for (NSString *kvp in pairs) {
 		if ([kvp length] == 0) {
@@ -54,11 +58,11 @@
 		NSString *val;
       
 		if (pos.location == NSNotFound) {
-			key = [self stringByUnescapingFromURLQuery:kvp];
+			key = [[self class] _stringByUnescapingFromURLQuery:kvp];
 			val = @"";
 		} else {
-			key = [self stringByUnescapingFromURLQuery:[kvp substringToIndex:pos.location]];
-			val = [self stringByUnescapingFromURLQuery:[kvp substringFromIndex:pos.location + pos.length]];
+			key = [[self class] _stringByUnescapingFromURLQuery:[kvp substringToIndex:pos.location]];
+			val = [[self class] _stringByUnescapingFromURLQuery:[kvp substringFromIndex:pos.location + pos.length]];
 		}
       
 		if (!key || !val) {
@@ -74,11 +78,11 @@
 {
    BOOL isEqual = NO;
    if ([[self scheme] isEqualToString:[URL scheme]] && [[self host] isEqualToString:[URL host]]) {
-      NSString *path = [self pathWithDefault:@"/"];
-      NSString *compareToPath = [URL  pathWithDefault:@"/"];
+      NSString *path = [self _pathWithDefault:@"/"];
+      NSString *compareToPath = [URL _pathWithDefault:@"/"];
       if ([path isEqualToString:compareToPath]) {
-         NSNumber *port = [self portWithDefault:@80];
-         NSNumber *compareToPort = [URL portWithDefault:@80];
+         NSNumber *port = [self _portWithDefault:@80];
+         NSNumber *compareToPort = [URL _portWithDefault:@80];
          if ([port isEqualToNumber:compareToPort]) {
             isEqual = YES;
          }
@@ -87,7 +91,7 @@
    return isEqual;
 }
 
-- (NSString *)pathWithDefault:(NSString *)defaultPath
+- (NSString *)_pathWithDefault:(NSString *)defaultPath
 {
    NSString *path = [self path];
    if (path == nil || [path length] == 0) {
@@ -96,7 +100,7 @@
    return path;
 }
 
-- (NSNumber *)portWithDefault:(NSNumber *)defaultPort
+- (NSNumber *)_portWithDefault:(NSNumber *)defaultPort
 {
    NSNumber *port = [self port];
    if (!port) {
@@ -107,7 +111,7 @@
 
 #pragma mark - URL Escaping and Unescaping
 
-- (NSString *)stringByUnescapingFromURLQuery:(NSString *)string
++ (NSString *)_stringByUnescapingFromURLQuery:(NSString *)string
 {
 	NSString *deplussed = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
    return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
