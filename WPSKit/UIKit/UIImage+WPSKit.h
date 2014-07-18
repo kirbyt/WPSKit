@@ -110,6 +110,32 @@
  */
 - (UIImage *)wps_scaleAndCropToSize:(CGSize)newSize;
 
+#pragma mark - Square
+/// -----------------
+/// @name Square
+/// -----------------
+
+/**
+ Creates a square image cropping as needed.
+ 
+ The cropped image will contain the inner most parts of the original image.
+ 
+ The new image will have a size equal to the minimum width or height of the original image.
+ 
+ @return Returns a new `UIImage`.
+ */
+- (UIImage *)wps_squareImage;
+
+/**
+ Create a square image with the provided dimension cropping as needed.
+ 
+ The cropped image will contain the inner most parts of the original image.
+ 
+ @param dimension The dimension of the new image.
+ @return Returns a new `UIImage`.
+ */
+- (UIImage *)wps_squareImageWithDimension:(CGFloat)dimension;
+
 #pragma mark - Color
 /// -----------------
 /// @name Color

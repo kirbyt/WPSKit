@@ -27,6 +27,9 @@
 #import <Foundation/Foundation.h>
 #import "WPSCache.h"
 
+FOUNDATION_EXPORT NSString * const WPSHTTPErrorDomain;
+FOUNDATION_EXPORT NSString * const WPSHTTPBody;
+
 typedef void(^WPSWebClientCompletionBlock)(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error);  // (Response data, hit cache, error)
 typedef BOOL(^WPSWebClientCanAuthenticate)(NSURLProtectionSpace *protectionSpace);
 typedef void(^WPSWebClientDidReceiveAuthenticationChallenge)(NSURLAuthenticationChallenge *challenge);

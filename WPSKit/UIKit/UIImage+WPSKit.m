@@ -142,6 +142,32 @@
    return croppedImage;
 }
 
+#pragma mark - Square
+
+- (UIImage *)wps_squareImage
+{
+  CGSize imageSize = [self size];
+  CGFloat dimension = MIN(imageSize.width, imageSize.height);
+  return [self wps_squareImageWithDimension:dimension];
+}
+
+- (UIImage *)wps_squareImageWithDimension:(CGFloat)dimension
+{
+  CGSize imageSize = [self size];
+#if CGFLOAT_IS_DOUBLE
+  CGFloat offsetX = round((imageSize.width / 2.0f) - (dimension / 2.0f));
+  CGFloat offsetY = round((imageSize.height / 2.0f) - (dimension / 2.0f));
+#else
+  CGFloat offsetX = roundf((imageSize.width / 2.0f) - (dimension / 2.0f));
+  CGFloat offsetY = roundf((imageSize.height / 2.0f) - (dimension / 2.0f));
+#endif
+  
+  CGRect cropRect = CGRectMake(offsetX, offsetY, dimension, dimension);
+  UIImage *squareImage = [self wps_cropToRect:cropRect];
+  return squareImage;
+}
+
+
 #pragma mark - Colors
 
 + (UIImage *)wps_imageFromColor:(UIColor *)color

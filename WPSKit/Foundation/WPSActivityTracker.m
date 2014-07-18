@@ -87,7 +87,9 @@
 
 - (void)endTaskWithError:(NSError *)error
 {
-  [[self taskErrors] addObject:[error copy]];
+  if (error) {
+    [[self taskErrors] addObject:[error copy]];
+  }
   [self endTask];
 }
 

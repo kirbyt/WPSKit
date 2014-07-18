@@ -33,21 +33,22 @@
  HTTPError function provided by 0xced.
  https://github.com/0xced/CLURLConnection
  */
-NSString *const kWPSHTTPErrorDomain = @"HTTPErrorDomain";
-NSString *const kWPSHTTPBody = @"HTTPBody";
+NSString * const WPSHTTPErrorDomain = @"HTTPErrorDomain";
+NSString * const WPSHTTPBody = @"HTTPBody";
 
 static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, NSData *httpBody)
 {
-   NSString *httpBodyString = [NSString wps_stringWithData:httpBody encoding:NSUTF8StringEncoding];
-	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                             responseURL, NSURLErrorKey,
-                             responseURL, @"NSErrorFailingURLKey",
-                             [responseURL absoluteString], @"NSErrorFailingURLStringKey",
-                             [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode], NSLocalizedDescriptionKey,
-                             [NSNumber numberWithInteger:httpStatusCode], @"HTTPStatusCode",
-                             httpBodyString, kWPSHTTPBody, nil];
-   
-	return [NSError errorWithDomain:kWPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
+  NSString *httpBodyString = [NSString wps_stringWithData:httpBody encoding:NSUTF8StringEncoding];
+	NSDictionary *userInfo = @{
+                             NSURLErrorKey:responseURL,
+                             @"NSErrorFailingURLKey":responseURL,
+                             @"NSErrorFailingURLStringKey":[responseURL absoluteString],
+                             NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode],
+                             WPSHTTPBody:httpBodyString,
+                             };
+  
+  
+	return [NSError errorWithDomain:WPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
 }
 
 @interface WPSWebClient ()
@@ -58,6 +59,7 @@ static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, N
 @property (nonatomic, strong) NSURL *responseURL;
 @property (nonatomic, assign) NSInteger numberOfAttempts;
 @property (nonatomic, strong) NSURLRequest *request;
+@property (nonatomic, strong) NSProgress *progress;
 - (void)startConnection;
 - (void)incrementNumberOfAttempts;
 - (NSString *)cacheKeyForURL:(NSURL *)URL parameters:(NSDictionary *)parameters;
@@ -80,56 +82,56 @@ static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, N
 
 - (id)init
 {
-   self = [super init];
-   if (self) {
-      [self setRetryCount:5];
-      [self setCacheAge:300];   // 5 minutes
-   }
-   return self;
+  self = [super init];
+  if (self) {
+    [self setRetryCount:5];
+    [self setCacheAge:300];   // 5 minutes
+  }
+  return self;
 }
 
 static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStringEncoding encoding)
 {
-   static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
-   
-   CFStringRef encodedStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kTMLegalCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
-   NSString *encodedString = (__bridge_transfer NSString *)encodedStringRef;
-   // Note: Do not need to call CFRelease(encodedStringRef). This is done
-   // for us by using __bridge_transfer.
-   return [encodedString copy];
+  static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
+  
+  CFStringRef encodedStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kTMLegalCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
+  NSString *encodedString = (__bridge_transfer NSString *)encodedStringRef;
+  // Note: Do not need to call CFRelease(encodedStringRef). This is done
+  // for us by using __bridge_transfer.
+  return [encodedString copy];
 }
 
 - (NSString *)encodeQueryStringWithParameters:(NSDictionary *)parameters encoding:(NSStringEncoding)encoding
 {
-   if (parameters == nil) return nil;
-   
-   NSMutableArray *mutableParameterComponents = [NSMutableArray array];
-   for (id key in [parameters allKeys]) {
-      id value = [parameters valueForKey:key];
-      if ([value isKindOfClass:[NSArray class]] == NO) {
-         NSString *component = [NSString stringWithFormat:@"%@=%@",
-                                URLEncodedStringFromStringWithEncoding([key description], encoding),
-                                URLEncodedStringFromStringWithEncoding([[parameters valueForKey:key] description], encoding)];
-         [mutableParameterComponents addObject:component];
-      } else {
-         for (id item in value) {
-            NSString *component = [NSString stringWithFormat:@"%@[]=%@",
-                                   URLEncodedStringFromStringWithEncoding([key description], encoding),
-                                   URLEncodedStringFromStringWithEncoding([item description], encoding)];
-            [mutableParameterComponents addObject:component];
-         }
+  if (parameters == nil) return nil;
+  
+  NSMutableArray *mutableParameterComponents = [NSMutableArray array];
+  for (id key in [parameters allKeys]) {
+    id value = [parameters valueForKey:key];
+    if ([value isKindOfClass:[NSArray class]] == NO) {
+      NSString *component = [NSString stringWithFormat:@"%@=%@",
+                             URLEncodedStringFromStringWithEncoding([key description], encoding),
+                             URLEncodedStringFromStringWithEncoding([[parameters valueForKey:key] description], encoding)];
+      [mutableParameterComponents addObject:component];
+    } else {
+      for (id item in value) {
+        NSString *component = [NSString stringWithFormat:@"%@[]=%@",
+                               URLEncodedStringFromStringWithEncoding([key description], encoding),
+                               URLEncodedStringFromStringWithEncoding([item description], encoding)];
+        [mutableParameterComponents addObject:component];
       }
-   }
-   NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];
-   return queryString;
+    }
+  }
+  NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];
+  return queryString;
 }
 
 - (NSData *)postDataWithParameters:(NSDictionary *)parameters
 {
-   NSStringEncoding stringEncoding = NSUTF8StringEncoding;
-   NSString *string = [self encodeQueryStringWithParameters:parameters encoding:stringEncoding];
-   NSData *data = [string dataUsingEncoding:stringEncoding allowLossyConversion:YES];
-   return data;
+  NSStringEncoding stringEncoding = NSUTF8StringEncoding;
+  NSString *string = [self encodeQueryStringWithParameters:parameters encoding:stringEncoding];
+  NSData *data = [string dataUsingEncoding:stringEncoding allowLossyConversion:YES];
+  return data;
 }
 
 - (void)post:(NSURL *)URL HTTPmethod:(NSString *)HTTPMethod parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
@@ -169,28 +171,30 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (void)startConnection
 {
-   if ([self request]) {
-      [self setReceivedData:[[NSMutableData alloc] init]];
-      
-      NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:[self request] delegate:self startImmediately:NO];
-      [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-      [connection start];
-      [[UIApplication sharedApplication] wps_pushNetworkActivity];
-      [self incrementNumberOfAttempts];
-   }
+  if ([self request]) {
+    [self setReceivedData:[[NSMutableData alloc] init]];
+    NSProgress *progress = [[NSProgress alloc] initWithParent:[NSProgress currentProgress] userInfo:nil];
+    [self setProgress:progress];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:[self request] delegate:self startImmediately:NO];
+    [connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [connection start];
+    [[UIApplication sharedApplication] wps_pushNetworkActivity];
+    [self incrementNumberOfAttempts];
+  }
 }
 
 - (void)incrementNumberOfAttempts
 {
-   NSInteger numberOfAttempts = [self numberOfAttempts];
-   [self setNumberOfAttempts:numberOfAttempts + 1];
+  NSInteger numberOfAttempts = [self numberOfAttempts];
+  [self setNumberOfAttempts:numberOfAttempts + 1];
 }
 
 #pragma mark - Public Methods
 
 - (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
 {
-   [self post:URL HTTPmethod:@"POST" parameters:parameters completion:completion];
+  [self post:URL HTTPmethod:@"POST" parameters:parameters completion:completion];
 }
 
 - (void)post:(NSURL *)URL contentType:(NSString *)contentType data:(NSData *)data completion:(WPSWebClientCompletionBlock)completion
@@ -201,24 +205,24 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (void)put:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
 {
-   [self post:URL HTTPmethod:@"PUT" parameters:parameters completion:completion];
+  [self post:URL HTTPmethod:@"PUT" parameters:parameters completion:completion];
 }
 
 - (void)get:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebClientCompletionBlock)completion
 {
-   NSData *cachedData = [self cachedDataForURL:URL parameters:parameters];
-   if (cachedData) {
-      completion(URL, cachedData, YES, [self cacheKey], nil);
-      return;
-   }
-   
-   [self setCompletion:completion];
-   [self setNumberOfAttempts:0];
-   
-   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
-   [self setRequest:request];
-   
-   [self startConnection];
+  NSData *cachedData = [self cachedDataForURL:URL parameters:parameters];
+  if (cachedData) {
+    completion(URL, cachedData, YES, [self cacheKey], nil);
+    return;
+  }
+  
+  [self setCompletion:completion];
+  [self setNumberOfAttempts:0];
+  
+  NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
+  [self setRequest:request];
+  
+  [self startConnection];
 }
 
 - (NSMutableURLRequest *)getRequestWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters
@@ -250,116 +254,118 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 
 - (NSString *)cacheKeyForURL:(NSURL *)URL parameters:(NSDictionary *)parameters
 {
-   NSString *path = [URL absoluteString];
-   NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
-   // Add the queryString to the URL. Be sure to append either ? or & if
-   // ? is not already present.
-   if (queryString) {
-      NSUInteger location = [path rangeOfString:@"?"].location;
-      NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
-      path = [path stringByAppendingFormat:stringFormat, queryString];
-   }
-   return path;
+  NSString *path = [URL absoluteString];
+  NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
+  // Add the queryString to the URL. Be sure to append either ? or & if
+  // ? is not already present.
+  if (queryString) {
+    NSUInteger location = [path rangeOfString:@"?"].location;
+    NSString *stringFormat = location == NSNotFound ? @"?%@" : @"&%@";
+    path = [path stringByAppendingFormat:stringFormat, queryString];
+  }
+  return path;
 }
 
 - (NSData *)cachedDataForURL:(NSURL *)URL parameters:(NSDictionary *)parameters
 {
-   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
-   [self setCacheKey:cacheKey];
-   NSData *cachedData = [[self cache] dataForKey:cacheKey];
-   return cachedData;
+  NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
+  [self setCacheKey:cacheKey];
+  NSData *cachedData = [[self cache] dataForKey:cacheKey];
+  return cachedData;
 }
 
 #pragma mark - NSURLConnection delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-   [[self receivedData] setLength:0];
-   
-   [self setResponseURL:[response URL]];
-   
-   NSInteger statusCode = 0;
-   if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-      statusCode = [(NSHTTPURLResponse *)response statusCode];
-   }
-   [self setHTTPStatusCode:statusCode];
+  [[self receivedData] setLength:0];
+  [[self progress] setTotalUnitCount:[response expectedContentLength]];
+  
+  [self setResponseURL:[response URL]];
+  
+  NSInteger statusCode = 0;
+  if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+    statusCode = [(NSHTTPURLResponse *)response statusCode];
+  }
+  [self setHTTPStatusCode:statusCode];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-   [[self receivedData] appendData:data];
+  [[self receivedData] appendData:data];
+  [[self progress] setCompletedUnitCount:(int64_t)[data length]];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-   [[UIApplication sharedApplication] wps_popNetworkActivity];
-   
-   WPSWebClientCompletionBlock completion = [self completion];
-   
-   if ([self HTTPStatusCode] < 500) {
-      if ([self cache]) {
-         [[self cache] cacheData:[self receivedData] forKey:[self cacheKey] cacheLocation:WPSCacheLocationFileSystem cacheAge:[self cacheAge]];
-      }
-      
-      completion([self responseURL], [self receivedData], NO, [self cacheKey], nil);
-      
-   } else {
-      NSError *error = httpError([self responseURL], [self HTTPStatusCode], [self receivedData]);
-      completion(nil, nil, NO, nil, error);
-   }
-   
-   [self setReceivedData:nil];
+  [[UIApplication sharedApplication] wps_popNetworkActivity];
+  
+  WPSWebClientCompletionBlock completion = [self completion];
+  
+  if ([self HTTPStatusCode] >= 200 && [self HTTPStatusCode] < 300) {
+    if ([self cache]) {
+      [[self cache] cacheData:[self receivedData] forKey:[self cacheKey] cacheLocation:WPSCacheLocationFileSystem cacheAge:[self cacheAge]];
+    }
+    
+    completion([self responseURL], [self receivedData], NO, [self cacheKey], nil);
+    
+  } else {
+    NSError *error = httpError([self responseURL], [self HTTPStatusCode], [self receivedData]);
+    completion(nil, nil, NO, nil, error);
+  }
+  
+  [self setReceivedData:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-   [[UIApplication sharedApplication] wps_popNetworkActivity];
-   [self setReceivedData:nil];
-   
-   if ([self numberOfAttempts] < [self retryCount]) {
-      [self performSelector:@selector(startConnection) withObject:nil afterDelay:1.0];
-   } else {
-      WPSWebClientCompletionBlock completion = [self completion];
-      completion(nil, nil, NO, nil, error);
-   }
+  [[UIApplication sharedApplication] wps_popNetworkActivity];
+  [self setReceivedData:nil];
+  
+  if ([self numberOfAttempts] < [self retryCount]) {
+    [self performSelector:@selector(startConnection) withObject:nil afterDelay:1.0];
+  } else {
+    WPSWebClientCompletionBlock completion = [self completion];
+    completion(nil, nil, NO, nil, error);
+  }
 }
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
-   BOOL canAuthenticate = NO;
-   if (self.canAuthenticateBlock) {
-      canAuthenticate = self.canAuthenticateBlock(protectionSpace);
-   } else if ([self defaultCredential]) {
-      canAuthenticate = YES;
-   }
-   return canAuthenticate;
+  BOOL canAuthenticate = NO;
+  if (self.canAuthenticateBlock) {
+    canAuthenticate = self.canAuthenticateBlock(protectionSpace);
+  } else if ([self defaultCredential]) {
+    canAuthenticate = YES;
+  }
+  return canAuthenticate;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-   if (self.didReceiveAuthenticationChallengeBlock) {
-      self.didReceiveAuthenticationChallengeBlock(challenge);
-   } else if ([self defaultCredential]) {
-      if ([challenge previousFailureCount] > 0) {
-         WPSWebClientCompletionBlock completion = [self completion];
-         if (completion) {
-            NSURLResponse *response = [challenge failureResponse];
-            NSInteger statusCode = 0;
-            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-               statusCode = [(NSHTTPURLResponse *)response statusCode];
-            }
-            
-            if (statusCode >= 400) {
-               [[UIApplication sharedApplication] wps_popNetworkActivity];
-               NSError *error = httpError([response URL], statusCode, nil);
-               completion(nil, nil, NO, nil, error);
-            }
-         }
-         
-      } else {
-         [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+  if (self.didReceiveAuthenticationChallengeBlock) {
+    self.didReceiveAuthenticationChallengeBlock(challenge);
+  } else if ([self defaultCredential]) {
+    if ([challenge previousFailureCount] > 0) {
+      WPSWebClientCompletionBlock completion = [self completion];
+      if (completion) {
+        NSURLResponse *response = [challenge failureResponse];
+        NSInteger statusCode = 0;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+          statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+        
+        if (statusCode >= 400) {
+          [[UIApplication sharedApplication] wps_popNetworkActivity];
+          NSError *error = httpError([response URL], statusCode, nil);
+          completion(nil, nil, NO, nil, error);
+        }
       }
-   }
+      
+    } else {
+      [[challenge sender] useCredential:[self defaultCredential] forAuthenticationChallenge:challenge];
+    }
+  }
 }
 
 @end

@@ -258,9 +258,10 @@
   CGFloat fractionalPage = scrollView.contentOffset.x / pageWidth;
   NSUInteger page = (NSUInteger)floor(fractionalPage);
 
+  void (^didChangePage)(NSUInteger pageIndex) = self.didChangePage;
   void (^dispatchDidChangePage)(NSUInteger pageIndex) = ^(NSUInteger pageIndex) {
-    if (self.didChangePage) {
-      self.didChangePage(pageIndex);
+    if (didChangePage) {
+      didChangePage(pageIndex);
     }
   };
 
