@@ -25,8 +25,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MessageUI/MessageUI.h>
-#import <MessageUI/MFMailComposeViewController.h>
+
+@import MessageUI;
 
 /**
  `WPSFeedbackEmailController` is used to present and send feedback email.
