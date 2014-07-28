@@ -35,62 +35,62 @@
    NSString *stringToMatch = @"This is a test.";
    NSData *data = [stringToMatch dataUsingEncoding:NSUTF8StringEncoding];
    NSString *resultString = [NSString wps_stringWithData:data];
-   STAssertTrue([resultString isEqualToString:stringToMatch], @"String values do not match.");
+   XCTAssertTrue([resultString isEqualToString:stringToMatch], @"String values do not match.");
 }
 
 - (void)testStringWithUUID
 {
    NSString *uuid = [NSString wps_stringWithUUID];
-   STAssertNotNil(uuid, @"Unexpected nil value.");
-   STAssertTrue([uuid length] > 0, @"Unexpected zero-length string.");
+   XCTAssertNotNil(uuid, @"Unexpected nil value.");
+   XCTAssertTrue([uuid length] > 0, @"Unexpected zero-length string.");
 }
 
 - (void)testIsURL
 {
    NSString *string = @"http://thecave.com";
-   STAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
+   XCTAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
    
    string = @"thecave.com";
-   STAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
+   XCTAssertTrue([string wps_isURL], @"'%@' is not a URL.'", string);
 
    string = @"THis is most certainly not a URL.";
-   STAssertFalse([string wps_isURL], @"'%@' is not a URL.'", string);
+   XCTAssertFalse([string wps_isURL], @"'%@' is not a URL.'", string);
 }
 
 - (void)testStringContainsSubstring
 {
    NSString *string = @"The rain in Spain falls mainly on the plains.";
    NSString *substring = @"Spain";
-   STAssertTrue([string wps_containsSubstring:substring], @"Substring not found.");
+   XCTAssertTrue([string wps_containsSubstring:substring], @"Substring not found.");
 }
 
 - (void)testStringDoesNotContainSubstring
 {
    NSString *string = @"The rain in Spain falls mainly on the plains.";
    NSString *substring = @"Sprain";
-   STAssertFalse([string wps_containsSubstring:substring], @"Substring found unexpectedly.");
+   XCTAssertFalse([string wps_containsSubstring:substring], @"Substring found unexpectedly.");
 }
 
 - (void)testURLEncodedString
 {
    NSString *encodedString = [@"The rain & Spain." wps_URLEncodedStringWithEncoding:NSUTF8StringEncoding];
-   STAssertTrue([encodedString isEqualToString:@"The%20rain%20%26%20Spain."], @"Unexcepted URL encoded string value.");
+   XCTAssertTrue([encodedString isEqualToString:@"The%20rain%20%26%20Spain."], @"Unexcepted URL encoded string value.");
 }
 
 - (void)testEmptyStringIfNil
 {
    NSString *string = nil;
    NSString *emtpyString = wps_emptyStringIfNil(string);
-   STAssertNotNil(emtpyString, @"A nil string value was returned.");
-   STAssertTrue([emtpyString isEqualToString:@""], @"Unexcepted string value.");
+   XCTAssertNotNil(emtpyString, @"A nil string value was returned.");
+   XCTAssertTrue([emtpyString isEqualToString:@""], @"Unexcepted string value.");
 }
 
 - (void)testEmptyStringIfNilWhenNotNil
 {
    NSString *string = @"chicken lips";
    NSString *emtpyString = [NSString wps_emptyStringIfNil:string];
-   STAssertNotNil(emtpyString, @"A nil string value was returned.");
-   STAssertTrue([emtpyString isEqualToString:string], @"Unexcepted string value.");
+   XCTAssertNotNil(emtpyString, @"A nil string value was returned.");
+   XCTAssertTrue([emtpyString isEqualToString:string], @"Unexcepted string value.");
 }
 
 @end

@@ -25,8 +25,8 @@
  **
  **/
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface WPSImageDownloaderTests : SenTestCase
+@interface WPSImageDownloaderTests : XCTestCase
 
 @end

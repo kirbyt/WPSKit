@@ -27,7 +27,6 @@
 		6819B5E914B756FD00BDFDCD /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6819B5D714B756FD00BDFDCD /* WPSTableViewCell.m */; };
 		6819B5EA14B756FD00BDFDCD /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6819B5D914B756FD00BDFDCD /* WPSTextView.m */; };
 		6819B5F114B7590600BDFDCD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6819B5F014B7590500BDFDCD /* CoreGraphics.framework */; };
-		683B505D1440B73A000A62E1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B505C1440B73A000A62E1 /* SenTestingKit.framework */; };
 		683B505F1440B73A000A62E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B505E1440B73A000A62E1 /* UIKit.framework */; };
 		683B50611440B73A000A62E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50601440B73A000A62E1 /* Foundation.framework */; };
 		683B50671440B73A000A62E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 683B50651440B73A000A62E1 /* InfoPlist.strings */; };
@@ -86,8 +85,7 @@
 		6819B5D814B756FD00BDFDCD /* WPSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTextView.h; sourceTree = "<group>"; };
 		6819B5D914B756FD00BDFDCD /* WPSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTextView.m; sourceTree = "<group>"; };
 		6819B5F014B7590500BDFDCD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		683B50591440B73A000A62E1 /* WPSKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPSKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		683B505C1440B73A000A62E1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		683B50591440B73A000A62E1 /* WPSKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPSKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		683B505E1440B73A000A62E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		683B50601440B73A000A62E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		683B50641440B73A000A62E1 /* WPSKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WPSKitTests-Info.plist"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				68102D8E14560CB100E0BDC9 /* CoreLocation.framework in Frameworks */,
 				683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */,
 				683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */,
-				683B505D1440B73A000A62E1 /* SenTestingKit.framework in Frameworks */,
 				683B505F1440B73A000A62E1 /* UIKit.framework in Frameworks */,
 				683B50611440B73A000A62E1 /* Foundation.framework in Frameworks */,
 			);
@@ -225,7 +222,7 @@
 		683B505A1440B73A000A62E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				683B50591440B73A000A62E1 /* WPSKitTests.octest */,
+				683B50591440B73A000A62E1 /* WPSKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +235,6 @@
 				68102D8D14560CB100E0BDC9 /* CoreLocation.framework */,
 				683B50981440C640000A62E1 /* SystemConfiguration.framework */,
 				683B50851440B8BE000A62E1 /* CoreData.framework */,
-				683B505C1440B73A000A62E1 /* SenTestingKit.framework */,
 				683B505E1440B73A000A62E1 /* UIKit.framework */,
 				683B50601440B73A000A62E1 /* Foundation.framework */,
 			);
@@ -310,8 +306,8 @@
 			);
 			name = WPSKitTests;
 			productName = WPSKitTests;
-			productReference = 683B50591440B73A000A62E1 /* WPSKitTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 683B50591440B73A000A62E1 /* WPSKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -438,7 +434,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -458,7 +454,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -471,7 +466,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -485,7 +480,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

@@ -53,41 +53,41 @@
    
    NSData *cachedData = [cache dataForKey:key];
    NSString *stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
-   STAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
+   XCTAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
    
    [cache flushCache];
    cachedData = [cache dataForKey:key];
-   STAssertNil(cachedData, @"Returned an unexpected cached item.");
+   XCTAssertNil(cachedData, @"Returned an unexpected cached item.");
    
    [cache cacheData:data forKey:key cacheLocation:WPSCacheLocationFileSystem];
    cachedData = [cache dataForKey:key];
    stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
-   STAssertTrue([string isEqualToString:stringToMatch], @"String value '%@' does not match '%@'.", string, stringToMatch);
+   XCTAssertTrue([string isEqualToString:stringToMatch], @"String value '%@' does not match '%@'.", string, stringToMatch);
    
    NSURL *fileURL = [cache fileURLForKey:key];
-   STAssertNotNil(fileURL, @"Unassigned file URL for cached item.");
+   XCTAssertNotNil(fileURL, @"Unassigned file URL for cached item.");
    
    cachedData = [cache dataForKey:key];
    stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
-   STAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
+   XCTAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
 
    [cache flushFileSystemCache];
    cachedData = [cache dataForKey:key];
-   STAssertNil(cachedData, @"Received an unexpected cached item.");
+   XCTAssertNil(cachedData, @"Received an unexpected cached item.");
    fileURL = [cache fileURLForKey:key];
-   STAssertNil(fileURL, @"Received an unexpected file URL for an cached item that should not exist.");
+   XCTAssertNil(fileURL, @"Received an unexpected file URL for an cached item that should not exist.");
 
    /////
    // Test the memory and file system caches are separate.
    [cache cacheData:data forKey:key cacheLocation:WPSCacheLocationMemory|WPSCacheLocationFileSystem];
    fileURL = [cache fileURLForKey:key];
-   STAssertNotNil(fileURL, @"Received an unassigned file URL for cached item.");
+   XCTAssertNotNil(fileURL, @"Received an unassigned file URL for cached item.");
    [cache flushFileSystemCache];
    fileURL = [cache fileURLForKey:key];
-   STAssertNil(fileURL, @"Received an unexpected file URL for an cached item that should not exist.");
+   XCTAssertNil(fileURL, @"Received an unexpected file URL for an cached item that should not exist.");
    cachedData = [cache dataForKey:key];
    stringToMatch = [NSString wps_stringWithData:cachedData encoding:NSUTF8StringEncoding];
-   STAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
+   XCTAssertTrue([string isEqualToString:stringToMatch], @"Unexpected string value.");
 }
 
 - (void)testCleanStaleCacheFromFileSystem
@@ -101,13 +101,13 @@
   [cache cacheData:data forKey:key cacheLocation:WPSCacheLocationFileSystem cacheAge:1.0f];
 
   NSData *cacheData = [cache dataForKey:key];
-  STAssertNotNil(cacheData, @"Missing cached data.");
+  XCTAssertNotNil(cacheData, @"Missing cached data.");
 
   [NSThread sleepForTimeInterval:2.0f];
   
   [cache cleanStaleCacheFromFileSystemWithCompletion:^{
     NSData *data = [cache dataForKey:key];
-    STAssertNil(data, @"Received an unexpected cached item.");
+    XCTAssertNil(data, @"Received an unexpected cached item.");
   }];
 }
 

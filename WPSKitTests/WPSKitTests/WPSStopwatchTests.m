@@ -37,7 +37,7 @@
    sleep(2);
    [stopwatch stop];
    double elapsedSeconds = [stopwatch elapsedSeconds];
-   STAssertTrue(elapsedSeconds >= 2.0, @"Expected 2 seconds or more but received %f", elapsedSeconds);
+   XCTAssertTrue(elapsedSeconds >= 2.0, @"Expected 2 seconds or more but received %f", elapsedSeconds);
 }
 
 @end

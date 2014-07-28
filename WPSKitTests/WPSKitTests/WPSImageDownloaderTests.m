@@ -35,8 +35,8 @@
 {
    __block BOOL done = NO;
    WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSURL *URL, NSError *error) {
-      STAssertNotNil(image, @"Received nil image.");
-      STAssertNil(error, @"Received error: %@", [error localizedDescription]);
+      XCTAssertNotNil(image, @"Received nil image.");
+      XCTAssertNil(error, @"Received error: %@", [error localizedDescription]);
       done = YES;
    };
    
@@ -60,12 +60,12 @@
 
    __block BOOL done = NO;
    WPSImageDownloaderCompletionBlock completion = ^(UIImage *image, NSURL *URL, NSError *error) {
-      STAssertNotNil(image, @"Received nil image.");
-      STAssertNil(error, @"Received error: %@", [error localizedDescription]);
+      XCTAssertNotNil(image, @"Received nil image.");
+      XCTAssertNil(error, @"Received error: %@", [error localizedDescription]);
       
       WPSImageDownloaderCompletionBlock interCompletion = ^(UIImage *image, NSURL *URL, NSError *error) {
-         STAssertNotNil(image, @"Received nil image.");
-         STAssertNil(error, @"Received error: %@", [error localizedDescription]);
+         XCTAssertNotNil(image, @"Received nil image.");
+         XCTAssertNil(error, @"Received error: %@", [error localizedDescription]);
          done = YES;
       };
 

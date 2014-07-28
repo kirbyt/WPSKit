@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 White Peak Software Inc. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "NSNull+WPSKit.h"
 
-@interface NSNullTests : SenTestCase
+@interface NSNullTests : XCTestCase
 
 @end
 
@@ -31,10 +31,10 @@
 {
   NSString *s = nil;
   id result = wps_nullIfNil(s);
-  STAssertTrue([NSNull null] == result, @"Didn't get an NSNull instance.");
+  XCTAssertTrue([NSNull null] == result, @"Didn't get an NSNull instance.");
   
   result = wps_nullIfNil(@"sam");
-  STAssertTrue([result isKindOfClass:[NSString class]], @"Unexpected type.");
+  XCTAssertTrue([result isKindOfClass:[NSString class]], @"Unexpected type.");
 }
 
 @end

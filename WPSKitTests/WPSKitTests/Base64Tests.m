@@ -19,7 +19,7 @@
    NSData *decodedData = [NSData wps_dataWithBase64String:base64String];
    NSString *decodedString = [[NSString alloc] initWithBytes:[decodedData bytes] length:[decodedData length] encoding:NSUTF8StringEncoding];
    
-   STAssertTrue([decodedString isEqualToString:string], @"decodedString '%@' is not equal to expected string '%@'.", decodedString, string);
+   XCTAssertTrue([decodedString isEqualToString:string], @"decodedString '%@' is not equal to expected string '%@'.", decodedString, string);
 }
 
 
