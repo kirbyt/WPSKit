@@ -36,7 +36,7 @@
       NSString *key = nil;
       if (userInfo) {
          // Look up the key for this attribute.
-         key = [userInfo objectForKey:attribute];
+         key = userInfo[attribute];
          if (key == nil) {
             continue;
          }
@@ -44,18 +44,18 @@
          key = attribute;
       }
       
-      id value = [keyedValues objectForKey:key];
+      id value = keyedValues[key];
       if (value == nil || [value isKindOfClass:[NSNull class]] ) {
          continue;
       }
       
-      NSAttributeType attributeType = [[attributes objectForKey:attribute] attributeType];
+      NSAttributeType attributeType = [attributes[attribute] attributeType];
       if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]])) {
          value = [value stringValue];
       } else if (((attributeType == NSInteger16AttributeType) || (attributeType == NSInteger32AttributeType) || (attributeType == NSInteger64AttributeType) || (attributeType == NSBooleanAttributeType)) && ([value isKindOfClass:[NSString class]])) {
-         value = [NSNumber numberWithInteger:[value integerValue]];
+         value = @([value integerValue]);
       } else if ((attributeType == NSFloatAttributeType) &&  ([value isKindOfClass:[NSString class]])) {
-         value = [NSNumber numberWithDouble:[value doubleValue]];
+         value = @([value doubleValue]);
       } else if ((attributeType == NSDateAttributeType) && ([value isKindOfClass:[NSString class]]) && (dateFormatter != nil)) {
          value = [dateFormatter dateFromString:value];
       }

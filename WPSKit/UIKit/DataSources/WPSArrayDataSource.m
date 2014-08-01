@@ -59,7 +59,7 @@
   NSMutableArray *allObjects = [[self array] mutableCopy];
   NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
   [sectionObjects addObjectsFromArray:array];
-  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  allObjects[section] = sectionObjects;
   
   [self setArray:[allObjects copy]];
 }
@@ -72,7 +72,7 @@
   NSMutableArray *allObjects = [[self array] mutableCopy];
   NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
   [sectionObjects insertObject:object atIndex:index];
-  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  allObjects[section] = sectionObjects;
   
   [self setArray:[allObjects copy]];
 }
@@ -91,7 +91,7 @@
    NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:(NSUInteger)[indexPath section]] mutableCopy];
    NSUInteger index = (NSUInteger)[indexPath item];
    [sectionObjects removeObjectAtIndex:index];
-   [allObjects replaceObjectAtIndex:(NSUInteger)[indexPath section] withObject:sectionObjects];
+   allObjects[(NSUInteger)[indexPath section]] = sectionObjects;
    
    [self setArray:[allObjects copy]];
 }
@@ -99,7 +99,7 @@
 - (void)replaceAllObjectsInSection:(NSUInteger)section withArray:(NSArray *)array
 {
   NSMutableArray *allObjects = [[self array] mutableCopy];
-  [allObjects replaceObjectAtIndex:section withObject:array];
+  allObjects[section] = array;
   
   [self setArray:[allObjects copy]];
 }
@@ -111,8 +111,8 @@
   
   NSMutableArray *allObjects = [[self array] mutableCopy];
   NSMutableArray *sectionObjects = [[allObjects wps_safeObjectAtIndex:section] mutableCopy];
-  [sectionObjects replaceObjectAtIndex:index withObject:object];
-  [allObjects replaceObjectAtIndex:section withObject:sectionObjects];
+  sectionObjects[index] = object;
+  allObjects[section] = sectionObjects;
   
   [self setArray:[allObjects copy]];
 }

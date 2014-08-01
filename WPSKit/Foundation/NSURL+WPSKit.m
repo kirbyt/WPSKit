@@ -69,7 +69,7 @@
 			continue; // I'm sure this will bite my arse one day
 		}
       
-		[result setObject:val forKey:key];
+		result[key] = val;
 	}
 	return result;
 }

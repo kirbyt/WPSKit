@@ -75,14 +75,14 @@
    
    // Initialize the disk cache.
    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-   NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:[self cacheName]];
+   NSString *path = [paths[0] stringByAppendingPathComponent:[self cacheName]];
    [self setCachePath:path];
    
    NSFileManager *fileManager = [[NSFileManager alloc] init];
    if (![fileManager  fileExistsAtPath:path]) {
       NSError *error = nil;
       if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
-         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+         NSDictionary *userInfo = @{NSUnderlyingErrorKey: error};
          NSException *exc = nil;
          NSString *reason = @"Cannot create cache directory.";
          exc = [NSException exceptionWithName:NSInternalInconsistencyException reason:reason userInfo:userInfo];
@@ -239,7 +239,7 @@
    NSString *pathExt = nil;
    NSArray *components = [key componentsSeparatedByString:@"?"];
    if ([components count] > 0) {
-      pathExt = [[components objectAtIndex:0] pathExtension];
+      pathExt = [components[0] pathExtension];
    }
    return pathExt;
 }
@@ -269,7 +269,7 @@
 
    // The modified date is the expiration date for the cached item.
    NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:cacheAge];
-   NSDictionary *modifiedDict = [NSDictionary dictionaryWithObject:expirationDate forKey:NSFileModificationDate];
+   NSDictionary *modifiedDict = @{NSFileModificationDate: expirationDate};
 
    NSFileManager *fileManager = [[NSFileManager alloc] init];
    [fileManager createFileAtPath:path contents:data attributes:modifiedDict];

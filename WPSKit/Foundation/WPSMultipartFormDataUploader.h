@@ -32,7 +32,7 @@ typedef void(^WPSMultipartFormDataUploaderCompletionBlock)(NSData *responseData,
 @interface WPSMultipartFormDataUploader : NSObject
 
 @property (nonatomic, assign) NSInteger retryCount;   // Defaults to 0.
-@property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
+@property (nonatomic, copy) NSDictionary *additionalHTTPHeaderFields;
 @property (nonatomic, strong) NSURLCredential *defaultCredential;
 
 - (void)postToURL:(NSURL *)URL fields:(NSDictionary *)fields completion:(WPSMultipartFormDataUploaderCompletionBlock)completion;

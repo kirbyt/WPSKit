@@ -51,7 +51,7 @@
 {
    NSMutableArray *orderedFields = [NSMutableArray array];
    [fields enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-      NSArray *item = [NSArray arrayWithObjects:key, obj, nil];
+      NSArray *item = @[key, obj];
       [orderedFields addObject:item];
    }];
    
@@ -105,8 +105,8 @@
    NSMutableData *body = [NSMutableData data];
    [fields enumerateObjectsUsingBlock:^(id itemArray, NSUInteger index, BOOL *stop) {
       if ([itemArray isKindOfClass:[NSArray class]] && [itemArray count] >= 2) {
-         id key = [itemArray objectAtIndex:0];
-         id value = [itemArray objectAtIndex:1];
+         id key = itemArray[0];
+         id value = itemArray[1];
          
          [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
          

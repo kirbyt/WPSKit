@@ -14,7 +14,7 @@
 @interface WPSFetchedResultsDataSource : NSObject <UICollectionViewDataSource, UITableViewDataSource>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) NSArray *sectionHeaderTitles;
+@property (nonatomic, copy) NSArray *sectionHeaderTitles;
 @property (nonatomic, copy) NSString *cellIdentifier; // Use only if the same cell identifier is used for all cells in all sections.
 
 @property (nonatomic, copy) WPSCellConfigureBlock configureCellBlock;

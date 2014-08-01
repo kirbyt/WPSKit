@@ -16,8 +16,8 @@
  The primary array represents the sections, and the seconardary arrays
  represent the rows for the section.
  */
-@property (nonatomic, strong) NSArray *array;
-@property (nonatomic, strong) NSArray *sectionHeaderTitles;
+@property (nonatomic, copy) NSArray *array;
+@property (nonatomic, copy) NSArray *sectionHeaderTitles;
 @property (nonatomic, copy) NSString *cellIdentifier; // Use only if the same cell identifier is used for all cells in all sections.
 
 @property (nonatomic, copy) WPSCellConfigureBlock configureCellBlock;

@@ -117,10 +117,8 @@ static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
 
 - (NSDictionary *)persistentStoreOptions
 {
-  NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                           [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                           [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
-                           nil];
+  NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption: @YES,
+                           NSInferMappingModelAutomaticallyOption: @YES};
   return options;
 }
 
@@ -212,7 +210,7 @@ static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
     
     error = nil;
     if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:configuration URL:storeURL options:options error:&error]) {
-      NSDictionary *userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+      NSDictionary *userInfo = @{NSUnderlyingErrorKey: error};
       NSException *exc = nil;
       NSString *reason = @"Could not create persistent store.";
       exc = [NSException exceptionWithName:NSInternalInconsistencyException reason:reason userInfo:userInfo];
@@ -236,7 +234,7 @@ static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
                                                     attributes:nil
                                                          error:&error]) {
       NSString *errorMsg = @"Could not find or create a Documents directory.";
-      NSDictionary *errorInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
+      NSDictionary *errorInfo = @{NSUnderlyingErrorKey: error};
       NSException *directoryException = [NSException exceptionWithName:NSInternalInconsistencyException
                                                                 reason:errorMsg
                                                               userInfo:errorInfo];

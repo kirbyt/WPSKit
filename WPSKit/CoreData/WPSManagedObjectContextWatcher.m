@@ -68,14 +68,14 @@
 - (void)addEntityToWatch:(NSEntityDescription*)description withPredicate:(NSPredicate*)predicate
 {
    NSPredicate *entityPredicate = [NSPredicate predicateWithFormat:@"entity.name == %@", [description name]];
-   NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:entityPredicate, predicate, nil]];
+   NSPredicate *finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[entityPredicate, predicate]];
    
    if (![self masterPredicate]) {
       [self setMasterPredicate:finalPredicate];
       return;
    }
    
-   NSArray *array = [[NSArray alloc] initWithObjects:[self masterPredicate], finalPredicate, nil];
+   NSArray *array = @[[self masterPredicate], finalPredicate];
    finalPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:array];
    [self setMasterPredicate:finalPredicate];
 }
@@ -93,15 +93,15 @@
    }
 #endif
    NSDictionary *userInfo = [notification userInfo];
-   NSMutableSet *inserted = [[userInfo objectForKey:NSInsertedObjectsKey] mutableCopy];
+   NSMutableSet *inserted = [userInfo[NSInsertedObjectsKey] mutableCopy];
    if ([self masterPredicate]) {
       [inserted filterUsingPredicate:[self masterPredicate]];
    }
-   NSMutableSet *deleted = [[userInfo objectForKey:NSDeletedObjectsKey] mutableCopy];
+   NSMutableSet *deleted = [userInfo[NSDeletedObjectsKey] mutableCopy];
    if ([self masterPredicate]) {
       [deleted filterUsingPredicate:[self masterPredicate]];
    }
-   NSMutableSet *updated = [[userInfo objectForKey:NSUpdatedObjectsKey] mutableCopy];
+   NSMutableSet *updated = [userInfo[NSUpdatedObjectsKey] mutableCopy];
    if ([self masterPredicate]) {
       [updated filterUsingPredicate:[self masterPredicate]];
    }
@@ -118,13 +118,13 @@
    
    NSMutableDictionary *results = [[NSMutableDictionary alloc] init];
    if (inserted) {
-      [results setObject:[inserted copy] forKey:NSInsertedObjectsKey];
+      results[NSInsertedObjectsKey] = [inserted copy];
    }
    if (deleted) {
-      [results setObject:[deleted copy] forKey:NSDeletedObjectsKey];
+      results[NSDeletedObjectsKey] = [deleted copy];
    }
    if (updated) {
-      [results setObject:[updated copy] forKey:NSUpdatedObjectsKey];
+      results[NSUpdatedObjectsKey] = [updated copy];
    }
   
   id target = [self target];

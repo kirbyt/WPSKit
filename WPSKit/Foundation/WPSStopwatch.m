@@ -199,7 +199,7 @@ NSString * const kWPSStopwatchDidReset = @"WPSStopwatch.didReset";
    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
    [formatter setMaximumFractionDigits:2];
    [formatter setPositiveFormat:@"#00.00"];  // Use @"#00.0" to display milliseconds as decimal value.
-   NSString *secondsAsString = [formatter stringFromNumber:[NSNumber numberWithDouble:seconds]];
+   NSString *secondsAsString = [formatter stringFromNumber:@(seconds)];
    
    elapsedTime = [NSString stringWithFormat:@"%.0f:%02.0f:%@", hours, minutes, secondsAsString];
    return elapsedTime;

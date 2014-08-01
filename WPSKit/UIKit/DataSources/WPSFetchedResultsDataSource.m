@@ -40,7 +40,7 @@
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
 {
    NSFetchedResultsController *frc = [self fetchedResultsController];
-   id <NSFetchedResultsSectionInfo> sectionInfo = [[frc sections] objectAtIndex:(NSUInteger)section];
+   id <NSFetchedResultsSectionInfo> sectionInfo = [frc sections][(NSUInteger)section];
    NSInteger count = (NSInteger)[sectionInfo numberOfObjects];
    
    return count;

@@ -58,7 +58,7 @@
 /**
  An array of `NSString` objects, each of which contains the email address of a single recipient.
  */
-@property (nonatomic, strong) NSArray *toRecipients;
+@property (nonatomic, copy) NSArray *toRecipients;
 
 /**
  This block is called prior to presenting the mail composer. This gives the caller a chance to customize the style used by the `MFMailComposeViewController` instance.

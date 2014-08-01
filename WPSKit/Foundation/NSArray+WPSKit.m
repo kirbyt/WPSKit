@@ -32,7 +32,7 @@
 - (id)wps_firstObject
 {
    if ([self count] > 0) {
-      return [self objectAtIndex:0];
+      return self[0];
    } else {
       return nil;
    }
@@ -43,7 +43,7 @@
   if ([self count] < 1 || index >= [self count]) {
     return nil;
   } else {
-    return [self objectAtIndex:index];
+    return self[index];
   }
 }
 

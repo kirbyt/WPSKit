@@ -58,10 +58,10 @@
    if (cell == nil) {
       NSArray *nibObjects = [nib instantiateWithOwner:nil options:nil];
       NSAssert2(([nibObjects count] > 0) &&
-                [[nibObjects objectAtIndex:0] isKindOfClass:[self class]],
+                [nibObjects[0] isKindOfClass:[self class]],
                 @"Nib '%@' does not appear to contain a valid %@",
                 [self nibName], NSStringFromClass([self class]));
-      cell = [nibObjects objectAtIndex:0];
+      cell = nibObjects[0];
    }
    return cell;
 }

@@ -1,9 +1,8 @@
 //
-// WPSKit
-// NSFileManager+WPSKit.m
+// WPSWebSession.h
 //
 // Created by Kirby Turner.
-// Copyright 2011 White Peak Software. All rights reserved.
+// Copyright 2014 White Peak Software. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -25,23 +24,30 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NSFileManager+WPSKit.h"
+#import <Foundation/Foundation.h>
 
-@implementation NSFileManager (WPSKit)
+@class WPSCache;
+@protocol WPSCache;
 
-+ (void)wps_createDirectoryAtPath:(NSString *)path
-{
-   NSFileManager *fileManager = [[NSFileManager alloc] init];
-   if (![fileManager fileExistsAtPath:path]) {
-      NSError *error = nil;
-      if (![fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error]) {
-         NSString *errorMsg = [NSString stringWithFormat:@"Could not find or create directory at path '%@'.", path];
-         NSDictionary *errorInfo = @{NSUnderlyingErrorKey: error};
-         NSException *directoryException = [NSException exceptionWithName:NSInternalInconsistencyException reason:errorMsg userInfo:errorInfo];
-         
-         @throw directoryException;
-      }
-   }
-}
+typedef void(^WPSWebSessionCompletionBlock)(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error);
+typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSError *error);
+
+@interface WPSWebSession : NSObject
+
+@property (nonatomic, strong) id<WPSCache> cache;
+@property (nonatomic, assign) NSInteger cacheAge;     // Defaults to 5 minutes.
+@property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
+
+/**
+ */
+- (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration;
+
+/**
+ */
+- (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
+ */
+- (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionJSONCompletionBlock)completion;
 
 @end

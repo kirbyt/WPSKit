@@ -40,7 +40,7 @@ typedef void(^WPSWebClientDidReceiveAuthenticationChallenge)(NSURLAuthentication
 @property (nonatomic, strong) id<WPSCache> cache;
 @property (nonatomic, assign) NSInteger cacheAge;     // Defaults to 5 minutes.
 @property (nonatomic, assign) NSInteger retryCount;   // Defaults to 5.
-@property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
+@property (nonatomic, copy) NSDictionary *additionalHTTPHeaderFields;
 @property (nonatomic, strong) NSURLCredential *defaultCredential;
 @property (nonatomic, copy) WPSWebClientCanAuthenticate canAuthenticateBlock;
 @property (nonatomic, copy) WPSWebClientDidReceiveAuthenticationChallenge didReceiveAuthenticationChallengeBlock;

@@ -35,7 +35,7 @@
 @property (nonatomic, assign) SEL action;
 
 @property (nonatomic, strong) NSPredicate *masterPredicate;
-@property (nonatomic, strong) NSString *reference;
+@property (nonatomic, copy) NSString *reference;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext*)context;
 - (id)initWithManagedObjectContext:(NSManagedObjectContext*)context target:(id)target action:(SEL)action;

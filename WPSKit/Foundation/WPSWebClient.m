@@ -39,14 +39,12 @@ NSString * const WPSHTTPBody = @"HTTPBody";
 static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, NSData *httpBody)
 {
   NSString *httpBodyString = [NSString wps_stringWithData:httpBody encoding:NSUTF8StringEncoding];
-	NSDictionary *userInfo = @{
-                             NSURLErrorKey:responseURL,
-                             @"NSErrorFailingURLKey":responseURL,
-                             @"NSErrorFailingURLStringKey":[responseURL absoluteString],
-                             NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode],
-                             WPSHTTPBody:httpBodyString,
-                             };
-  
+  NSDictionary *userInfo = @{NSURLErrorKey: responseURL,
+                             @"NSErrorFailingURLKey": responseURL,
+                             @"NSErrorFailingURLStringKey": [responseURL absoluteString],
+                             NSLocalizedDescriptionKey: [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode],
+                             @"HTTPStatusCode": @(httpStatusCode),
+                             WPSHTTPBody: httpBodyString};
   
 	return [NSError errorWithDomain:WPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
 }

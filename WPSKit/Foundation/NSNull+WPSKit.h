@@ -32,7 +32,7 @@
  */
 static inline id wps_nullIfNil(id v)
 {
-   return v ? v : [NSNull null];
+   return v ?: [NSNull null];
 }
 
 /**

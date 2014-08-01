@@ -185,15 +185,15 @@ static NSInteger wps_networkActivityCount = 0;
 + (NSString *)wps_appName
 {
   NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-  NSString *name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+  NSString *name = infoDictionary[@"CFBundleDisplayName"];
   return name;
 }
 
 + (NSString *)wps_appVersion
 {
   NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-  NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-  NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+  NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+  NSString *build = infoDictionary[@"CFBundleVersion"];
   NSString *fullVersion = [NSString stringWithFormat:@"Version %@ (build %@)", version, build];
   return fullVersion;
 }
@@ -201,8 +201,8 @@ static NSInteger wps_networkActivityCount = 0;
 + (NSString *)wps_appVersionShort
 {
   NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-  NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-  NSString *build = [infoDictionary objectForKey:@"CFBundleVersion"];
+  NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+  NSString *build = infoDictionary[@"CFBundleVersion"];
   NSString *fullVersion = [NSString stringWithFormat:@"%@.%@", version, build];
   return fullVersion;
 }
