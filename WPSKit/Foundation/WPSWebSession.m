@@ -59,6 +59,7 @@
     [self setRetryCount:5];
     [self setCacheAge:300];   // 5 minutes
     [self setRequestQueue:[NSMutableDictionary dictionary]];
+    [self setAdditionalHTTPHeaderFields:[NSDictionary dictionary]];
   }
   return self;
 }
@@ -67,14 +68,25 @@
 
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
 {
+  [self getWithURL:URL parameters:parameters ignoreCache:NO completion:completion];
+}
+
+- (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters ignoreCache:(BOOL)ignoreCache completion:(WPSWebSessionCompletionBlock)completion
+{
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
-  WPSCache *cache = [self cache];
-  NSData *cachedData = [cache dataForKey:cacheKey];
-  if (cachedData) {
-    if (completion) {
-      completion(cachedData, nil, nil);
+  NSInteger cacheAge = [self cacheAge];
+  WPSCache *cache = nil;
+  
+  if (ignoreCache == NO) {
+    cache = [self cache];
+    
+    NSData *cachedData = [cache dataForKey:cacheKey];
+    if (cachedData) {
+      if (completion) {
+        completion(cachedData, nil, nil);
+      }
+      return;
     }
-    return;
   }
   
   BOOL isFirstRequest = ![self isRequestItemInQueue:cacheKey];
@@ -99,23 +111,20 @@
   NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     if (data) {
-      __typeof__(self) strongSelf = weakSelf;
-      if (strongSelf) {
-        // Did we receive an HTTP error?
-        NSInteger statusCode = 0;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-          statusCode = [(NSHTTPURLResponse *)response statusCode];
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      // Nope. Save the data to the local cache if available.
+      if (statusCode >= 200 && statusCode < 300) {
+        if (cache) {
+          [cache cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:cacheAge];
         }
-
-        // Nope. Save the data to the local cache if available.
-        if (statusCode >= 200 && statusCode < 300) {
-          if (cache) {
-            [cache cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:[strongSelf cacheAge]];
-          }
-        } else {
-          // Yep. Prepare to report the HTTP error back to the caller.
-          errorToReport = WPSHTTPError([response URL], statusCode, data);
-        }
+      } else if (statusCode >= 300) {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        errorToReport = WPSHTTPError([response URL], statusCode, data);
       }
     }
     dispatchCompletion(cacheKey, data, response, errorToReport);
@@ -125,6 +134,11 @@
 
 - (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionJSONCompletionBlock)completion
 {
+  [self getJSONWithURL:URL parameters:parameters ignoreCache:NO completion:completion];
+}
+
+- (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters ignoreCache:(BOOL)ignoreCache completion:(WPSWebSessionJSONCompletionBlock)completion
+{
   WPSWebSessionJSONCompletionBlock dispatchCompletion;
   dispatchCompletion = ^(id jsonData, NSURLResponse *response, NSError *error) {
     if (completion) {
@@ -132,7 +146,7 @@
     }
   };
   
-  [self getWithURL:URL parameters:parameters completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [self getWithURL:URL parameters:parameters ignoreCache:ignoreCache completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     id jsonData = nil;
     if (data) {
@@ -334,7 +348,8 @@
   [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
     UIImage *image = nil;
     if ([location isFileURL]) {
-      image = [UIImage imageWithContentsOfFile:[location path]];
+      NSData *data = [NSData dataWithContentsOfMappedFile:[location path]];
+      image = [UIImage imageWithData:data];
     }
     completion(image, response, error);
   }];

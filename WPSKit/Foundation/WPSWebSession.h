@@ -103,7 +103,7 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
 /**
  Additional header fields that are added to each HTTP request.
  */
-@property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
+@property (nonatomic, copy) NSDictionary *additionalHTTPHeaderFields;
 
 /**
  */
@@ -124,6 +124,16 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion;
 
 /**
+ Sends a GET request to the URL.
+ 
+ @param URL The destination of the request.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param ignoreCache Set to `YES` to not use the local cache even if it is available.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters ignoreCache:(BOOL)ignoreCache completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
  Sends a GET request to the URL and retrieve JSON data as the response.
  
  @param URL The destination of the request.
@@ -131,6 +141,16 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
  @param completion The block that is executed after the requet has completed.
  */
 - (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionJSONCompletionBlock)completion;
+
+/**
+ Sends a GET request to the URL and retrieve JSON data as the response.
+ 
+ @param URL The destination of the request.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param ignoreCache Set to `YES` to not use the local cache even if it is available.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters ignoreCache:(BOOL)ignoreCache completion:(WPSWebSessionJSONCompletionBlock)completion;
 
 #pragma mark - POST Action
 /// -----------------
