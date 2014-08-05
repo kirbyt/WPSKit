@@ -33,12 +33,7 @@
 - (CGSize)wps_suggestedSizeWithWidth:(CGFloat)width
 {
   CGSize size = [self size];
-  CGFloat ratio;
-  if (size.width > width) {
-    ratio = width / size.width;
-  } else {
-    ratio = size.width / width;
-  }
+  CGFloat ratio = width / size.width;
   
   CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
   return scaleToSize;
@@ -47,12 +42,7 @@
 - (CGSize)wps_suggestedSizeWithHeight:(CGFloat)height
 {
   CGSize size = [self size];
-  CGFloat ratio;
-  if (size.height > height) {
-    ratio = height / size.height;
-  } else {
-    ratio = size.height / height;
-  }
+  CGFloat ratio = height / size.height;
   
   CGSize scaleToSize = CGSizeMake(ratio * size.width, ratio * size.height);
   return scaleToSize;
