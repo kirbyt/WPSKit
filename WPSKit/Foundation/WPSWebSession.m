@@ -63,7 +63,6 @@
   return self;
 }
 
-
 #pragma mark - GET Actions
 
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
@@ -158,6 +157,94 @@
   }
   
   return request;
+}
+
+#pragma mark - POST Actions
+
+- (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
+{
+  NSData *postData = [self postDataWithParameters:parameters];
+  [self post:URL data:postData contentType:@"application/x-www-form-urlencoded" completion:completion];
+}
+
+- (void)post:(NSURL *)URL jsonData:(id)jsonData completion:(WPSWebSessionJSONCompletionBlock)completion
+{
+  NSError *error = nil;
+  NSData *data = [NSJSONSerialization dataWithJSONObject:jsonData options:0 error:&error];
+  if (data) {
+    [self post:URL data:data contentType:@"application/json" completion:completion];
+  } else {
+    if (completion) {
+      completion(nil, nil, error);
+    }
+  }
+}
+
+- (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType completion:(WPSWebSessionCompletionBlock)completion
+{
+  [self post:URL data:data contentType:contentType HTTPmethod:@"POST" completion:completion];
+}
+
+- (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType HTTPmethod:(NSString *)HTTPMethod completion:(WPSWebSessionCompletionBlock)completion
+{
+  WPSWebSessionCompletionBlock dispatchCompletion;
+  dispatchCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+    if (completion) {
+      completion(data, response, error);
+    }
+  };
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  [request setHTTPMethod:HTTPMethod];
+
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  if (contentType) {
+    [request setValue:contentType forHTTPHeaderField:@"content-type"];
+  }
+  
+  NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[data length]];
+  [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+  [request setHTTPBody:data];
+
+  __weak __typeof__(self) weakSelf = self;
+  
+  void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    if (data) {
+      __typeof__(self) strongSelf = weakSelf;
+      if (strongSelf) {
+        // Did we receive an HTTP error?
+        NSInteger statusCode = 0;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+          statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+        
+        if (statusCode < 200 || statusCode >= 300) {
+          // Yep. Prepare to report the HTTP error back to the caller.
+          errorToReport = WPSHTTPError([response URL], statusCode, data);
+        }
+      }
+    }
+    dispatchCompletion(data, response, errorToReport);
+  };
+  
+  NSURLSession *session = [self session];
+  NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
+  [task resume];
+}
+
+- (NSData *)postDataWithParameters:(NSDictionary *)parameters
+{
+  NSStringEncoding stringEncoding = NSUTF8StringEncoding;
+  NSString *string = [self encodeQueryStringWithParameters:parameters encoding:stringEncoding];
+  NSData *data = [string dataUsingEncoding:stringEncoding allowLossyConversion:YES];
+  return data;
 }
 
 #pragma mark - Request Queue

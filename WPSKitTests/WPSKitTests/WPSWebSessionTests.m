@@ -30,6 +30,8 @@
   [super tearDown];
 }
 
+#pragma mark - GET Tests
+
 - (void)testGETRequest
 {
   [self prepare];
@@ -66,7 +68,66 @@
   [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
 }
 
-- (void)testHTTPError
+#pragma mark - JSON Tests
+
+- (void)testJSONGet
+{
+  [self prepare];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
+    XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+#pragma mark - POST Tests
+
+- (void)testPOSTRequest
+{
+  [self prepare];
+
+  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/post"];
+  NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
+  WPSWebSession *webSession = [self webSession];
+  [webSession post:URL parameters:parameters completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    // Verify that the data was posted.
+    WPSWebSession *getWebSession = [self webSession];
+    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
+      if ([jsonData isKindOfClass:[NSArray class]]) {
+        NSDictionary *item = [jsonData firstObject];
+        XCTAssertTrue([item[@"name"] isEqualToString:@"Kirby"]);
+        XCTAssertTrue([item[@"city"] isEqualToString:@"Stowe"]);
+      }
+      
+      WPSWebSession *resetWebSession = [self webSession];
+      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [self notify:kXCTUnitWaitStatusSuccess];
+      }];
+    }];
+  }];
+
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+- (void)testPOSTRequestWithEmptyBody
+{
+  [self prepare];
+
+  WPSWebSession *webSession = [self webSession];
+  [webSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+#pragma mark - HTTP Error Tests
+
+- (void)testHTTPErrorWithGETRequest
 {
   [self prepare];
   
@@ -83,16 +144,17 @@
   [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
 }
 
-#pragma mark - JSON Tests
-
-- (void)testJSONGet
+- (void)testHTTPErrorWithPOSTRequest
 {
   [self prepare];
   
-  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
   WPSWebSession *webSession = [self webSession];
-  [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
-    XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
+  [webSession post:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if ([[error domain] isEqualToString:WPSHTTPErrorDomain]) {
+      NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
+      XCTAssertEqual([HTTPStatusCode integerValue], 404);
+    }
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
   

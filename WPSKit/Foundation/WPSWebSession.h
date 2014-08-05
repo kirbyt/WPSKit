@@ -84,12 +84,61 @@ typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *resp
  */
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration;
 
+#pragma mark - GET Action
+/// ----------------
+/// @name GET Action
+/// ----------------
+
 /**
+ Sends a GET request to the URL.
+ 
+ @param URL The destination of the request.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param completion The block that is executed after the requet has completed.
  */
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion;
 
 /**
+ Sends a GET request to the URL and retrieve JSON data as the response.
+ 
+ @param URL The destination of the request.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param completion The block that is executed after the requet has completed.
  */
 - (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionJSONCompletionBlock)completion;
+
+#pragma mark - POST Action
+/// -----------------
+/// @name POST Action
+/// -----------------
+
+/**
+ Sends a POST request to the URL.
+ 
+ @param URL The destination of the POST request.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are send in the request body.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)post:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
+ Sends a POST request to the URL passing the data as a JSON structure.
+ 
+ 
+ @param URL The destination of the POST request.
+ @param jsonData A Foundation object representing the JSON data.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)post:(NSURL *)URL jsonData:(id)jsonData completion:(WPSWebSessionJSONCompletionBlock)completion;
+
+/**
+ Sends a POST request to the URL passing the provided data and using the provided contentType.
+
+ @param URL The destination of the POST request.
+ @param data The data sent as the body of the POST request.
+ @param contentType The content type of the data.
+ @param completion The block that is executed after the requet has completed.
+*/
+- (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType completion:(WPSWebSessionCompletionBlock)completion;
 
 @end
