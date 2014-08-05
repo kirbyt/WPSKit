@@ -314,6 +314,30 @@
   [task resume];
 }
 
+#pragma mark - Images
+
+- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
+{
+  [self imageAtURL:URL parameters:nil completion:completion];
+}
+
+- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion
+{
+  if (completion == nil) {
+    // Without a completion block, we have no way to return the image.
+    // So why waste the effort.
+    return;
+  }
+  
+  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
+    UIImage *image = nil;
+    if ([location isFileURL]) {
+      image = [UIImage imageWithContentsOfFile:[location path]];
+    }
+    completion(image, response, error);
+  }];
+}
+
 #pragma mark - Request Queue
 
 - (BOOL)isRequestItemInQueue:(NSString *)key

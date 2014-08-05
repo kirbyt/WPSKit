@@ -59,6 +59,20 @@ typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *resp
  */
 typedef void(^WPSWebSessionDownloadCompletionBlock)(NSURL *location, NSURLResponse *response, NSError *error);
 
+/**
+ The block that is executed after the image has been downloaded.
+
+ @param image A `UIImage` representing the downloaded image.
+ @param response The metadata associated with the server response. This will be `nil` if the data is retrieved from the local cache.
+ @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
+ */
+typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *response, NSError *error);
+
+/**
+ `WPSWebSession` provides a wrapper around NSURLSession and session tasks. 
+ 
+ It includes a caching mechanism where previously download information is pulled from the cache to avoid making additional calls over the network. It also manages a queue of each request to prevent the same request from being had twice at the same time.
+ */
 @interface WPSWebSession : NSObject
 
 /**
@@ -168,5 +182,22 @@ typedef void(^WPSWebSessionDownloadCompletionBlock)(NSURL *location, NSURLRespon
  @param completion The block that is executed after the requet has completed.
  */
 - (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
+
+/**
+ Downloads the image at the provided URL with the provided parameters.
+ 
+ @param URL The location of the image to download.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion;
+
+/**
+ Downloads the image at the provided URL with the provided parameters.
+
+ @param URL The location of the image to download.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion;
 
 @end

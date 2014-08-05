@@ -165,6 +165,22 @@
   [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
 }
 
+#pragma mark - Image Tests
+
+- (void)testImageDownload
+{
+  [self prepare];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession imageAtURL:URL completion:^(UIImage *image, NSURLResponse *response, NSError *error) {
+    XCTAssertNotNil(image);
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
 #pragma mark - HTTP Error Tests
 
 - (void)testHTTPErrorWithGETRequest
