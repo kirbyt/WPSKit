@@ -68,7 +68,8 @@
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
 {
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
-  NSData *cachedData = [[self cache] dataForKey:cacheKey];
+  WPSCache *cache = [self cache];
+  NSData *cachedData = [cache dataForKey:cacheKey];
   if (cachedData) {
     if (completion) {
       completion(cachedData, nil, nil);
@@ -108,8 +109,8 @@
 
         // Nope. Save the data to the local cache if available.
         if (statusCode >= 200 && statusCode < 300) {
-          if ([strongSelf cache]) {
-            [[strongSelf cache] cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:[strongSelf cacheAge]];
+          if (cache) {
+            [cache cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:[strongSelf cacheAge]];
           }
         } else {
           // Yep. Prepare to report the HTTP error back to the caller.
@@ -188,9 +189,9 @@
 - (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType HTTPmethod:(NSString *)HTTPMethod completion:(WPSWebSessionCompletionBlock)completion
 {
   WPSWebSessionCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+  dispatchCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     if (completion) {
-      completion(data, response, error);
+      completion(responseData, response, error);
     }
   };
   
@@ -213,10 +214,10 @@
 
   __weak __typeof__(self) weakSelf = self;
   
-  void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
-  taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+  void (^taskCompletion)(NSData *responseData, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (data) {
+    if (responseData) {
       __typeof__(self) strongSelf = weakSelf;
       if (strongSelf) {
         // Did we receive an HTTP error?
@@ -231,7 +232,7 @@
         }
       }
     }
-    dispatchCompletion(data, response, errorToReport);
+    dispatchCompletion(responseData, response, errorToReport);
   };
   
   NSURLSession *session = [self session];
@@ -257,10 +258,11 @@
 - (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion
 {
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
-  NSURL *location = [[self cache] fileURLForKey:cacheKey];
-  if (location) {
+  WPSCache *cache = [self cache];
+  NSURL *cachedFileLocation = [cache fileURLForKey:cacheKey];
+  if (cachedFileLocation) {
     if (completion) {
-      completion(location, nil, nil);
+      completion(cachedFileLocation, nil, nil);
     }
     return;
   }
@@ -296,8 +298,8 @@
         
         // Nope. Save the data to the local cache if available.
         if (statusCode >= 200 && statusCode < 300) {
-          if ([strongSelf cache]) {
-            [[strongSelf cache] cacheFileAt:location forKey:cacheKey cacheAge:[strongSelf cacheAge]];
+          if (cache) {
+            [cache cacheFileAt:location forKey:cacheKey cacheAge:[strongSelf cacheAge]];
           }
         } else {
           // Yep. Prepare to report the HTTP error back to the caller.
