@@ -126,7 +126,7 @@ typedef enum {
     if (error == kXCTUnitAsyncErrorTimedOut) {
         XCTFail(@"Request timed out");
     } else if (error == kXCTUnitAsyncErrorInvalidStatus) {
-        XCTFail(@"Request finished with the wrong status: %ld != %ld", (long)status, notifiedStatus_);
+        XCTFail(@"Request finished with the wrong status: %ld != %ld", (long)status, (long)notifiedStatus_);
     } else if (error == kXCTUnitAsyncErrorUnprepared) {
         XCTFail(@"Call prepare before calling asynchronous method and waitForStatus:timeout:");
     }
