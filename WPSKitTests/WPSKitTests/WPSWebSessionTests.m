@@ -34,10 +34,43 @@
 {
   [self prepare];
 
-  NSURL *URL = [NSURL URLWithString:@"http://127.0.0.1:8080"];
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com"];
   WPSWebSession *webSession = [self webSession];
-  [webSession getWithURL:URL parameters:nil completion:^(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error) {
+  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+- (void)testHTTPError
+{
+  [self prepare];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    if ([[error domain] isEqualToString:WPSHTTPErrorDomain]) {
+      NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
+      XCTAssertEqual([HTTPStatusCode integerValue], 404);
+    }
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+#pragma mark - JSON Tests
+
+- (void)testJSONGet
+{
+  [self prepare];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
+    XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
   

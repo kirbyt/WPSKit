@@ -59,16 +59,16 @@
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
 {
   WPSWebSessionCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error) {
+  dispatchCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
     if (completion) {
-      completion(URL, responseData, didHitCache, cacheKey, error);
+      completion(data, response, error);
     }
   };
   
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
   NSData *cachedData = [[self cache] dataForKey:cacheKey];
   if (cachedData) {
-    dispatchCompletion(URL, cachedData, YES, cacheKey, nil);
+    dispatchCompletion(cachedData, nil, nil);
     return;
   }
   
@@ -79,18 +79,51 @@
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
   NSURLSession *session = [self session];
   NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
     if (data) {
       __typeof__(self) strongSelf = weakSelf;
-      if (strongSelf == nil) 
+      if (strongSelf) {
+        // Did we receive an HTTP error?
+        NSInteger statusCode = 0;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+          statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+
+        // Nope. Save the data to the local cache if available.
+        if (statusCode >= 200 && statusCode < 300) {
+          if ([strongSelf cache]) {
+            [[strongSelf cache] cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:[strongSelf cacheAge]];
+          }
+        } else {
+          // Yep. Prepare to report the HTTP error back to the caller.
+          errorToReport = WPSHTTPError([response URL], statusCode, data);
+        }
+      }
     }
-    dispatchCompletion([response URL], data, NO, nil, error);
+    dispatchCompletion(data, response, errorToReport);
   }];
   [task resume];
 }
 
 - (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionJSONCompletionBlock)completion
 {
+  WPSWebSessionJSONCompletionBlock dispatchCompletion;
+  dispatchCompletion = ^(id jsonData, NSURLResponse *response, NSError *error) {
+    if (completion) {
+      completion(jsonData, response, error);
+    }
+  };
   
+  [self getWithURL:URL parameters:parameters completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    id jsonData = nil;
+    if (data) {
+      errorToReport = nil;
+      jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorToReport];
+    }
+    
+    dispatchCompletion(jsonData, response, errorToReport);
+  }];
 }
 
 - (NSMutableURLRequest *)getRequestWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters

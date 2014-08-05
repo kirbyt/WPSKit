@@ -25,12 +25,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WPSWebError.h"
 
 @class WPSCache;
 @protocol WPSCache;
 
-typedef void(^WPSWebSessionCompletionBlock)(NSURL *responseURL, NSData *responseData, BOOL didHitCache, NSString *cacheKey, NSError *error);
-typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSError *error);
+/**
+ The block that is executed after the GET request to a URL has completed.
+ 
+ @param data The data returned by the server.
+ @param response The metadata associated with the server response. This will be `nil` if the data is retrieved from the local cache.
+ @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
+ */
+typedef void(^WPSWebSessionCompletionBlock)(NSData *data, NSURLResponse *response, NSError *error);
+typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *response, NSError *error);
 
 @interface WPSWebSession : NSObject
 

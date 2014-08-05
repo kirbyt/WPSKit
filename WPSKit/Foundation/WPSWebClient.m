@@ -29,26 +29,6 @@
 #import "NSString+WPSKit.h"
 
 
-/**
- HTTPError function provided by 0xced.
- https://github.com/0xced/CLURLConnection
- */
-NSString * const WPSHTTPErrorDomain = @"HTTPErrorDomain";
-NSString * const WPSHTTPBody = @"HTTPBody";
-
-static inline NSError* httpError(NSURL *responseURL, NSInteger httpStatusCode, NSData *httpBody)
-{
-  NSString *httpBodyString = [NSString wps_stringWithData:httpBody encoding:NSUTF8StringEncoding];
-  NSDictionary *userInfo = @{NSURLErrorKey: responseURL,
-                             @"NSErrorFailingURLKey": responseURL,
-                             @"NSErrorFailingURLStringKey": [responseURL absoluteString],
-                             NSLocalizedDescriptionKey: [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode],
-                             @"HTTPStatusCode": @(httpStatusCode),
-                             WPSHTTPBody: httpBodyString};
-  
-	return [NSError errorWithDomain:WPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
-}
-
 @interface WPSWebClient ()
 @property (nonatomic, copy) WPSWebClientCompletionBlock completion;
 @property (nonatomic, strong) NSMutableData *receivedData;
@@ -308,7 +288,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
     completion([self responseURL], [self receivedData], NO, [self cacheKey], nil);
     
   } else {
-    NSError *error = httpError([self responseURL], [self HTTPStatusCode], [self receivedData]);
+    NSError *error = WPSHTTPError([self responseURL], [self HTTPStatusCode], [self receivedData]);
     completion(nil, nil, NO, nil, error);
   }
   
@@ -355,7 +335,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
         
         if (statusCode >= 400) {
           [[UIApplication sharedApplication] wps_popNetworkActivity];
-          NSError *error = httpError([response URL], statusCode, nil);
+          NSError *error = WPSHTTPError([response URL], statusCode, nil);
           completion(nil, nil, NO, nil, error);
         }
       }

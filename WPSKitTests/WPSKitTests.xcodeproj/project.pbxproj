@@ -19,6 +19,7 @@
 		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 		684DDBAD16F54C480076DE9E /* NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684DDBAC16F54C480076DE9E /* NSURLTests.m */; };
 		685BB3A5183FF45F000984DF /* UIColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 685BB3A4183FF45F000984DF /* UIColorTests.m */; };
+		685D2173199115FA003DA34F /* WPSWebError.m in Sources */ = {isa = PBXBuildFile; fileRef = 685D2172199115FA003DA34F /* WPSWebError.m */; };
 		685FE7E919871660002F399B /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE79219871660002F399B /* NSManagedObject+WPSKit.m */; };
 		685FE7EA19871660002F399B /* NSManagedObjectContext+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE79419871660002F399B /* NSManagedObjectContext+WPSKit.m */; };
 		685FE7EB19871660002F399B /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE79619871660002F399B /* WPSCoreDataStack.m */; };
@@ -90,6 +91,8 @@
 		684DDBAB16F54C480076DE9E /* NSURLTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLTests.h; sourceTree = "<group>"; };
 		684DDBAC16F54C480076DE9E /* NSURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLTests.m; sourceTree = "<group>"; };
 		685BB3A4183FF45F000984DF /* UIColorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorTests.m; sourceTree = "<group>"; };
+		685D2171199115FA003DA34F /* WPSWebError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSWebError.h; sourceTree = "<group>"; };
+		685D2172199115FA003DA34F /* WPSWebError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebError.m; sourceTree = "<group>"; };
 		685FE79119871660002F399B /* NSManagedObject+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+WPSKit.h"; sourceTree = "<group>"; };
 		685FE79219871660002F399B /* NSManagedObject+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+WPSKit.m"; sourceTree = "<group>"; };
 		685FE79319871660002F399B /* NSManagedObjectContext+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+WPSKit.h"; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				685FE7B619871660002F399B /* WPSStopwatch.m */,
 				685FE7B719871660002F399B /* WPSWebClient.h */,
 				685FE7B819871660002F399B /* WPSWebClient.m */,
+				685D2171199115FA003DA34F /* WPSWebError.h */,
+				685D2172199115FA003DA34F /* WPSWebError.m */,
 				685FE812198717C2002F399B /* WPSWebSession.h */,
 				685FE813198717C2002F399B /* WPSWebSession.m */,
 			);
@@ -533,6 +538,7 @@
 				685FE80819871660002F399B /* UIViewController+WPSKit.m in Sources */,
 				685FE7EB19871660002F399B /* WPSCoreDataStack.m in Sources */,
 				686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */,
+				685D2173199115FA003DA34F /* WPSWebError.m in Sources */,
 				685FE7F619871660002F399B /* WPSActivityTracker.m in Sources */,
 				685FE7FF19871660002F399B /* UIApplication+WPSKit.m in Sources */,
 				685FE7FB19871660002F399B /* WPSWebClient.m in Sources */,
