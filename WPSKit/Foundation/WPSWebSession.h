@@ -48,6 +48,17 @@ typedef void(^WPSWebSessionCompletionBlock)(NSData *data, NSURLResponse *respons
 */
 typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *response, NSError *error);
 
+/**
+ The block that is executed after the file has been downloaded.
+ 
+ You must either open the file for reading or move it to a permanent location in your app’s sandbox container directory because the end of the block. The file is deleted once the block is completed.
+ 
+ @param location The temporary location of the downloaded file.
+ @param response The metadata associated with the server response. This will be `nil` if the data is retrieved from the local cache.
+ @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
+ */
+typedef void(^WPSWebSessionDownloadCompletionBlock)(NSURL *location, NSURLResponse *response, NSError *error);
+
 @interface WPSWebSession : NSObject
 
 /**
@@ -140,5 +151,22 @@ typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *resp
  @param completion The block that is executed after the requet has completed.
 */
 - (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
+ Downloads a file at the provided URL.
+ 
+ @param URL The location of the file to download.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion;
+
+/**
+ Downloads a file at the provided URL with the provided parameters.
+ 
+ @param URL The location of the file to download.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
 
 @end

@@ -247,6 +247,73 @@
   return data;
 }
 
+#pragma mark - Downloads
+
+- (void)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion
+{
+  [self downloadFileAtURL:URL parameters:nil completion:completion];
+}
+
+- (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion
+{
+  NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
+  NSURL *location = [[self cache] fileURLForKey:cacheKey];
+  if (location) {
+    if (completion) {
+      completion(location, nil, nil);
+    }
+    return;
+  }
+  
+  BOOL isFirstRequest = ![self isRequestItemInQueue:cacheKey];
+  [self addToDownloadRequestQueue:cacheKey completion:completion];
+  // Do not resubmit the request if one has already been submitted.
+  if (isFirstRequest == NO) {
+    return;
+  }
+  
+  __weak __typeof__(self) weakSelf = self;
+  
+  void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error);
+  dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error) {
+    __typeof__(self) strongSelf = weakSelf;
+    if (strongSelf) {
+      [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location response:response error:error];
+    }
+  };
+  
+  void (^taskCompletion)(NSURL *location, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    if (location) {
+      __typeof__(self) strongSelf = weakSelf;
+      if (strongSelf) {
+        // Did we receive an HTTP error?
+        NSInteger statusCode = 0;
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+          statusCode = [(NSHTTPURLResponse *)response statusCode];
+        }
+        
+        // Nope. Save the data to the local cache if available.
+        if (statusCode >= 200 && statusCode < 300) {
+          if ([strongSelf cache]) {
+            [[strongSelf cache] cacheFileAt:location forKey:cacheKey cacheAge:[strongSelf cacheAge]];
+          }
+        } else {
+          // Yep. Prepare to report the HTTP error back to the caller.
+          errorToReport = WPSHTTPError([response URL], statusCode, nil);
+        }
+      }
+    }
+    dispatchCompletion(cacheKey, location, response, errorToReport);
+  };
+  
+  NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
+  NSURLSession *session = [self session];
+  NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:taskCompletion];
+  [task resume];
+}
+
 #pragma mark - Request Queue
 
 - (BOOL)isRequestItemInQueue:(NSString *)key
@@ -276,6 +343,22 @@
   }
 }
 
+- (void)addToDownloadRequestQueue:(NSString *)key completion:(WPSWebSessionDownloadCompletionBlock)completion
+{
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem == nil) {
+    requestItem = [NSMutableDictionary dictionary];
+    requestItem[@"completionBlocks"] = [NSMutableArray array];
+    requestItem[@"numberOfAttempts"] = @(0);
+    requestQueue[key] = requestItem;
+  }
+  if (completion) {
+    NSMutableArray *requestItemCompletionBlocks = requestItem[@"completionBlocks"];
+    [requestItemCompletionBlocks addObject:completion];
+  }
+}
+
 - (void)dispatchRequestQueueItemWithKey:(NSString *)key data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error
 {
   NSMutableDictionary *requestQueue = [self requestQueue];
@@ -289,6 +372,23 @@
     NSArray *completionBlocks = requestItem[@"completionBlocks"];
     [completionBlocks enumerateObjectsUsingBlock:^(WPSWebSessionCompletionBlock completionBlock, NSUInteger idx, BOOL *stop) {
       completionBlock(data, response, error);
+    }];
+  }
+}
+
+- (void)dispatchDownloadRequestQueueItemWithKey:(NSString *)key location:(NSURL *)location response:(NSURLResponse *)response error:(NSError *)error
+{
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem) {
+    // Remove the request item right away. We don't want it
+    // changing on us should another request for the same
+    // item come in again.
+    [requestQueue removeObjectForKey:key];
+    
+    NSArray *completionBlocks = requestItem[@"completionBlocks"];
+    [completionBlocks enumerateObjectsUsingBlock:^(WPSWebSessionDownloadCompletionBlock completionBlock, NSUInteger idx, BOOL *stop) {
+      completionBlock(location, response, error);
     }];
   }
 }

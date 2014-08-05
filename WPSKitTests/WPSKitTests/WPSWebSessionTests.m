@@ -125,6 +125,46 @@
   [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
 }
 
+#pragma mark - Download Tests
+
+- (void)testFileDownload
+{
+  [self prepare];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession downloadFileAtURL:URL completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
+    XCTAssertTrue([location isFileURL]);
+    [self notify:kXCTUnitWaitStatusSuccess];
+  }];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
+- (void)testFileDownloadQueue
+{
+  [self prepare];
+
+  __block NSInteger count = 3;
+  WPSWebSessionDownloadCompletionBlock completion;
+  completion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+    XCTAssertTrue([location isFileURL]);
+    --count;
+    
+    if (count < 1) {
+      [self notify:kXCTUnitWaitStatusSuccess];
+    }
+  };
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession downloadFileAtURL:URL completion:completion];
+  [webSession downloadFileAtURL:URL completion:completion];
+  [webSession downloadFileAtURL:URL completion:completion];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
 #pragma mark - HTTP Error Tests
 
 - (void)testHTTPErrorWithGETRequest
