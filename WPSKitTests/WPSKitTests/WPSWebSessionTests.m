@@ -44,6 +44,28 @@
   [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
 }
 
+- (void)testGETRequestQueue
+{
+  [self prepare];
+
+  __block NSInteger count = 3;
+  WPSWebSessionCompletionBlock completionBlock;
+  completionBlock = ^(NSData *data, NSURLResponse *response, NSError *error) {
+    --count;
+    if (count < 1) {
+      [self notify:kXCTUnitWaitStatusSuccess];
+    }
+  };
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession getWithURL:URL parameters:nil completion:completionBlock];
+  [webSession getWithURL:URL parameters:nil completion:completionBlock];
+  [webSession getWithURL:URL parameters:nil completion:completionBlock];
+  
+  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+}
+
 - (void)testHTTPError
 {
   [self prepare];

@@ -31,19 +31,53 @@
 @protocol WPSCache;
 
 /**
- The block that is executed after the GET request to a URL has completed.
+ The block that is executed after the GET request to the URL has completed.
  
  @param data The data returned by the server.
  @param response The metadata associated with the server response. This will be `nil` if the data is retrieved from the local cache.
  @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
  */
 typedef void(^WPSWebSessionCompletionBlock)(NSData *data, NSURLResponse *response, NSError *error);
+
+/**
+ The block that is executed after the GET request to the URL has completed.
+
+ @param jsonData A Foundation object from the JSON data in the server response data, or nil if an error occurs.
+ @param response The metadata associated with the server response. This will be `nil` if the data is retrieved from the local cache.
+ @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
+*/
 typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *response, NSError *error);
 
 @interface WPSWebSession : NSObject
 
-@property (nonatomic, strong) id<WPSCache> cache;
-@property (nonatomic, assign) NSInteger cacheAge;     // Defaults to 5 minutes.
+/**
+ A reference to a `WPSCache` object used as the local cache.
+ 
+ The default is `nil`. Set this reference to `nil` to not use the local cache.
+ */
+@property (nonatomic, weak) id<WPSCache> cache;
+
+/**
+ The cache age for data stored in the local cache. 
+ 
+ The default is 5 minutes. 
+ 
+ This value is ignored when `cache` is `nil`.
+ */
+@property (nonatomic, assign) NSInteger cacheAge;
+
+/**
+ The maximum number of times the HTTP request is sent when an error occurs.
+ 
+ Note that retries only happen when there is an error communicating with the server. Retry attempts do not happen with HTTP errors.
+ 
+ The default is 5 times.
+ */
+@property (nonatomic, assign) NSInteger retryCount;   // Defaults to 5.
+
+/**
+ Additional header fields that are added to each HTTP request.
+ */
 @property (nonatomic, strong) NSDictionary *additionalHTTPHeaderFields;
 
 /**

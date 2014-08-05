@@ -29,6 +29,12 @@
 
 @interface WPSWebSession () <NSURLSessionDelegate>
 @property (nonatomic, strong) NSURLSession *session;
+
+// We queue each non-cached request in case we receive the same
+// request multiple times while processing the original request.
+// This prevents making unnecessary calls on the wire. We also use
+// this queue to track the number of request attempts.
+@property (nonatomic, strong) NSMutableDictionary *requestQueue;
 @end
 
 @implementation WPSWebSession
@@ -49,6 +55,10 @@
   if (self) {
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     [self setSession:session];
+    
+    [self setRetryCount:5];
+    [self setCacheAge:300];   // 5 minutes
+    [self setRequestQueue:[NSMutableDictionary dictionary]];
   }
   return self;
 }
@@ -58,24 +68,32 @@
 
 - (void)getWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionCompletionBlock)completion
 {
-  WPSWebSessionCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
-    if (completion) {
-      completion(data, response, error);
-    }
-  };
-  
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
   NSData *cachedData = [[self cache] dataForKey:cacheKey];
   if (cachedData) {
-    dispatchCompletion(cachedData, nil, nil);
+    if (completion) {
+      completion(cachedData, nil, nil);
+    }
     return;
   }
   
-//  [self setCompletion:completion];
-//  [self setNumberOfAttempts:0];
+  BOOL isFirstRequest = ![self isRequestItemInQueue:cacheKey];
+  [self addToRequestQueue:cacheKey completion:completion];
+  // Do not resubmit the request if one has already been submitted.
+  if (isFirstRequest == NO) {
+    return;
+  }
 
   __weak __typeof__(self) weakSelf = self;
+
+  void (^dispatchCompletion)(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error);
+  dispatchCompletion = ^(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error) {
+    __typeof__(self) strongSelf = weakSelf;
+    if (strongSelf) {
+      [strongSelf dispatchRequestQueueItemWithKey:requestQueueKey data:data response:response error:error];
+    }
+  };
+
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
   NSURLSession *session = [self session];
   NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -100,7 +118,7 @@
         }
       }
     }
-    dispatchCompletion(data, response, errorToReport);
+    dispatchCompletion(cacheKey, data, response, errorToReport);
   }];
   [task resume];
 }
@@ -140,6 +158,52 @@
   }
   
   return request;
+}
+
+#pragma mark - Request Queue
+
+- (BOOL)isRequestItemInQueue:(NSString *)key
+{
+  BOOL inQueue = NO;
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem) {
+    inQueue = YES;
+  }
+  return inQueue;
+}
+
+- (void)addToRequestQueue:(NSString *)key completion:(WPSWebSessionCompletionBlock)completion
+{
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem == nil) {
+    requestItem = [NSMutableDictionary dictionary];
+    requestItem[@"completionBlocks"] = [NSMutableArray array];
+    requestItem[@"numberOfAttempts"] = @(0);
+    requestQueue[key] = requestItem;
+  }
+  if (completion) {
+    NSMutableArray *requestItemCompletionBlocks = requestItem[@"completionBlocks"];
+    [requestItemCompletionBlocks addObject:completion];
+  }
+}
+
+- (void)dispatchRequestQueueItemWithKey:(NSString *)key data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error
+{
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem) {
+    // Remove the request item right away. We don't want it
+    // changing on us should another request for the same
+    // item come in again.
+    [requestQueue removeObjectForKey:key];
+    
+    NSArray *completionBlocks = requestItem[@"completionBlocks"];
+    [completionBlocks enumerateObjectsUsingBlock:^(WPSWebSessionCompletionBlock completionBlock, NSUInteger idx, BOOL *stop) {
+      completionBlock(data, response, error);
+    }];
+  }
 }
 
 #pragma mark - Caching
