@@ -38,7 +38,7 @@
 
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com"];
   WPSWebSession *webSession = [self webSession];
-  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
@@ -52,7 +52,7 @@
 
   __block NSInteger count = 3;
   WPSWebSessionCompletionBlock completionBlock;
-  completionBlock = ^(NSData *data, NSURLResponse *response, NSError *error) {
+  completionBlock = ^(NSData *data, NSURL *responseURL, NSError *error) {
     --count;
     if (count < 1) {
       [self notify:kXCTUnitWaitStatusSuccess];
@@ -76,7 +76,7 @@
   
   NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
   WPSWebSession *webSession = [self webSession];
-  [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
+  [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURL *responseURL, NSError *error) {
     XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
@@ -93,10 +93,10 @@
   NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/post"];
   NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
   WPSWebSession *webSession = [self webSession];
-  [webSession post:URL parameters:parameters completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession post:URL parameters:parameters completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     // Verify that the data was posted.
     WPSWebSession *getWebSession = [self webSession];
-    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
+    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURL *responseURL, NSError *error) {
       if ([jsonData isKindOfClass:[NSArray class]]) {
         NSDictionary *item = [jsonData firstObject];
         XCTAssertTrue([item[@"name"] isEqualToString:@"Kirby"]);
@@ -104,7 +104,7 @@
       }
       
       WPSWebSession *resetWebSession = [self webSession];
-      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
         [self notify:kXCTUnitWaitStatusSuccess];
       }];
     }];
@@ -118,7 +118,7 @@
   [self prepare];
 
   WPSWebSession *webSession = [self webSession];
-  [webSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
 
@@ -133,7 +133,7 @@
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
   WPSWebSession *webSession = [self webSession];
-  [webSession downloadFileAtURL:URL completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
+  [webSession downloadFileAtURL:URL completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
     XCTAssertTrue([location isFileURL]);
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
@@ -147,7 +147,7 @@
 
   __block NSInteger count = 3;
   WPSWebSessionDownloadCompletionBlock completion;
-  completion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+  completion = ^(NSURL *location, NSURL *responseURL, NSError *error) {
     XCTAssertTrue([location isFileURL]);
     --count;
     
@@ -173,7 +173,7 @@
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
   WPSWebSession *webSession = [self webSession];
-  [webSession imageAtURL:URL completion:^(UIImage *image, NSURLResponse *response, NSError *error) {
+  [webSession imageAtURL:URL completion:^(UIImage *image, NSURL *responseURL, NSError *error) {
     XCTAssertNotNil(image);
     [self notify:kXCTUnitWaitStatusSuccess];
   }];
@@ -189,7 +189,7 @@
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
   WPSWebSession *webSession = [self webSession];
-  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     if ([[error domain] isEqualToString:WPSHTTPErrorDomain]) {
       NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
       XCTAssertEqual([HTTPStatusCode integerValue], 404);
@@ -206,7 +206,7 @@
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
   WPSWebSession *webSession = [self webSession];
-  [webSession post:URL parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession post:URL parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     if ([[error domain] isEqualToString:WPSHTTPErrorDomain]) {
       NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
       XCTAssertEqual([HTTPStatusCode integerValue], 404);
