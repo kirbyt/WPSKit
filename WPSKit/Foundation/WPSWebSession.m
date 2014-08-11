@@ -34,10 +34,31 @@
 // request multiple times while processing the original request.
 // This prevents making unnecessary calls on the wire. We also use
 // this queue to track the number of request attempts.
-@property (nonatomic, strong) NSMutableDictionary *requestQueue;
+@property (nonatomic, strong, readonly) NSMutableDictionary *requestQueue;
 @end
 
 @implementation WPSWebSession
+
+#pragma mark - Request Queue
+
++ (NSMutableDictionary *)sharedRequestQueue
+{
+  // We use a shared request queue that spans across
+  // multiple NSURLSessions.
+  
+  static NSMutableDictionary *sharedRequestQueue = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    sharedRequestQueue = [NSMutableDictionary dictionary];
+  });
+  
+  return sharedRequestQueue;
+}
+
+- (NSMutableDictionary *)requestQueue
+{
+  return [WPSWebSession sharedRequestQueue];
+}
 
 #pragma mark - Init Methods
 
@@ -58,7 +79,6 @@
     
     [self setRetryCount:5];
     [self setCacheAge:300];   // 5 minutes
-    [self setRequestQueue:[NSMutableDictionary dictionary]];
     [self setAdditionalHTTPHeaderFields:[NSDictionary dictionary]];
   }
   return self;
@@ -95,17 +115,12 @@
   if (isFirstRequest == NO) {
     return;
   }
-
-  __weak __typeof__(self) weakSelf = self;
-
+  
   void (^dispatchCompletion)(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error);
   dispatchCompletion = ^(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error) {
-    __typeof__(self) strongSelf = weakSelf;
-    if (strongSelf) {
-      [strongSelf dispatchRequestQueueItemWithKey:requestQueueKey data:data responseURL:[response URL] error:error];
-    }
+    [self dispatchRequestQueueItemWithKey:requestQueueKey data:data responseURL:[response URL] error:error];
   };
-
+  
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
   NSURLSession *session = [self session];
   NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -211,7 +226,7 @@
   
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
   [request setHTTPMethod:HTTPMethod];
-
+  
   if ([self additionalHTTPHeaderFields]) {
     [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
       [request setValue:value forHTTPHeaderField:key];
@@ -225,25 +240,20 @@
   NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[data length]];
   [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
   [request setHTTPBody:data];
-
-  __weak __typeof__(self) weakSelf = self;
   
   void (^taskCompletion)(NSData *responseData, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     if (responseData) {
-      __typeof__(self) strongSelf = weakSelf;
-      if (strongSelf) {
-        // Did we receive an HTTP error?
-        NSInteger statusCode = 0;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-          statusCode = [(NSHTTPURLResponse *)response statusCode];
-        }
-        
-        if (statusCode < 200 || statusCode >= 300) {
-          // Yep. Prepare to report the HTTP error back to the caller.
-          errorToReport = WPSHTTPError([response URL], statusCode, data);
-        }
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      if (statusCode < 200 || statusCode >= 300) {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        errorToReport = WPSHTTPError([response URL], statusCode, data);
       }
     }
     dispatchCompletion(responseData, [response URL], errorToReport);
@@ -288,37 +298,31 @@
     return;
   }
   
-  __weak __typeof__(self) weakSelf = self;
-  
   void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error);
   dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error) {
-    __typeof__(self) strongSelf = weakSelf;
-    if (strongSelf) {
-      [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location responseURL:responseURL error:error];
-    }
+    [self dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location responseURL:responseURL error:error];
   };
+  
+  NSInteger cacheAge = [self cacheAge];
   
   void (^taskCompletion)(NSURL *location, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     if (location) {
-      __typeof__(self) strongSelf = weakSelf;
-      if (strongSelf) {
-        // Did we receive an HTTP error?
-        NSInteger statusCode = 0;
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-          statusCode = [(NSHTTPURLResponse *)response statusCode];
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      // Nope. Save the data to the local cache if available.
+      if (statusCode >= 200 && statusCode < 300) {
+        if (cache) {
+          [cache cacheFileAt:location forKey:cacheKey cacheAge:cacheAge];
         }
-        
-        // Nope. Save the data to the local cache if available.
-        if (statusCode >= 200 && statusCode < 300) {
-          if (cache) {
-            [cache cacheFileAt:location forKey:cacheKey cacheAge:[strongSelf cacheAge]];
-          }
-        } else {
-          // Yep. Prepare to report the HTTP error back to the caller.
-          errorToReport = WPSHTTPError([response URL], statusCode, nil);
-        }
+      } else {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        errorToReport = WPSHTTPError([response URL], statusCode, nil);
       }
     }
     dispatchCompletion(cacheKey, location, [response URL], errorToReport);
