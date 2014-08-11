@@ -62,6 +62,15 @@
 
 #pragma mark - Init Methods
 
+- (void)dealloc
+{
+  NSURLSession *session = [self session];
+  if (session) {
+    [self setSession:nil];
+    [session finishTasksAndInvalidate];
+  }
+}
+
 - (instancetype)init
 {
   NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
