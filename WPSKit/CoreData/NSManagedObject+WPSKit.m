@@ -31,36 +31,43 @@
 
 - (void)wps_safeSetValuesForKeysWithDictionary:(NSDictionary *)keyedValues userInfo:(NSDictionary *)userInfo dateFormatter:(id)dateFormatter
 {
-   NSDictionary *attributes = [[self entity] attributesByName];
-   for (NSString *attribute in attributes) {
-      NSString *key = nil;
-      if (userInfo) {
-         // Look up the key for this attribute.
-         key = userInfo[attribute];
-         if (key == nil) {
-            continue;
-         }
-      } else {
-         key = attribute;
+  NSDictionary *attributes = [[self entity] attributesByName];
+  for (NSString *attribute in attributes) {
+    NSString *key = nil;
+    if (userInfo) {
+      // Look up the key for this attribute.
+      key = userInfo[attribute];
+      if (key == nil) {
+        continue;
       }
-      
-      id value = keyedValues[key];
-      if (value == nil || [value isKindOfClass:[NSNull class]] ) {
-         continue;
-      }
-      
-      NSAttributeType attributeType = [attributes[attribute] attributeType];
-      if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]])) {
-         value = [value stringValue];
-      } else if (((attributeType == NSInteger16AttributeType) || (attributeType == NSInteger32AttributeType) || (attributeType == NSInteger64AttributeType) || (attributeType == NSBooleanAttributeType)) && ([value isKindOfClass:[NSString class]])) {
-         value = @([value integerValue]);
-      } else if ((attributeType == NSFloatAttributeType) &&  ([value isKindOfClass:[NSString class]])) {
-         value = @([value doubleValue]);
-      } else if ((attributeType == NSDateAttributeType) && ([value isKindOfClass:[NSString class]]) && (dateFormatter != nil)) {
-         value = [dateFormatter dateFromString:value];
-      }
-      [self setValue:value forKey:attribute];
-   }
+    } else {
+      key = attribute;
+    }
+    
+    id value = keyedValues[key];
+    // If the value is nil, then we do nothing.
+    if (value == nil) {
+      continue;
+    }
+    // However, if the value is null, then we clear it out
+    // in the model object.
+    if ([value isKindOfClass:[NSNull class]]) {
+      [self setValue:nil forKey:attribute];
+      continue;
+    }
+    
+    NSAttributeType attributeType = [attributes[attribute] attributeType];
+    if ((attributeType == NSStringAttributeType) && ([value isKindOfClass:[NSNumber class]])) {
+      value = [value stringValue];
+    } else if (((attributeType == NSInteger16AttributeType) || (attributeType == NSInteger32AttributeType) || (attributeType == NSInteger64AttributeType) || (attributeType == NSBooleanAttributeType)) && ([value isKindOfClass:[NSString class]])) {
+      value = @([value integerValue]);
+    } else if ((attributeType == NSFloatAttributeType) &&  ([value isKindOfClass:[NSString class]])) {
+      value = @([value doubleValue]);
+    } else if ((attributeType == NSDateAttributeType) && ([value isKindOfClass:[NSString class]]) && (dateFormatter != nil)) {
+      value = [dateFormatter dateFromString:value];
+    }
+    [self setValue:value forKey:attribute];
+  }
 }
 
 @end
