@@ -262,7 +262,11 @@
       
       if (statusCode < 200 || statusCode >= 300) {
         // Yep. Prepare to report the HTTP error back to the caller.
-        errorToReport = WPSHTTPError([response URL], statusCode, data);
+        NSURL *urlToReport = [response URL];
+        if (urlToReport == nil) {
+          urlToReport = URL;
+        }
+        errorToReport = WPSHTTPError(urlToReport, statusCode, data);
       }
     }
     dispatchCompletion(responseData, [response URL], errorToReport);
