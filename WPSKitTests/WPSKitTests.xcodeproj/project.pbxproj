@@ -16,6 +16,7 @@
 		683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50831440B7CB000A62E1 /* NSStringTests.m */; };
 		683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50851440B8BE000A62E1 /* CoreData.framework */; };
 		683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50981440C640000A62E1 /* SystemConfiguration.framework */; };
+		683D8B2B199CF4BA001FE8C2 /* WPSWebErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683D8B2A199CF4BA001FE8C2 /* WPSWebErrorTests.m */; };
 		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 		684DDBAD16F54C480076DE9E /* NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684DDBAC16F54C480076DE9E /* NSURLTests.m */; };
 		685BB3A5183FF45F000984DF /* UIColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 685BB3A4183FF45F000984DF /* UIColorTests.m */; };
@@ -86,6 +87,7 @@
 		683B50831440B7CB000A62E1 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
 		683B50851440B8BE000A62E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		683B50981440C640000A62E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		683D8B2A199CF4BA001FE8C2 /* WPSWebErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebErrorTests.m; sourceTree = "<group>"; };
 		684C80D914434F0500DAAB9B /* WPSCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCacheTests.h; sourceTree = "<group>"; };
 		684C80DA14434F0500DAAB9B /* WPSCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCacheTests.m; sourceTree = "<group>"; };
 		684DDBAB16F54C480076DE9E /* NSURLTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLTests.h; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */,
 				688DF6BA14685BE800732A7C /* WPSStopwatchTests.h */,
 				688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */,
+				683D8B2A199CF4BA001FE8C2 /* WPSWebErrorTests.m */,
 				685FE815198719EF002F399B /* WPSWebSessionTests.m */,
 			);
 			path = WPSKitTests;
@@ -529,6 +532,7 @@
 				685FE7F019871660002F399B /* NSData+WPSKit.m in Sources */,
 				685FE7F119871660002F399B /* NSFileManager+WPSKit.m in Sources */,
 				685FE7F519871660002F399B /* NSURL+WPSKit.m in Sources */,
+				683D8B2B199CF4BA001FE8C2 /* WPSWebErrorTests.m in Sources */,
 				685FE81D19872504002F399B /* XCTAsyncTestCase.m in Sources */,
 				685FE7EA19871660002F399B /* NSManagedObjectContext+WPSKit.m in Sources */,
 				685BB3A5183FF45F000984DF /* UIColorTests.m in Sources */,

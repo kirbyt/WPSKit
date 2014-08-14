@@ -35,16 +35,21 @@ NSString * const WPSHTTPBody = @"HTTPBody";
 
 FOUNDATION_EXTERN NSError* WPSHTTPError(NSURL *responseURL, NSInteger httpStatusCode, NSData *httpBody)
 {
-  NSString *httpBodyString = [[NSString alloc] initWithBytes:[httpBody bytes] length:[httpBody length] encoding:NSUTF8StringEncoding];
-  NSDictionary *userInfo = @{
-                             NSURLErrorKey: responseURL,
-                             @"NSErrorFailingURLKey": responseURL,
-                             @"NSErrorFailingURLStringKey": [responseURL absoluteString],
-                             NSLocalizedDescriptionKey: [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode],
-                             @"HTTPStatusCode": @(httpStatusCode),
-                             WPSHTTPBody: httpBodyString,
-                             };
+  NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+
+  if (httpBody) {
+    NSString *httpBodyString = [[NSString alloc] initWithBytes:[httpBody bytes] length:[httpBody length] encoding:NSUTF8StringEncoding];
+    userInfo[WPSHTTPBody] = httpBodyString;
+  }
   
-	return [NSError errorWithDomain:WPSHTTPErrorDomain code:httpStatusCode userInfo:userInfo];
+  if (responseURL) {
+    userInfo[NSURLErrorKey] = responseURL;
+    userInfo[@"NSErrorFailingURLKey"] = responseURL;
+    userInfo[@"NSErrorFailingURLStringKey"] = [responseURL absoluteString];
+  }
+  userInfo[NSLocalizedDescriptionKey] = [NSHTTPURLResponse localizedStringForStatusCode:httpStatusCode];
+  userInfo[@"HTTPStatusCode"] = @(httpStatusCode);
+  
+	return [NSError errorWithDomain:WPSHTTPErrorDomain code:httpStatusCode userInfo:[userInfo copy]];
 }
 
