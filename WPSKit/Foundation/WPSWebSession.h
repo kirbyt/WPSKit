@@ -106,6 +106,13 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
 @property (nonatomic, copy) NSDictionary *additionalHTTPHeaderFields;
 
 /**
+ An array of trusted servers.
+ 
+ Each array element must be a `NSURL` instance.
+ */
+@property (nonatomic, copy) NSArray *trustedServers;
+
+/**
  */
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration;
 

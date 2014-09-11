@@ -83,7 +83,7 @@
   
   self = [super init];
   if (self) {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     [self setSession:session];
     
     [self setRetryCount:5];
@@ -509,6 +509,32 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
   }
   NSString *queryString = [mutableParameterComponents componentsJoinedByString:@"&"];
   return queryString;
+}
+
+#pragma mark - NSURLSessionDelegate Methods
+
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+{
+  if ([[[challenge protectionSpace] authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+    // Is this a trusted server?
+    NSString *host = [[challenge protectionSpace] host];
+    
+    __block BOOL isTrustedServer = NO;
+    [[self trustedServers] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      if ([host isEqualToString:[obj host]]) {
+        isTrustedServer = YES;
+        *stop = YES;
+      }
+    }];
+    
+    if (isTrustedServer) {
+      completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
+      
+    } else {
+      completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+  }
 }
 
 @end
