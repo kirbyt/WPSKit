@@ -24,6 +24,8 @@
 @property (nonatomic, copy) WPSCellIdentifierBlock cellIdentifierBlock;
 @property (nonatomic, copy) WPSCellCanEditBlock canEditBlock;
 @property (nonatomic, copy) WPSCellCommitEditingStyleBlock commitEditingStyleBlock;
+@property (nonatomic, copy) WPSCellCanMoveItemBlock canMoveItemBlock;
+@property (nonatomic, copy) WPSCellMoveItemBlock moveItemBlock;
 
 - (id)initWithArray:(NSArray *)objects cellIdentifier:(NSString *)cellIdentifier configureCellBlock:(WPSCellConfigureBlock)configureCellBlock;
 - (id)initWithArray:(NSArray *)objects sectionHeaderTitles:(NSArray *)sectionHeaderTitles cellIdentifier:(NSString *)cellIdentifier configureCellBlock:(WPSCellConfigureBlock)configureCellBlock;

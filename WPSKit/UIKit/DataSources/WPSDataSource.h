@@ -14,4 +14,7 @@ typedef NSString * (^WPSCellIdentifierBlock)(NSIndexPath *indexPath);
 typedef BOOL (^WPSCellCanEditBlock)(NSIndexPath *indexPath);
 typedef void (^WPSCellCommitEditingStyleBlock)(UITableView *tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath *indexPath);
 
+typedef BOOL (^WPSCellCanMoveItemBlock)(NSIndexPath *indexPath);
+typedef void (^WPSCellMoveItemBlock)(UITableView *tableView, NSIndexPath *sourceIndexPath, NSIndexPath *destinationIndexPath);
+
 #endif

@@ -205,4 +205,20 @@
    }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  BOOL canMove = NO;
+  if (self.canMoveItemBlock) {
+    canMove = self.canMoveItemBlock(indexPath);
+  }
+  return canMove;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+  if (self.moveItemBlock) {
+    self.moveItemBlock(tableView, sourceIndexPath, destinationIndexPath);
+  }
+}
+
 @end

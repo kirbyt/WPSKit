@@ -21,8 +21,11 @@
 @property (nonatomic, copy) WPSCellIdentifierBlock cellIdentifierBlock;
 @property (nonatomic, copy) WPSCellCanEditBlock canEditBlock;
 @property (nonatomic, copy) WPSCellCommitEditingStyleBlock commitEditingStyleBlock;
+@property (nonatomic, copy) WPSCellCanMoveItemBlock canMoveItemBlock;
+@property (nonatomic, copy) WPSCellMoveItemBlock moveItemBlock;
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray *)allObjects;
 
 /**
  * Helper Methods
