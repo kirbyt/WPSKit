@@ -31,6 +31,7 @@
 @property (nonatomic, assign) BOOL infiniteScrollingEnabled;
 @property (nonatomic, assign) CGFloat pagePadding;
 @property (nonatomic, assign) NSUInteger pageCount;
+@property (nonatomic, assign, readonly) NSUInteger currentPage;
 @property (nonatomic, copy) void (^configurePageItem)(id item, NSUInteger index, CGRect frame);
 @property (nonatomic, copy) void (^didChangePage)(NSUInteger pageIndex);
 

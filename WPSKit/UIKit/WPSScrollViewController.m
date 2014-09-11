@@ -28,7 +28,7 @@
 
 @interface WPSScrollViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong, readwrite) UIScrollView *scrollView;
-@property (nonatomic, assign) NSUInteger currentPage;
+@property (nonatomic, assign, readwrite) NSUInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *pageItemCache;
 @property (nonatomic, strong) NSMutableSet *reusablePageItems;
 @property (nonatomic, assign) Class registeredPageItemClass;
