@@ -136,6 +136,34 @@
  */
 - (UIImage *)wps_squareImageWithDimension:(CGFloat)dimension;
 
+#pragma mark - Rounded
+/// -----------------
+/// @name Rounded
+/// -----------------
+
+/**
+ Creates a round image.
+ 
+ @return Returns a new `UIImage`.
+ */
+- (UIImage *)wps_roundedImage;
+
+/**
+ Creates a round image with the provided diameter.
+ 
+ @param diameter The diameter of the round image.
+ @return Returns a new `UIImage`.
+ */
+- (UIImage *)wps_roundedImageWithDiameter:(CGFloat)diameter;
+
+/**
+ Creates a new `UIImage` with rounded corners using the provided corner radius.
+ 
+ @param cornerRadius The radius to use when drawing rounded corners.
+ @return Returns a new `UIImage`.
+ */
+- (UIImage *)wps_roundedImageWithCornerRadius:(CGFloat)cornerRadius;
+
 #pragma mark - Color
 /// -----------------
 /// @name Color

@@ -167,6 +167,40 @@
   return squareImage;
 }
 
+#pragma mark - Rounded
+
+- (UIImage *)wps_roundedImage
+{
+  UIImage *squareImage = [self wps_squareImage];
+  CGSize imageSize = [squareImage size];
+  return [squareImage wps_roundedImageWithCornerRadius:imageSize.width/2.0f];
+}
+
+- (UIImage *)wps_roundedImageWithDiameter:(CGFloat)diameter
+{
+  UIImage *squareImage = [self wps_squareImage];
+  UIImage *scaledImage = [squareImage wps_scaleToSize:CGSizeMake(diameter, diameter)];
+  CGSize imageSize = [scaledImage size];
+  return [scaledImage wps_roundedImageWithCornerRadius:imageSize.width/2.0f];
+}
+
+- (UIImage *)wps_roundedImageWithCornerRadius:(CGFloat)cornerRadius
+{
+  CGSize imageSize = [self size];
+  
+  CALayer *imageLayer = [CALayer layer];
+  [imageLayer setFrame:CGRectMake(0.0f, 0.0f, imageSize.width, imageSize.height)];
+  [imageLayer setContents:(id)[self CGImage]];
+  [imageLayer setMasksToBounds:YES];
+  [imageLayer setCornerRadius:cornerRadius];
+  
+  UIGraphicsBeginImageContext(imageSize);
+  [imageLayer renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return roundedImage;
+}
 
 #pragma mark - Colors
 
