@@ -124,6 +124,36 @@
   [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
+#pragma mark - multi-part/form-data POST Tests
+
+- (void)testMultipartFormDataPOSTRequest
+{
+  // TODO: Implement /multipartpost endpoint.
+//  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
+//  
+//  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/multipartpost"];
+//  NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
+//  WPSWebSession *webSession = [self webSession];
+//  [webSession post:URL multipartFormData:parameters completion:^(NSData *data, NSURL *responseURL, NSError *error) {
+//    // Verify that the data was posted.
+//    WPSWebSession *getWebSession = [self webSession];
+//    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURL *responseURL, NSError *error) {
+//      if ([jsonData isKindOfClass:[NSArray class]]) {
+//        NSDictionary *item = [jsonData firstObject];
+//        XCTAssertTrue([item[@"name"] isEqualToString:@"Kirby"]);
+//        XCTAssertTrue([item[@"city"] isEqualToString:@"Stowe"]);
+//      }
+//      
+//      WPSWebSession *resetWebSession = [self webSession];
+//      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
+//        [webSessionExpectation fulfill];
+//      }];
+//    }];
+//  }];
+//  
+//  [self waitForExpectationsWithTimeout:10 handler:nil];
+}
+
 #pragma mark - Download Tests
 
 - (void)testFileDownload

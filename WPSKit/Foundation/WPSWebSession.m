@@ -302,6 +302,73 @@
   return data;
 }
 
+- (void)post:(NSURL *)URL multipartFormData:(NSDictionary *)fields completion:(WPSWebSessionCompletionBlock)completion
+{
+  NSParameterAssert(URL);
+  NSParameterAssert(fields);
+  
+  NSMutableArray *orderedFields = [NSMutableArray array];
+  [fields enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    NSDictionary *item = @{key: obj};
+    [orderedFields addObject:item];
+  }];
+  
+  [self post:URL orderedMultipartFormData:orderedFields completion:completion];
+}
+
+- (void)post:(NSURL *)URL orderedMultipartFormData:(NSArray *)orderedFields completion:(WPSWebSessionCompletionBlock)completion
+{
+  NSParameterAssert(URL);
+  NSParameterAssert(orderedFields);
+  
+  NSMutableArray *multipartFields = [NSMutableArray arrayWithCapacity:[orderedFields count]];
+  [orderedFields enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
+    id key = [[obj allKeys] firstObject];
+    id value = obj[key];
+    [multipartFields addObject:@[key, value]];
+  }];
+  
+  void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    if (data) {
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      // Nope. Save the data to the local cache if available.
+      if (statusCode >= 200 && statusCode < 300) {
+        // We're good.
+      } else if (statusCode >= 300) {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        errorToReport = WPSHTTPError([response URL], statusCode, data);
+      }
+    }
+    if (completion) {
+      completion(data, [response URL], errorToReport);
+    }
+  };
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  [request setHTTPMethod: @"POST"];
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  NSString *boundary = @"0xKhTmLbOuNdArY";
+  NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+  [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+  [request setHTTPBody:[self multipartFormBodyWithBoundary:boundary fields:multipartFields]];
+  
+  NSURLSession *session = [self session];
+  NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
+  [task resume];
+}
+
 #pragma mark - Downloads
 
 - (void)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion
@@ -364,6 +431,31 @@
   [task resume];
 }
 
+#pragma mark - Download Images
+
+- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
+{
+  [self imageAtURL:URL parameters:nil completion:completion];
+}
+
+- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion
+{
+  if (completion == nil) {
+    // Without a completion block, we have no way to return the image.
+    // So why waste the effort.
+    return;
+  }
+  
+  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
+    UIImage *image = nil;
+    if ([location isFileURL]) {
+      NSData *data = [NSData dataWithContentsOfURL:location options:NSDataReadingMappedIfSafe error:NULL];
+      image = [UIImage imageWithData:data];
+    }
+    completion(image, responseURL, error);
+  }];
+}
+
 #pragma mark - Uploads
 
 - (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion
@@ -424,6 +516,8 @@
   [task resume];
 }
 
+#pragma mark - Multipart Form Body Helper
+
 - (NSData *)multipartFormBodyWithBoundary:(NSString *)boundary fields:(NSArray *)fields
 {
   // Derived from code posted at: http://www.cocoadev.com/index.pl?HTTPFileUpload
@@ -467,31 +561,6 @@
   [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
   
   return [body copy];
-}
-
-#pragma mark - Images
-
-- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
-{
-  [self imageAtURL:URL parameters:nil completion:completion];
-}
-
-- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion
-{
-  if (completion == nil) {
-    // Without a completion block, we have no way to return the image.
-    // So why waste the effort.
-    return;
-  }
-  
-  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
-    UIImage *image = nil;
-    if ([location isFileURL]) {
-      NSData *data = [NSData dataWithContentsOfURL:location options:NSDataReadingMappedIfSafe error:NULL];
-      image = [UIImage imageWithData:data];
-    }
-    completion(image, responseURL, error);
-  }];
 }
 
 #pragma mark - Request Queue

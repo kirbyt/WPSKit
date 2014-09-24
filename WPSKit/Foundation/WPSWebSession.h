@@ -194,6 +194,32 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
 - (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType completion:(WPSWebSessionCompletionBlock)completion;
 
 /**
+ Performs a multipart/form-data POST to the provided URL.
+ 
+ @param URL The URL that  will receive the data.
+ @param fields The name value pairs representing form data to post to the server.
+ @param completion The block that is eecuted after the request has completed. The block is executed on a background thread.
+ */
+- (void)post:(NSURL *)URL multipartFormData:(NSDictionary *)fields completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
+ Performs a multipart/form-data POST to the provided URL.
+ 
+ This method sends the form data in the specific order defined by `orderedFields`. Use this method when the receiving endpoint requires form data to be in a certain order.
+ 
+ @param URL The URL that  will receive the data.
+ @param orderedFields An array of `NSDictionary` objects. Each dictionary object is a name value pair representing a form data field.
+ @param completion The block that is eecuted after the request has completed. The block is executed on a background thread.
+ */
+- (void)post:(NSURL *)URL orderedMultipartFormData:(NSArray *)orderedFields completion:(WPSWebSessionCompletionBlock)completion;
+
+
+#pragma mark - Download Action
+/// ---------------------
+/// @name Download Action
+/// ---------------------
+
+/**
  Downloads a file at the provided URL.
  
  @param URL The location of the file to download.
@@ -209,6 +235,28 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
  @param completion The block that is executed after the requet has completed.
  */
 - (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
+
+/**
+ Downloads the image at the provided URL with the provided parameters.
+ 
+ @param URL The location of the image to download.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion;
+
+/**
+ Downloads the image at the provided URL with the provided parameters.
+ 
+ @param URL The location of the image to download.
+ @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion;
+
+#pragma mark - Upload Action
+/// ---------------------
+/// @name Upload Action
+/// ---------------------
 
 /**
  Uploads a file at the provided file URL to the URL.
@@ -230,22 +278,5 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
  @param completion The block that is executed after the request has completed.
  */
 - (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL multipartForm:(BOOL)multipartForm completion:(WPSWebSessionCompletionBlock)completion;
-
-/**
- Downloads the image at the provided URL with the provided parameters.
- 
- @param URL The location of the image to download.
- @param completion The block that is executed after the requet has completed.
- */
-- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion;
-
-/**
- Downloads the image at the provided URL with the provided parameters.
-
- @param URL The location of the image to download.
- @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
- @param completion The block that is executed after the requet has completed.
- */
-- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion;
 
 @end
