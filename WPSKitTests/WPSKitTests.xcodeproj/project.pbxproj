@@ -64,7 +64,6 @@
 		685FE81119871660002F399B /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE7E819871660002F399B /* WPSTextView.m */; };
 		685FE814198717C2002F399B /* WPSWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE813198717C2002F399B /* WPSWebSession.m */; };
 		685FE816198719EF002F399B /* WPSWebSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE815198719EF002F399B /* WPSWebSessionTests.m */; };
-		685FE81D19872504002F399B /* XCTAsyncTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 685FE81B19872504002F399B /* XCTAsyncTestCase.m */; };
 		686062E21460F962001FFB49 /* WPSImageDownloaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */; };
 		6882A9841461DA02005AAC6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6882A9831461DA02005AAC6E /* MapKit.framework */; };
 		688DF6BC14685BE800732A7C /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 688DF6BB14685BE800732A7C /* WPSStopwatchTests.m */; };
@@ -181,9 +180,6 @@
 		685FE812198717C2002F399B /* WPSWebSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSWebSession.h; sourceTree = "<group>"; };
 		685FE813198717C2002F399B /* WPSWebSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebSession.m; sourceTree = "<group>"; };
 		685FE815198719EF002F399B /* WPSWebSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebSessionTests.m; sourceTree = "<group>"; };
-		685FE81919872504002F399B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		685FE81A19872504002F399B /* XCTAsyncTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTAsyncTestCase.h; sourceTree = "<group>"; };
-		685FE81B19872504002F399B /* XCTAsyncTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTAsyncTestCase.m; sourceTree = "<group>"; };
 		686062E01460F962001FFB49 /* WPSImageDownloaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSImageDownloaderTests.h; sourceTree = "<group>"; };
 		686062E11460F962001FFB49 /* WPSImageDownloaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSImageDownloaderTests.m; sourceTree = "<group>"; };
 		6882A9831461DA02005AAC6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -247,7 +243,6 @@
 		683B50621440B73A000A62E1 /* WPSKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				685FE81819872504002F399B /* XCTAsyncTestCase */,
 				683B50631440B73A000A62E1 /* Supporting Files */,
 				6894235117808425009EAC3A /* Base64Tests.h */,
 				6894235217808425009EAC3A /* Base64Tests.m */,
@@ -424,16 +419,6 @@
 			path = DataSources;
 			sourceTree = "<group>";
 		};
-		685FE81819872504002F399B /* XCTAsyncTestCase */ = {
-			isa = PBXGroup;
-			children = (
-				685FE81919872504002F399B /* README.md */,
-				685FE81A19872504002F399B /* XCTAsyncTestCase.h */,
-				685FE81B19872504002F399B /* XCTAsyncTestCase.m */,
-			);
-			path = XCTAsyncTestCase;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,7 +518,6 @@
 				685FE7F119871660002F399B /* NSFileManager+WPSKit.m in Sources */,
 				685FE7F519871660002F399B /* NSURL+WPSKit.m in Sources */,
 				683D8B2B199CF4BA001FE8C2 /* WPSWebErrorTests.m in Sources */,
-				685FE81D19872504002F399B /* XCTAsyncTestCase.m in Sources */,
 				685FE7EA19871660002F399B /* NSManagedObjectContext+WPSKit.m in Sources */,
 				685BB3A5183FF45F000984DF /* UIColorTests.m in Sources */,
 				685FE7F919871660002F399B /* WPSMultipartFormDataUploader.m in Sources */,

@@ -7,10 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "XCTAsyncTestCase.h"
 #import "WPSWebSession.h"
 
-@interface WPSWebSessionTests : XCTAsyncTestCase
+@interface WPSWebSessionTests : XCTestCase
 @property (nonatomic, strong) WPSWebSession *webSession;
 @end
 
@@ -34,28 +33,28 @@
 
 - (void)testGETRequest
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com"];
   WPSWebSession *webSession = [self webSession];
   [webSession getWithURL:URL parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 - (void)testGETRequestQueue
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   __block NSInteger count = 3;
   WPSWebSessionCompletionBlock completionBlock;
   completionBlock = ^(NSData *data, NSURL *responseURL, NSError *error) {
     --count;
     if (count < 1) {
-      [self notify:kXCTUnitWaitStatusSuccess];
+      [webSessionExpectation fulfill];
     }
   };
   
@@ -65,30 +64,30 @@
   [webSession getWithURL:URL parameters:nil completion:completionBlock];
   [webSession getWithURL:URL parameters:nil completion:completionBlock];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - JSON Tests
 
 - (void)testJSONGet
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
   NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
   WPSWebSession *webSession = [self webSession];
   [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURL *responseURL, NSError *error) {
     XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - POST Tests
 
 - (void)testPOSTRequest
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/post"];
   NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
@@ -105,45 +104,45 @@
       
       WPSWebSession *resetWebSession = [self webSession];
       [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
-        [self notify:kXCTUnitWaitStatusSuccess];
+        [webSessionExpectation fulfill];
       }];
     }];
   }];
 
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 - (void)testPOSTRequestWithEmptyBody
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   WPSWebSession *webSession = [self webSession];
   [webSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
 
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - Download Tests
 
 - (void)testFileDownload
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
   WPSWebSession *webSession = [self webSession];
   [webSession downloadFileAtURL:URL completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
     XCTAssertTrue([location isFileURL]);
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 - (void)testFileDownloadQueue
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   __block NSInteger count = 3;
   WPSWebSessionDownloadCompletionBlock completion;
@@ -152,7 +151,7 @@
     --count;
     
     if (count < 1) {
-      [self notify:kXCTUnitWaitStatusSuccess];
+      [webSessionExpectation fulfill];
     }
   };
   
@@ -162,30 +161,30 @@
   [webSession downloadFileAtURL:URL completion:completion];
   [webSession downloadFileAtURL:URL completion:completion];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - Image Tests
 
 - (void)testImageDownload
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2.png"];
   WPSWebSession *webSession = [self webSession];
   [webSession imageAtURL:URL completion:^(UIImage *image, NSURL *responseURL, NSError *error) {
     XCTAssertNotNil(image);
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - HTTP Error Tests
 
 - (void)testHTTPErrorWithGETRequest
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
   WPSWebSession *webSession = [self webSession];
@@ -194,15 +193,15 @@
       NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
       XCTAssertEqual([HTTPStatusCode integerValue], 404);
     }
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 - (void)testHTTPErrorWithPOSTRequest
 {
-  [self prepare];
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
   NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/gimmea404"];
   WPSWebSession *webSession = [self webSession];
@@ -211,10 +210,10 @@
       NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
       XCTAssertEqual([HTTPStatusCode integerValue], 404);
     }
-    [self notify:kXCTUnitWaitStatusSuccess];
+    [webSessionExpectation fulfill];
   }];
   
-  [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:10.0f];
+  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 @end
