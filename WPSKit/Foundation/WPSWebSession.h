@@ -211,6 +211,27 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
 - (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
 
 /**
+ Uploads a file at the provided file URL to the URL.
+ 
+ @param fileURL The location of the local file to be uploaded.
+ @param URL The URL that will receive the uploaded file.
+ @param completion The block that is executed after the request has completed.
+ */
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
+ Uploads a file at the provided file URL to the URL.
+ 
+ Set the `multipartForm` flag to `YES` to send the file as a multipart/form-data post.
+ 
+ @param fileURL The location of the local file to be uploaded.
+ @param URL The URL that will receive the uploaded file.
+ @param multipartForm Set to `YES` to send the file as a multipart/form-data post.
+ @param completion The block that is executed after the request has completed.
+ */
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL multipartForm:(BOOL)multipartForm completion:(WPSWebSessionCompletionBlock)completion;
+
+/**
  Downloads the image at the provided URL with the provided parameters.
  
  @param URL The location of the image to download.

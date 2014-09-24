@@ -208,15 +208,32 @@
 
 - (void)post:(NSURL *)URL jsonData:(id)jsonData completion:(WPSWebSessionJSONCompletionBlock)completion
 {
-  NSError *error = nil;
-  NSData *data = [NSJSONSerialization dataWithJSONObject:jsonData options:0 error:&error];
-  if (data) {
-    [self post:URL data:data contentType:@"application/json" completion:completion];
-  } else {
-    if (completion) {
-      completion(nil, nil, error);
+  NSData *data = nil;
+  if (jsonData) {
+    NSError *error = nil;
+    data = [NSJSONSerialization dataWithJSONObject:jsonData options:0 error:&error];
+    if (data == nil) {
+      if (completion) {
+        completion(nil, nil, error);
+      }
+      return;
     }
   }
+  
+  [self post:URL data:data contentType:@"application/json" completion:^(NSData *responseData, NSURL *responseURL, NSError *error) {
+    NSError *errorToReport = error;
+    id jsonResponseData = nil;
+    if (responseData) {
+      NSError *jsonError = nil;
+      jsonResponseData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&jsonError];
+      if (jsonResponseData == nil) {
+        errorToReport = jsonError;
+      }
+    }
+    if (completion) {
+      completion(jsonResponseData, responseURL, errorToReport);
+    }
+  }];
 }
 
 - (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType completion:(WPSWebSessionCompletionBlock)completion
@@ -347,6 +364,111 @@
   [task resume];
 }
 
+#pragma mark - Uploads
+
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion
+{
+  [self uploadFile:fileURL toURL:URL multipartForm:NO completion:completion];
+}
+
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL multipartForm:(BOOL)multipartForm completion:(WPSWebSessionCompletionBlock)completion
+{
+  NSParameterAssert(fileURL);
+  NSParameterAssert(URL);
+  
+  void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    if (data) {
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      // Nope. Save the data to the local cache if available.
+      if (statusCode >= 200 && statusCode < 300) {
+        // We're good.
+      } else if (statusCode >= 300) {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        errorToReport = WPSHTTPError([response URL], statusCode, data);
+      }
+    }
+    if (completion) {
+      completion(data, [response URL], errorToReport);
+    }
+  };
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  [request setHTTPMethod: @"POST"];
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  NSURLSession *session = [self session];
+  NSURLSessionTask *task = nil;
+
+  if (multipartForm) {
+    NSString *boundary = @"0xKhTmLbOuNdArY";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[self multipartFormBodyWithBoundary:boundary fields:@[@[@"file",fileURL]]]];
+    
+    task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
+    
+  } else {
+    task = [session uploadTaskWithRequest:request fromFile:fileURL completionHandler:taskCompletion];
+  }
+  [task resume];
+}
+
+- (NSData *)multipartFormBodyWithBoundary:(NSString *)boundary fields:(NSArray *)fields
+{
+  // Derived from code posted at: http://www.cocoadev.com/index.pl?HTTPFileUpload
+  
+  NSMutableData *body = [NSMutableData data];
+  [fields enumerateObjectsUsingBlock:^(id itemArray, NSUInteger index, BOOL *stop) {
+    if ([itemArray isKindOfClass:[NSArray class]] && [itemArray count] >= 2) {
+      id key = itemArray[0];
+      id value = itemArray[1];
+      
+      [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+      
+      if ([value isKindOfClass:[NSData class]]) {
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:value];
+        
+      } else if ([value isKindOfClass:[NSURL class]] && [value isFileURL]) {
+        NSString *fileName = [[(NSURL *)value path] lastPathComponent];
+        NSString *fileExt = [[fileName pathExtension] lowercaseString];
+        NSString *fileContentType = @"application/octet-stream";
+        if ([fileExt isEqualToString:@"jpg"] || [fileExt isEqualToString:@"jpeg"]) {
+          fileContentType = @"image/jpeg";
+        } else if ([fileExt isEqualToString:@"png"]) {
+          fileContentType = @"image/png";
+        }
+        
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, fileName] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n",fileContentType] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[NSData dataWithContentsOfFile:[(NSURL *)value path]]];
+        
+      } else {
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@", value] dataUsingEncoding:NSUTF8StringEncoding]];
+      }
+      
+      [body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+  }];
+  [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+  
+  return [body copy];
+}
+
 #pragma mark - Images
 
 - (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
@@ -365,7 +487,7 @@
   [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
     UIImage *image = nil;
     if ([location isFileURL]) {
-      NSData *data = [NSData dataWithContentsOfMappedFile:[location path]];
+      NSData *data = [NSData dataWithContentsOfURL:location options:NSDataReadingMappedIfSafe error:NULL];
       image = [UIImage imageWithData:data];
     }
     completion(image, responseURL, error);
