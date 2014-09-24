@@ -10,7 +10,7 @@
 #define WPSKitSamples_WPSDataSource_h
 
 typedef void (^WPSCellConfigureBlock)(id cell, NSIndexPath *indexPath, id item);
-typedef NSString * (^WPSCellIdentifierBlock)(NSIndexPath *indexPath);
+typedef NSString * (^WPSCellIdentifierBlock)(NSIndexPath *indexPath, id item);
 typedef BOOL (^WPSCellCanEditBlock)(NSIndexPath *indexPath);
 typedef void (^WPSCellCommitEditingStyleBlock)(UITableView *tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath *indexPath);
 

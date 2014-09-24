@@ -23,7 +23,8 @@
    NSString *cellId = [self cellIdentifier];
    WPSCellIdentifierBlock cellIdentifier = [self cellIdentifierBlock];
    if (cellIdentifier) {
-      cellId = cellIdentifier(indexPath);
+     id item = [self objectAtIndexPath:indexPath];
+      cellId = cellIdentifier(indexPath, item);
    }
    return cellId;
 }

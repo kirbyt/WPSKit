@@ -49,9 +49,10 @@
    NSString *cellId = [self cellIdentifier];
    WPSCellIdentifierBlock cellIdentifier = [self cellIdentifierBlock];
    if (cellIdentifier) {
-      cellId = cellIdentifier(indexPath);
-   }
-   return cellId;
+    id item = [self objectAtIndexPath:indexPath];
+    cellId = cellIdentifier(indexPath, item);
+  }
+  return cellId;
 }
 
 - (void)addObjects:(NSArray *)array toSection:(NSUInteger)section
