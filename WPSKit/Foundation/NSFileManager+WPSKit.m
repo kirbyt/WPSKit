@@ -44,4 +44,19 @@
    }
 }
 
+- (uint64_t)wps_fileSizeAtPath:(NSString *)path
+{
+  uint64_t bytes = 0;
+  if ([self fileExistsAtPath:path]) {
+    NSDictionary *attributes = [self attributesOfItemAtPath:path error:NULL];
+    bytes = [attributes fileSize];
+  }
+  return bytes;
+}
+
+- (uint64_t)wps_fileSizeAtURL:(NSURL *)fileURL
+{
+  return [self wps_fileSizeAtPath:[fileURL path]];
+}
+
 @end

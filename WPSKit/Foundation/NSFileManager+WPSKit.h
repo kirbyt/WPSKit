@@ -31,4 +31,7 @@
 
 + (void)wps_createDirectoryAtPath:(NSString *)path;
 
+- (uint64_t)wps_fileSizeAtPath:(NSString *)path;
+- (uint64_t)wps_fileSizeAtURL:(NSURL *)fileURL;
+
 @end
