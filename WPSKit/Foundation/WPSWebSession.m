@@ -174,8 +174,11 @@
     NSError *errorToReport = error;
     id jsonData = nil;
     if (data) {
-      errorToReport = nil;
-      jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&errorToReport];
+      NSError *jsonError = nil;
+      jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+      if (jsonData == nil) {
+        errorToReport = jsonError;
+      }
     }
     
     dispatchCompletion(jsonData, responseURL, errorToReport);
@@ -283,7 +286,7 @@
         if (urlToReport == nil) {
           urlToReport = URL;
         }
-        errorToReport = WPSHTTPError(urlToReport, statusCode, data);
+        errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
       }
     }
     dispatchCompletion(responseData, [response URL], errorToReport);
@@ -395,9 +398,13 @@
     return;
   }
   
+  __weak __typeof__(self) weakSelf = self;
   void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error);
   dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error) {
-    [self dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location responseURL:responseURL error:error];
+    __typeof__(self) strongSelf = weakSelf;
+    if (strongSelf == nil) return;
+    
+    [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location responseURL:responseURL error:error];
   };
   
   NSInteger cacheAge = [self cacheAge];
@@ -491,6 +498,34 @@
     }
   };
   
+  NSURLRequest *request = [self uploadRequestForFile:fileURL toURL:URL multipartForm:multipartForm];
+  NSURLSession *session = [self session];
+  NSURLSessionTask *task = nil;
+
+  if (multipartForm) {
+    task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
+    
+  } else {
+    task = [session uploadTaskWithRequest:request fromFile:fileURL completionHandler:taskCompletion];
+  }
+  [task resume];
+}
+
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL
+{
+  NSParameterAssert(fileURL);
+  NSParameterAssert(URL);
+  
+  NSURLRequest *request = [self uploadRequestForFile:fileURL toURL:URL multipartForm:NO];
+  NSURLSession *session = [self session];
+  NSURLSessionTask *task = nil;
+  
+  task = [session uploadTaskWithRequest:request fromFile:fileURL];
+  [task resume];
+}
+
+- (NSURLRequest *)uploadRequestForFile:(NSURL *)fileURL toURL:(NSURL *)URL multipartForm:(BOOL)multipartForm
+{
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
   [request setHTTPMethod: @"POST"];
   if ([self additionalHTTPHeaderFields]) {
@@ -499,21 +534,17 @@
     }];
   }
   
-  NSURLSession *session = [self session];
-  NSURLSessionTask *task = nil;
-
   if (multipartForm) {
     NSString *boundary = @"0xKhTmLbOuNdArY";
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
     [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:[self multipartFormBodyWithBoundary:boundary fields:@[@[@"file",fileURL]]]];
     
-    task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
-    
   } else {
-    task = [session uploadTaskWithRequest:request fromFile:fileURL completionHandler:taskCompletion];
+    [request addValue:[fileURL lastPathComponent] forHTTPHeaderField:@"x-file-name"];
   }
-  [task resume];
+  
+  return request;
 }
 
 #pragma mark - Multipart Form Body Helper
@@ -726,6 +757,53 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
       completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }
   }
+}
+
+#pragma mark - DELETE Action
+
+- (void)delete:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion
+{
+  WPSWebSessionCompletionBlock dispatchCompletion;
+  dispatchCompletion = ^(NSData *responseData, NSURL *responseURL, NSError *error) {
+    if (completion) {
+      completion(responseData, responseURL, error);
+    }
+  };
+  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  [request setHTTPMethod:@"DELETE"];
+  
+  if ([self additionalHTTPHeaderFields]) {
+    [[self additionalHTTPHeaderFields] enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+      [request setValue:value forHTTPHeaderField:key];
+    }];
+  }
+  
+  void (^taskCompletion)(NSData *responseData, NSURLResponse *response, NSError *error);
+  taskCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
+    NSError *errorToReport = error;
+    if (responseData) {
+      // Did we receive an HTTP error?
+      NSInteger statusCode = 0;
+      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)response statusCode];
+      }
+      
+      if (statusCode < 200 || statusCode >= 300) {
+        // Yep. Prepare to report the HTTP error back to the caller.
+        NSURL *urlToReport = [response URL];
+        if (urlToReport == nil) {
+          urlToReport = URL;
+        }
+        errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
+      }
+    }
+    dispatchCompletion(responseData, [response URL], errorToReport);
+  };
+  
+  NSURLSession *session = [self session];
+  NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:taskCompletion];
+  [task resume];
 }
 
 @end

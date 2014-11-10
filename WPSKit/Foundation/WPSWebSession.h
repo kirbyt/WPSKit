@@ -279,4 +279,27 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
  */
 - (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL multipartForm:(BOOL)multipartForm completion:(WPSWebSessionCompletionBlock)completion;
 
+/**
+ Uploads a file at the provided file URL to the URL.
+ 
+ This call does not use a completion block. Instead the `NSURLSession` delegate is used. This method is intended for uploads that use a background `NSURLSession`. It's raw and does not report back the status of the call. Use at your own risk.
+ 
+ @param fileURL The location of the local file to be uploaded.
+ @param URL The URL that will receive the uploaded file.
+ */
+- (void)uploadFile:(NSURL *)fileURL toURL:(NSURL *)URL;
+
+#pragma mark - DELETE Action
+/// -------------------
+/// @name DELETE Action
+/// -------------------
+
+/**
+ Sends a DELETE request to the URL.
+ 
+ @param URL The destination of the POST request.
+ @param completion The block that is executed after the requet has completed.
+ */
+- (void)delete:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion;
+
 @end
