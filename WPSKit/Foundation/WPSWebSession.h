@@ -113,8 +113,9 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *response
 @property (nonatomic, copy) NSArray *trustedServers;
 
 /**
+ Creates a new instance with the provided `NSURLSessionConfiguration`.
  */
-- (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration;
+- (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - GET Action
 /// ----------------
