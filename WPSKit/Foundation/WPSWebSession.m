@@ -173,7 +173,7 @@
   [self getWithURL:URL parameters:parameters ignoreCache:ignoreCache completion:^(NSData *data, NSURL *responseURL, NSError *error) {
     NSError *errorToReport = error;
     id jsonData = nil;
-    if (data) {
+    if (data && [data length] > 0 && error == nil) {
       NSError *jsonError = nil;
       jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
       if (jsonData == nil) {
