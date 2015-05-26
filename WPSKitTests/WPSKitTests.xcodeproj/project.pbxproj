@@ -16,6 +16,8 @@
 		683B50841440B7CB000A62E1 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683B50831440B7CB000A62E1 /* NSStringTests.m */; };
 		683B50861440B8BE000A62E1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50851440B8BE000A62E1 /* CoreData.framework */; };
 		683B50991440C640000A62E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683B50981440C640000A62E1 /* SystemConfiguration.framework */; };
+		683C65851B0F5ADB0065AB41 /* NSDate+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 683C65841B0F5ADB0065AB41 /* NSDate+WPSKit.m */; };
+		683C65871B0F5B640065AB41 /* NSDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683C65861B0F5B640065AB41 /* NSDateTests.m */; };
 		683D8B2B199CF4BA001FE8C2 /* WPSWebErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 683D8B2A199CF4BA001FE8C2 /* WPSWebErrorTests.m */; };
 		684C80DB14434F0500DAAB9B /* WPSCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C80DA14434F0500DAAB9B /* WPSCacheTests.m */; };
 		684DDBAD16F54C480076DE9E /* NSURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 684DDBAC16F54C480076DE9E /* NSURLTests.m */; };
@@ -86,6 +88,9 @@
 		683B50831440B7CB000A62E1 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringTests.m; sourceTree = "<group>"; };
 		683B50851440B8BE000A62E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		683B50981440C640000A62E1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		683C65831B0F5ADB0065AB41 /* NSDate+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WPSKit.h"; sourceTree = "<group>"; };
+		683C65841B0F5ADB0065AB41 /* NSDate+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WPSKit.m"; sourceTree = "<group>"; };
+		683C65861B0F5B640065AB41 /* NSDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateTests.m; sourceTree = "<group>"; };
 		683D8B2A199CF4BA001FE8C2 /* WPSWebErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebErrorTests.m; sourceTree = "<group>"; };
 		684C80D914434F0500DAAB9B /* WPSCacheTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCacheTests.h; sourceTree = "<group>"; };
 		684C80DA14434F0500DAAB9B /* WPSCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCacheTests.m; sourceTree = "<group>"; };
@@ -248,6 +253,7 @@
 				6894235217808425009EAC3A /* Base64Tests.m */,
 				6814401E16E6995F009D91C6 /* NSArrayTests.h */,
 				6814401F16E6995F009D91C6 /* NSArrayTests.m */,
+				683C65861B0F5B640065AB41 /* NSDateTests.m */,
 				685BB3A4183FF45F000984DF /* UIColorTests.m */,
 				68AEC7DF1877B6030013F1BE /* NSNullTests.m */,
 				683B50821440B7CB000A62E1 /* NSStringTests.h */,
@@ -320,6 +326,8 @@
 			children = (
 				685FE79F19871660002F399B /* NSArray+WPSKit.h */,
 				685FE7A019871660002F399B /* NSArray+WPSKit.m */,
+				683C65831B0F5ADB0065AB41 /* NSDate+WPSKit.h */,
+				683C65841B0F5ADB0065AB41 /* NSDate+WPSKit.m */,
 				685FE7A119871660002F399B /* NSData+WPSKit.h */,
 				685FE7A219871660002F399B /* NSData+WPSKit.m */,
 				685FE7A319871660002F399B /* NSFileManager+WPSKit.h */,
@@ -500,6 +508,7 @@
 			files = (
 				685FE80719871660002F399B /* UIView+WPSKit.m in Sources */,
 				685FE80619871660002F399B /* UITextView+WPSKit.m in Sources */,
+				683C65851B0F5ADB0065AB41 /* NSDate+WPSKit.m in Sources */,
 				685FE81119871660002F399B /* WPSTextView.m in Sources */,
 				685FE80319871660002F399B /* UIFont+WPSKit.m in Sources */,
 				685FE80519871660002F399B /* UITextField+WPSKit.m in Sources */,
@@ -547,6 +556,7 @@
 				685FE80419871660002F399B /* UIImage+WPSKit.m in Sources */,
 				684DDBAD16F54C480076DE9E /* NSURLTests.m in Sources */,
 				685FE7FA19871660002F399B /* WPSStopwatch.m in Sources */,
+				683C65871B0F5B640065AB41 /* NSDateTests.m in Sources */,
 				685FE7FD19871660002F399B /* WPSArrayDataSource.m in Sources */,
 				685FE80F19871660002F399B /* WPSScrollViewController.m in Sources */,
 				6894235317808425009EAC3A /* Base64Tests.m in Sources */,
