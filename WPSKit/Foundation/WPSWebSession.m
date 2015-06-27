@@ -134,23 +134,23 @@
   NSURLSession *session = [self session];
   NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (data) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      // Nope. Save the data to the local cache if available.
-      if (statusCode >= 200 && statusCode < 300) {
-        if (cache) {
-          [cache cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:cacheAge];
-        }
-      } else if (statusCode >= 300) {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        errorToReport = WPSHTTPError([response URL], statusCode, data);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    // Nope. Save the data to the local cache if available.
+    if (statusCode >= 200 && statusCode < 300) {
+      if (cache) {
+        [cache cacheData:data forKey:cacheKey cacheLocation:WPSCacheLocationFileSystem cacheAge:cacheAge];
+      }
+    } else if (statusCode >= 300) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      errorToReport = WPSHTTPError([response URL], statusCode, data);
+    }
+
     dispatchCompletion(cacheKey, data, response, errorToReport);
   }];
   [task resume];
@@ -273,22 +273,22 @@
   void (^taskCompletion)(NSData *responseData, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (responseData) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      if (statusCode < 200 || statusCode >= 300) {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        NSURL *urlToReport = [response URL];
-        if (urlToReport == nil) {
-          urlToReport = URL;
-        }
-        errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    if (statusCode < 200 || statusCode >= 300) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      NSURL *urlToReport = [response URL];
+      if (urlToReport == nil) {
+        urlToReport = URL;
+      }
+      errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
+    }
+    
     dispatchCompletion(responseData, [response URL], errorToReport);
   };
   
@@ -334,21 +334,21 @@
   void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (data) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      // Nope. Save the data to the local cache if available.
-      if (statusCode >= 200 && statusCode < 300) {
-        // We're good.
-      } else if (statusCode >= 300) {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        errorToReport = WPSHTTPError([response URL], statusCode, data);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    // Nope. Save the data to the local cache if available.
+    if (statusCode >= 200 && statusCode < 300) {
+      // We're good.
+    } else if (statusCode >= 300) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      errorToReport = WPSHTTPError([response URL], statusCode, data);
+    }
+
     if (completion) {
       completion(data, [response URL], errorToReport);
     }
@@ -412,23 +412,23 @@
   void (^taskCompletion)(NSURL *location, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (location) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      // Nope. Save the data to the local cache if available.
-      if (statusCode >= 200 && statusCode < 300) {
-        if (cache) {
-          [cache cacheFileAt:location forKey:cacheKey cacheAge:cacheAge];
-        }
-      } else {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        errorToReport = WPSHTTPError([response URL], statusCode, nil);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    // Nope. Save the data to the local cache if available.
+    if (statusCode >= 200 && statusCode < 300) {
+      if (cache) {
+        [cache cacheFileAt:location forKey:cacheKey cacheAge:cacheAge];
+      }
+    } else {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      errorToReport = WPSHTTPError([response URL], statusCode, nil);
+    }
+
     dispatchCompletion(cacheKey, location, [response URL], errorToReport);
   };
   
@@ -478,21 +478,21 @@
   void (^taskCompletion)(NSData *data, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (data) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      // Nope. Save the data to the local cache if available.
-      if (statusCode >= 200 && statusCode < 300) {
-        // We're good.
-      } else if (statusCode >= 300) {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        errorToReport = WPSHTTPError([response URL], statusCode, data);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    // Nope. Save the data to the local cache if available.
+    if (statusCode >= 200 && statusCode < 300) {
+      // We're good.
+    } else if (statusCode >= 300) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      errorToReport = WPSHTTPError([response URL], statusCode, data);
+    }
+
     if (completion) {
       completion(data, [response URL], errorToReport);
     }
@@ -782,22 +782,22 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
   void (^taskCompletion)(NSData *responseData, NSURLResponse *response, NSError *error);
   taskCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
-    if (responseData) {
-      // Did we receive an HTTP error?
-      NSInteger statusCode = 0;
-      if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        statusCode = [(NSHTTPURLResponse *)response statusCode];
-      }
-      
-      if (statusCode < 200 || statusCode >= 300) {
-        // Yep. Prepare to report the HTTP error back to the caller.
-        NSURL *urlToReport = [response URL];
-        if (urlToReport == nil) {
-          urlToReport = URL;
-        }
-        errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
-      }
+
+    // Did we receive an HTTP error?
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
     }
+    
+    if (statusCode < 200 || statusCode >= 300) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      NSURL *urlToReport = [response URL];
+      if (urlToReport == nil) {
+        urlToReport = URL;
+      }
+      errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
+    }
+
     dispatchCompletion(responseData, [response URL], errorToReport);
   };
   

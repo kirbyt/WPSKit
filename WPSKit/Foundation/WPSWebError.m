@@ -37,7 +37,7 @@ FOUNDATION_EXTERN NSError* WPSHTTPError(NSURL *responseURL, NSInteger httpStatus
 {
   NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
 
-  if (httpBody) {
+  if (httpBody && [httpBody length] > 0) {
     NSString *httpBodyString = [[NSString alloc] initWithBytes:[httpBody bytes] length:[httpBody length] encoding:NSUTF8StringEncoding];
     userInfo[WPSHTTPBody] = httpBodyString;
   }
