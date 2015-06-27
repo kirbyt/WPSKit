@@ -38,7 +38,7 @@
 {
   NSDate *dateAtMidnight = nil;
   
-  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSGregorianCalendar];
+  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
   if ([calendar respondsToSelector:@selector(startOfDayForDate:)]) {
     // iOS 8 and above.
     dateAtMidnight = [calendar startOfDayForDate:self];
@@ -52,8 +52,8 @@
 
 - (NSDate *)wps_dateWithHour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second
 {
-  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSGregorianCalendar];
-  NSDateComponents *dateComponents = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+  NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
   [dateComponents setHour:hour];
   [dateComponents setMinute:minute];
   [dateComponents setSecond:second];
