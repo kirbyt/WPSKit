@@ -1,8 +1,8 @@
 //
-// WPSCollectionViewCell.m
+// WPSCollectionReusableView.m
 //
 // Created by Kirby Turner.
-// Copyright 2014 White Peak Software. All rights reserved.
+// Copyright 2015 White Peak Software. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -24,11 +24,11 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "WPSCollectionViewCell.h"
+#import "WPSCollectionReusableView.h"
 
-@implementation WPSCollectionViewCell
+@implementation WPSCollectionReusableView
 
-+ (NSString *)cellIdentifier
++ (NSString *)reuseIdentifier
 {
   return NSStringFromClass([self class]);
 }
@@ -43,18 +43,19 @@
 
 + (NSString *)nibName
 {
-  return [self cellIdentifier];
+  return [self reuseIdentifier];
 }
 
 #pragma mark - Register Class and Nib
 
-+ (void)registerClassWithCollectionView:(UICollectionView *)collectionView
++ (void)registerClassForSupplementaryViewOfKind:(NSString *)kind withCollectionView:(UICollectionView *)collectionView
 {
-  [collectionView registerClass:[self class] forCellWithReuseIdentifier:[self cellIdentifier]];
+  [collectionView registerClass:[self class] forSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifier]];
 }
 
-+ (void)registerNibWithCollectionView:(UICollectionView *)collectionView
++ (void)registerNibForSupplementaryViewOfKind:(NSString *)kind withCollectionView:(UICollectionView *)collectionView
 {
-  [collectionView registerNib:[self nib] forCellWithReuseIdentifier:[self cellIdentifier]];
+  [collectionView registerNib:[self nib] forSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifier]];
 }
+
 @end

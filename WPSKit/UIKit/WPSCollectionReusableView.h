@@ -1,8 +1,8 @@
 //
-// WPSCollectionViewCell.h
+// WPSCollectionReusableView.h
 //
 // Created by Kirby Turner.
-// Copyright 2014 White Peak Software. All rights reserved.
+// Copyright 2015 White Peak Software. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -27,16 +27,17 @@
 #import <UIKit/UIKit.h>
 
 /**
- A generic collection view cell providing additional functionality not found in `UICollectionViewCell`.
+ A generic reusable collection view providing additional functionality not found in `UICollectionReusableView`.
  */
-@interface WPSCollectionViewCell : UICollectionViewCell
+
+@interface WPSCollectionReusableView : UICollectionReusableView
 
 /**
- Returns a default cell identifier string.
+ Returns a default reuse identifier string.
  
  @returns A string.
  */
-+ (NSString *)cellIdentifier;
++ (NSString *)reuseIdentifier;
 
 /**
  Returns the `UINib` for the cell if available.
@@ -53,17 +54,19 @@
 + (NSString *)nibName;
 
 /**
- Register this class for use with the provided collection view.
+ Register this class for use as a supplementary view with the provided collection view.
  
+ @param kind The kind of supplementary view to create. This value is defined by the layout object. This parameter must not be `nil`.
  @param collectionView The collection view that will use this cell class.
  */
-+ (void)registerClassWithCollectionView:(UICollectionView *)collectionView;
++ (void)registerClassForSupplementaryViewOfKind:(NSString *)kind withCollectionView:(UICollectionView *)collectionView;
 
 /**
- Register the nib for this class for use with the provided collection view.
+ Register the nib for this class for use as a supplementary view with the provided collection view.
  
+ @param kind The kind of supplementary view to create. This value is defined by the layout object. This parameter must not be `nil`.
  @param collectionView The collection view that will use this cell class.
  */
-+ (void)registerNibWithCollectionView:(UICollectionView *)collectionView;
++ (void)registerNibForSupplementaryViewOfKind:(NSString *)kind withCollectionView:(UICollectionView *)collectionView;
 
 @end
