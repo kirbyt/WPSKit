@@ -40,6 +40,7 @@ FOUNDATION_EXTERN NSError* WPSHTTPError(NSURL *responseURL, NSInteger httpStatus
   if (httpBody && [httpBody length] > 0) {
     NSString *httpBodyString = [[NSString alloc] initWithBytes:[httpBody bytes] length:[httpBody length] encoding:NSUTF8StringEncoding];
     userInfo[WPSHTTPBody] = httpBodyString;
+    userInfo[NSLocalizedFailureReasonErrorKey] = httpBodyString;
   }
   
   if (responseURL) {
