@@ -224,11 +224,19 @@
 + (UIImage *)wps_imageNamed:(NSString *)name withMaskColor:(UIColor *)color
 {
   UIImage *image = [UIImage imageNamed:name];
-  NSAssert(image, @"nil image. Check the image name.");
-  CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-  UIGraphicsBeginImageContextWithOptions(rect.size, NO, image.scale);
+  if (image == nil) {
+    return nil;
+  }
+  UIImage *maskedImage = [image wps_imageWithMaskColor:color];
+  return maskedImage;
+}
+
+- (UIImage *)wps_imageWithMaskColor:(UIColor *)color
+{
+  CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+  UIGraphicsBeginImageContextWithOptions(rect.size, NO, self.scale);
   CGContextRef c = UIGraphicsGetCurrentContext();
-  [image drawInRect:rect];
+  [self drawInRect:rect];
   CGContextSetFillColorWithColor(c, [color CGColor]);
   CGContextSetBlendMode(c, kCGBlendModeSourceAtop);
   CGContextFillRect(c, rect);

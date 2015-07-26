@@ -190,10 +190,19 @@
 
 /**
  Returns an image masked with the specified color.
- 
+
+ @param name The image name.
  @param color Mask color.
  @param `UIImage` masked with the specified color.
  */
 + (UIImage *)wps_imageNamed:(NSString *)name withMaskColor:(UIColor *)color;
+
+/**
+ Returns an image masked with the specified color.
+ 
+ @param color Mask color.
+ @param `UIImage` masked with the specified color.
+ */
+- (UIImage *)wps_imageWithMaskColor:(UIColor *)color;
 
 @end
