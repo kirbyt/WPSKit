@@ -55,6 +55,15 @@
   return cellId;
 }
 
+- (NSString *)reuseIdentifierForSupplementaryViewAtIndexPath:(NSIndexPath *)indexPath kind:(NSString *)kind
+{
+  NSString *reuseIdentifier = nil;
+  if (self.reuseIdentifierForSupplementaryViewBlock) {
+    reuseIdentifier = self.reuseIdentifierForSupplementaryViewBlock(kind, indexPath);
+  }
+  return reuseIdentifier;
+}
+
 - (void)addObjects:(NSArray *)array toSection:(NSUInteger)section
 {
   NSMutableArray *allObjects = [[self array] mutableCopy];
@@ -153,6 +162,16 @@
       self.configureCellBlock(cell, indexPath, item);
    }
    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *reuseIdentifier = [self reuseIdentifierForSupplementaryViewAtIndexPath:indexPath kind:kind];
+  UICollectionReusableView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+  if (self.configureSupplementaryViewBlock) {
+    self.configureSupplementaryViewBlock(reusableView, kind, indexPath);
+  }
+  return reusableView;
 }
 
 #pragma mark - UITableViewDataSource Methods

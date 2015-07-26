@@ -27,6 +27,9 @@
 @property (nonatomic, copy) WPSCellCanMoveItemBlock canMoveItemBlock;
 @property (nonatomic, copy) WPSCellMoveItemBlock moveItemBlock;
 
+@property (nonatomic, copy) void (^configureSupplementaryViewBlock)(id view, NSString *kind, NSIndexPath *indexPath);
+@property (nonatomic, copy) NSString * (^reuseIdentifierForSupplementaryViewBlock)(NSString *kind, NSIndexPath *indexPath);
+
 - (id)initWithArray:(NSArray *)objects cellIdentifier:(NSString *)cellIdentifier configureCellBlock:(WPSCellConfigureBlock)configureCellBlock;
 - (id)initWithArray:(NSArray *)objects sectionHeaderTitles:(NSArray *)sectionHeaderTitles cellIdentifier:(NSString *)cellIdentifier configureCellBlock:(WPSCellConfigureBlock)configureCellBlock;
 
