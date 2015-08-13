@@ -211,7 +211,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   BOOL canEdit = YES;
+   BOOL canEdit = NO;
    if (self.canEditBlock) {
       canEdit = self.canEditBlock(indexPath);
    }
