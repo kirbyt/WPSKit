@@ -34,19 +34,19 @@
  The block that is executed after the GET request to the URL has completed.
  
  @param data The data returned by the server.
- @param responseURL The response URL.
+ @param response The URL response.
  @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
  */
-typedef void(^WPSWebSessionCompletionBlock)(NSData *data, NSURL *responseURL, NSError *error);
+typedef void(^WPSWebSessionCompletionBlock)(NSData *data, NSURLResponse *response, NSError *error);
 
 /**
  The block that is executed after the GET request to the URL has completed.
 
  @param jsonData A Foundation object from the JSON data in the server response data, or nil if an error occurs.
- @param responseURL The response URL.
+ @param response The URL response.
  @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
 */
-typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURL *responseURL, NSError *error);
+typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURLResponse *response, NSError *error);
 
 /**
  The block that is executed after the file has been downloaded.
@@ -54,19 +54,19 @@ typedef void(^WPSWebSessionJSONCompletionBlock)(id jsonData, NSURL *responseURL,
  You must either open the file for reading or move it to a permanent location in your app’s sandbox container directory because the end of the block. The file is deleted once the block is completed.
  
  @param location The temporary location of the downloaded file.
- @param responseURL The response URL.
+ @param response The URL response.
  @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
  */
-typedef void(^WPSWebSessionDownloadCompletionBlock)(NSURL *location, NSURL *responseURL, NSError *error);
+typedef void(^WPSWebSessionDownloadCompletionBlock)(NSURL *location, NSURLResponse *response, NSError *error);
 
 /**
  The block that is executed after the image has been downloaded.
 
  @param image A `UIImage` representing the downloaded image.
- @param responseURL The response URL.
+ @param response The URL response.
  @param error The error that occured during the request. The error can indicate a failure to make or satisfy the request, or the error can be the HTTP error returned from the server.
  */
-typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURL *responseURL, NSError *error);
+typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *response, NSError *error);
 
 /**
  `WPSWebSession` provides a wrapper around NSURLSession and session tasks. 

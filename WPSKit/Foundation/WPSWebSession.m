@@ -127,7 +127,7 @@
   
   void (^dispatchCompletion)(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error);
   dispatchCompletion = ^(NSString *requestQueueKey, NSData *data, NSURLResponse *response, NSError *error) {
-    [self dispatchRequestQueueItemWithKey:requestQueueKey data:data responseURL:[response URL] error:error];
+    [self dispatchRequestQueueItemWithKey:requestQueueKey data:data response:response error:error];
   };
   
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
@@ -164,13 +164,13 @@
 - (void)getJSONWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters ignoreCache:(BOOL)ignoreCache completion:(WPSWebSessionJSONCompletionBlock)completion
 {
   WPSWebSessionJSONCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(id jsonData, NSURL *responseURL, NSError *error) {
+  dispatchCompletion = ^(id jsonData, NSURLResponse *response, NSError *error) {
     if (completion) {
-      completion(jsonData, responseURL, error);
+      completion(jsonData, response, error);
     }
   };
   
-  [self getWithURL:URL parameters:parameters ignoreCache:ignoreCache completion:^(NSData *data, NSURL *responseURL, NSError *error) {
+  [self getWithURL:URL parameters:parameters ignoreCache:ignoreCache completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     id jsonData = nil;
     if (data && [data length] > 0 && error == nil) {
@@ -181,7 +181,7 @@
       }
     }
     
-    dispatchCompletion(jsonData, responseURL, errorToReport);
+    dispatchCompletion(jsonData, response, errorToReport);
   }];
 }
 
@@ -223,7 +223,7 @@
     }
   }
   
-  [self post:URL data:data contentType:@"application/json" completion:^(NSData *responseData, NSURL *responseURL, NSError *error) {
+  [self post:URL data:data contentType:@"application/json" completion:^(NSData *responseData, NSURLResponse *response, NSError *error) {
     NSError *errorToReport = error;
     id jsonResponseData = nil;
     if (responseData) {
@@ -234,7 +234,7 @@
       }
     }
     if (completion) {
-      completion(jsonResponseData, responseURL, errorToReport);
+      completion(jsonResponseData, response, errorToReport);
     }
   }];
 }
@@ -247,9 +247,9 @@
 - (void)post:(NSURL *)URL data:(NSData *)data contentType:(NSString *)contentType HTTPmethod:(NSString *)HTTPMethod completion:(WPSWebSessionCompletionBlock)completion
 {
   WPSWebSessionCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(NSData *responseData, NSURL *responseURL, NSError *error) {
+  dispatchCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     if (completion) {
-      completion(responseData, responseURL, error);
+      completion(responseData, response, error);
     }
   };
   
@@ -289,7 +289,7 @@
       errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
     }
     
-    dispatchCompletion(responseData, [response URL], errorToReport);
+    dispatchCompletion(responseData, response, errorToReport);
   };
   
   NSURLSession *session = [self session];
@@ -350,7 +350,7 @@
     }
 
     if (completion) {
-      completion(data, [response URL], errorToReport);
+      completion(data, response, errorToReport);
     }
   };
   
@@ -386,7 +386,7 @@
   NSURL *cachedFileLocation = [cache fileURLForKey:cacheKey];
   if (cachedFileLocation) {
     if (completion) {
-      completion(cachedFileLocation, URL, nil);
+      completion(cachedFileLocation, nil, nil);
     }
     return;
   }
@@ -399,12 +399,12 @@
   }
   
   __weak __typeof__(self) weakSelf = self;
-  void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error);
-  dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURL *responseURL, NSError *error) {
+  void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error);
+  dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error) {
     __typeof__(self) strongSelf = weakSelf;
     if (strongSelf == nil) return;
     
-    [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location responseURL:responseURL error:error];
+    [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location response:response error:error];
   };
   
   NSInteger cacheAge = [self cacheAge];
@@ -429,10 +429,19 @@
       errorToReport = WPSHTTPError([response URL], statusCode, nil);
     }
 
-    dispatchCompletion(cacheKey, location, [response URL], errorToReport);
+    dispatchCompletion(cacheKey, location, response, errorToReport);
   };
   
+  
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
+  NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
+  if (cachedResponse) {
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)[cachedResponse response];
+    NSString *lastModified = [response allHeaderFields][@"last-modified"];
+    if (lastModified) {
+      [request setValue:lastModified forHTTPHeaderField:@"If-Modified-Since"];
+    }
+  }
   NSURLSession *session = [self session];
   NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:taskCompletion];
   [task resume];
@@ -453,13 +462,13 @@
     return;
   }
   
-  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURL *responseURL, NSError *error) {
+  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
     UIImage *image = nil;
     if ([location isFileURL]) {
       NSData *data = [NSData dataWithContentsOfURL:location options:NSDataReadingMappedIfSafe error:NULL];
       image = [UIImage imageWithData:data];
     }
-    completion(image, responseURL, error);
+    completion(image, response, error);
   }];
 }
 
@@ -494,7 +503,7 @@
     }
 
     if (completion) {
-      completion(data, [response URL], errorToReport);
+      completion(data, response, errorToReport);
     }
   };
   
@@ -639,7 +648,7 @@
   }
 }
 
-- (void)dispatchRequestQueueItemWithKey:(NSString *)key data:(NSData *)data responseURL:(NSURL *)responseURL error:(NSError *)error
+- (void)dispatchRequestQueueItemWithKey:(NSString *)key data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error
 {
   NSMutableDictionary *requestQueue = [self requestQueue];
   NSMutableDictionary *requestItem = requestQueue[key];
@@ -651,12 +660,12 @@
     
     NSArray *completionBlocks = requestItem[@"completionBlocks"];
     [completionBlocks enumerateObjectsUsingBlock:^(WPSWebSessionCompletionBlock completionBlock, NSUInteger idx, BOOL *stop) {
-      completionBlock(data, responseURL, error);
+      completionBlock(data, response, error);
     }];
   }
 }
 
-- (void)dispatchDownloadRequestQueueItemWithKey:(NSString *)key location:(NSURL *)location responseURL:(NSURL *)responseURL error:(NSError *)error
+- (void)dispatchDownloadRequestQueueItemWithKey:(NSString *)key location:(NSURL *)location response:(NSURLResponse *)response error:(NSError *)error
 {
   NSMutableDictionary *requestQueue = [self requestQueue];
   NSMutableDictionary *requestItem = requestQueue[key];
@@ -668,7 +677,7 @@
     
     NSArray *completionBlocks = requestItem[@"completionBlocks"];
     [completionBlocks enumerateObjectsUsingBlock:^(WPSWebSessionDownloadCompletionBlock completionBlock, NSUInteger idx, BOOL *stop) {
-      completionBlock(location, responseURL, error);
+      completionBlock(location, response, error);
     }];
   }
 }
@@ -764,9 +773,9 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
 - (void)delete:(NSURL *)URL completion:(WPSWebSessionCompletionBlock)completion
 {
   WPSWebSessionCompletionBlock dispatchCompletion;
-  dispatchCompletion = ^(NSData *responseData, NSURL *responseURL, NSError *error) {
+  dispatchCompletion = ^(NSData *responseData, NSURLResponse *response, NSError *error) {
     if (completion) {
-      completion(responseData, responseURL, error);
+      completion(responseData, response, error);
     }
   };
   
@@ -798,7 +807,7 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
       errorToReport = WPSHTTPError(urlToReport, statusCode, responseData);
     }
 
-    dispatchCompletion(responseData, [response URL], errorToReport);
+    dispatchCompletion(responseData, response, errorToReport);
   };
   
   NSURLSession *session = [self session];
