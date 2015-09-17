@@ -207,4 +207,14 @@ static NSInteger wps_networkActivityCount = 0;
   return fullVersion;
 }
 
+#pragma mark - Keyboard
+
++ (void)wps_dismissKeyboard
+{
+  // A more effective way to dispmiss the keyboard. Based on the
+  // stack overflow response here:
+  // http://stackoverflow.com/a/11768282
+  [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 @end

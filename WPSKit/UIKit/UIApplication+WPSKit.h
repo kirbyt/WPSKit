@@ -126,4 +126,8 @@
 + (NSString *)wps_appVersion;
 + (NSString *)wps_appVersionShort;
 
+#pragma mark - Keyboard
+
++ (void)wps_dismissKeyboard;
+
 @end
