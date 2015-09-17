@@ -43,7 +43,7 @@
 {
    CustomDetailDisclosureCell *cell = [CustomDetailDisclosureCell cellFromDefaultNibForTableView:tableView];
    
-   NSString *text =[NSString stringWithFormat:@"Row %i", [indexPath row]];
+   NSString *text =[NSString stringWithFormat:@"Row %zi", [indexPath row]];
    [[cell textLabel] setText:text];
    
    return cell;
@@ -56,7 +56,7 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-   NSString *message = [NSString stringWithFormat:@"Got it! (section: %i, row: %i)", [indexPath section], [indexPath row]];
+   NSString *message = [NSString stringWithFormat:@"Got it! (section: %zi, row: %zi)", [indexPath section], [indexPath row]];
    [WPSAlertView presentOkayAlertViewWithTitle:@"Accessory Button Tapped" message:message];
 }
 

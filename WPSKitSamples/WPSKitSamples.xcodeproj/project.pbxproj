@@ -70,20 +70,30 @@
 		68EEF55B18DA952F002B7034 /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF52718DA952F002B7034 /* WPSStopwatch.m */; };
 		68EEF55C18DA952F002B7034 /* WPSWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF52918DA952F002B7034 /* WPSWebClient.m */; };
 		68EEF55D18DA952F002B7034 /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF52C18DA952F002B7034 /* MKMapView+WPSKit.m */; };
-		68EEF55E18DA952F002B7034 /* WPSArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53018DA952F002B7034 /* WPSArrayDataSource.m */; };
-		68EEF55F18DA952F002B7034 /* WPSFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53318DA952F002B7034 /* WPSFetchedResultsDataSource.m */; };
-		68EEF56018DA952F002B7034 /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53518DA952F002B7034 /* UIApplication+WPSKit.m */; };
-		68EEF56118DA952F002B7034 /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53718DA952F002B7034 /* UIColor+WPSKit.m */; };
-		68EEF56218DA952F002B7034 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53918DA952F002B7034 /* UIDevice+WPSKit.m */; };
-		68EEF56318DA952F002B7034 /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53B18DA952F002B7034 /* UIImage+WPSKit.m */; };
-		68EEF56418DA952F002B7034 /* UIView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53D18DA952F002B7034 /* UIView+WPSKit.m */; };
-		68EEF56518DA952F002B7034 /* UIViewController+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF53F18DA952F002B7034 /* UIViewController+WPSKit.m */; };
-		68EEF56618DA952F002B7034 /* WPSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54118DA952F002B7034 /* WPSActionSheet.m */; };
-		68EEF56718DA952F002B7034 /* WPSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54318DA952F002B7034 /* WPSAlertView.m */; };
-		68EEF56818DA952F002B7034 /* WPSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54518DA952F002B7034 /* WPSCollectionViewCell.m */; };
-		68EEF56918DA952F002B7034 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54718DA952F002B7034 /* WPSPageControl.m */; };
-		68EEF56A18DA952F002B7034 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54918DA952F002B7034 /* WPSTableViewCell.m */; };
-		68EEF56B18DA952F002B7034 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EEF54B18DA952F002B7034 /* WPSTextView.m */; };
+		68EF0F7F1BAAF893008FE29B /* WPSWebError.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F7C1BAAF893008FE29B /* WPSWebError.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0F801BAAF893008FE29B /* WPSWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F7E1BAAF893008FE29B /* WPSWebSession.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB01BAAF8BE008FE29B /* WPSArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F841BAAF8BE008FE29B /* WPSArrayDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB11BAAF8BE008FE29B /* WPSFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F871BAAF8BE008FE29B /* WPSFetchedResultsDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB21BAAF8BE008FE29B /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F891BAAF8BE008FE29B /* UIApplication+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB31BAAF8BE008FE29B /* UICollectionView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F8B1BAAF8BE008FE29B /* UICollectionView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB41BAAF8BE008FE29B /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F8D1BAAF8BE008FE29B /* UIColor+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB51BAAF8BE008FE29B /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F8F1BAAF8BE008FE29B /* UIDevice+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB61BAAF8BE008FE29B /* UIFont+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F911BAAF8BE008FE29B /* UIFont+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB71BAAF8BE008FE29B /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F931BAAF8BE008FE29B /* UIImage+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB81BAAF8BE008FE29B /* UITextField+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F951BAAF8BE008FE29B /* UITextField+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FB91BAAF8BE008FE29B /* UITextView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F971BAAF8BE008FE29B /* UITextView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBA1BAAF8BE008FE29B /* UIView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F991BAAF8BE008FE29B /* UIView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBB1BAAF8BE008FE29B /* UIViewController+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F9B1BAAF8BE008FE29B /* UIViewController+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBC1BAAF8BE008FE29B /* WPSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F9D1BAAF8BE008FE29B /* WPSActionSheet.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBD1BAAF8BE008FE29B /* WPSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0F9F1BAAF8BE008FE29B /* WPSAlertView.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBE1BAAF8BE008FE29B /* WPSCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FA11BAAF8BE008FE29B /* WPSCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FBF1BAAF8BE008FE29B /* WPSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FA31BAAF8BE008FE29B /* WPSCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC01BAAF8BE008FE29B /* WPSCompositeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FA51BAAF8BE008FE29B /* WPSCompositeView.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC11BAAF8BE008FE29B /* WPSFeedbackEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FA71BAAF8BE008FE29B /* WPSFeedbackEmailController.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC21BAAF8BE008FE29B /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FA91BAAF8BE008FE29B /* WPSPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC31BAAF8BE008FE29B /* WPSScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FAB1BAAF8BE008FE29B /* WPSScrollViewController.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC41BAAF8BE008FE29B /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FAD1BAAF8BE008FE29B /* WPSTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		68EF0FC51BAAF8BE008FE29B /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68EF0FAF1BAAF8BE008FE29B /* WPSTextView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,35 +177,55 @@
 		68EEF52918DA952F002B7034 /* WPSWebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebClient.m; sourceTree = "<group>"; };
 		68EEF52B18DA952F002B7034 /* MKMapView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+WPSKit.h"; sourceTree = "<group>"; };
 		68EEF52C18DA952F002B7034 /* MKMapView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF52F18DA952F002B7034 /* WPSArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSArrayDataSource.h; sourceTree = "<group>"; };
-		68EEF53018DA952F002B7034 /* WPSArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSArrayDataSource.m; sourceTree = "<group>"; };
-		68EEF53118DA952F002B7034 /* WPSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSDataSource.h; sourceTree = "<group>"; };
-		68EEF53218DA952F002B7034 /* WPSFetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSFetchedResultsDataSource.h; sourceTree = "<group>"; };
-		68EEF53318DA952F002B7034 /* WPSFetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSFetchedResultsDataSource.m; sourceTree = "<group>"; };
-		68EEF53418DA952F002B7034 /* UIApplication+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53518DA952F002B7034 /* UIApplication+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF53618DA952F002B7034 /* UIColor+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53718DA952F002B7034 /* UIColor+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF53818DA952F002B7034 /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53918DA952F002B7034 /* UIDevice+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF53A18DA952F002B7034 /* UIImage+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53B18DA952F002B7034 /* UIImage+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF53C18DA952F002B7034 /* UIView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53D18DA952F002B7034 /* UIView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF53E18DA952F002B7034 /* UIViewController+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WPSKit.h"; sourceTree = "<group>"; };
-		68EEF53F18DA952F002B7034 /* UIViewController+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WPSKit.m"; sourceTree = "<group>"; };
-		68EEF54018DA952F002B7034 /* WPSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSActionSheet.h; sourceTree = "<group>"; };
-		68EEF54118DA952F002B7034 /* WPSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSActionSheet.m; sourceTree = "<group>"; };
-		68EEF54218DA952F002B7034 /* WPSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertView.h; sourceTree = "<group>"; };
-		68EEF54318DA952F002B7034 /* WPSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertView.m; sourceTree = "<group>"; };
-		68EEF54418DA952F002B7034 /* WPSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCollectionViewCell.h; sourceTree = "<group>"; };
-		68EEF54518DA952F002B7034 /* WPSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCollectionViewCell.m; sourceTree = "<group>"; };
-		68EEF54618DA952F002B7034 /* WPSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSPageControl.h; sourceTree = "<group>"; };
-		68EEF54718DA952F002B7034 /* WPSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSPageControl.m; sourceTree = "<group>"; };
-		68EEF54818DA952F002B7034 /* WPSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTableViewCell.h; sourceTree = "<group>"; };
-		68EEF54918DA952F002B7034 /* WPSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTableViewCell.m; sourceTree = "<group>"; };
-		68EEF54A18DA952F002B7034 /* WPSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTextView.h; sourceTree = "<group>"; };
-		68EEF54B18DA952F002B7034 /* WPSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTextView.m; sourceTree = "<group>"; };
+		68EF0F7B1BAAF893008FE29B /* WPSWebError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSWebError.h; sourceTree = "<group>"; };
+		68EF0F7C1BAAF893008FE29B /* WPSWebError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebError.m; sourceTree = "<group>"; };
+		68EF0F7D1BAAF893008FE29B /* WPSWebSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSWebSession.h; sourceTree = "<group>"; };
+		68EF0F7E1BAAF893008FE29B /* WPSWebSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebSession.m; sourceTree = "<group>"; };
+		68EF0F831BAAF8BE008FE29B /* WPSArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSArrayDataSource.h; sourceTree = "<group>"; };
+		68EF0F841BAAF8BE008FE29B /* WPSArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSArrayDataSource.m; sourceTree = "<group>"; };
+		68EF0F851BAAF8BE008FE29B /* WPSDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSDataSource.h; sourceTree = "<group>"; };
+		68EF0F861BAAF8BE008FE29B /* WPSFetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSFetchedResultsDataSource.h; sourceTree = "<group>"; };
+		68EF0F871BAAF8BE008FE29B /* WPSFetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSFetchedResultsDataSource.m; sourceTree = "<group>"; };
+		68EF0F881BAAF8BE008FE29B /* UIApplication+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F891BAAF8BE008FE29B /* UIApplication+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F8A1BAAF8BE008FE29B /* UICollectionView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F8B1BAAF8BE008FE29B /* UICollectionView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F8C1BAAF8BE008FE29B /* UIColor+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F8D1BAAF8BE008FE29B /* UIColor+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F8E1BAAF8BE008FE29B /* UIDevice+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F8F1BAAF8BE008FE29B /* UIDevice+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F901BAAF8BE008FE29B /* UIFont+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F911BAAF8BE008FE29B /* UIFont+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F921BAAF8BE008FE29B /* UIImage+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F931BAAF8BE008FE29B /* UIImage+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F941BAAF8BE008FE29B /* UITextField+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F951BAAF8BE008FE29B /* UITextField+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F961BAAF8BE008FE29B /* UITextView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F971BAAF8BE008FE29B /* UITextView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F981BAAF8BE008FE29B /* UIView+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F991BAAF8BE008FE29B /* UIView+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F9A1BAAF8BE008FE29B /* UIViewController+WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WPSKit.h"; sourceTree = "<group>"; };
+		68EF0F9B1BAAF8BE008FE29B /* UIViewController+WPSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WPSKit.m"; sourceTree = "<group>"; };
+		68EF0F9C1BAAF8BE008FE29B /* WPSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSActionSheet.h; sourceTree = "<group>"; };
+		68EF0F9D1BAAF8BE008FE29B /* WPSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSActionSheet.m; sourceTree = "<group>"; };
+		68EF0F9E1BAAF8BE008FE29B /* WPSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertView.h; sourceTree = "<group>"; };
+		68EF0F9F1BAAF8BE008FE29B /* WPSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertView.m; sourceTree = "<group>"; };
+		68EF0FA01BAAF8BE008FE29B /* WPSCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCollectionReusableView.h; sourceTree = "<group>"; };
+		68EF0FA11BAAF8BE008FE29B /* WPSCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCollectionReusableView.m; sourceTree = "<group>"; };
+		68EF0FA21BAAF8BE008FE29B /* WPSCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCollectionViewCell.h; sourceTree = "<group>"; };
+		68EF0FA31BAAF8BE008FE29B /* WPSCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCollectionViewCell.m; sourceTree = "<group>"; };
+		68EF0FA41BAAF8BE008FE29B /* WPSCompositeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSCompositeView.h; sourceTree = "<group>"; };
+		68EF0FA51BAAF8BE008FE29B /* WPSCompositeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSCompositeView.m; sourceTree = "<group>"; };
+		68EF0FA61BAAF8BE008FE29B /* WPSFeedbackEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSFeedbackEmailController.h; sourceTree = "<group>"; };
+		68EF0FA71BAAF8BE008FE29B /* WPSFeedbackEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSFeedbackEmailController.m; sourceTree = "<group>"; };
+		68EF0FA81BAAF8BE008FE29B /* WPSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSPageControl.h; sourceTree = "<group>"; };
+		68EF0FA91BAAF8BE008FE29B /* WPSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSPageControl.m; sourceTree = "<group>"; };
+		68EF0FAA1BAAF8BE008FE29B /* WPSScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSScrollViewController.h; sourceTree = "<group>"; };
+		68EF0FAB1BAAF8BE008FE29B /* WPSScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSScrollViewController.m; sourceTree = "<group>"; };
+		68EF0FAC1BAAF8BE008FE29B /* WPSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTableViewCell.h; sourceTree = "<group>"; };
+		68EF0FAD1BAAF8BE008FE29B /* WPSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTableViewCell.m; sourceTree = "<group>"; };
+		68EF0FAE1BAAF8BE008FE29B /* WPSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTextView.h; sourceTree = "<group>"; };
+		68EF0FAF1BAAF8BE008FE29B /* WPSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,7 +344,7 @@
 				68EEF51018DA952F002B7034 /* CoreLocation */,
 				68EEF51318DA952F002B7034 /* Foundation */,
 				68EEF52A18DA952F002B7034 /* MapKit */,
-				68EEF52D18DA952F002B7034 /* UIKit */,
+				68EF0F811BAAF8BE008FE29B /* UIKit */,
 			);
 			name = WPSKit;
 			path = ../WPSKit;
@@ -373,6 +403,10 @@
 				68EEF52718DA952F002B7034 /* WPSStopwatch.m */,
 				68EEF52818DA952F002B7034 /* WPSWebClient.h */,
 				68EEF52918DA952F002B7034 /* WPSWebClient.m */,
+				68EF0F7B1BAAF893008FE29B /* WPSWebError.h */,
+				68EF0F7C1BAAF893008FE29B /* WPSWebError.m */,
+				68EF0F7D1BAAF893008FE29B /* WPSWebSession.h */,
+				68EF0F7E1BAAF893008FE29B /* WPSWebSession.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -386,46 +420,62 @@
 			path = MapKit;
 			sourceTree = "<group>";
 		};
-		68EEF52D18DA952F002B7034 /* UIKit */ = {
+		68EF0F811BAAF8BE008FE29B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				68EEF52E18DA952F002B7034 /* DataSources */,
-				68EEF53418DA952F002B7034 /* UIApplication+WPSKit.h */,
-				68EEF53518DA952F002B7034 /* UIApplication+WPSKit.m */,
-				68EEF53618DA952F002B7034 /* UIColor+WPSKit.h */,
-				68EEF53718DA952F002B7034 /* UIColor+WPSKit.m */,
-				68EEF53818DA952F002B7034 /* UIDevice+WPSKit.h */,
-				68EEF53918DA952F002B7034 /* UIDevice+WPSKit.m */,
-				68EEF53A18DA952F002B7034 /* UIImage+WPSKit.h */,
-				68EEF53B18DA952F002B7034 /* UIImage+WPSKit.m */,
-				68EEF53C18DA952F002B7034 /* UIView+WPSKit.h */,
-				68EEF53D18DA952F002B7034 /* UIView+WPSKit.m */,
-				68EEF53E18DA952F002B7034 /* UIViewController+WPSKit.h */,
-				68EEF53F18DA952F002B7034 /* UIViewController+WPSKit.m */,
-				68EEF54018DA952F002B7034 /* WPSActionSheet.h */,
-				68EEF54118DA952F002B7034 /* WPSActionSheet.m */,
-				68EEF54218DA952F002B7034 /* WPSAlertView.h */,
-				68EEF54318DA952F002B7034 /* WPSAlertView.m */,
-				68EEF54418DA952F002B7034 /* WPSCollectionViewCell.h */,
-				68EEF54518DA952F002B7034 /* WPSCollectionViewCell.m */,
-				68EEF54618DA952F002B7034 /* WPSPageControl.h */,
-				68EEF54718DA952F002B7034 /* WPSPageControl.m */,
-				68EEF54818DA952F002B7034 /* WPSTableViewCell.h */,
-				68EEF54918DA952F002B7034 /* WPSTableViewCell.m */,
-				68EEF54A18DA952F002B7034 /* WPSTextView.h */,
-				68EEF54B18DA952F002B7034 /* WPSTextView.m */,
+				68EF0F821BAAF8BE008FE29B /* DataSources */,
+				68EF0F881BAAF8BE008FE29B /* UIApplication+WPSKit.h */,
+				68EF0F891BAAF8BE008FE29B /* UIApplication+WPSKit.m */,
+				68EF0F8A1BAAF8BE008FE29B /* UICollectionView+WPSKit.h */,
+				68EF0F8B1BAAF8BE008FE29B /* UICollectionView+WPSKit.m */,
+				68EF0F8C1BAAF8BE008FE29B /* UIColor+WPSKit.h */,
+				68EF0F8D1BAAF8BE008FE29B /* UIColor+WPSKit.m */,
+				68EF0F8E1BAAF8BE008FE29B /* UIDevice+WPSKit.h */,
+				68EF0F8F1BAAF8BE008FE29B /* UIDevice+WPSKit.m */,
+				68EF0F901BAAF8BE008FE29B /* UIFont+WPSKit.h */,
+				68EF0F911BAAF8BE008FE29B /* UIFont+WPSKit.m */,
+				68EF0F921BAAF8BE008FE29B /* UIImage+WPSKit.h */,
+				68EF0F931BAAF8BE008FE29B /* UIImage+WPSKit.m */,
+				68EF0F941BAAF8BE008FE29B /* UITextField+WPSKit.h */,
+				68EF0F951BAAF8BE008FE29B /* UITextField+WPSKit.m */,
+				68EF0F961BAAF8BE008FE29B /* UITextView+WPSKit.h */,
+				68EF0F971BAAF8BE008FE29B /* UITextView+WPSKit.m */,
+				68EF0F981BAAF8BE008FE29B /* UIView+WPSKit.h */,
+				68EF0F991BAAF8BE008FE29B /* UIView+WPSKit.m */,
+				68EF0F9A1BAAF8BE008FE29B /* UIViewController+WPSKit.h */,
+				68EF0F9B1BAAF8BE008FE29B /* UIViewController+WPSKit.m */,
+				68EF0F9C1BAAF8BE008FE29B /* WPSActionSheet.h */,
+				68EF0F9D1BAAF8BE008FE29B /* WPSActionSheet.m */,
+				68EF0F9E1BAAF8BE008FE29B /* WPSAlertView.h */,
+				68EF0F9F1BAAF8BE008FE29B /* WPSAlertView.m */,
+				68EF0FA01BAAF8BE008FE29B /* WPSCollectionReusableView.h */,
+				68EF0FA11BAAF8BE008FE29B /* WPSCollectionReusableView.m */,
+				68EF0FA21BAAF8BE008FE29B /* WPSCollectionViewCell.h */,
+				68EF0FA31BAAF8BE008FE29B /* WPSCollectionViewCell.m */,
+				68EF0FA41BAAF8BE008FE29B /* WPSCompositeView.h */,
+				68EF0FA51BAAF8BE008FE29B /* WPSCompositeView.m */,
+				68EF0FA61BAAF8BE008FE29B /* WPSFeedbackEmailController.h */,
+				68EF0FA71BAAF8BE008FE29B /* WPSFeedbackEmailController.m */,
+				68EF0FA81BAAF8BE008FE29B /* WPSPageControl.h */,
+				68EF0FA91BAAF8BE008FE29B /* WPSPageControl.m */,
+				68EF0FAA1BAAF8BE008FE29B /* WPSScrollViewController.h */,
+				68EF0FAB1BAAF8BE008FE29B /* WPSScrollViewController.m */,
+				68EF0FAC1BAAF8BE008FE29B /* WPSTableViewCell.h */,
+				68EF0FAD1BAAF8BE008FE29B /* WPSTableViewCell.m */,
+				68EF0FAE1BAAF8BE008FE29B /* WPSTextView.h */,
+				68EF0FAF1BAAF8BE008FE29B /* WPSTextView.m */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		68EEF52E18DA952F002B7034 /* DataSources */ = {
+		68EF0F821BAAF8BE008FE29B /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				68EEF52F18DA952F002B7034 /* WPSArrayDataSource.h */,
-				68EEF53018DA952F002B7034 /* WPSArrayDataSource.m */,
-				68EEF53118DA952F002B7034 /* WPSDataSource.h */,
-				68EEF53218DA952F002B7034 /* WPSFetchedResultsDataSource.h */,
-				68EEF53318DA952F002B7034 /* WPSFetchedResultsDataSource.m */,
+				68EF0F831BAAF8BE008FE29B /* WPSArrayDataSource.h */,
+				68EF0F841BAAF8BE008FE29B /* WPSArrayDataSource.m */,
+				68EF0F851BAAF8BE008FE29B /* WPSDataSource.h */,
+				68EF0F861BAAF8BE008FE29B /* WPSFetchedResultsDataSource.h */,
+				68EF0F871BAAF8BE008FE29B /* WPSFetchedResultsDataSource.m */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -521,13 +571,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68EF0FB51BAAF8BE008FE29B /* UIDevice+WPSKit.m in Sources */,
 				68EEF55B18DA952F002B7034 /* WPSStopwatch.m in Sources */,
-				68EEF56818DA952F002B7034 /* WPSCollectionViewCell.m in Sources */,
+				68EF0FBD1BAAF8BE008FE29B /* WPSAlertView.m in Sources */,
 				68EEF54F18DA952F002B7034 /* WPSFetchedResultsDelegate.m in Sources */,
+				68EF0FB81BAAF8BE008FE29B /* UITextField+WPSKit.m in Sources */,
+				68EF0FB91BAAF8BE008FE29B /* UITextView+WPSKit.m in Sources */,
 				68EEF55418DA952F002B7034 /* NSFileManager+WPSKit.m in Sources */,
+				68EF0FC51BAAF8BE008FE29B /* WPSTextView.m in Sources */,
 				682CE60014EDAE1C00F0AF2E /* main.m in Sources */,
 				68EEF55518DA952F002B7034 /* NSNull+WPSKit.m in Sources */,
-				68EEF56018DA952F002B7034 /* UIApplication+WPSKit.m in Sources */,
 				68EEF55318DA952F002B7034 /* NSData+WPSKit.m in Sources */,
 				68EEF54C18DA952F002B7034 /* NSManagedObject+WPSKit.m in Sources */,
 				68EEF55718DA952F002B7034 /* NSURL+WPSKit.m in Sources */,
@@ -535,35 +588,42 @@
 				682CE60414EDAE1C00F0AF2E /* AppDelegate.m in Sources */,
 				682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */,
 				68EEF55D18DA952F002B7034 /* MKMapView+WPSKit.m in Sources */,
+				68EF0F801BAAF893008FE29B /* WPSWebSession.m in Sources */,
 				680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */,
-				68EEF56718DA952F002B7034 /* WPSAlertView.m in Sources */,
+				68EF0FB21BAAF8BE008FE29B /* UIApplication+WPSKit.m in Sources */,
+				68EF0FB71BAAF8BE008FE29B /* UIImage+WPSKit.m in Sources */,
 				68EEF55918DA952F002B7034 /* WPSImageDownloader.m in Sources */,
-				68EEF56A18DA952F002B7034 /* WPSTableViewCell.m in Sources */,
 				680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */,
 				680EE77614EDDCFC00F84CD3 /* WebClientViewController.m in Sources */,
-				68EEF55E18DA952F002B7034 /* WPSArrayDataSource.m in Sources */,
 				680EE77B14EDEF8E00F84CD3 /* TextViewViewController.m in Sources */,
-				68EEF55F18DA952F002B7034 /* WPSFetchedResultsDataSource.m in Sources */,
+				68EF0FBE1BAAF8BE008FE29B /* WPSCollectionReusableView.m in Sources */,
 				68EEF54E18DA952F002B7034 /* WPSCoreDataStack.m in Sources */,
-				68EEF56618DA952F002B7034 /* WPSActionSheet.m in Sources */,
-				68EEF56318DA952F002B7034 /* UIImage+WPSKit.m in Sources */,
-				68EEF56B18DA952F002B7034 /* WPSTextView.m in Sources */,
-				68EEF56118DA952F002B7034 /* UIColor+WPSKit.m in Sources */,
+				68EF0FBC1BAAF8BE008FE29B /* WPSActionSheet.m in Sources */,
+				68EF0FB01BAAF8BE008FE29B /* WPSArrayDataSource.m in Sources */,
+				68EF0F7F1BAAF893008FE29B /* WPSWebError.m in Sources */,
 				68EEF55218DA952F002B7034 /* NSArray+WPSKit.m in Sources */,
+				68EF0FC41BAAF8BE008FE29B /* WPSTableViewCell.m in Sources */,
+				68EF0FB61BAAF8BE008FE29B /* UIFont+WPSKit.m in Sources */,
+				68EF0FC11BAAF8BE008FE29B /* WPSFeedbackEmailController.m in Sources */,
 				685A9B8C17C63E8A0086688F /* TableViewViewController.m in Sources */,
 				68EEF55618DA952F002B7034 /* NSString+WPSKit.m in Sources */,
+				68EF0FBA1BAAF8BE008FE29B /* UIView+WPSKit.m in Sources */,
+				68EF0FC21BAAF8BE008FE29B /* WPSPageControl.m in Sources */,
+				68EF0FB11BAAF8BE008FE29B /* WPSFetchedResultsDataSource.m in Sources */,
 				68EEF54D18DA952F002B7034 /* NSManagedObjectContext+WPSKit.m in Sources */,
 				68EEF55818DA952F002B7034 /* WPSCache.m in Sources */,
+				68EF0FC01BAAF8BE008FE29B /* WPSCompositeView.m in Sources */,
 				68EEF55018DA952F002B7034 /* WPSManagedObjectContextWatcher.m in Sources */,
 				685A9B9117C63F0B0086688F /* CustomDetailDisclosureButtonViewController.m in Sources */,
-				68EEF56418DA952F002B7034 /* UIView+WPSKit.m in Sources */,
 				68EEF55A18DA952F002B7034 /* WPSMultipartFormDataUploader.m in Sources */,
-				68EEF56918DA952F002B7034 /* WPSPageControl.m in Sources */,
-				68EEF56218DA952F002B7034 /* UIDevice+WPSKit.m in Sources */,
 				685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */,
 				6882D23118F2F7A400F57EA2 /* NSNotificationCenter+WPSKit.m in Sources */,
-				68EEF56518DA952F002B7034 /* UIViewController+WPSKit.m in Sources */,
+				68EF0FB41BAAF8BE008FE29B /* UIColor+WPSKit.m in Sources */,
+				68EF0FBB1BAAF8BE008FE29B /* UIViewController+WPSKit.m in Sources */,
+				68EF0FC31BAAF8BE008FE29B /* WPSScrollViewController.m in Sources */,
+				68EF0FB31BAAF8BE008FE29B /* UICollectionView+WPSKit.m in Sources */,
 				68EEF55C18DA952F002B7034 /* WPSWebClient.m in Sources */,
+				68EF0FBF1BAAF8BE008FE29B /* WPSCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -610,7 +670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -632,7 +692,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
 				INFOPLIST_FILE = "WPSKitSamples/WPSKitSamples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -644,7 +704,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
 				INFOPLIST_FILE = "WPSKitSamples/WPSKitSamples-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
