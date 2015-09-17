@@ -94,9 +94,10 @@
 
 - (id)init
 {
-   self = [self initWithCacheName:@"WPSCache"];
+   self = [super init];
    if (self) {
-      
+     [self setCacheName:@"WPSCache"];
+     [self commonInit];
    }
    return self;
 }
