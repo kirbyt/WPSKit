@@ -18,7 +18,7 @@
 - (NSDateComponents *)dateComponentsFromDate:(NSDate *)date
 {
   NSCalendarUnit components = NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond;
-  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSGregorianCalendar];
+  NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
   NSDateComponents *dateComponents = [calendar components:components fromDate:date];
   return dateComponents;
 }

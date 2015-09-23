@@ -73,7 +73,7 @@
 {
   XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
   
-  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"];
+  NSURL *URL = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"];
   WPSWebSession *webSession = [self webSession];
   [webSession getJSONWithURL:URL parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
     XCTAssertTrue([jsonData isKindOfClass:[NSArray class]]);
@@ -89,24 +89,16 @@
 {
   XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
-  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/post"];
-  NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
+  NSURL *URL = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"];
+  NSDictionary *parameters = @{@"title":@"foo", @"body":@"bar", @"userId": @(1)};
   WPSWebSession *webSession = [self webSession];
-  [webSession post:URL parameters:parameters completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession post:URL jsonData:parameters completion:^(id jsonData, NSURLResponse *response, NSError *error) {
     // Verify that the data was posted.
-    WPSWebSession *getWebSession = [self webSession];
-    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURLResponse *response, NSError *error) {
-      if ([jsonData isKindOfClass:[NSArray class]]) {
-        NSDictionary *item = [jsonData firstObject];
-        XCTAssertTrue([item[@"name"] isEqualToString:@"Kirby"]);
-        XCTAssertTrue([item[@"city"] isEqualToString:@"Stowe"]);
-      }
-      
-      WPSWebSession *resetWebSession = [self webSession];
-      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [webSessionExpectation fulfill];
-      }];
-    }];
+    XCTAssertTrue(jsonData[@"id"], @"101");
+    XCTAssertTrue(jsonData[@"title"], @"foo");
+    XCTAssertTrue(jsonData[@"body"], @"body");
+    XCTAssertTrue(jsonData[@"userId"], @"1");
+    [webSessionExpectation fulfill];
   }];
 
   [self waitForExpectationsWithTimeout:10 handler:nil];
@@ -117,41 +109,11 @@
   XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
 
   WPSWebSession *webSession = [self webSession];
-  [webSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+  [webSession post:[NSURL URLWithString:@"http://jsonplaceholder.typicode.com/posts"] parameters:nil completion:^(NSData *data, NSURLResponse *response, NSError *error) {
     [webSessionExpectation fulfill];
   }];
 
   [self waitForExpectationsWithTimeout:10 handler:nil];
-}
-
-#pragma mark - multi-part/form-data POST Tests
-
-- (void)testMultipartFormDataPOSTRequest
-{
-  // TODO: Implement /multipartpost endpoint.
-//  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
-//  
-//  NSURL *URL = [NSURL URLWithString:@"http://whitepeaksoftware.net:3000/multipartpost"];
-//  NSDictionary *parameters = @{@"name":@"Kirby", @"city":@"Stowe"};
-//  WPSWebSession *webSession = [self webSession];
-//  [webSession post:URL multipartFormData:parameters completion:^(NSData *data, NSURL *responseURL, NSError *error) {
-//    // Verify that the data was posted.
-//    WPSWebSession *getWebSession = [self webSession];
-//    [getWebSession getJSONWithURL:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/get"] parameters:nil completion:^(id jsonData, NSURL *responseURL, NSError *error) {
-//      if ([jsonData isKindOfClass:[NSArray class]]) {
-//        NSDictionary *item = [jsonData firstObject];
-//        XCTAssertTrue([item[@"name"] isEqualToString:@"Kirby"]);
-//        XCTAssertTrue([item[@"city"] isEqualToString:@"Stowe"]);
-//      }
-//      
-//      WPSWebSession *resetWebSession = [self webSession];
-//      [resetWebSession post:[NSURL URLWithString:@"http://whitepeaksoftware.net:3000/resetdata"] parameters:nil completion:^(NSData *data, NSURL *responseURL, NSError *error) {
-//        [webSessionExpectation fulfill];
-//      }];
-//    }];
-//  }];
-//  
-//  [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
 #pragma mark - Download Tests

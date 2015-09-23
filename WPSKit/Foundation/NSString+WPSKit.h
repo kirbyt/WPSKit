@@ -75,7 +75,7 @@ static inline id wps_emptyStringIfNil(id s)
  Returns a URL encoded string. 
  The string is safe to be used as part of a URL.
  */
-- (NSString*)wps_URLEncodedStringWithEncoding:(NSStringEncoding)encoding;
+- (NSString*)wps_URLEncodedString;
 
 + (NSString *)wps_base64StringWithString:(NSString *)string;
 + (NSString *)wps_base64StringWithData:(NSData *)data;

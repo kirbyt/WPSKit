@@ -73,7 +73,7 @@
 
 - (void)testURLEncodedString
 {
-   NSString *encodedString = [@"The rain & Spain." wps_URLEncodedStringWithEncoding:NSUTF8StringEncoding];
+   NSString *encodedString = [@"The rain & Spain." wps_URLEncodedString];
    XCTAssertTrue([encodedString isEqualToString:@"The%20rain%20%26%20Spain."], @"Unexcepted URL encoded string value.");
 }
 

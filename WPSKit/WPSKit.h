@@ -44,8 +44,8 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 
 #pragma mark - Data Sources
 
-#import <WPSKit/WPSArrayDataSource.h>
 #import <WPSKit/WPSDataSource.h>
+#import <WPSKit/WPSArrayDataSource.h>
 #import <WPSKit/WPSFetchedResultsDataSource.h>
 
 #pragma mark - Core Location
@@ -70,7 +70,7 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 
 #pragma mark - MapKit
 
-#import <WPSKit/MKMapView.h>
+#import <WPSKit/MKMapView+WPSKit.h>
 
 #pragma mark - UIKit
 
@@ -84,8 +84,8 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 #import <WPSKit/UITextView+WPSKit.h>
 #import <WPSKit/UIView+WPSKit.h>
 #import <WPSKit/UIViewController+WPSKit.h>
-#import <WPSKit/WPSCollectionResusableView.h>
-#import <WPSKit/WPSColelctionViewCell.h>
+#import <WPSKit/WPSCollectionReusableView.h>
+#import <WPSKit/WPSCollectionViewCell.h>
 #import <WPSKit/WPSCompositeView.h>
 #import <WPSKit/WPSFeedbackEmailController.h>
 #import <WPSKit/WPSPageControl.h>

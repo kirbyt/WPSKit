@@ -299,9 +299,8 @@
 
 - (NSData *)postDataWithParameters:(NSDictionary *)parameters
 {
-  NSStringEncoding stringEncoding = NSUTF8StringEncoding;
-  NSString *string = [self encodeQueryStringWithParameters:parameters encoding:stringEncoding];
-  NSData *data = [string dataUsingEncoding:stringEncoding allowLossyConversion:YES];
+  NSString *string = [self encodeQueryStringWithParameters:parameters];
+  NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
   return data;
 }
 
@@ -695,7 +694,7 @@
 - (NSString *)encodedPathWithURL:(NSURL *)URL parameters:(NSDictionary *)parameters
 {
   NSString *path = [URL absoluteString];
-  NSString *queryString = [self encodeQueryStringWithParameters:parameters encoding:NSUTF8StringEncoding];
+  NSString *queryString = [self encodeQueryStringWithParameters:parameters];
   // Add the queryString to the URL. Be sure to append either ? or & if
   // ? is not already present.
   if (queryString) {
@@ -706,18 +705,15 @@
   return path;
 }
 
-static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStringEncoding encoding)
+static NSString * URLEncodedStringFromStringWithEncoding(NSString *string)
 {
   static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
-  
-  CFStringRef encodedStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)string, NULL, (__bridge CFStringRef)kTMLegalCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
-  NSString *encodedString = (__bridge_transfer NSString *)encodedStringRef;
-  // Note: Do not need to call CFRelease(encodedStringRef). This is done
-  // for us by using __bridge_transfer.
-  return [encodedString copy];
+  NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:kTMLegalCharactersToBeEscaped] invertedSet];
+  NSString *encodedString = [string stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
+  return encodedString;
 }
 
-- (NSString *)encodeQueryStringWithParameters:(NSDictionary *)parameters encoding:(NSStringEncoding)encoding
+- (NSString *)encodeQueryStringWithParameters:(NSDictionary *)parameters 
 {
   if (parameters == nil) return nil;
   
@@ -726,14 +722,14 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string, NSStr
     id value = [parameters valueForKey:key];
     if ([value isKindOfClass:[NSArray class]] == NO) {
       NSString *component = [NSString stringWithFormat:@"%@=%@",
-                             URLEncodedStringFromStringWithEncoding([key description], encoding),
-                             URLEncodedStringFromStringWithEncoding([[parameters valueForKey:key] description], encoding)];
+                             URLEncodedStringFromStringWithEncoding([key description]),
+                             URLEncodedStringFromStringWithEncoding([[parameters valueForKey:key] description])];
       [mutableParameterComponents addObject:component];
     } else {
       for (id item in value) {
         NSString *component = [NSString stringWithFormat:@"%@[]=%@",
-                               URLEncodedStringFromStringWithEncoding([key description], encoding),
-                               URLEncodedStringFromStringWithEncoding([item description], encoding)];
+                               URLEncodedStringFromStringWithEncoding([key description]),
+                               URLEncodedStringFromStringWithEncoding([item description])];
         [mutableParameterComponents addObject:component];
       }
     }

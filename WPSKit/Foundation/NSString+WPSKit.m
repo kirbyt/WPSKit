@@ -86,15 +86,12 @@ static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
    return (textRange.location != NSNotFound);
 }
 
-- (NSString*)wps_URLEncodedStringWithEncoding:(NSStringEncoding)encoding
+- (NSString*)wps_URLEncodedString
 {
-   static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
-   
-   CFStringRef encodedStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)kTMLegalCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(encoding));
-   NSString *encodedString = (__bridge_transfer NSString *)encodedStringRef;
-   // Note: Do not need to call CFRelease(encodedStringRef). This is done
-   // for us by using __bridge_transfer.
-   return [encodedString copy];
+  static NSString * const kTMLegalCharactersToBeEscaped = @"?!@#$^&%*+,:;='\"`<>()[]{}/\\|~ ";
+  NSCharacterSet *allowedCharacters = [[NSCharacterSet characterSetWithCharactersInString:kTMLegalCharactersToBeEscaped] invertedSet];
+  NSString *encodedString = [self stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacters];
+   return encodedString;
 }
 
 + (NSString *)wps_stringWithJSONObject:(id)object encoding:(NSStringEncoding)encoding error:(NSError *__autoreleasing *)error

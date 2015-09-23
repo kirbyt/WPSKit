@@ -12,125 +12,85 @@
 		686ABF221BB3087D00D20478 /* WPSKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF211BB3087D00D20478 /* WPSKitTests.m */; };
 		686ABF8D1BB309A700D20478 /* NSManagedObject+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2D1BB309A700D20478 /* NSManagedObject+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF8E1BB309A700D20478 /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF2E1BB309A700D20478 /* NSManagedObject+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF8F1BB309A700D20478 /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF2E1BB309A700D20478 /* NSManagedObject+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF901BB309A700D20478 /* NSManagedObjectContext+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2F1BB309A700D20478 /* NSManagedObjectContext+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF911BB309A700D20478 /* NSManagedObjectContext+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF301BB309A700D20478 /* NSManagedObjectContext+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF921BB309A700D20478 /* NSManagedObjectContext+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF301BB309A700D20478 /* NSManagedObjectContext+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF931BB309A700D20478 /* WPSCoreDataStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF311BB309A700D20478 /* WPSCoreDataStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF941BB309A700D20478 /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF321BB309A700D20478 /* WPSCoreDataStack.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF951BB309A700D20478 /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF321BB309A700D20478 /* WPSCoreDataStack.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF961BB309A700D20478 /* WPSFetchedResultsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF331BB309A700D20478 /* WPSFetchedResultsDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF971BB309A700D20478 /* WPSFetchedResultsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF341BB309A700D20478 /* WPSFetchedResultsDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF981BB309A700D20478 /* WPSFetchedResultsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF341BB309A700D20478 /* WPSFetchedResultsDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF991BB309A700D20478 /* WPSManagedObjectContextWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF351BB309A700D20478 /* WPSManagedObjectContextWatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF9A1BB309A700D20478 /* WPSManagedObjectContextWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF361BB309A700D20478 /* WPSManagedObjectContextWatcher.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF9B1BB309A700D20478 /* WPSManagedObjectContextWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF361BB309A700D20478 /* WPSManagedObjectContextWatcher.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF9C1BB309A700D20478 /* CLLocation+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF381BB309A700D20478 /* CLLocation+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF9D1BB309A700D20478 /* CLLocation+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF391BB309A700D20478 /* CLLocation+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABF9E1BB309A700D20478 /* CLLocation+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF391BB309A700D20478 /* CLLocation+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF9F1BB309A700D20478 /* NSArray+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3B1BB309A700D20478 /* NSArray+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFA01BB309A700D20478 /* NSArray+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3C1BB309A700D20478 /* NSArray+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFA11BB309A700D20478 /* NSArray+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3C1BB309A700D20478 /* NSArray+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFA21BB309A700D20478 /* NSData+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3D1BB309A700D20478 /* NSData+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFA31BB309A700D20478 /* NSData+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3E1BB309A700D20478 /* NSData+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFA41BB309A700D20478 /* NSData+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3E1BB309A700D20478 /* NSData+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFA51BB309A700D20478 /* NSDate+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3F1BB309A700D20478 /* NSDate+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFA61BB309A700D20478 /* NSDate+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF401BB309A700D20478 /* NSDate+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFA71BB309A700D20478 /* NSDate+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF401BB309A700D20478 /* NSDate+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFA81BB309A700D20478 /* NSFileManager+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF411BB309A700D20478 /* NSFileManager+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFA91BB309A700D20478 /* NSFileManager+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF421BB309A700D20478 /* NSFileManager+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFAA1BB309A700D20478 /* NSFileManager+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF421BB309A700D20478 /* NSFileManager+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFAB1BB309A700D20478 /* NSNotificationCenter+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF431BB309A700D20478 /* NSNotificationCenter+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFAC1BB309A700D20478 /* NSNotificationCenter+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF441BB309A700D20478 /* NSNotificationCenter+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFAD1BB309A700D20478 /* NSNotificationCenter+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF441BB309A700D20478 /* NSNotificationCenter+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFAE1BB309A700D20478 /* NSNull+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF451BB309A700D20478 /* NSNull+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFAF1BB309A700D20478 /* NSNull+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF461BB309A700D20478 /* NSNull+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFB01BB309A700D20478 /* NSNull+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF461BB309A700D20478 /* NSNull+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFB11BB309A700D20478 /* NSString+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF471BB309A700D20478 /* NSString+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFB21BB309A700D20478 /* NSString+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF481BB309A700D20478 /* NSString+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFB31BB309A700D20478 /* NSString+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF481BB309A700D20478 /* NSString+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFB41BB309A700D20478 /* NSURL+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF491BB309A700D20478 /* NSURL+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFB51BB309A700D20478 /* NSURL+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4A1BB309A700D20478 /* NSURL+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFB61BB309A700D20478 /* NSURL+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4A1BB309A700D20478 /* NSURL+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFB71BB309A700D20478 /* WPSActivityTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF4B1BB309A700D20478 /* WPSActivityTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFB81BB309A700D20478 /* WPSActivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4C1BB309A700D20478 /* WPSActivityTracker.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFB91BB309A700D20478 /* WPSActivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4C1BB309A700D20478 /* WPSActivityTracker.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFBA1BB309A700D20478 /* WPSCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF4D1BB309A700D20478 /* WPSCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFBB1BB309A700D20478 /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4E1BB309A700D20478 /* WPSCache.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFBC1BB309A700D20478 /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4E1BB309A700D20478 /* WPSCache.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFC31BB309A700D20478 /* WPSStopwatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF531BB309A700D20478 /* WPSStopwatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFC41BB309A700D20478 /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF541BB309A700D20478 /* WPSStopwatch.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFC51BB309A700D20478 /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF541BB309A700D20478 /* WPSStopwatch.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFC91BB309A700D20478 /* WPSWebError.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF571BB309A700D20478 /* WPSWebError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFCA1BB309A700D20478 /* WPSWebError.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF581BB309A700D20478 /* WPSWebError.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFCB1BB309A700D20478 /* WPSWebError.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF581BB309A700D20478 /* WPSWebError.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFCC1BB309A700D20478 /* WPSWebSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF591BB309A700D20478 /* WPSWebSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFCD1BB309A700D20478 /* WPSWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5A1BB309A700D20478 /* WPSWebSession.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFCE1BB309A700D20478 /* WPSWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5A1BB309A700D20478 /* WPSWebSession.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFCF1BB309A700D20478 /* MKMapView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF5C1BB309A700D20478 /* MKMapView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFD01BB309A700D20478 /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5D1BB309A700D20478 /* MKMapView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFD11BB309A700D20478 /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5D1BB309A700D20478 /* MKMapView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFD21BB309A700D20478 /* WPSArrayDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF601BB309A700D20478 /* WPSArrayDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFD31BB309A700D20478 /* WPSArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF611BB309A700D20478 /* WPSArrayDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFD41BB309A700D20478 /* WPSArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF611BB309A700D20478 /* WPSArrayDataSource.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFD51BB309A700D20478 /* WPSDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF621BB309A700D20478 /* WPSDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFD61BB309A700D20478 /* WPSFetchedResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF631BB309A700D20478 /* WPSFetchedResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFD71BB309A700D20478 /* WPSFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF641BB309A700D20478 /* WPSFetchedResultsDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFD81BB309A700D20478 /* WPSFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF641BB309A700D20478 /* WPSFetchedResultsDataSource.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFD91BB309A700D20478 /* UIApplication+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF651BB309A700D20478 /* UIApplication+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFDA1BB309A700D20478 /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF661BB309A700D20478 /* UIApplication+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFDB1BB309A700D20478 /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF661BB309A700D20478 /* UIApplication+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFDC1BB309A700D20478 /* UICollectionView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF671BB309A700D20478 /* UICollectionView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFDD1BB309A700D20478 /* UICollectionView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF681BB309A700D20478 /* UICollectionView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFDE1BB309A700D20478 /* UICollectionView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF681BB309A700D20478 /* UICollectionView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFDF1BB309A700D20478 /* UIColor+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF691BB309A700D20478 /* UIColor+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFE01BB309A700D20478 /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6A1BB309A700D20478 /* UIColor+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFE11BB309A700D20478 /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6A1BB309A700D20478 /* UIColor+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFE21BB309A700D20478 /* UIDevice+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6B1BB309A700D20478 /* UIDevice+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFE31BB309A700D20478 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6C1BB309A700D20478 /* UIDevice+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFE41BB309A700D20478 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6C1BB309A700D20478 /* UIDevice+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFE51BB309A700D20478 /* UIFont+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6D1BB309A700D20478 /* UIFont+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFE61BB309A700D20478 /* UIFont+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6E1BB309A700D20478 /* UIFont+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFE71BB309A700D20478 /* UIFont+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6E1BB309A700D20478 /* UIFont+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFE81BB309A700D20478 /* UIImage+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6F1BB309A700D20478 /* UIImage+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFE91BB309A700D20478 /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF701BB309A700D20478 /* UIImage+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFEA1BB309A700D20478 /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF701BB309A700D20478 /* UIImage+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFEB1BB309A700D20478 /* UITextField+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF711BB309A700D20478 /* UITextField+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFEC1BB309A700D20478 /* UITextField+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF721BB309A700D20478 /* UITextField+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFED1BB309A700D20478 /* UITextField+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF721BB309A700D20478 /* UITextField+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFEE1BB309A700D20478 /* UITextView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF731BB309A700D20478 /* UITextView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFEF1BB309A700D20478 /* UITextView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF741BB309A700D20478 /* UITextView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFF01BB309A700D20478 /* UITextView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF741BB309A700D20478 /* UITextView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFF11BB309A700D20478 /* UIView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF751BB309A700D20478 /* UIView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFF21BB309A700D20478 /* UIView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF761BB309A700D20478 /* UIView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFF31BB309A700D20478 /* UIView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF761BB309A700D20478 /* UIView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFF41BB309A700D20478 /* UIViewController+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF771BB309A700D20478 /* UIViewController+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFF51BB309A700D20478 /* UIViewController+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF781BB309A700D20478 /* UIViewController+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFF61BB309A700D20478 /* UIViewController+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF781BB309A700D20478 /* UIViewController+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		686ABFFD1BB309A700D20478 /* WPSCollectionReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF7D1BB309A700D20478 /* WPSCollectionReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABFFE1BB309A700D20478 /* WPSCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF7E1BB309A700D20478 /* WPSCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
-		686ABFFF1BB309A700D20478 /* WPSCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF7E1BB309A700D20478 /* WPSCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0001BB309A700D20478 /* WPSCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF7F1BB309A700D20478 /* WPSCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC0011BB309A700D20478 /* WPSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF801BB309A700D20478 /* WPSCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		686AC0021BB309A700D20478 /* WPSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF801BB309A700D20478 /* WPSCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0031BB309A700D20478 /* WPSCompositeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF811BB309A700D20478 /* WPSCompositeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC0041BB309A700D20478 /* WPSCompositeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF821BB309A700D20478 /* WPSCompositeView.m */; settings = {ASSET_TAGS = (); }; };
-		686AC0051BB309A700D20478 /* WPSCompositeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF821BB309A700D20478 /* WPSCompositeView.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0061BB309A700D20478 /* WPSFeedbackEmailController.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF831BB309A700D20478 /* WPSFeedbackEmailController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC0071BB309A700D20478 /* WPSFeedbackEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF841BB309A700D20478 /* WPSFeedbackEmailController.m */; settings = {ASSET_TAGS = (); }; };
-		686AC0081BB309A700D20478 /* WPSFeedbackEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF841BB309A700D20478 /* WPSFeedbackEmailController.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0091BB309A700D20478 /* WPSPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF851BB309A700D20478 /* WPSPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC00A1BB309A700D20478 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF861BB309A700D20478 /* WPSPageControl.m */; settings = {ASSET_TAGS = (); }; };
-		686AC00B1BB309A700D20478 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF861BB309A700D20478 /* WPSPageControl.m */; settings = {ASSET_TAGS = (); }; };
 		686AC00C1BB309A700D20478 /* WPSScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF871BB309A700D20478 /* WPSScrollViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC00D1BB309A700D20478 /* WPSScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF881BB309A700D20478 /* WPSScrollViewController.m */; settings = {ASSET_TAGS = (); }; };
-		686AC00E1BB309A700D20478 /* WPSScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF881BB309A700D20478 /* WPSScrollViewController.m */; settings = {ASSET_TAGS = (); }; };
 		686AC00F1BB309A700D20478 /* WPSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF891BB309A700D20478 /* WPSTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC0101BB309A700D20478 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8A1BB309A700D20478 /* WPSTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		686AC0111BB309A700D20478 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8A1BB309A700D20478 /* WPSTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0121BB309A700D20478 /* WPSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF8B1BB309A700D20478 /* WPSTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686AC0131BB309A700D20478 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8C1BB309A700D20478 /* WPSTextView.m */; settings = {ASSET_TAGS = (); }; };
-		686AC0141BB309A700D20478 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8C1BB309A700D20478 /* WPSTextView.m */; settings = {ASSET_TAGS = (); }; };
 		686AC02B1BB309BF00D20478 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0161BB309BF00D20478 /* Base64Tests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC02D1BB309BF00D20478 /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC01A1BB309BF00D20478 /* NSArrayTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC02E1BB309BF00D20478 /* NSDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC01B1BB309BF00D20478 /* NSDateTests.m */; settings = {ASSET_TAGS = (); }; };
@@ -674,58 +634,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				686ABFA11BB309A700D20478 /* NSArray+WPSKit.m in Sources */,
-				686ABF9E1BB309A700D20478 /* CLLocation+WPSKit.m in Sources */,
-				686ABFD11BB309A700D20478 /* MKMapView+WPSKit.m in Sources */,
-				686ABFB91BB309A700D20478 /* WPSActivityTracker.m in Sources */,
-				686ABFCB1BB309A700D20478 /* WPSWebError.m in Sources */,
-				686ABFB61BB309A700D20478 /* NSURL+WPSKit.m in Sources */,
-				686ABFBC1BB309A700D20478 /* WPSCache.m in Sources */,
 				686AC02D1BB309BF00D20478 /* NSArrayTests.m in Sources */,
-				686ABFAD1BB309A700D20478 /* NSNotificationCenter+WPSKit.m in Sources */,
-				686ABFA71BB309A700D20478 /* NSDate+WPSKit.m in Sources */,
-				686ABFA41BB309A700D20478 /* NSData+WPSKit.m in Sources */,
 				686AC0371BB309BF00D20478 /* WPSWebErrorTests.m in Sources */,
 				686AC0361BB309BF00D20478 /* WPSStopwatchTests.m in Sources */,
 				686AC02E1BB309BF00D20478 /* NSDateTests.m in Sources */,
-				686ABFE71BB309A700D20478 /* UIFont+WPSKit.m in Sources */,
-				686ABFDB1BB309A700D20478 /* UIApplication+WPSKit.m in Sources */,
-				686ABFF01BB309A700D20478 /* UITextView+WPSKit.m in Sources */,
 				686AC02B1BB309BF00D20478 /* Base64Tests.m in Sources */,
-				686ABFED1BB309A700D20478 /* UITextField+WPSKit.m in Sources */,
-				686ABF9B1BB309A700D20478 /* WPSManagedObjectContextWatcher.m in Sources */,
-				686ABFCE1BB309A700D20478 /* WPSWebSession.m in Sources */,
 				686AC0331BB309BF00D20478 /* WPSCacheTests.m in Sources */,
 				686AC0301BB309BF00D20478 /* NSStringTests.m in Sources */,
-				686AC0021BB309A700D20478 /* WPSCollectionViewCell.m in Sources */,
-				686ABFFF1BB309A700D20478 /* WPSCollectionReusableView.m in Sources */,
-				686ABFE41BB309A700D20478 /* UIDevice+WPSKit.m in Sources */,
 				686AC0381BB309BF00D20478 /* WPSWebSessionTests.m in Sources */,
-				686ABF951BB309A700D20478 /* WPSCoreDataStack.m in Sources */,
-				686AC00B1BB309A700D20478 /* WPSPageControl.m in Sources */,
-				686AC0141BB309A700D20478 /* WPSTextView.m in Sources */,
-				686AC0051BB309A700D20478 /* WPSCompositeView.m in Sources */,
-				686ABF921BB309A700D20478 /* NSManagedObjectContext+WPSKit.m in Sources */,
-				686ABFC51BB309A700D20478 /* WPSStopwatch.m in Sources */,
-				686AC00E1BB309A700D20478 /* WPSScrollViewController.m in Sources */,
-				686ABFD41BB309A700D20478 /* WPSArrayDataSource.m in Sources */,
-				686ABFE11BB309A700D20478 /* UIColor+WPSKit.m in Sources */,
-				686ABFAA1BB309A700D20478 /* NSFileManager+WPSKit.m in Sources */,
 				686AC0321BB309BF00D20478 /* UIColorTests.m in Sources */,
 				686AC02F1BB309BF00D20478 /* NSNullTests.m in Sources */,
-				686ABFB31BB309A700D20478 /* NSString+WPSKit.m in Sources */,
 				686ABF221BB3087D00D20478 /* WPSKitTests.m in Sources */,
-				686ABFEA1BB309A700D20478 /* UIImage+WPSKit.m in Sources */,
 				686AC0311BB309BF00D20478 /* NSURLTests.m in Sources */,
-				686ABF8F1BB309A700D20478 /* NSManagedObject+WPSKit.m in Sources */,
-				686ABFD81BB309A700D20478 /* WPSFetchedResultsDataSource.m in Sources */,
-				686ABFF31BB309A700D20478 /* UIView+WPSKit.m in Sources */,
-				686ABFB01BB309A700D20478 /* NSNull+WPSKit.m in Sources */,
-				686ABF981BB309A700D20478 /* WPSFetchedResultsDelegate.m in Sources */,
-				686AC0081BB309A700D20478 /* WPSFeedbackEmailController.m in Sources */,
-				686ABFDE1BB309A700D20478 /* UICollectionView+WPSKit.m in Sources */,
-				686ABFF61BB309A700D20478 /* UIViewController+WPSKit.m in Sources */,
-				686AC0111BB309A700D20478 /* WPSTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
