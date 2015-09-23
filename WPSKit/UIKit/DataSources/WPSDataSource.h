@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 White Peak Software Inc. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef WPSKitSamples_WPSDataSource_h
 #define WPSKitSamples_WPSDataSource_h
 

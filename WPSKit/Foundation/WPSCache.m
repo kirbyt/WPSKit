@@ -29,6 +29,7 @@
 //
 
 #import "WPSCache.h"
+#import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface WPSCache ()

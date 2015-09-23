@@ -113,8 +113,8 @@
 
 + (NSString *)_stringByUnescapingFromURLQuery:(NSString *)string
 {
-	NSString *deplussed = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-   return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  NSString *deplussed = [string stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+  return [deplussed stringByRemovingPercentEncoding];
 }
 
 #pragma mark - Creators

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "WPSDataSource.h"
 
 @interface WPSArrayDataSource : NSObject <UICollectionViewDataSource, UITableViewDataSource>
