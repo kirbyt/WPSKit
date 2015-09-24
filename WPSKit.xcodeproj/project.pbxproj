@@ -219,6 +219,7 @@
 		686AC0281BB309BF00D20478 /* WPSStopwatchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSStopwatchTests.m; sourceTree = "<group>"; };
 		686AC0291BB309BF00D20478 /* WPSWebErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebErrorTests.m; sourceTree = "<group>"; };
 		686AC02A1BB309BF00D20478 /* WPSWebSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebSessionTests.m; sourceTree = "<group>"; };
+		686AC06A1BB3761D00D20478 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +244,7 @@
 		686ABF081BB3087D00D20478 = {
 			isa = PBXGroup;
 			children = (
+				686AC06A1BB3761D00D20478 /* readme.md */,
 				686ABF141BB3087D00D20478 /* WPSKit */,
 				686ABF201BB3087D00D20478 /* WPSKitTests */,
 				686ABF131BB3087D00D20478 /* Products */,
