@@ -220,6 +220,8 @@
 		686AC0291BB309BF00D20478 /* WPSWebErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebErrorTests.m; sourceTree = "<group>"; };
 		686AC02A1BB309BF00D20478 /* WPSWebSessionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSWebSessionTests.m; sourceTree = "<group>"; };
 		686AC06A1BB3761D00D20478 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WPSKit.xcconfig; sourceTree = "<group>"; };
+		686AC0701BB376CD00D20478 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			children = (
 				686ABF151BB3087D00D20478 /* WPSKit.h */,
 				686ABF171BB3087D00D20478 /* Info.plist */,
+				686AC06B1BB376CD00D20478 /* BuildConfigurations */,
 				686ABF2C1BB309A600D20478 /* CoreData */,
 				686ABF371BB309A700D20478 /* CoreLocation */,
 				686ABF3A1BB309A700D20478 /* Foundation */,
@@ -422,6 +425,15 @@
 				686ABF641BB309A700D20478 /* WPSFetchedResultsDataSource.m */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		686AC06B1BB376CD00D20478 /* BuildConfigurations */ = {
+			isa = PBXGroup;
+			children = (
+				686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */,
+				686AC0701BB376CD00D20478 /* Warnings.xcconfig */,
+			);
+			path = BuildConfigurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -752,6 +764,7 @@
 		};
 		686ABF271BB3087D00D20478 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -768,6 +781,7 @@
 		};
 		686ABF281BB3087D00D20478 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

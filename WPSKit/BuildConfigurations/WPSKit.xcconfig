@@ -1,0 +1,13 @@
+
+#include "Warnings.xcconfig"
+
+BUILD_NUMBER = 1
+VERSION_STRING = 1.1.0
+
+OTHER_LDFLAGS = $(inherited)
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) WPSKIT_VERSION="@\""$(VERSION_STRING)"\"" WPSKIT_BUILD="@\""$(BUILD_NUMBER)"\""
+
+SDKROOT = iphoneos
+ARCHS = $(ARCHS_STANDARD)
+VALID_ARCHS = arm64 armv7 armv7s
+

@@ -53,7 +53,7 @@
 	} else if (latitude == -90.0) {
 		return MERCATOR_OFFSET * 2;
 	} else {
-		return round(MERCATOR_OFFSET - MERCATOR_RADIUS * logf((1 + sinf(latitude * M_PI / 180.0)) / (1 - sinf(latitude * M_PI / 180.0))) / 2.0);
+		return round(MERCATOR_OFFSET - MERCATOR_RADIUS * logf((1 + sinf((float)latitude * (float)M_PI / 180.0f)) / (1 - sinf((float)latitude * (float)M_PI / 180.0f))) / 2.0);
 	}
 }
 
@@ -76,7 +76,7 @@
    double centerPixelY = [MKMapView latitudeToPixelSpaceY:centerCoordinate.latitude];
    
    // determine the scale value from the zoom level
-   NSInteger zoomExponent = 20 - zoomLevel;
+   NSInteger zoomExponent = 20 - (NSInteger)zoomLevel;
    double zoomScale = pow(2, zoomExponent);
    
    // scale the map’s size in pixel space
@@ -108,7 +108,7 @@
 - (void)wps_setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(NSUInteger)zoomLevel animated:(BOOL)animated
 {
    // clamp large numbers to 28
-   zoomLevel = MIN(zoomLevel, 28);
+   zoomLevel = MIN(zoomLevel, (NSUInteger)28);
    
    // use the zoom level to compute the region
    MKCoordinateSpan span = [self coordinateSpanWithMapView:self centerCoordinate:centerCoordinate andZoomLevel:zoomLevel];
@@ -130,7 +130,7 @@
 	double centerPixelY = [MKMapView latitudeToPixelSpaceY:centerCoordinate.latitude];
    
 	// determine the scale value from the zoom level
-	NSInteger zoomExponent = 20 - zoomLevel;
+	NSInteger zoomExponent = 20 - (NSInteger)zoomLevel;
 	double zoomScale = pow(2, zoomExponent);
    
 	// scale the map’s size in pixel space
@@ -187,7 +187,7 @@
    double zoomExponent = log(zoomScale) / log(2);
    double zoomLevel = 20 - zoomExponent;
    
-   return zoomLevel;
+   return (NSUInteger)floor(zoomLevel);
 }
 
 
