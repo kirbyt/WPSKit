@@ -249,7 +249,7 @@ static void wps_runOnMainQueueWithoutDeadlocking(void (^block)(void))
 
 - (BOOL)progressivelyMigrateURL:(NSURL*)sourceStoreURL ofType:(NSString*)type toModel:(NSManagedObjectModel*)finalModel error:(NSError *__autoreleasing *)error
 {
-  NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:type URL:sourceStoreURL error:error];
+  NSDictionary *sourceMetadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:type URL:sourceStoreURL options:nil error:error];
   if (!sourceMetadata) {
     if (error != NULL) {
       *error = nil;
