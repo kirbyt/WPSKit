@@ -16,8 +16,8 @@
    
    UIImage *normal = [UIImage imageNamed:@"btn-detaildisclosure.png"];
    UIImage *highlighted = [UIImage imageNamed:@"btn-detaildisclosurepressed.png"];
-#warning Fix Me
-//   [self setDetailDisclosureButtonImage:normal detailDisclosureButtonHighlightedImage:highlighted];
+
+   [self setDetailDisclosureButtonImage:normal detailDisclosureButtonHighlightedImage:highlighted];
 }
 
 @end

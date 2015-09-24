@@ -42,9 +42,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning Fix Me
-//   CustomDetailDisclosureCell *cell = [CustomDetailDisclosureCell cellFromDefaultNibForTableView:tableView];
-   CustomDetailDisclosureCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+   CustomDetailDisclosureCell *cell = [CustomDetailDisclosureCell cellFromDefaultNibForTableView:tableView];
    
    NSString *text =[NSString stringWithFormat:@"Row %zi", [indexPath row]];
    [[cell textLabel] setText:text];
@@ -59,8 +57,8 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-   NSString *message = [NSString stringWithFormat:@"Got it! (section: %zi, row: %zi)", [indexPath section], [indexPath row]];
-   // TODO: Fix me.
+#warning Fix Me
+//   NSString *message = [NSString stringWithFormat:@"Got it! (section: %zi, row: %zi)", [indexPath section], [indexPath row]];
 //   [WPSAlertView presentOkayAlertViewWithTitle:@"Accessory Button Tapped" message:message];
 }
 
