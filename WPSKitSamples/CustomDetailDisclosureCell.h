@@ -7,7 +7,7 @@
 //
 
 #import <WPSKit/WPSTableViewCell.h>
-#warning Fix me
-@interface CustomDetailDisclosureCell : UITableViewCell // WPSTableViewCell
+
+@interface CustomDetailDisclosureCell : WPSTableViewCell
 
 @end
