@@ -33,8 +33,8 @@
 		680EE77D14EDF00100F84CD3 /* TextViewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77C14EDF00100F84CD3 /* TextViewView.xib */; };
 		680EE78114EDF1FE00F84CD3 /* roundedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77F14EDF1FE00F84CD3 /* roundedbox.png */; };
 		680EE78214EDF1FE00F84CD3 /* roundedbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 680EE78014EDF1FE00F84CD3 /* roundedbox@2x.png */; };
-		682B77751BB445A8009A9803 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682B77731BB4459B009A9803 /* WPSKit.framework */; };
-		682B77761BB445A8009A9803 /* WPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 682B77731BB4459B009A9803 /* WPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		681ACB951BB447EF007B63C2 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681ACB931BB447E8007B63C2 /* WPSKit.framework */; };
+		681ACB961BB447EF007B63C2 /* WPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 681ACB931BB447E8007B63C2 /* WPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		682CE5F414EDAE1C00F0AF2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F314EDAE1C00F0AF2E /* UIKit.framework */; };
 		682CE5F614EDAE1C00F0AF2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F514EDAE1C00F0AF2E /* Foundation.framework */; };
 		682CE5F814EDAE1C00F0AF2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F714EDAE1C00F0AF2E /* CoreGraphics.framework */; };
@@ -62,7 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				682B77761BB445A8009A9803 /* WPSKit.framework in Embed Frameworks */,
+				681ACB961BB447EF007B63C2 /* WPSKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +86,7 @@
 		680EE77C14EDF00100F84CD3 /* TextViewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewView.xib; sourceTree = "<group>"; };
 		680EE77F14EDF1FE00F84CD3 /* roundedbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roundedbox.png; sourceTree = "<group>"; };
 		680EE78014EDF1FE00F84CD3 /* roundedbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "roundedbox@2x.png"; sourceTree = "<group>"; };
-		682B77731BB4459B009A9803 /* WPSKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WPSKit.framework; path = WPSKitSamples/AdditionalLibraries/WPSKit/WPSKit.framework; sourceTree = "<group>"; };
+		681ACB931BB447E8007B63C2 /* WPSKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WPSKit.framework; path = build/WPSKit.framework; sourceTree = "<group>"; };
 		682CE5EF14EDAE1C00F0AF2E /* WPSKitSamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPSKitSamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682CE5F314EDAE1C00F0AF2E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		682CE5F514EDAE1C00F0AF2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,12 +121,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				680EE75E14EDB6A700F84CD3 /* SystemConfiguration.framework in Frameworks */,
-				682B77751BB445A8009A9803 /* WPSKit.framework in Frameworks */,
 				680EE75C14EDB69B00F84CD3 /* CoreLocation.framework in Frameworks */,
 				680EE75A14EDB68B00F84CD3 /* MapKit.framework in Frameworks */,
 				680EE75814EDB67E00F84CD3 /* CoreData.framework in Frameworks */,
 				682CE5F414EDAE1C00F0AF2E /* UIKit.framework in Frameworks */,
 				682CE5F614EDAE1C00F0AF2E /* Foundation.framework in Frameworks */,
+				681ACB951BB447EF007B63C2 /* WPSKit.framework in Frameworks */,
 				682CE5F814EDAE1C00F0AF2E /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +150,7 @@
 		682CE5E414EDAE1B00F0AF2E = {
 			isa = PBXGroup;
 			children = (
-				682B77731BB4459B009A9803 /* WPSKit.framework */,
+				681ACB931BB447E8007B63C2 /* WPSKit.framework */,
 				682CE5F914EDAE1C00F0AF2E /* WPSKitSamples */,
 				682CE5F214EDAE1C00F0AF2E /* Frameworks */,
 				682CE5F014EDAE1C00F0AF2E /* Products */,
@@ -393,6 +393,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WPSKitSamples/AdditionalLibraries/WPSKit",
+					"$(PROJECT_DIR)/build",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
@@ -409,6 +410,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WPSKitSamples/AdditionalLibraries/WPSKit",
+					"$(PROJECT_DIR)/build",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
