@@ -60,10 +60,7 @@
     self.styleMailComposer(mailer);
   }
 
-  UIStatusBarStyle statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-  [viewController presentViewController:mailer animated:YES completion:^{
-    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle];
-  }];
+  [viewController presentViewController:mailer animated:YES completion:nil];
 }
 
 #pragma mark - Helpers 
