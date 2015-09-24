@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 White Peak Software Inc. All rights reserved.
 //
 
-#import "WPSTableViewCell.h"
-
-@interface CustomDetailDisclosureCell : WPSTableViewCell
+#import <WPSKit/WPSTableViewCell.h>
+#warning Fix me
+@interface CustomDetailDisclosureCell : UITableViewCell // WPSTableViewCell
 
 @end

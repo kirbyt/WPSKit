@@ -7,7 +7,8 @@
 //
 
 #import "TextViewViewController.h"
-#import "WPSTextView.h"
+
+@import WPSKit;
 
 @implementation TextViewViewController
 

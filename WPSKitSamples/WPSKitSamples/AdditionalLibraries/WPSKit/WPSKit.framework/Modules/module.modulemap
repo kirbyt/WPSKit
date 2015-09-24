@@ -1,0 +1,6 @@
+framework module WPSKit {
+  umbrella header "WPSKit.h"
+
+  export *
+  module * { export * }
+}
