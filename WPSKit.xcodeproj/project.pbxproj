@@ -102,6 +102,8 @@
 		686AC0361BB309BF00D20478 /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0281BB309BF00D20478 /* WPSStopwatchTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0371BB309BF00D20478 /* WPSWebErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0291BB309BF00D20478 /* WPSWebErrorTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0381BB309BF00D20478 /* WPSWebSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC02A1BB309BF00D20478 /* WPSWebSessionTests.m */; settings = {ASSET_TAGS = (); }; };
+		68E84EA11BB6B7AC00D1D9E6 /* WPSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68E84EA21BB6B7AC00D1D9E6 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +224,8 @@
 		686AC06A1BB3761D00D20478 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WPSKit.xcconfig; sourceTree = "<group>"; };
 		686AC0701BB376CD00D20478 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
+		68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +399,8 @@
 				686ABF761BB309A700D20478 /* UIView+WPSKit.m */,
 				686ABF771BB309A700D20478 /* UIViewController+WPSKit.h */,
 				686ABF781BB309A700D20478 /* UIViewController+WPSKit.m */,
+				68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */,
+				68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */,
 				686ABF7D1BB309A700D20478 /* WPSCollectionReusableView.h */,
 				686ABF7E1BB309A700D20478 /* WPSCollectionReusableView.m */,
 				686ABF7F1BB309A700D20478 /* WPSCollectionViewCell.h */,
@@ -445,6 +451,7 @@
 			files = (
 				686AC0031BB309A700D20478 /* WPSCompositeView.h in Headers */,
 				686ABF901BB309A700D20478 /* NSManagedObjectContext+WPSKit.h in Headers */,
+				68E84EA11BB6B7AC00D1D9E6 /* WPSAlertController.h in Headers */,
 				686ABF8D1BB309A700D20478 /* NSManagedObject+WPSKit.h in Headers */,
 				686ABFA21BB309A700D20478 /* NSData+WPSKit.h in Headers */,
 				686ABFFD1BB309A700D20478 /* WPSCollectionReusableView.h in Headers */,
@@ -623,6 +630,7 @@
 				686ABFCA1BB309A700D20478 /* WPSWebError.m in Sources */,
 				686ABFDD1BB309A700D20478 /* UICollectionView+WPSKit.m in Sources */,
 				686ABFD01BB309A700D20478 /* MKMapView+WPSKit.m in Sources */,
+				68E84EA21BB6B7AC00D1D9E6 /* WPSAlertController.m in Sources */,
 				686ABF9A1BB309A700D20478 /* WPSManagedObjectContextWatcher.m in Sources */,
 				686ABF941BB309A700D20478 /* WPSCoreDataStack.m in Sources */,
 				686AC0071BB309A700D20478 /* WPSFeedbackEmailController.m in Sources */,

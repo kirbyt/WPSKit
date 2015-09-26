@@ -84,6 +84,7 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 #import <WPSKit/UITextView+WPSKit.h>
 #import <WPSKit/UIView+WPSKit.h>
 #import <WPSKit/UIViewController+WPSKit.h>
+#import <WPSKit/WPSAlertController.h>
 #import <WPSKit/WPSCollectionReusableView.h>
 #import <WPSKit/WPSCollectionViewCell.h>
 #import <WPSKit/WPSCompositeView.h>
