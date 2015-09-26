@@ -27,7 +27,6 @@
 		680EE75E14EDB6A700F84CD3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 680EE75D14EDB6A700F84CD3 /* SystemConfiguration.framework */; };
 		680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */; };
 		680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE76B14EDBFE800F84CD3 /* CustomViewController.m */; };
-		680EE77814EDDD3D00F84CD3 /* WebClientView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77714EDDD3D00F84CD3 /* WebClientView.xib */; };
 		680EE77B14EDEF8E00F84CD3 /* TextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680EE77A14EDEF8D00F84CD3 /* TextViewViewController.m */; };
 		680EE77D14EDF00100F84CD3 /* TextViewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77C14EDF00100F84CD3 /* TextViewView.xib */; };
 		680EE78114EDF1FE00F84CD3 /* roundedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 680EE77F14EDF1FE00F84CD3 /* roundedbox.png */; };
@@ -39,8 +38,8 @@
 		682CE5F814EDAE1C00F0AF2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682CE5F714EDAE1C00F0AF2E /* CoreGraphics.framework */; };
 		682CE5FE14EDAE1C00F0AF2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 682CE5FC14EDAE1C00F0AF2E /* InfoPlist.strings */; };
 		682CE60014EDAE1C00F0AF2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE5FF14EDAE1C00F0AF2E /* main.m */; };
-		682CE60414EDAE1C00F0AF2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE60314EDAE1C00F0AF2E /* AppDelegate.m */; };
-		682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE64B14EDAEC300F0AF2E /* RootViewController.m */; };
+		682CE60414EDAE1C00F0AF2E /* WPSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE60314EDAE1C00F0AF2E /* WPSAppDelegate.m */; };
+		682CE64C14EDAEC300F0AF2E /* WPSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CE64B14EDAEC300F0AF2E /* WPSTableViewController.m */; };
 		685A9B9117C63F0B0086688F /* CustomDetailDisclosureButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */; };
 		685A9B9217C63F0B0086688F /* CustomDetailDisclosureButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */; };
 		685A9B9717C640B70086688F /* btn-detaildisclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9317C640B70086688F /* btn-detaildisclosure.png */; };
@@ -49,6 +48,7 @@
 		685A9B9A17C640B70086688F /* btn-detaildisclosurepressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9617C640B70086688F /* btn-detaildisclosurepressed@2x.png */; };
 		685A9B9D17C643030086688F /* CustomDetailDisclosureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */; };
 		685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */; };
+		68E84E9B1BB6AEE900D1D9E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E84E9A1BB6AEE900D1D9E6 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,7 +74,6 @@
 		680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureModelObject.m; sourceTree = "<group>"; };
 		680EE76A14EDBFE800F84CD3 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
 		680EE76B14EDBFE800F84CD3 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
-		680EE77714EDDD3D00F84CD3 /* WebClientView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebClientView.xib; sourceTree = "<group>"; };
 		680EE77914EDEF8D00F84CD3 /* TextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewViewController.h; sourceTree = "<group>"; };
 		680EE77A14EDEF8D00F84CD3 /* TextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewViewController.m; sourceTree = "<group>"; };
 		680EE77C14EDF00100F84CD3 /* TextViewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewView.xib; sourceTree = "<group>"; };
@@ -89,10 +88,10 @@
 		682CE5FD14EDAE1C00F0AF2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		682CE5FF14EDAE1C00F0AF2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		682CE60114EDAE1C00F0AF2E /* WPSKitSamples-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WPSKitSamples-Prefix.pch"; sourceTree = "<group>"; };
-		682CE60214EDAE1C00F0AF2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		682CE60314EDAE1C00F0AF2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		682CE64A14EDAEC300F0AF2E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		682CE64B14EDAEC300F0AF2E /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		682CE60214EDAE1C00F0AF2E /* WPSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSAppDelegate.h; sourceTree = "<group>"; };
+		682CE60314EDAE1C00F0AF2E /* WPSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPSAppDelegate.m; sourceTree = "<group>"; };
+		682CE64A14EDAEC300F0AF2E /* WPSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSTableViewController.h; sourceTree = "<group>"; };
+		682CE64B14EDAEC300F0AF2E /* WPSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSTableViewController.m; sourceTree = "<group>"; };
 		685A9B8E17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailDisclosureButtonViewController.h; sourceTree = "<group>"; };
 		685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailDisclosureButtonViewController.m; sourceTree = "<group>"; };
 		685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureButtonViewController.xib; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		685A9B9B17C643020086688F /* CustomDetailDisclosureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailDisclosureCell.h; sourceTree = "<group>"; };
 		685A9B9C17C643020086688F /* CustomDetailDisclosureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailDisclosureCell.m; sourceTree = "<group>"; };
 		685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDetailDisclosureCell.xib; sourceTree = "<group>"; };
+		68E84E9A1BB6AEE900D1D9E6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,18 +174,18 @@
 		682CE5F914EDAE1C00F0AF2E /* WPSKitSamples */ = {
 			isa = PBXGroup;
 			children = (
-				682CE60214EDAE1C00F0AF2E /* AppDelegate.h */,
-				682CE60314EDAE1C00F0AF2E /* AppDelegate.m */,
+				682CE60214EDAE1C00F0AF2E /* WPSAppDelegate.h */,
+				682CE60314EDAE1C00F0AF2E /* WPSAppDelegate.m */,
+				68E84E9A1BB6AEE900D1D9E6 /* LaunchScreen.storyboard */,
 				680EE76614EDBB9A00F84CD3 /* FeatureModelObject.h */,
 				680EE76714EDBB9A00F84CD3 /* FeatureModelObject.m */,
 				680EE76A14EDBFE800F84CD3 /* CustomViewController.h */,
 				680EE76B14EDBFE800F84CD3 /* CustomViewController.m */,
-				682CE64A14EDAEC300F0AF2E /* RootViewController.h */,
-				682CE64B14EDAEC300F0AF2E /* RootViewController.m */,
+				682CE64A14EDAEC300F0AF2E /* WPSTableViewController.h */,
+				682CE64B14EDAEC300F0AF2E /* WPSTableViewController.m */,
 				680EE77914EDEF8D00F84CD3 /* TextViewViewController.h */,
 				680EE77A14EDEF8D00F84CD3 /* TextViewViewController.m */,
 				680EE77C14EDF00100F84CD3 /* TextViewView.xib */,
-				680EE77714EDDD3D00F84CD3 /* WebClientView.xib */,
 				685A9B8E17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.h */,
 				685A9B8F17C63F0A0086688F /* CustomDetailDisclosureButtonViewController.m */,
 				685A9B9017C63F0A0086688F /* CustomDetailDisclosureButtonViewController.xib */,
@@ -236,6 +236,7 @@
 		682CE5E614EDAE1B00F0AF2E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WPS;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "White Peak Software Inc.";
 			};
@@ -263,7 +264,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				682CE5FE14EDAE1C00F0AF2E /* InfoPlist.strings in Resources */,
-				680EE77814EDDD3D00F84CD3 /* WebClientView.xib in Resources */,
 				680EE77D14EDF00100F84CD3 /* TextViewView.xib in Resources */,
 				680EE78114EDF1FE00F84CD3 /* roundedbox.png in Resources */,
 				680EE78214EDF1FE00F84CD3 /* roundedbox@2x.png in Resources */,
@@ -272,6 +272,7 @@
 				685A9B9817C640B70086688F /* btn-detaildisclosure@2x.png in Resources */,
 				685A9B9917C640B70086688F /* btn-detaildisclosurepressed.png in Resources */,
 				685A9B9A17C640B70086688F /* btn-detaildisclosurepressed@2x.png in Resources */,
+				68E84E9B1BB6AEE900D1D9E6 /* LaunchScreen.storyboard in Resources */,
 				685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,8 +301,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				682CE60014EDAE1C00F0AF2E /* main.m in Sources */,
-				682CE60414EDAE1C00F0AF2E /* AppDelegate.m in Sources */,
-				682CE64C14EDAEC300F0AF2E /* RootViewController.m in Sources */,
+				682CE60414EDAE1C00F0AF2E /* WPSAppDelegate.m in Sources */,
+				682CE64C14EDAEC300F0AF2E /* WPSTableViewController.m in Sources */,
 				680EE76814EDBB9A00F84CD3 /* FeatureModelObject.m in Sources */,
 				680EE76C14EDBFE900F84CD3 /* CustomViewController.m in Sources */,
 				680EE77B14EDEF8E00F84CD3 /* TextViewViewController.m in Sources */,
@@ -408,6 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,6 +427,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

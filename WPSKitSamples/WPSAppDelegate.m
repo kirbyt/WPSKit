@@ -6,18 +6,18 @@
 //  Copyright (c) 2012 White Peak Software Inc. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "RootViewController.h"
+#import "WPSAppDelegate.h"
+#import "WPSTableViewController.h"
 #import "FeatureModelObject.h"
 
-@implementation AppDelegate
+@implementation WPSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   RootViewController *rootViewController = [[RootViewController alloc] init];
-   [rootViewController setData:[FeatureModelObject features]];
-   
-   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+   WPSTableViewController *vc = [[WPSTableViewController alloc] init];
+   [vc setData:[FeatureModelObject features]];
+
+   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
    
    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    [window setRootViewController:navController];

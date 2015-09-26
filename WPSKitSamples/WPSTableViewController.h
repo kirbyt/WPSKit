@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UITableViewController
+@interface WPSTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *data;
 

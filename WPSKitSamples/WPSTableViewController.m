@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 White Peak Software Inc. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "WPSTableViewController.h"
 
-@implementation RootViewController
+@implementation WPSTableViewController
 
 - (instancetype)init
 {
@@ -74,7 +74,7 @@
    NSArray *items = [item objectForKey:kWPSFeatureKeyItems];
    NSString *viewControllerClassName = [item objectForKey:kWPSFeatureKeyViewControllerClassName];
    
-   RootViewController *viewController = [[NSClassFromString(viewControllerClassName) alloc] init];
+   WPSTableViewController *viewController = [[NSClassFromString(viewControllerClassName) alloc] init];
    [viewController setTitle:title];
    [viewController setData:items];
    
