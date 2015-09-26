@@ -59,9 +59,7 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
    NSString *message = [NSString stringWithFormat:@"Got it! (section: %zi, row: %zi)", [indexPath section], [indexPath row]];
-   WPSAlertController *alert = [WPSAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-   [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-   [alert show];
+   [WPSAlertController presentOkayAlertWithTitle:nil message:message];
 }
 
 @end

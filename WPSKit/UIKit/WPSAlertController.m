@@ -47,4 +47,20 @@
   [blankViewController presentViewController:self animated:animated completion:nil];
 }
 
++ (void)presentOkayAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message
+{
+  WPSAlertController *alertController = [WPSAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+  UIAlertAction *okayAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"OK", @"WPSKit", @"Alert button title") style:UIAlertActionStyleDefault handler:nil];
+  [alertController addAction:okayAction];
+
+  [alertController show];
+}
+
++ (void)presentOkayAlertWithError:(nullable NSError *)error
+{
+  NSString *title = NSLocalizedStringFromTable(@"Error",  @"WPSKit", @"Alert title.");
+  NSString *message = [error localizedDescription];
+  [[self class] presentOkayAlertWithTitle:title message:message];
+}
+
 @end
