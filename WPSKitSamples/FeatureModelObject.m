@@ -8,25 +8,25 @@
 
 #import "FeatureModelObject.h"
 
-NSString * const kWPSFeatureKeyTitle = @"title";
-NSString * const kWPSFeatureKeyItems = @"items";
-NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassName";
+NSString * const WPSFeatureKeyTitle = @"title";
+NSString * const WPSFeatureKeyItems = @"items";
+NSString * const WPSFeatureKeyViewControllerClassName = @"viewControllerClassName";
 
 
 @implementation FeatureModelObject
 
 + (NSArray *)features
 {
-   NSString *rootViewControllerClassName = @"RootViewController";
+   NSString *defaultViewControllerClassName = @"WPSTableViewController";
    
    NSArray *tableViewItems = @[
                               @{
-                                 kWPSFeatureKeyTitle: @"Customizations",
-                                 kWPSFeatureKeyItems: @[
+                                 WPSFeatureKeyTitle: @"Customizations",
+                                 WPSFeatureKeyItems: @[
                                                          @{
-                                                            kWPSFeatureKeyTitle: @"Custom Detail Disclosure Button",
-                                                            kWPSFeatureKeyItems: @[],
-                                          kWPSFeatureKeyViewControllerClassName: @"CustomDetailDisclosureButtonViewController"
+                                                            WPSFeatureKeyTitle: @"Custom Detail Disclosure Button",
+                                                            WPSFeatureKeyItems: @[],
+                                          WPSFeatureKeyViewControllerClassName: @"WPSCustomDetailDisclosureButtonViewController"
                                                          }
                                                       ]
                                  }
@@ -34,55 +34,55 @@ NSString * const kWPSFeatureKeyViewControllerClassName = @"viewControllerClassNa
    
    NSArray *uiKitItems = @[
                            @{
-                              kWPSFeatureKeyTitle: @"UIApplication+WPSKit",
-                              kWPSFeatureKeyItems: @[],
-                              kWPSFeatureKeyViewControllerClassName: rootViewControllerClassName,
+                              WPSFeatureKeyTitle: @"UIApplication+WPSKit",
+                              WPSFeatureKeyItems: @[],
+                              WPSFeatureKeyViewControllerClassName: defaultViewControllerClassName,
                            },
                            @{
-                              kWPSFeatureKeyTitle: @"UIColor+WPSKit",
-                              kWPSFeatureKeyItems: @[],
-                              kWPSFeatureKeyViewControllerClassName: rootViewControllerClassName,
+                              WPSFeatureKeyTitle: @"UIColor+WPSKit",
+                              WPSFeatureKeyItems: @[],
+                              WPSFeatureKeyViewControllerClassName: defaultViewControllerClassName,
                            },
                            @{
-                              kWPSFeatureKeyTitle: @"WPSTextView",
-                              kWPSFeatureKeyItems: @[],
-                              kWPSFeatureKeyViewControllerClassName: rootViewControllerClassName,
+                              WPSFeatureKeyTitle: @"WPSTextView",
+                              WPSFeatureKeyItems: @[],
+                              WPSFeatureKeyViewControllerClassName: @"WPSTextViewController",
                            },
                           @{
-                              kWPSFeatureKeyTitle: @"UITableView",
-                              kWPSFeatureKeyItems: tableViewItems,
-                              kWPSFeatureKeyViewControllerClassName: rootViewControllerClassName,
+                              WPSFeatureKeyTitle: @"UITableView",
+                              WPSFeatureKeyItems: tableViewItems,
+                              WPSFeatureKeyViewControllerClassName: defaultViewControllerClassName,
                            },
                         ];
    
    NSArray *foundationItems = @[
                                 @{
-                                   kWPSFeatureKeyTitle: @"NSString+WPSKit",
-                                   kWPSFeatureKeyItems: @[],
-                                   kWPSFeatureKeyViewControllerClassName: rootViewControllerClassName,
+                                   WPSFeatureKeyTitle: @"NSString+WPSKit",
+                                   WPSFeatureKeyItems: @[],
+                                   WPSFeatureKeyViewControllerClassName: defaultViewControllerClassName,
                                  },
                               ];
    
    NSArray *data = @[
                      @{
-                        kWPSFeatureKeyTitle: @"Core Data",
-                        kWPSFeatureKeyItems: @[],
+                        WPSFeatureKeyTitle: @"Core Data",
+                        WPSFeatureKeyItems: @[],
                         },
                      @{
-                        kWPSFeatureKeyTitle: @"Core Location",
-                        kWPSFeatureKeyItems: @[],
+                        WPSFeatureKeyTitle: @"Core Location",
+                        WPSFeatureKeyItems: @[],
                         },
                      @{
-                        kWPSFeatureKeyTitle: @"Foundation",
-                        kWPSFeatureKeyItems: foundationItems,
+                        WPSFeatureKeyTitle: @"Foundation",
+                        WPSFeatureKeyItems: foundationItems,
                         },
                      @{
-                        kWPSFeatureKeyTitle: @"MapKit",
-                        kWPSFeatureKeyItems: @[],
+                        WPSFeatureKeyTitle: @"MapKit",
+                        WPSFeatureKeyItems: @[],
                         },
                      @{
-                        kWPSFeatureKeyTitle: @"UIKit",
-                        kWPSFeatureKeyItems: uiKitItems,
+                        WPSFeatureKeyTitle: @"UIKit",
+                        WPSFeatureKeyItems: uiKitItems,
                         },
                      ];
    return data;

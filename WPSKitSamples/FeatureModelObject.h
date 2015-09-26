@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kWPSFeatureKeyTitle;
-extern NSString * const kWPSFeatureKeyItems;
-extern NSString * const kWPSFeatureKeyViewControllerClassName;
+extern NSString * const WPSFeatureKeyTitle;
+extern NSString * const WPSFeatureKeyItems;
+extern NSString * const WPSFeatureKeyViewControllerClassName;
 
 @interface FeatureModelObject : NSObject
 

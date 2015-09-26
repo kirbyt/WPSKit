@@ -6,21 +6,22 @@
 //  Copyright (c) 2013 White Peak Software Inc. All rights reserved.
 //
 
-#import "CustomDetailDisclosureButtonViewController.h"
+#import "WPSCustomDetailDisclosureButtonViewController.h"
 #import "CustomDetailDisclosureCell.h"
 
 @import WPSKit;
 
-@interface CustomDetailDisclosureButtonViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@interface WPSCustomDetailDisclosureButtonViewController ()
+
 @end
 
-@implementation CustomDetailDisclosureButtonViewController
+@implementation WPSCustomDetailDisclosureButtonViewController
 
-- (id)initWithDefaultNib
+- (instancetype)init
 {
-   self = [super initWithNibName:@"CustomDetailDisclosureButtonViewController" bundle:nil];
-   if (self) {
+   self = [super initWithStyle:UITableViewStylePlain];
+   if (self)
+   {
 
    }
    return self;

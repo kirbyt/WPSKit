@@ -23,7 +23,7 @@
 - (NSDictionary *)itemAtIndexPath:(NSIndexPath *)indexPath
 {
    NSDictionary *dict = [[self data] objectAtIndex:[indexPath section]];
-   NSArray *items = [dict objectForKey:kWPSFeatureKeyItems];
+   NSArray *items = [dict objectForKey:WPSFeatureKeyItems];
    NSDictionary *item = [items objectAtIndex:[indexPath row]];
    return item;
 }
@@ -39,7 +39,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    NSDictionary *dict = [[self data] objectAtIndex:section];
-   NSArray *items = [dict objectForKey:kWPSFeatureKeyItems];
+   NSArray *items = [dict objectForKey:WPSFeatureKeyItems];
    NSInteger count = [items count];
    return count;
 }
@@ -47,7 +47,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
    NSDictionary *dict = [[self data] objectAtIndex:section];
-   NSString *title = [dict objectForKey:kWPSFeatureKeyTitle];
+   NSString *title = [dict objectForKey:WPSFeatureKeyTitle];
    return title;
 }
 
@@ -61,7 +61,7 @@
    }
    
    NSDictionary *item = [self itemAtIndexPath:indexPath];
-   NSString *title = [item objectForKey:kWPSFeatureKeyTitle];
+   NSString *title = [item objectForKey:WPSFeatureKeyTitle];
    [[cell textLabel] setText:title];
    
    return cell;
@@ -70,13 +70,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    NSDictionary *item = [self itemAtIndexPath:indexPath];
-   NSString *title = [item objectForKey:kWPSFeatureKeyTitle];
-   NSArray *items = [item objectForKey:kWPSFeatureKeyItems];
-   NSString *viewControllerClassName = [item objectForKey:kWPSFeatureKeyViewControllerClassName];
+   NSString *title = [item objectForKey:WPSFeatureKeyTitle];
+   NSArray *items = [item objectForKey:WPSFeatureKeyItems];
+   NSString *viewControllerClassName = [item objectForKey:WPSFeatureKeyViewControllerClassName];
    
-   WPSTableViewController *viewController = [[NSClassFromString(viewControllerClassName) alloc] init];
+   id viewController = [[NSClassFromString(viewControllerClassName) alloc] init];
    [viewController setTitle:title];
-   [viewController setData:items];
+   if ([viewController respondsToSelector:@selector(setData:)]) {
+      [viewController setData:items];
+   }
    
    [[self navigationController] pushViewController:viewController animated:YES];
    

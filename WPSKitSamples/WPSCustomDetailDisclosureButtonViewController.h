@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 White Peak Software Inc. All rights reserved.
 //
 
-#import "CustomViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface CustomDetailDisclosureButtonViewController : CustomViewController
+@interface WPSCustomDetailDisclosureButtonViewController : UITableViewController
 
 @end
