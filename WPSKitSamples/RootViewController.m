@@ -10,12 +10,11 @@
 
 @implementation RootViewController
 
-@synthesize tableView = _tableView;
-
-- (id)initWithDefaultNib
+- (instancetype)init
 {
-   self = [super initWithNibName:@"RootView" bundle:nil];
-   if (self) {
+   self = [super initWithStyle:UITableViewStyleGrouped];
+   if (self)
+   {
       [self setTitle:@"Samples"];
    }
    return self;
@@ -75,7 +74,7 @@
    NSArray *items = [item objectForKey:kWPSFeatureKeyItems];
    NSString *viewControllerClassName = [item objectForKey:kWPSFeatureKeyViewControllerClassName];
    
-   CustomViewController *viewController = [[NSClassFromString(viewControllerClassName) alloc] initWithDefaultNib];
+   RootViewController *viewController = [[NSClassFromString(viewControllerClassName) alloc] init];
    [viewController setTitle:title];
    [viewController setData:items];
    

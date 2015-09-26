@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 White Peak Software Inc. All rights reserved.
 //
 
-#import "CustomViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface RootViewController : CustomViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RootViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *data;
 
 @end

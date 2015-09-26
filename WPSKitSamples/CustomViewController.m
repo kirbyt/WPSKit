@@ -10,8 +10,6 @@
 
 @implementation CustomViewController
 
-@synthesize data = _data;
-
 - (id)initWithDefaultNib
 {
    NSException *exc = nil;
