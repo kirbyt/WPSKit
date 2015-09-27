@@ -102,6 +102,85 @@
 		686AC0361BB309BF00D20478 /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0281BB309BF00D20478 /* WPSStopwatchTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0371BB309BF00D20478 /* WPSWebErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0291BB309BF00D20478 /* WPSWebErrorTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0381BB309BF00D20478 /* WPSWebSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC02A1BB309BF00D20478 /* WPSWebSessionTests.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A091BB892E800066E27 /* WPS-AppExtension-Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 68DD7A081BB892E800066E27 /* WPS-AppExtension-Safe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A0E1BB8931900066E27 /* NSManagedObject+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2D1BB309A700D20478 /* NSManagedObject+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A0F1BB8931D00066E27 /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF2E1BB309A700D20478 /* NSManagedObject+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A101BB8932300066E27 /* NSManagedObjectContext+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2F1BB309A700D20478 /* NSManagedObjectContext+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A111BB8932300066E27 /* NSManagedObjectContext+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF301BB309A700D20478 /* NSManagedObjectContext+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A121BB8932300066E27 /* WPSCoreDataStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF311BB309A700D20478 /* WPSCoreDataStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A131BB8932300066E27 /* WPSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF321BB309A700D20478 /* WPSCoreDataStack.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A141BB8932300066E27 /* WPSFetchedResultsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF331BB309A700D20478 /* WPSFetchedResultsDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A151BB8932300066E27 /* WPSFetchedResultsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF341BB309A700D20478 /* WPSFetchedResultsDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A161BB8932300066E27 /* WPSManagedObjectContextWatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF351BB309A700D20478 /* WPSManagedObjectContextWatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A171BB8932300066E27 /* WPSManagedObjectContextWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF361BB309A700D20478 /* WPSManagedObjectContextWatcher.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A181BB8933300066E27 /* CLLocation+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF381BB309A700D20478 /* CLLocation+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A191BB8933800066E27 /* CLLocation+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF391BB309A700D20478 /* CLLocation+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A1A1BB8934D00066E27 /* NSArray+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3B1BB309A700D20478 /* NSArray+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A1B1BB8934D00066E27 /* NSArray+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3C1BB309A700D20478 /* NSArray+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A1C1BB8934D00066E27 /* NSData+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3D1BB309A700D20478 /* NSData+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A1D1BB8934D00066E27 /* NSData+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF3E1BB309A700D20478 /* NSData+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A1E1BB8934D00066E27 /* NSDate+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF3F1BB309A700D20478 /* NSDate+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A1F1BB8934D00066E27 /* NSDate+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF401BB309A700D20478 /* NSDate+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A201BB8934D00066E27 /* NSFileManager+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF411BB309A700D20478 /* NSFileManager+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A211BB8934D00066E27 /* NSFileManager+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF421BB309A700D20478 /* NSFileManager+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A221BB8934D00066E27 /* NSNotificationCenter+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF431BB309A700D20478 /* NSNotificationCenter+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A231BB8934D00066E27 /* NSNotificationCenter+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF441BB309A700D20478 /* NSNotificationCenter+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A241BB8934D00066E27 /* NSNull+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF451BB309A700D20478 /* NSNull+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A251BB8934D00066E27 /* NSNull+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF461BB309A700D20478 /* NSNull+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A261BB8934D00066E27 /* NSString+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF471BB309A700D20478 /* NSString+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A271BB8934D00066E27 /* NSString+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF481BB309A700D20478 /* NSString+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A281BB8934D00066E27 /* NSURL+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF491BB309A700D20478 /* NSURL+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A291BB8934D00066E27 /* NSURL+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4A1BB309A700D20478 /* NSURL+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A2A1BB8934D00066E27 /* WPSActivityTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF4B1BB309A700D20478 /* WPSActivityTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A2B1BB8934D00066E27 /* WPSActivityTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4C1BB309A700D20478 /* WPSActivityTracker.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A2E1BB8934D00066E27 /* WPSStopwatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF531BB309A700D20478 /* WPSStopwatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A2F1BB8934D00066E27 /* WPSStopwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF541BB309A700D20478 /* WPSStopwatch.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A301BB8934D00066E27 /* WPSWebError.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF571BB309A700D20478 /* WPSWebError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A311BB8934D00066E27 /* WPSWebError.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF581BB309A700D20478 /* WPSWebError.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A321BB8934D00066E27 /* WPSWebSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF591BB309A700D20478 /* WPSWebSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A331BB8934D00066E27 /* WPSWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5A1BB309A700D20478 /* WPSWebSession.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A341BB8936700066E27 /* WPSArrayDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF601BB309A700D20478 /* WPSArrayDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A351BB8936700066E27 /* WPSArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF611BB309A700D20478 /* WPSArrayDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A361BB8936700066E27 /* WPSDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF621BB309A700D20478 /* WPSDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A371BB8936700066E27 /* WPSFetchedResultsDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF631BB309A700D20478 /* WPSFetchedResultsDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A381BB8936700066E27 /* WPSFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF641BB309A700D20478 /* WPSFetchedResultsDataSource.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A391BB8939000066E27 /* UICollectionView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF671BB309A700D20478 /* UICollectionView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A3A1BB8939000066E27 /* UICollectionView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF681BB309A700D20478 /* UICollectionView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A3B1BB8939000066E27 /* UIColor+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF691BB309A700D20478 /* UIColor+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A3C1BB8939000066E27 /* UIColor+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6A1BB309A700D20478 /* UIColor+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A3D1BB8939000066E27 /* UIDevice+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6B1BB309A700D20478 /* UIDevice+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A3E1BB8939000066E27 /* UIDevice+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6C1BB309A700D20478 /* UIDevice+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A3F1BB8939000066E27 /* UIFont+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6D1BB309A700D20478 /* UIFont+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A401BB8939000066E27 /* UIFont+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF6E1BB309A700D20478 /* UIFont+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A411BB8939000066E27 /* UIImage+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF6F1BB309A700D20478 /* UIImage+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A421BB8939000066E27 /* UIImage+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF701BB309A700D20478 /* UIImage+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A431BB8939000066E27 /* UITextField+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF711BB309A700D20478 /* UITextField+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A441BB8939000066E27 /* UITextField+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF721BB309A700D20478 /* UITextField+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A451BB8939000066E27 /* UITextView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF731BB309A700D20478 /* UITextView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A461BB8939000066E27 /* UITextView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF741BB309A700D20478 /* UITextView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A471BB8939000066E27 /* UIView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF751BB309A700D20478 /* UIView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A481BB8939000066E27 /* UIView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF761BB309A700D20478 /* UIView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A491BB8939000066E27 /* UIViewController+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF771BB309A700D20478 /* UIViewController+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A4A1BB8939000066E27 /* UIViewController+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF781BB309A700D20478 /* UIViewController+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A4B1BB8939000066E27 /* WPSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A4C1BB8939000066E27 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A4D1BB8939000066E27 /* WPSCollectionReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF7D1BB309A700D20478 /* WPSCollectionReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A4E1BB8939000066E27 /* WPSCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF7E1BB309A700D20478 /* WPSCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A4F1BB8939000066E27 /* WPSCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF7F1BB309A700D20478 /* WPSCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A501BB8939000066E27 /* WPSCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF801BB309A700D20478 /* WPSCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A511BB8939000066E27 /* WPSCompositeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF811BB309A700D20478 /* WPSCompositeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A521BB8939000066E27 /* WPSCompositeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF821BB309A700D20478 /* WPSCompositeView.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A551BB8939000066E27 /* WPSPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF851BB309A700D20478 /* WPSPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A561BB8939000066E27 /* WPSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF861BB309A700D20478 /* WPSPageControl.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A571BB8939000066E27 /* WPSScrollViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF871BB309A700D20478 /* WPSScrollViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A581BB8939000066E27 /* WPSScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF881BB309A700D20478 /* WPSScrollViewController.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A591BB8939000066E27 /* WPSTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF891BB309A700D20478 /* WPSTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A5A1BB8939000066E27 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8A1BB309A700D20478 /* WPSTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A5B1BB8939000066E27 /* WPSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF8B1BB309A700D20478 /* WPSTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A5C1BB8939000066E27 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8C1BB309A700D20478 /* WPSTextView.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A5D1BB893AB00066E27 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF151BB3087D00D20478 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A621BB89BDC00066E27 /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5D1BB309A700D20478 /* MKMapView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A631BB89BDF00066E27 /* MKMapView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF5C1BB309A700D20478 /* MKMapView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68E84EA11BB6B7AC00D1D9E6 /* WPSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68E84EA21BB6B7AC00D1D9E6 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -224,6 +303,12 @@
 		686AC06A1BB3761D00D20478 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WPSKit.xcconfig; sourceTree = "<group>"; };
 		686AC0701BB376CD00D20478 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WPSKit-AppExtension-Safe.xcconfig"; sourceTree = "<group>"; };
+		68DD7A061BB892E800066E27 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68DD7A081BB892E800066E27 /* WPS-AppExtension-Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WPS-AppExtension-Safe.h"; sourceTree = "<group>"; };
+		68DD7A0A1BB892E800066E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68DD7A5F1BB8945E00066E27 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
+		68DD7A611BB8974E00066E27 /* ios-build-framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "ios-build-framework.sh"; sourceTree = "<group>"; };
 		68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSAlertController.h; sourceTree = "<group>"; };
 		68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPSAlertController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +329,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68DD7A021BB892E800066E27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -253,6 +345,7 @@
 				686AC06A1BB3761D00D20478 /* readme.md */,
 				686ABF141BB3087D00D20478 /* WPSKit */,
 				686ABF201BB3087D00D20478 /* WPSKitTests */,
+				68DD7A071BB892E800066E27 /* WPS-AppExtension-Safe */,
 				686ABF131BB3087D00D20478 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -262,6 +355,7 @@
 			children = (
 				686ABF121BB3087D00D20478 /* WPSKit.framework */,
 				686ABF1C1BB3087D00D20478 /* WPSKitTests.xctest */,
+				68DD7A061BB892E800066E27 /* WPSKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +366,7 @@
 				686ABF151BB3087D00D20478 /* WPSKit.h */,
 				686ABF171BB3087D00D20478 /* Info.plist */,
 				686AC06B1BB376CD00D20478 /* BuildConfigurations */,
+				68DD7A601BB8974E00066E27 /* scripts */,
 				686ABF2C1BB309A600D20478 /* CoreData */,
 				686ABF371BB309A700D20478 /* CoreLocation */,
 				686ABF3A1BB309A700D20478 /* Foundation */,
@@ -437,10 +532,29 @@
 			isa = PBXGroup;
 			children = (
 				686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */,
+				68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */,
+				68DD7A5F1BB8945E00066E27 /* BuildNumber.xcconfig */,
 				686AC0701BB376CD00D20478 /* Warnings.xcconfig */,
 			);
 			path = BuildConfigurations;
 			sourceTree = "<group>";
+		};
+		68DD7A071BB892E800066E27 /* WPS-AppExtension-Safe */ = {
+			isa = PBXGroup;
+			children = (
+				68DD7A081BB892E800066E27 /* WPS-AppExtension-Safe.h */,
+				68DD7A0A1BB892E800066E27 /* Info.plist */,
+			);
+			path = "WPS-AppExtension-Safe";
+			sourceTree = "<group>";
+		};
+		68DD7A601BB8974E00066E27 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				68DD7A611BB8974E00066E27 /* ios-build-framework.sh */,
+			);
+			path = scripts;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -495,6 +609,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68DD7A031BB892E800066E27 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68DD7A431BB8939000066E27 /* UITextField+WPSKit.h in Headers */,
+				68DD7A101BB8932300066E27 /* NSManagedObjectContext+WPSKit.h in Headers */,
+				68DD7A0E1BB8931900066E27 /* NSManagedObject+WPSKit.h in Headers */,
+				68DD7A4D1BB8939000066E27 /* WPSCollectionReusableView.h in Headers */,
+				68DD7A551BB8939000066E27 /* WPSPageControl.h in Headers */,
+				68DD7A1C1BB8934D00066E27 /* NSData+WPSKit.h in Headers */,
+				68DD7A471BB8939000066E27 /* UIView+WPSKit.h in Headers */,
+				68DD7A161BB8932300066E27 /* WPSManagedObjectContextWatcher.h in Headers */,
+				68DD7A201BB8934D00066E27 /* NSFileManager+WPSKit.h in Headers */,
+				68DD7A631BB89BDF00066E27 /* MKMapView+WPSKit.h in Headers */,
+				68DD7A241BB8934D00066E27 /* NSNull+WPSKit.h in Headers */,
+				68DD7A3D1BB8939000066E27 /* UIDevice+WPSKit.h in Headers */,
+				68DD7A221BB8934D00066E27 /* NSNotificationCenter+WPSKit.h in Headers */,
+				68DD7A411BB8939000066E27 /* UIImage+WPSKit.h in Headers */,
+				68DD7A591BB8939000066E27 /* WPSTableViewCell.h in Headers */,
+				68DD7A281BB8934D00066E27 /* NSURL+WPSKit.h in Headers */,
+				68DD7A3F1BB8939000066E27 /* UIFont+WPSKit.h in Headers */,
+				68DD7A4F1BB8939000066E27 /* WPSCollectionViewCell.h in Headers */,
+				68DD7A4B1BB8939000066E27 /* WPSAlertController.h in Headers */,
+				68DD7A5B1BB8939000066E27 /* WPSTextView.h in Headers */,
+				68DD7A451BB8939000066E27 /* UITextView+WPSKit.h in Headers */,
+				68DD7A1A1BB8934D00066E27 /* NSArray+WPSKit.h in Headers */,
+				68DD7A391BB8939000066E27 /* UICollectionView+WPSKit.h in Headers */,
+				68DD7A321BB8934D00066E27 /* WPSWebSession.h in Headers */,
+				68DD7A091BB892E800066E27 /* WPS-AppExtension-Safe.h in Headers */,
+				68DD7A571BB8939000066E27 /* WPSScrollViewController.h in Headers */,
+				68DD7A5D1BB893AB00066E27 /* WPSKit.h in Headers */,
+				68DD7A341BB8936700066E27 /* WPSArrayDataSource.h in Headers */,
+				68DD7A121BB8932300066E27 /* WPSCoreDataStack.h in Headers */,
+				68DD7A1E1BB8934D00066E27 /* NSDate+WPSKit.h in Headers */,
+				68DD7A511BB8939000066E27 /* WPSCompositeView.h in Headers */,
+				68DD7A3B1BB8939000066E27 /* UIColor+WPSKit.h in Headers */,
+				68DD7A361BB8936700066E27 /* WPSDataSource.h in Headers */,
+				68DD7A141BB8932300066E27 /* WPSFetchedResultsDelegate.h in Headers */,
+				68DD7A491BB8939000066E27 /* UIViewController+WPSKit.h in Headers */,
+				68DD7A2A1BB8934D00066E27 /* WPSActivityTracker.h in Headers */,
+				68DD7A261BB8934D00066E27 /* NSString+WPSKit.h in Headers */,
+				68DD7A371BB8936700066E27 /* WPSFetchedResultsDataSource.h in Headers */,
+				68DD7A181BB8933300066E27 /* CLLocation+WPSKit.h in Headers */,
+				68DD7A2E1BB8934D00066E27 /* WPSStopwatch.h in Headers */,
+				68DD7A301BB8934D00066E27 /* WPSWebError.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -535,6 +697,25 @@
 			productReference = 686ABF1C1BB3087D00D20478 /* WPSKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		68DD7A051BB892E800066E27 /* WPSKIT-AppExtension-Safe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKIT-AppExtension-Safe" */;
+			buildPhases = (
+				68DD7A011BB892E800066E27 /* Sources */,
+				68DD7A021BB892E800066E27 /* Frameworks */,
+				68DD7A031BB892E800066E27 /* Headers */,
+				68DD7A041BB892E800066E27 /* Resources */,
+				68DD7A5E1BB893E300066E27 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WPSKIT-AppExtension-Safe";
+			productName = "WPS-AppExtension-Safe";
+			productReference = 68DD7A061BB892E800066E27 /* WPSKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -548,6 +729,9 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					686ABF1B1BB3087D00D20478 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					68DD7A051BB892E800066E27 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
@@ -565,6 +749,7 @@
 			projectRoot = "";
 			targets = (
 				686ABF111BB3087D00D20478 /* WPSKit */,
+				68DD7A051BB892E800066E27 /* WPSKIT-AppExtension-Safe */,
 				686ABF1B1BB3087D00D20478 /* WPSKitTests */,
 			);
 		};
@@ -579,6 +764,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		686ABF1A1BB3087D00D20478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68DD7A041BB892E800066E27 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -600,6 +792,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${PROJECT_DIR}/scripts/ios-build-framework.sh\n";
+		};
+		68DD7A5E1BB893E300066E27 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PROJECT_DIR}/scripts/ios-build-framework.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -671,6 +876,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68DD7A011BB892E800066E27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68DD7A2B1BB8934D00066E27 /* WPSActivityTracker.m in Sources */,
+				68DD7A461BB8939000066E27 /* UITextView+WPSKit.m in Sources */,
+				68DD7A331BB8934D00066E27 /* WPSWebSession.m in Sources */,
+				68DD7A581BB8939000066E27 /* WPSScrollViewController.m in Sources */,
+				68DD7A151BB8932300066E27 /* WPSFetchedResultsDelegate.m in Sources */,
+				68DD7A421BB8939000066E27 /* UIImage+WPSKit.m in Sources */,
+				68DD7A1B1BB8934D00066E27 /* NSArray+WPSKit.m in Sources */,
+				68DD7A1D1BB8934D00066E27 /* NSData+WPSKit.m in Sources */,
+				68DD7A3A1BB8939000066E27 /* UICollectionView+WPSKit.m in Sources */,
+				68DD7A0F1BB8931D00066E27 /* NSManagedObject+WPSKit.m in Sources */,
+				68DD7A4E1BB8939000066E27 /* WPSCollectionReusableView.m in Sources */,
+				68DD7A351BB8936700066E27 /* WPSArrayDataSource.m in Sources */,
+				68DD7A171BB8932300066E27 /* WPSManagedObjectContextWatcher.m in Sources */,
+				68DD7A5C1BB8939000066E27 /* WPSTextView.m in Sources */,
+				68DD7A521BB8939000066E27 /* WPSCompositeView.m in Sources */,
+				68DD7A501BB8939000066E27 /* WPSCollectionViewCell.m in Sources */,
+				68DD7A381BB8936700066E27 /* WPSFetchedResultsDataSource.m in Sources */,
+				68DD7A131BB8932300066E27 /* WPSCoreDataStack.m in Sources */,
+				68DD7A271BB8934D00066E27 /* NSString+WPSKit.m in Sources */,
+				68DD7A481BB8939000066E27 /* UIView+WPSKit.m in Sources */,
+				68DD7A4A1BB8939000066E27 /* UIViewController+WPSKit.m in Sources */,
+				68DD7A621BB89BDC00066E27 /* MKMapView+WPSKit.m in Sources */,
+				68DD7A4C1BB8939000066E27 /* WPSAlertController.m in Sources */,
+				68DD7A211BB8934D00066E27 /* NSFileManager+WPSKit.m in Sources */,
+				68DD7A311BB8934D00066E27 /* WPSWebError.m in Sources */,
+				68DD7A561BB8939000066E27 /* WPSPageControl.m in Sources */,
+				68DD7A3E1BB8939000066E27 /* UIDevice+WPSKit.m in Sources */,
+				68DD7A251BB8934D00066E27 /* NSNull+WPSKit.m in Sources */,
+				68DD7A111BB8932300066E27 /* NSManagedObjectContext+WPSKit.m in Sources */,
+				68DD7A441BB8939000066E27 /* UITextField+WPSKit.m in Sources */,
+				68DD7A2F1BB8934D00066E27 /* WPSStopwatch.m in Sources */,
+				68DD7A231BB8934D00066E27 /* NSNotificationCenter+WPSKit.m in Sources */,
+				68DD7A1F1BB8934D00066E27 /* NSDate+WPSKit.m in Sources */,
+				68DD7A291BB8934D00066E27 /* NSURL+WPSKit.m in Sources */,
+				68DD7A5A1BB8939000066E27 /* WPSTableViewCell.m in Sources */,
+				68DD7A191BB8933800066E27 /* CLLocation+WPSKit.m in Sources */,
+				68DD7A401BB8939000066E27 /* UIFont+WPSKit.m in Sources */,
+				68DD7A3C1BB8939000066E27 /* UIColor+WPSKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -682,53 +932,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		686ABF241BB3087D00D20478 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		686ABF251BB3087D00D20478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -770,23 +973,6 @@
 			};
 			name = Release;
 		};
-		686ABF271BB3087D00D20478 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = WPSKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 		686ABF281BB3087D00D20478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
@@ -798,21 +984,9 @@
 				INFOPLIST_FILE = WPSKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		686ABF2A1BB3087D00D20478 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = WPSKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
 		};
 		686ABF2B1BB3087D00D20478 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -824,13 +998,27 @@
 			};
 			name = Release;
 		};
+		68DD7A0D1BB892E800066E27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "WPS-AppExtension-Safe/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		686ABF0C1BB3087D00D20478 /* Build configuration list for PBXProject "WPSKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				686ABF241BB3087D00D20478 /* Debug */,
 				686ABF251BB3087D00D20478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -839,7 +1027,6 @@
 		686ABF261BB3087D00D20478 /* Build configuration list for PBXNativeTarget "WPSKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				686ABF271BB3087D00D20478 /* Debug */,
 				686ABF281BB3087D00D20478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -848,11 +1035,17 @@
 		686ABF291BB3087D00D20478 /* Build configuration list for PBXNativeTarget "WPSKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				686ABF2A1BB3087D00D20478 /* Debug */,
 				686ABF2B1BB3087D00D20478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKIT-AppExtension-Safe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68DD7A0D1BB892E800066E27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
