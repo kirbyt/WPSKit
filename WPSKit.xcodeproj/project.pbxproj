@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		682E0E491BB8CF4800D52C75 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 682E0E481BB8CF4800D52C75 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		682E0E591BB8E15600D52C75 /* WPSCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF4D1BB309A700D20478 /* WPSCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		682E0E5A1BB8E15B00D52C75 /* WPSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF4E1BB309A700D20478 /* WPSCache.m */; settings = {ASSET_TAGS = (); }; };
+		682E0E5B1BB8E1C900D52C75 /* WPSFeedbackEmailController.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF831BB309A700D20478 /* WPSFeedbackEmailController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		682E0E5C1BB8E1CD00D52C75 /* WPSFeedbackEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF841BB309A700D20478 /* WPSFeedbackEmailController.m */; settings = {ASSET_TAGS = (); }; };
 		686ABF161BB3087D00D20478 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF151BB3087D00D20478 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF1D1BB3087D00D20478 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686ABF121BB3087D00D20478 /* WPSKit.framework */; settings = {ASSET_TAGS = (); }; };
 		686ABF221BB3087D00D20478 /* WPSKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF211BB3087D00D20478 /* WPSKitTests.m */; };
@@ -644,6 +648,7 @@
 				68DD7A4F1BB8939000066E27 /* WPSCollectionViewCell.h in Headers */,
 				68DD7A4B1BB8939000066E27 /* WPSAlertController.h in Headers */,
 				68DD7A5B1BB8939000066E27 /* WPSTextView.h in Headers */,
+				682E0E591BB8E15600D52C75 /* WPSCache.h in Headers */,
 				68DD7A451BB8939000066E27 /* UITextView+WPSKit.h in Headers */,
 				68DD7A1A1BB8934D00066E27 /* NSArray+WPSKit.h in Headers */,
 				68DD7A391BB8939000066E27 /* UICollectionView+WPSKit.h in Headers */,
@@ -662,6 +667,7 @@
 				68DD7A2A1BB8934D00066E27 /* WPSActivityTracker.h in Headers */,
 				68DD7A261BB8934D00066E27 /* NSString+WPSKit.h in Headers */,
 				68DD7A371BB8936700066E27 /* WPSFetchedResultsDataSource.h in Headers */,
+				682E0E5B1BB8E1C900D52C75 /* WPSFeedbackEmailController.h in Headers */,
 				68DD7A181BB8933300066E27 /* CLLocation+WPSKit.h in Headers */,
 				68DD7A2E1BB8934D00066E27 /* WPSStopwatch.h in Headers */,
 				68DD7A301BB8934D00066E27 /* WPSWebError.h in Headers */,
@@ -916,8 +922,10 @@
 				68DD7A621BB89BDC00066E27 /* MKMapView+WPSKit.m in Sources */,
 				68DD7A4C1BB8939000066E27 /* WPSAlertController.m in Sources */,
 				68DD7A211BB8934D00066E27 /* NSFileManager+WPSKit.m in Sources */,
+				682E0E5C1BB8E1CD00D52C75 /* WPSFeedbackEmailController.m in Sources */,
 				68DD7A311BB8934D00066E27 /* WPSWebError.m in Sources */,
 				68DD7A561BB8939000066E27 /* WPSPageControl.m in Sources */,
+				682E0E5A1BB8E15B00D52C75 /* WPSCache.m in Sources */,
 				68DD7A3E1BB8939000066E27 /* UIDevice+WPSKit.m in Sources */,
 				68DD7A251BB8934D00066E27 /* NSNull+WPSKit.m in Sources */,
 				68DD7A111BB8932300066E27 /* NSManagedObjectContext+WPSKit.m in Sources */,

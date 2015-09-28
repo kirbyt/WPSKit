@@ -63,6 +63,7 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 #import <WPSKit/NSString+WPSKit.h>
 #import <WPSKit/NSURL+WPSKit.h>
 #import <WPSKit/WPSActivityTracker.h>
+#import <WPSKit/WPSCache.h> 
 #import <WPSKit/WPSStopwatch.h>
 #import <WPSKit/WPSWebError.h>
 #import <WPSKit/WPSWebSession.h>
@@ -86,6 +87,7 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 #import <WPSKit/WPSCollectionReusableView.h>
 #import <WPSKit/WPSCollectionViewCell.h>
 #import <WPSKit/WPSCompositeView.h>
+#import <WPSKit/WPSFeedbackEmailController.h>
 #import <WPSKit/WPSPageControl.h>
 #import <WPSKit/WPSScrollViewController.h>
 #import <WPSKit/WPSTableViewCell.h>

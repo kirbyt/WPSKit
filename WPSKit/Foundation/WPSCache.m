@@ -240,18 +240,22 @@
 
 - (void)addObservers
 {
+#ifndef WPSKIT_APP_EXTENSION_SAFE
    UIApplication *app = [UIApplication sharedApplication];
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationWillTerminateNotification object:app];
    [nc addObserver:self selector:@selector(willTerminate:) name:UIApplicationDidEnterBackgroundNotification object:app];
+#endif
 }
 
 - (void)removeObservers
 {
+#ifndef WPSKIT_APP_EXTENSION_SAFE
    UIApplication *app = [UIApplication sharedApplication];
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc removeObserver:self name:UIApplicationWillTerminateNotification object:app];
    [nc removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:app];
+#endif
 }
 
 - (void)willTerminate:(NSNotification *)notification

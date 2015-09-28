@@ -81,10 +81,12 @@
 
 - (void)redirectUserToWebsite
 {
+#ifndef WPSKIT_APP_EXTENSION_SAFE
   NSURL *URL = [self websiteURL];
   if (URL) {
     [[UIApplication sharedApplication] openURL:URL];
   }
+#endif
   
   if (self.completionBlock) {
     self.completionBlock();
