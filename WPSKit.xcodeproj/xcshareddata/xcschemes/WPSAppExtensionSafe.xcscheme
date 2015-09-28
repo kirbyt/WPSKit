@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68DD7A051BB892E800066E27"
                BuildableName = "WPSKit.framework"
-               BlueprintName = "WPSKIT-AppExtension-Safe"
+               BlueprintName = "WPSKitAppExtensionSafe"
                ReferencedContainer = "container:WPSKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68DD7A051BB892E800066E27"
             BuildableName = "WPSKit.framework"
-            BlueprintName = "WPSKIT-AppExtension-Safe"
+            BlueprintName = "WPSKitAppExtensionSafe"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68DD7A051BB892E800066E27"
             BuildableName = "WPSKit.framework"
-            BlueprintName = "WPSKIT-AppExtension-Safe"
+            BlueprintName = "WPSKitAppExtensionSafe"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

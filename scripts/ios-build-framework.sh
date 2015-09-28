@@ -49,6 +49,6 @@ lipo -create  "${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.fra
 
 # Copy the framework to a more convenient location.
 rm -rf "${PROJECT_DIR}/build/${TARGET_NAME}/"
-mkdir -p "${PROJECT_DIR}/build/"
-cp -a "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework" "${PROJECT_DIR}/build/${TARGET_NAME}.framework"
+mkdir -p "${PROJECT_DIR}/build/${TARGET_NAME}/"
+cp -a "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework" "${PROJECT_DIR}/build/${TARGET_NAME}/${PROJECT_NAME}.framework"
 

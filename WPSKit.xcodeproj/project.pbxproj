@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682E0E491BB8CF4800D52C75 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 682E0E481BB8CF4800D52C75 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF161BB3087D00D20478 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF151BB3087D00D20478 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		686ABF1D1BB3087D00D20478 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686ABF121BB3087D00D20478 /* WPSKit.framework */; settings = {ASSET_TAGS = (); }; };
 		686ABF221BB3087D00D20478 /* WPSKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF211BB3087D00D20478 /* WPSKitTests.m */; };
@@ -102,7 +103,6 @@
 		686AC0361BB309BF00D20478 /* WPSStopwatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0281BB309BF00D20478 /* WPSStopwatchTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0371BB309BF00D20478 /* WPSWebErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC0291BB309BF00D20478 /* WPSWebErrorTests.m */; settings = {ASSET_TAGS = (); }; };
 		686AC0381BB309BF00D20478 /* WPSWebSessionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 686AC02A1BB309BF00D20478 /* WPSWebSessionTests.m */; settings = {ASSET_TAGS = (); }; };
-		68DD7A091BB892E800066E27 /* WPS-AppExtension-Safe.h in Headers */ = {isa = PBXBuildFile; fileRef = 68DD7A081BB892E800066E27 /* WPS-AppExtension-Safe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68DD7A0E1BB8931900066E27 /* NSManagedObject+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2D1BB309A700D20478 /* NSManagedObject+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68DD7A0F1BB8931D00066E27 /* NSManagedObject+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF2E1BB309A700D20478 /* NSManagedObject+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		68DD7A101BB8932300066E27 /* NSManagedObjectContext+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF2F1BB309A700D20478 /* NSManagedObjectContext+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -178,9 +178,10 @@
 		68DD7A5A1BB8939000066E27 /* WPSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8A1BB309A700D20478 /* WPSTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		68DD7A5B1BB8939000066E27 /* WPSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF8B1BB309A700D20478 /* WPSTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68DD7A5C1BB8939000066E27 /* WPSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF8C1BB309A700D20478 /* WPSTextView.m */; settings = {ASSET_TAGS = (); }; };
-		68DD7A5D1BB893AB00066E27 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF151BB3087D00D20478 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68DD7A621BB89BDC00066E27 /* MKMapView+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF5D1BB309A700D20478 /* MKMapView+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
 		68DD7A631BB89BDF00066E27 /* MKMapView+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF5C1BB309A700D20478 /* MKMapView+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68DD7A861BB8C5C400066E27 /* UIApplication+WPSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 686ABF661BB309A700D20478 /* UIApplication+WPSKit.m */; settings = {ASSET_TAGS = (); }; };
+		68DD7A871BB8C6E400066E27 /* UIApplication+WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 686ABF651BB309A700D20478 /* UIApplication+WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68E84EA11BB6B7AC00D1D9E6 /* WPSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68E84E9F1BB6B7AC00D1D9E6 /* WPSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68E84EA21BB6B7AC00D1D9E6 /* WPSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84EA01BB6B7AC00D1D9E6 /* WPSAlertController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -196,6 +197,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682E0E481BB8CF4800D52C75 /* WPSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPSKit.h; sourceTree = "<group>"; };
 		686ABF121BB3087D00D20478 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		686ABF151BB3087D00D20478 /* WPSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSKit.h; sourceTree = "<group>"; };
 		686ABF171BB3087D00D20478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,7 +305,7 @@
 		686AC06A1BB3761D00D20478 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WPSKit.xcconfig; sourceTree = "<group>"; };
 		686AC0701BB376CD00D20478 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
-		68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "WPSKit-AppExtension-Safe.xcconfig"; sourceTree = "<group>"; };
+		68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WPSKitAppExtensionSafe.xcconfig; sourceTree = "<group>"; };
 		68DD7A061BB892E800066E27 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68DD7A081BB892E800066E27 /* WPS-AppExtension-Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WPS-AppExtension-Safe.h"; sourceTree = "<group>"; };
 		68DD7A0A1BB892E800066E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				686ABF151BB3087D00D20478 /* WPSKit.h */,
+				68DD7A8D1BB8CEE100066E27 /* AppExtensionSafe */,
 				686ABF171BB3087D00D20478 /* Info.plist */,
 				686AC06B1BB376CD00D20478 /* BuildConfigurations */,
 				68DD7A601BB8974E00066E27 /* scripts */,
@@ -532,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */,
-				68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */,
+				68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */,
 				68DD7A5F1BB8945E00066E27 /* BuildNumber.xcconfig */,
 				686AC0701BB376CD00D20478 /* Warnings.xcconfig */,
 			);
@@ -555,6 +558,14 @@
 			);
 			path = scripts;
 			sourceTree = SOURCE_ROOT;
+		};
+		68DD7A8D1BB8CEE100066E27 /* AppExtensionSafe */ = {
+			isa = PBXGroup;
+			children = (
+				682E0E481BB8CF4800D52C75 /* WPSKit.h */,
+			);
+			path = AppExtensionSafe;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -637,12 +648,12 @@
 				68DD7A1A1BB8934D00066E27 /* NSArray+WPSKit.h in Headers */,
 				68DD7A391BB8939000066E27 /* UICollectionView+WPSKit.h in Headers */,
 				68DD7A321BB8934D00066E27 /* WPSWebSession.h in Headers */,
-				68DD7A091BB892E800066E27 /* WPS-AppExtension-Safe.h in Headers */,
+				68DD7A871BB8C6E400066E27 /* UIApplication+WPSKit.h in Headers */,
 				68DD7A571BB8939000066E27 /* WPSScrollViewController.h in Headers */,
-				68DD7A5D1BB893AB00066E27 /* WPSKit.h in Headers */,
 				68DD7A341BB8936700066E27 /* WPSArrayDataSource.h in Headers */,
 				68DD7A121BB8932300066E27 /* WPSCoreDataStack.h in Headers */,
 				68DD7A1E1BB8934D00066E27 /* NSDate+WPSKit.h in Headers */,
+				682E0E491BB8CF4800D52C75 /* WPSKit.h in Headers */,
 				68DD7A511BB8939000066E27 /* WPSCompositeView.h in Headers */,
 				68DD7A3B1BB8939000066E27 /* UIColor+WPSKit.h in Headers */,
 				68DD7A361BB8936700066E27 /* WPSDataSource.h in Headers */,
@@ -697,9 +708,9 @@
 			productReference = 686ABF1C1BB3087D00D20478 /* WPSKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		68DD7A051BB892E800066E27 /* WPSKIT-AppExtension-Safe */ = {
+		68DD7A051BB892E800066E27 /* WPSKitAppExtensionSafe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKIT-AppExtension-Safe" */;
+			buildConfigurationList = 68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKitAppExtensionSafe" */;
 			buildPhases = (
 				68DD7A011BB892E800066E27 /* Sources */,
 				68DD7A021BB892E800066E27 /* Frameworks */,
@@ -711,7 +722,7 @@
 			);
 			dependencies = (
 			);
-			name = "WPSKIT-AppExtension-Safe";
+			name = WPSKitAppExtensionSafe;
 			productName = "WPS-AppExtension-Safe";
 			productReference = 68DD7A061BB892E800066E27 /* WPSKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -749,7 +760,7 @@
 			projectRoot = "";
 			targets = (
 				686ABF111BB3087D00D20478 /* WPSKit */,
-				68DD7A051BB892E800066E27 /* WPSKIT-AppExtension-Safe */,
+				68DD7A051BB892E800066E27 /* WPSKitAppExtensionSafe */,
 				686ABF1B1BB3087D00D20478 /* WPSKitTests */,
 			);
 		};
@@ -882,6 +893,7 @@
 			files = (
 				68DD7A2B1BB8934D00066E27 /* WPSActivityTracker.m in Sources */,
 				68DD7A461BB8939000066E27 /* UITextView+WPSKit.m in Sources */,
+				68DD7A861BB8C5C400066E27 /* UIApplication+WPSKit.m in Sources */,
 				68DD7A331BB8934D00066E27 /* WPSWebSession.m in Sources */,
 				68DD7A581BB8939000066E27 /* WPSScrollViewController.m in Sources */,
 				68DD7A151BB8932300066E27 /* WPSFetchedResultsDelegate.m in Sources */,
@@ -1000,13 +1012,13 @@
 		};
 		68DD7A0D1BB892E800066E27 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68DD7A001BB8922500066E27 /* WPSKit-AppExtension-Safe.xcconfig */;
+			baseConfigurationReference = 68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "WPS-AppExtension-Safe/Info.plist";
+				INFOPLIST_FILE = WPSKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				SKIP_INSTALL = YES;
@@ -1040,12 +1052,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKIT-AppExtension-Safe" */ = {
+		68DD7A0B1BB892E800066E27 /* Build configuration list for PBXNativeTarget "WPSKitAppExtensionSafe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68DD7A0D1BB892E800066E27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

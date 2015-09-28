@@ -211,10 +211,14 @@ static NSInteger wps_networkActivityCount = 0;
 
 + (void)wps_dismissKeyboard
 {
+#ifdef WPSKIT_APP_EXTENSION_SAFE
+  NSLog(@"%s: Not available in an app extension.", __PRETTY_FUNCTION__);
+#else
   // A more effective way to dispmiss the keyboard. Based on the
   // stack overflow response here:
   // http://stackoverflow.com/a/11768282
   [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+#endif
 }
 
 @end
