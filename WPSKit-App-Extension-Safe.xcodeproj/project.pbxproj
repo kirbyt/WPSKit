@@ -441,9 +441,9 @@
 		686AC06B1BB376CD00D20478 /* BuildConfigurations */ = {
 			isa = PBXGroup;
 			children = (
+				68DD7A5F1BB8945E00066E27 /* BuildNumber.xcconfig */,
 				686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */,
 				68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */,
-				68DD7A5F1BB8945E00066E27 /* BuildNumber.xcconfig */,
 				686AC0701BB376CD00D20478 /* Warnings.xcconfig */,
 			);
 			path = BuildConfigurations;
@@ -567,7 +567,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 686ABF0C1BB3087D00D20478 /* Build configuration list for PBXProject "WPSKit" */;
+			buildConfigurationList = 686ABF0C1BB3087D00D20478 /* Build configuration list for PBXProject "WPSKit-App-Extension-Safe" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -724,8 +724,9 @@
 		};
 		686ABF281BB3087D00D20478 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
+			baseConfigurationReference = 68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -790,8 +791,9 @@
 		};
 		68CB6ADF1BB9730300134135 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 686AC06C1BB376CD00D20478 /* WPSKit.xcconfig */;
+			baseConfigurationReference = 68DD7A001BB8922500066E27 /* WPSKitAppExtensionSafe.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -816,7 +818,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		686ABF0C1BB3087D00D20478 /* Build configuration list for PBXProject "WPSKit" */ = {
+		686ABF0C1BB3087D00D20478 /* Build configuration list for PBXProject "WPSKit-App-Extension-Safe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				686ABF251BB3087D00D20478 /* Release */,
