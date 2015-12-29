@@ -29,6 +29,7 @@
 
 @interface WPSWebSession () <NSURLSessionDelegate>
 @property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSMutableDictionary *taskInfo; // Keeps additional information about download and upload tasks.
 
 // We queue each non-cached request in case we receive the same
 // request multiple times while processing the original request.
@@ -89,6 +90,7 @@
     [self setRetryCount:5];
     [self setCacheAge:300];   // 5 minutes
     [self setAdditionalHTTPHeaderFields:[NSDictionary dictionary]];
+    [self setTaskInfo:[NSMutableDictionary dictionary]];
   }
   return self;
 }
@@ -400,41 +402,6 @@
     return taskIdentifier;
   }
   
-  __weak __typeof__(self) weakSelf = self;
-  void (^dispatchCompletion)(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error);
-  dispatchCompletion = ^(NSString *requestQueueKey, NSURL *location, NSURLResponse *response, NSError *error) {
-    __typeof__(self) strongSelf = weakSelf;
-    if (strongSelf == nil) return;
-    
-    [strongSelf dispatchDownloadRequestQueueItemWithKey:requestQueueKey location:location response:response error:error];
-  };
-  
-  NSInteger cacheAge = [self cacheAge];
-  
-  void (^taskCompletion)(NSURL *location, NSURLResponse *response, NSError *error);
-  taskCompletion = ^(NSURL *location, NSURLResponse *response, NSError *error) {
-    NSError *errorToReport = error;
-
-    // Did we receive an HTTP error?
-    NSInteger statusCode = 0;
-    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-      statusCode = [(NSHTTPURLResponse *)response statusCode];
-    }
-    
-    // Nope. Save the data to the local cache if available.
-    if (statusCode >= 200 && statusCode < 300) {
-      if (cache) {
-        [cache cacheFileAt:location forKey:cacheKey cacheAge:cacheAge];
-      }
-    } else {
-      // Yep. Prepare to report the HTTP error back to the caller.
-      errorToReport = WPSHTTPError([response URL], statusCode, nil);
-    }
-
-    dispatchCompletion(cacheKey, location, response, errorToReport);
-  };
-  
-  
   NSMutableURLRequest *request = [self getRequestWithURL:URL parameters:parameters];
   NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
   if (cachedResponse) {
@@ -445,9 +412,21 @@
     }
   }
   NSURLSession *session = [self session];
-  NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:taskCompletion];
+  NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request];
+  taskIdentifier = [task taskIdentifier];
+
+  // Save additional information about this task.
+  NSInteger cacheAge = [self cacheAge];
+  NSMutableDictionary *taskInfo = [NSMutableDictionary dictionary];
+  if (cache) {
+    taskInfo[@"cache"] = cache;
+  }
+  taskInfo[@"cacheKey"] = cacheKey;
+  taskInfo[@"cacheAge"] = @(cacheAge);
+  [self taskInfo][@(taskIdentifier)] = taskInfo;
+
   [task resume];
-  return [task taskIdentifier];
+  return taskIdentifier;
 }
 
 #pragma mark - Download Images
@@ -780,6 +759,51 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string)
       completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
     }
   }
+}
+
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
+{
+  // TODO: Need to implement.
+  // Need to save the completion block from -application:handleEventsForBackgroundURLSession:completionHandler:
+  // so it can be called from here once all tasks are complete.
+}
+
+#pragma mark - NSURLSessionDownloadDelegate Methods
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+  WPSCache *cache = nil;
+  NSString *cacheKey = nil;
+  NSInteger cacheAge = [self cacheAge];
+
+  NSDictionary *taskInfo = [self taskInfo][@([downloadTask taskIdentifier])];
+  if (taskInfo) {
+    cache = taskInfo[@"cache"];
+    cacheKey = taskInfo[@"cacheKey"];
+    cacheAge = [taskInfo[@"cacheAge"] integerValue];
+  }
+  
+  NSURLResponse *response = [downloadTask response];
+  NSError *error = [downloadTask error];
+  NSError *errorToReport = error;
+  
+  // Did we receive an HTTP error?
+  NSInteger statusCode = 0;
+  if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+    statusCode = [(NSHTTPURLResponse *)response statusCode];
+  }
+  
+  // Nope. Save the data to the local cache if available.
+  if (statusCode >= 200 && statusCode < 300) {
+    if (cache) {
+      [cache cacheFileAt:location forKey:cacheKey cacheAge:cacheAge];
+    }
+  } else {
+    // Yep. Prepare to report the HTTP error back to the caller.
+    errorToReport = WPSHTTPError([response URL], statusCode, nil);
+  }
+  
+  [self dispatchDownloadRequestQueueItemWithKey:cacheKey location:location response:response error:errorToReport];
 }
 
 #pragma mark - DELETE Action
