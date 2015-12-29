@@ -156,6 +156,26 @@
   [self waitForExpectationsWithTimeout:10 handler:nil];
 }
 
+- (void)testFileDownloadError
+{
+  XCTestExpectation *webSessionExpectation = [self expectationWithDescription:@"web session"];
+  
+  NSURL *URL = [NSURL URLWithString:@"http://www.thecave.com/images/thecave-logo-2-bogus.png"];
+  WPSWebSession *webSession = [self webSession];
+  [webSession downloadFileAtURL:URL completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
+    XCTAssertNotNil(error);
+    XCTAssertTrue([[error domain] isEqualToString:WPSHTTPErrorDomain]);
+    if ([[error domain] isEqualToString:WPSHTTPErrorDomain]) {
+      NSNumber *HTTPStatusCode = [error userInfo][@"HTTPStatusCode"];
+      XCTAssertEqual([HTTPStatusCode integerValue], 404);
+      XCTAssertEqual([error code], 404);
+    }
+    [webSessionExpectation fulfill];
+  }];
+  
+  [self waitForExpectationsWithTimeout:10 handler:nil];
+}
+
 #pragma mark - Image Tests
 
 - (void)testImageDownload
