@@ -93,3 +93,17 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 #import <WPSKit/WPSTableViewCell.h>
 #import <WPSKit/WPSTextView.h>
 
+
+#ifdef DEBUG
+#define WPS_DLog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#define WPS_ALog(...) [[NSAssertionHandler currentHandler] handleFailureInFunction:[NSString stringWithCString:__PRETTY_FUNCTION__ encoding:NSUTF8StringEncoding] file:[NSString stringWithCString:__FILE__ encoding:NSUTF8StringEncoding] lineNumber:__LINE__ description:__VA_ARGS__]
+#else
+#define WPS_DLog(...) do { } while (0)
+#ifndef NS_BLOCK_ASSERTIONS
+#define NS_BLOCK_ASSERTIONS
+#endif
+#define WPS_ALog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#endif
+
+#define WPS_Assert(condition, ...) do { if (!(condition)) { WPS_ALog(__VA_ARGS__); }} while(0)
+
