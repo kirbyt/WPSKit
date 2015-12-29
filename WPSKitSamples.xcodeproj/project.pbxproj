@@ -44,8 +44,8 @@
 		685A9B9F17C643110086688F /* CustomDetailDisclosureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 685A9B9E17C643110086688F /* CustomDetailDisclosureCell.xib */; };
 		68DEBADA1BB973FB000DE9A9 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DEBAD51BB973DD000DE9A9 /* WPSKit.framework */; };
 		68DEBADB1BB973FB000DE9A9 /* WPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68DEBAD51BB973DD000DE9A9 /* WPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		68E84E9B1BB6AEE900D1D9E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E84E9A1BB6AEE900D1D9E6 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		68E84E9E1BB6B5E000D1D9E6 /* WPSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84E9D1BB6B5E000D1D9E6 /* WPSTextViewController.m */; settings = {ASSET_TAGS = (); }; };
+		68E84E9B1BB6AEE900D1D9E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E84E9A1BB6AEE900D1D9E6 /* LaunchScreen.storyboard */; };
+		68E84E9E1BB6B5E000D1D9E6 /* WPSTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E84E9D1BB6B5E000D1D9E6 /* WPSTextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +55,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 686ABF121BB3087D00D20478;
 			remoteInfo = WPSKit;
-		};
-		68DEBAD61BB973DD000DE9A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68DEBACE1BB973DD000DE9A9 /* WPSKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 68DD7A061BB892E800066E27;
-			remoteInfo = WPSKitAppExtensionSafe;
 		};
 		68DEBAD81BB973DD000DE9A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -233,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				68DEBAD51BB973DD000DE9A9 /* WPSKit.framework */,
-				68DEBAD71BB973DD000DE9A9 /* WPSKit.framework */,
 				68DEBAD91BB973DD000DE9A9 /* WPSKitTests.xctest */,
 			);
 			name = Products;
@@ -301,13 +293,6 @@
 			fileType = wrapper.framework;
 			path = WPSKit.framework;
 			remoteRef = 68DEBAD41BB973DD000DE9A9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		68DEBAD71BB973DD000DE9A9 /* WPSKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WPSKit.framework;
-			remoteRef = 68DEBAD61BB973DD000DE9A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		68DEBAD91BB973DD000DE9A9 /* WPSKitTests.xctest */ = {
@@ -465,10 +450,6 @@
 		682CE60814EDAE1C00F0AF2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
 				INFOPLIST_FILE = "WPSKitSamples/WPSKitSamples-Info.plist";
@@ -483,10 +464,6 @@
 		682CE60914EDAE1C00F0AF2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WPSKitSamples/WPSKitSamples-Prefix.pch";
 				INFOPLIST_FILE = "WPSKitSamples/WPSKitSamples-Info.plist";

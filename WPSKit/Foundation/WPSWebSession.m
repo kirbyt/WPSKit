@@ -373,13 +373,15 @@
 
 #pragma mark - Downloads
 
-- (void)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion
+- (NSUInteger)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion
 {
-  [self downloadFileAtURL:URL parameters:nil completion:completion];
+  return [self downloadFileAtURL:URL parameters:nil completion:completion];
 }
 
-- (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion
+- (NSUInteger)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion
 {
+  NSUInteger taskIdentifier = NSIntegerMax;
+
   NSString *cacheKey = [self cacheKeyForURL:URL parameters:parameters];
   WPSCache *cache = [self cache];
   NSURL *cachedFileLocation = [cache fileURLForKey:cacheKey];
@@ -387,14 +389,15 @@
     if (completion) {
       completion(cachedFileLocation, nil, nil);
     }
-    return;
+    return taskIdentifier;
   }
   
   BOOL isFirstRequest = ![self isRequestItemInQueue:cacheKey];
   [self addToDownloadRequestQueue:cacheKey completion:completion];
   // Do not resubmit the request if one has already been submitted.
   if (isFirstRequest == NO) {
-    return;
+    taskIdentifier = [self taskIdentifierForDownloadRequestQueueKey:cacheKey];
+    return taskIdentifier;
   }
   
   __weak __typeof__(self) weakSelf = self;
@@ -444,24 +447,26 @@
   NSURLSession *session = [self session];
   NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:taskCompletion];
   [task resume];
+  return [task taskIdentifier];
 }
 
 #pragma mark - Download Images
 
-- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
+- (NSUInteger)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion
 {
-  [self imageAtURL:URL parameters:nil completion:completion];
+  return [self imageAtURL:URL parameters:nil completion:completion];
 }
 
-- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion
+- (NSUInteger)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion
 {
+  NSUInteger taskIdentifier = NSIntegerMax;
   if (completion == nil) {
     // Without a completion block, we have no way to return the image.
     // So why waste the effort.
-    return;
+    return taskIdentifier;
   }
   
-  [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
+  taskIdentifier = [self downloadFileAtURL:URL parameters:parameters completion:^(NSURL *location, NSURLResponse *response, NSError *error) {
     UIImage *image = nil;
     if ([location isFileURL]) {
       NSData *data = [NSData dataWithContentsOfURL:location options:NSDataReadingMappedIfSafe error:NULL];
@@ -469,6 +474,7 @@
     }
     completion(image, response, error);
   }];
+  return taskIdentifier;
 }
 
 #pragma mark - Uploads
@@ -639,12 +645,24 @@
     requestItem = [NSMutableDictionary dictionary];
     requestItem[@"completionBlocks"] = [NSMutableArray array];
     requestItem[@"numberOfAttempts"] = @(0);
+    requestItem[@"taskIdentifier"] = @(NSIntegerMax);
     requestQueue[key] = requestItem;
   }
   if (completion) {
     NSMutableArray *requestItemCompletionBlocks = requestItem[@"completionBlocks"];
     [requestItemCompletionBlocks addObject:completion];
   }
+}
+
+- (NSUInteger)taskIdentifierForDownloadRequestQueueKey:(NSString *)key
+{
+  NSUInteger taskIdentifier = NSIntegerMax;
+  NSMutableDictionary *requestQueue = [self requestQueue];
+  NSMutableDictionary *requestItem = requestQueue[key];
+  if (requestItem) {
+    taskIdentifier = [requestItem[@"taskIdentifier"] unsignedIntegerValue];
+  }
+  return taskIdentifier;
 }
 
 - (void)dispatchRequestQueueItemWithKey:(NSString *)key data:(NSData *)data response:(NSURLResponse *)response error:(NSError *)error

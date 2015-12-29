@@ -226,8 +226,9 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
  
  @param URL The location of the file to download.
  @param completion The block that is executed after the requet has completed.
+ @return An identifier for this task, assigned by and unique to the owning session.
  */
-- (void)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion;
+- (NSUInteger)downloadFileAtURL:(NSURL *)URL completion:(WPSWebSessionDownloadCompletionBlock)completion;
 
 /**
  Downloads a file at the provided URL with the provided parameters.
@@ -235,16 +236,18 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
  @param URL The location of the file to download.
  @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
  @param completion The block that is executed after the requet has completed.
+ @return An identifier for this task, assigned by and unique to the owning session.
  */
-- (void)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
+- (NSUInteger)downloadFileAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionDownloadCompletionBlock)completion;
 
 /**
  Downloads the image at the provided URL with the provided parameters.
  
  @param URL The location of the image to download.
  @param completion The block that is executed after the requet has completed.
+ @return An identifier for this task, assigned by and unique to the owning session.
  */
-- (void)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion;
+- (NSUInteger)imageAtURL:(NSURL *)URL completion:(WPSWebSessionImageCompletionBlock)completion;
 
 /**
  Downloads the image at the provided URL with the provided parameters.
@@ -252,8 +255,9 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
  @param URL The location of the image to download.
  @param parameters A dictionary containing name-value pairs for each parameter. The parameters are sent as a query string.
  @param completion The block that is executed after the requet has completed.
+ @return An identifier for this task, assigned by and unique to the owning session.
  */
-- (void)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion;
+- (NSUInteger)imageAtURL:(NSURL *)URL parameters:(NSDictionary *)parameters completion:(WPSWebSessionImageCompletionBlock)completion;
 
 #pragma mark - Upload Action
 /// ---------------------
