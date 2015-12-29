@@ -778,6 +778,46 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string)
   }];
 }
 
+#pragma mark - NSURLSessionTaskDelegate Methods
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error
+{
+  NSLog(@"%s %@", __PRETTY_FUNCTION__, [error localizedDescription]);
+  NSLog(@"%s %@", __PRETTY_FUNCTION__, [[task error] localizedDescription]);
+
+  if (error == nil && [task error] == nil) {
+    // The request was a success. Move along.
+    return;
+  }
+  
+  NSError *errorToReport = error;
+  NSURLResponse *response = nil;
+  NSString *cacheKey = nil;
+  if ([task isKindOfClass:[NSURLSessionDownloadTask class]]) {
+    NSDictionary *taskInfo = [self taskInfo][@([task taskIdentifier])];
+    if (taskInfo)
+    {
+      cacheKey = taskInfo[@"cacheKey"];
+    }
+  }
+
+  if ([task error]) {
+    errorToReport = [task error];
+    // Did we receive an HTTP error?
+    response = [task response];
+    NSInteger statusCode = 0;
+    if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+      statusCode = [(NSHTTPURLResponse *)response statusCode];
+    }
+    // Nope. Save the data to the local cache if available.
+    if (statusCode > 0 && (statusCode >= 200 && statusCode < 300) == NO) {
+      // Yep. Prepare to report the HTTP error back to the caller.
+      errorToReport = WPSHTTPError([response URL], statusCode, nil);
+    }
+  }
+  [self dispatchDownloadRequestQueueItemWithKey:cacheKey location:nil response:response error:errorToReport];
+}
+
 #pragma mark - NSURLSessionDownloadDelegate Methods
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
