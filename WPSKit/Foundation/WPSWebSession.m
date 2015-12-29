@@ -763,9 +763,19 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string)
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
 {
-  // TODO: Need to implement.
-  // Need to save the completion block from -application:handleEventsForBackgroundURLSession:completionHandler:
-  // so it can be called from here once all tasks are complete.
+  void(^completionHandler)() = [self backgroundTransferCompletionHandler];
+  [self setBackgroundTransferCompletionHandler:nil]; // We don't need to keep this around.
+  
+  // Check if all download/upload tasks have been finished.
+  [session getTasksWithCompletionHandler:^(NSArray *dataTasks, NSArray *uploadTasks, NSArray *downloadTasks) {
+    if ([downloadTasks count] == 0 && [uploadTasks count] == 0) {
+      if (completionHandler) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          completionHandler();
+        });
+      }
+    }
+  }];
 }
 
 #pragma mark - NSURLSessionDownloadDelegate Methods

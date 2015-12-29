@@ -114,6 +114,15 @@ typedef void(^WPSWebSessionImageCompletionBlock)(UIImage *image, NSURLResponse *
 @property (nonatomic, copy) NSArray *trustedServers;
 
 /**
+ The completion block that is executed after all background tasks have completed.
+ 
+ You should set this block in `-application:handleEventsForBackgroundURLSession:completionHandler:` when re-creating the background session.
+ 
+ As per the Apple documenation, this block is executed on the main thread.
+ */
+@property (nonatomic, copy) void (^backgroundTransferCompletionHandler)();
+
+/**
  Creates a new instance with the provided `NSURLSessionConfiguration`.
  */
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
