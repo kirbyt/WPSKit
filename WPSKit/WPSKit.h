@@ -107,3 +107,14 @@ FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
 
 #define WPS_Assert(condition, ...) do { if (!(condition)) { WPS_ALog(__VA_ARGS__); }} while(0)
 
+/*
+ * Handle differences between 32-bit and 64-bit environments.
+ */
+#if CGFLOAT_IS_DOUBLE
+#define WPS_CEIL(a) ceil(a)
+#define WPS_FLOOR(a) floor(a)
+#else
+#define WPS_CEIL(a) ceilf(a)
+#define WPS_FLOOR(a) floorf(a)
+#endif
+
