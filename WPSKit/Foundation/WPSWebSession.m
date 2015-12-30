@@ -782,9 +782,6 @@ static NSString * URLEncodedStringFromStringWithEncoding(NSString *string)
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error
 {
-  NSLog(@"%s %@", __PRETTY_FUNCTION__, [error localizedDescription]);
-  NSLog(@"%s %@", __PRETTY_FUNCTION__, [[task error] localizedDescription]);
-
   if (error == nil && [task error] == nil) {
     // The request was a success. Move along.
     return;
