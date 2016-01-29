@@ -94,6 +94,13 @@
   [tableView registerClass:[self class] forCellReuseIdentifier:[self cellIdentifier]];
 }
 
+#pragma mark - Register Nib
+
++ (void)registerNibWithTableView:(UITableView *)tableView
+{
+  [tableView registerNib:[self nib] forCellReuseIdentifier:[self cellIdentifier]];
+}
+
 #pragma mark - Custom Disclosure Detail Button
 
 - (void)setDetailDisclosureButtonImage:(UIImage *)detailDisclosureButtonImage detailDisclosureButtonHighlightedImage:(UIImage *)detailDisclosureButtonHighlightedImage

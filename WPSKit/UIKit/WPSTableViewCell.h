@@ -28,17 +28,56 @@
 
 @interface WPSTableViewCell : UITableViewCell
 
+/**
+ The cell identifier.
+ 
+ This is the same as the class name.
+ 
+ @return An `NSString` containing the cell identifier.
+ */
 + (NSString *)cellIdentifier;
+
+/*
+ I think it might be time to remove these old methods.
+ */
 + (id)cellForTableView:(UITableView *)tableView;
 + (id)cellForTableView:(UITableView *)tableView fromNib:(UINib *)nib;
 + (id)cellFromDefaultNibForTableView:(UITableView *)tableView;
 - (id)initWithCellIdentifier:(NSString *)cellID;
 
+/**
+ Get a reference to the nib associated with this class.
+ 
+ @return A reference to the `UINib` associated with this class.
+ */
 + (UINib *)nib;
+
+/**
+ The nib's name.
+ 
+ This is the same as the class name.
+ 
+ @return An `NSString` representing the nib's name.
+ */
 + (NSString *)nibName;
 
+/**
+ Register the class for use as a cell with the provided table view.
+ 
+ @param tableView The table view that will use this cell class.
+ */
 + (void)registerClassWithTableView:(UITableView *)tableView;
 
+/**
+ Register the nib for this class for use as a cell with the provided table view.
+ 
+ @param tableView The table view that will use this cell class.
+ */
++ (void)registerNibWithTableView:(UITableView *)tableView;
+
+/**
+ Override this method to display a custom detail disclosure button.
+ */
 - (void)setDetailDisclosureButtonImage:(UIImage *)detailDisclosureButtonImage detailDisclosureButtonHighlightedImage:(UIImage *)detailDisclosureButtonHighlightedImage;
 
 @end
