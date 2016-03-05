@@ -1,19 +1,6 @@
 # WPSKit
 
-WPSKit contains various tidbits of Objective-C code for iOS and Mac apps. This library is used at [White Peak Software](http://whitepeaksoftware.com) in in-house and client projects. WPSKit is licensed under the MIT license unless stated differently in the individual source files.
-
-## Automatic Reference Counting
-
-All code in WPSKit is ARC compatible.
-
-## Additional Apple Frameworks
-
-WPSKit relies on additional frameworks from Apple. The following frameworks must be included in your project to use all the code in WPSKit.
-
-- CoreData.framework (to use source code in the CoreData directory)
-- CoreLocation.framework (to use source code in the CoreLocation directory) 
-- MapKit.framework (to use source code in the MapKit directory)
-- SystemConfiguration.framework
+WPSKit contains various tidbits of Swift code for iOS and Mac apps. This library is used at [White Peak Software](http://www.whitepeaksoftware.com) in in-house and client projects. WPSKit is licensed under the MIT license unless stated differently in the individual source files.
 
 # Support, Bugs and Feature requests
 
@@ -27,7 +14,7 @@ Please don't submit bug reports without fixes!
 
 The MIT License  
 
-Copyright (c) 2010-2015 White Peak Software Inc
+Copyright (c) 2016 White Peak Software Inc
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

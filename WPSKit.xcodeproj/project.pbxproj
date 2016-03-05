@@ -10,6 +10,11 @@
 		68BC971F1C8B3355009E4DD7 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 68BC971E1C8B3355009E4DD7 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 		68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */; };
+		68BC973C1C8B357D009E4DD7 /* String+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */; };
+		68BC973E1C8B3599009E4DD7 /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */; };
+		68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466ED1C8B3950009E657E /* UIColorTests.swift */; };
+		68E466F01C8B39FB009E657E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466EF1C8B39FB009E657E /* StringTests.swift */; };
+		68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		68BC97251C8B3356009E4DD7 /* WPSKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPSKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPSKitTests.swift; sourceTree = "<group>"; };
 		68BC972C1C8B3356009E4DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68BC97351C8B3394009E4DD7 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+WPSKit.swift"; sourceTree = "<group>"; };
+		68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WPSKit.swift"; sourceTree = "<group>"; };
+		68E466ED1C8B3950009E657E /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		68E466EF1C8B39FB009E657E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 		68BC97111C8B3355009E4DD7 = {
 			isa = PBXGroup;
 			children = (
+				68BC97351C8B3394009E4DD7 /* readme.md */,
 				68BC971D1C8B3355009E4DD7 /* WPSKit */,
 				68BC97291C8B3356009E4DD7 /* WPSKitTests */,
 				68BC971C1C8B3355009E4DD7 /* Products */,
@@ -73,6 +84,8 @@
 			children = (
 				68BC971E1C8B3355009E4DD7 /* WPSKit.h */,
 				68BC97201C8B3356009E4DD7 /* Info.plist */,
+				68BC97361C8B3523009E4DD7 /* Foundation */,
+				68BC97381C8B3523009E4DD7 /* UIKit */,
 			);
 			path = WPSKit;
 			sourceTree = "<group>";
@@ -82,8 +95,42 @@
 			children = (
 				68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */,
 				68BC972C1C8B3356009E4DD7 /* Info.plist */,
+				68E466EB1C8B3927009E657E /* Foundation */,
+				68E466EC1C8B3927009E657E /* UIKit */,
 			);
 			path = WPSKitTests;
+			sourceTree = "<group>";
+		};
+		68BC97361C8B3523009E4DD7 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		68BC97381C8B3523009E4DD7 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		68E466EB1C8B3927009E657E /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				68E466EF1C8B39FB009E657E /* StringTests.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		68E466EC1C8B3927009E657E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				68E466ED1C8B3950009E657E /* UIColorTests.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +241,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68BC973E1C8B3599009E4DD7 /* UIColor+WPSKit.swift in Sources */,
+				68BC973C1C8B357D009E4DD7 /* String+WPSKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +251,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */,
+				68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */,
+				68E466F01C8B39FB009E657E /* StringTests.swift in Sources */,
+				68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +360,7 @@
 		68BC97301C8B3356009E4DD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +371,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		68BC97311C8B3356009E4DD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -376,6 +431,7 @@
 				68BC97311C8B3356009E4DD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68BC97321C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKitTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +440,7 @@
 				68BC97341C8B3356009E4DD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

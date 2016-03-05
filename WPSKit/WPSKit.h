@@ -1,5 +1,5 @@
 //
-// String+Extensions.swift
+// WPSKit
 //
 // Created by Kirby Turner.
 // Copyright 2016 White Peak Software. All rights reserved.
@@ -24,8 +24,14 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+#import <UIKit/UIKit.h>
 
-extension String {
-  
-}
+//! Project version number for WPSKit.
+FOUNDATION_EXPORT double WPSKitVersionNumber;
+
+//! Project version string for WPSKit.
+FOUNDATION_EXPORT const unsigned char WPSKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <WPSKit/PublicHeader.h>
+
+
