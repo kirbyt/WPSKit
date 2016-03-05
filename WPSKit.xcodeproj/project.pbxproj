@@ -15,6 +15,9 @@
 		68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466ED1C8B3950009E657E /* UIColorTests.swift */; };
 		68E466F01C8B39FB009E657E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466EF1C8B39FB009E657E /* StringTests.swift */; };
 		68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */; };
+		68E4671C1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E4671B1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift */; };
+		68E4671E1C8B7208009E657E /* NSError+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E4671D1C8B7208009E657E /* NSError+WPSKit.swift */; };
+		68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E467211C8B7263009E657E /* NSErrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,9 @@
 		68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WPSKit.swift"; sourceTree = "<group>"; };
 		68E466ED1C8B3950009E657E /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 		68E466EF1C8B39FB009E657E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		68E4671B1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+WPSKit.swift"; sourceTree = "<group>"; };
+		68E4671D1C8B7208009E657E /* NSError+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+WPSKit.swift"; sourceTree = "<group>"; };
+		68E467211C8B7263009E657E /* NSErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 		68BC97361C8B3523009E4DD7 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				68E4671D1C8B7208009E657E /* NSError+WPSKit.swift */,
+				68E4671B1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift */,
 				68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */,
 			);
 			path = Foundation;
@@ -120,6 +128,7 @@
 		68E466EB1C8B3927009E657E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				68E467211C8B7263009E657E /* NSErrorTests.swift */,
 				68E466EF1C8B39FB009E657E /* StringTests.swift */,
 			);
 			path = Foundation;
@@ -241,8 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E4671C1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift in Sources */,
 				68BC973E1C8B3599009E4DD7 /* UIColor+WPSKit.swift in Sources */,
 				68BC973C1C8B357D009E4DD7 /* String+WPSKit.swift in Sources */,
+				68E4671E1C8B7208009E657E /* NSError+WPSKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */,
+				68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */,
 				68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */,
 				68E466F01C8B39FB009E657E /* StringTests.swift in Sources */,
 				68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */,
