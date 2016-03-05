@@ -9,27 +9,70 @@
 import XCTest
 
 class StringTests: XCTestCase {
+  
+  let pathComponents = "_unittest"
+  var pathsToDelete: [String] = []
+  
+  override func setUp() {
+    super.setUp()
+  }
+  
+  override func tearDown() {
+    let fm = NSFileManager.defaultManager()
+    for path in pathsToDelete {
+      if fm.fileExistsAtPath(path) {
+        try! fm.removeItemAtPath(path)
+      }
+    }
+    super.tearDown()
+  }
 
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+  // MARK: - Document Directory
+  
+  func testDocumentDirectory() {
+    let dir = String.documentDirectory()
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
+  
+  func testDocumentDirectoryWithPathComponents() {
+    let dir = try! String.documentDirectory(pathComponents)
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+  // MARK: Cache Directory
+  
+  func testCacheDirectory() {
+    let dir = String.cacheDirectory()
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
+  
+  func testCacheDirectoryWithPathComponents() {
+    let dir = try! String.cacheDirectory(pathComponents)
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
+  // MARK: Cache Directory
+  
+  func testTemporaryDirectory() {
+    let dir = String.temporaryDirectory()
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
+  
+  func testTemporaryDirectoryWithPathComponents() {
+    let dir = try! String.temporaryDirectory(pathComponents)
+    XCTAssertNotNil(dir)
+    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    pathsToDelete.append(dir!)
+  }
 
 }
