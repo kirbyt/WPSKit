@@ -239,13 +239,9 @@ extension String {
     return nil
   }
 
-}
-
-// -------------------------------------------------------------------
-// MARK: - App Name and Version Extensions
-// -------------------------------------------------------------------
-
-extension String {
+  // -------------------------------------------------------------------
+  // MARK: - App Name and Version Extensions
+  // -------------------------------------------------------------------
 
   public static func appName() -> String? {
     if let info = NSBundle.mainBundle().infoDictionary {
