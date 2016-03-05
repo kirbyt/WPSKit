@@ -1,0 +1,44 @@
+//
+// UIColor+WPSKit.swift
+//
+// Created by Kirby Turner.
+// Copyright 2016 White Peak Software. All rights reserved.
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+// CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+import UIKit
+
+extension UIColor {
+  
+  public convenience init(hex: Int, alpha: Float) {
+    // The following code is from Graham Lee.
+    // https://gist.github.com/iamleeg/7605110
+    
+    let redComponent = (hex & 0xff0000) >> 16
+    let greenComponent = (hex & 0x00ff00) >> 8
+    let blueComponent = (hex & 0xff)
+    let red = CGFloat(redComponent) / 255.0
+    let green = CGFloat(greenComponent) / 255.0
+    let blue = CGFloat(blueComponent) / 255.0
+    
+    self.init(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
+  }
+}
