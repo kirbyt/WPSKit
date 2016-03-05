@@ -243,6 +243,11 @@ extension String {
   // MARK: - App Name and Version Extensions
   // -------------------------------------------------------------------
 
+  /**
+    Returns the app name as defined in the info.plist.
+  
+    - returns A string containing the app name.
+    */
   public static func appName() -> String? {
     if let info = NSBundle.mainBundle().infoDictionary {
       if let appName = info["CFBundleDisplayName"] as? String {
@@ -253,6 +258,13 @@ extension String {
     return nil
   }
   
+  /**
+   Returns the app version and build number as defined in the info.plist.
+   
+   The version is represented as "Version 1.0 (1)".
+   
+   - returns A string containing the app version.
+   */
   public static func appVersion() -> String? {
     if let info = NSBundle.mainBundle().infoDictionary {
       if let version = info["CFBundleShortVersionString"] as? String {
@@ -265,6 +277,13 @@ extension String {
     return nil
   }
   
+  /**
+   Returns the app version and build number as defined in the info.plist.
+
+   The version is represented as "1.0.1".
+
+   - returns A string containing the app version.
+   */
   public static func appVersionShort() -> String?  {
     if let info = NSBundle.mainBundle().infoDictionary {
       if let version = info["CFBundleShortVersionString"] as? String {

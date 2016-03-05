@@ -76,12 +76,11 @@ extension UIColor {
   /**
    Create a new instance of `UIColor` with the provided hex and alpha values.
    
-   Usage:
-   `let red = UIColor(hex: 0xff0000)
-   
+   Usage: `let red = UIColor(hex: 0xff0000)`
+  
    - parameter hex:     A color value represented as hex.
    
-   - returns An initialized color object
+   - returns An initialized color object.
    */
   public convenience init(hex: Int) {
     self.init(hex: hex, alpha: 1.0)
@@ -90,13 +89,12 @@ extension UIColor {
   /**
    Create a new instance of `UIColor` with the provided hex and alpha values.
    
-   Usage: 
-    `let red = UIColor(hex: 0xff0000, alpha: 0.0)
+   Usage: `let red = UIColor(hex: 0xff0000, alpha: 0.0)`
    
    - parameter hex:     A color value represented as hex.
    - parameter alpha:   The opacity value of the color object, specified as a value from 0.0 to 1.0.
    
-   - returns An initialized color object
+   - returns An initialized color object.
    */
   public convenience init(hex: Int, alpha: Float) {
     // The following code is from Graham Lee.
@@ -112,10 +110,29 @@ extension UIColor {
     self.init(red: red, green: green, blue: blue, alpha: CGFloat(alpha))
   }
   
+  /**
+   Create a new instance of `UIColor` with the provided hex string.
+   
+   Usage: `let red = UIColor(hexString: "#FFFFFF)`
+   
+   - parameter hexString:   A color value represented as hex string. The # prefix is optional.
+   
+   - returns An initialized color object.
+   */
   public convenience init(hexString: String) {
     self.init(hexString: hexString, alpha: 1.0)
   }
   
+  /**
+   Create a new instance of `UIColor` with the provided hex string and alpha value.
+   
+   Usage: `let red = UIColor(hexString: "#FFFFFF, alpha: 0.9)`
+   
+   - parameter hexString:   A color value represented as hex string. The # prefix is optional.
+   - parameter alpha:       The opacity value of the color object, specified as a value from 0.0 to 1.0.
+   
+   - returns An initialized color object.
+   */
   public convenience init(hexString: String, alpha: Float) {
 
     // The following code is a modified version from NachoMan.
@@ -153,6 +170,11 @@ extension UIColor {
   
   // MARK: - Colors
   
+  /**
+   Create a new instance of `UIColor` representing a random color.
+  
+   - returns An initialized color object.
+   */
   public class func randomColor() -> UIColor {
     // Modified version.
     // Original version copyright Kyle Fox.
@@ -164,14 +186,29 @@ extension UIColor {
     return UIColor(hue:hue, saturation:saturation, brightness:brightness, alpha:1)
   }
 
+  /**
+   Create a new instance of `UIColor` representing the iOS default blue color.
+   
+   - returns An initialized color object.
+   */
   public class func iOSDefaultBlue() -> UIColor {
     return UIColor(hex: 0x007aff)
   }
 
+  /**
+   Create a new instance of `UIColor` representing the Facebook blue color.
+   
+   - returns An initialized color object.
+   */
   public class func facebookBlue() -> UIColor {
     return UIColor(hex: 0x3B5999)
   }
 
+  /**
+   Create a new instance of `UIColor` representing the Twitter blue color.
+   
+   - returns An initialized color object.
+   */
   public class func twitterBlue() -> UIColor {
     return UIColor(hex: 0x55acee)
   }
