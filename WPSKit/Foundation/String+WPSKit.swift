@@ -244,3 +244,44 @@ extension String {
   }
 
 }
+
+// -------------------------------------------------------------------
+// MARK: - App Name and Version Extensions
+// -------------------------------------------------------------------
+
+extension String {
+
+  public static func appName() -> String? {
+    if let info = NSBundle.mainBundle().infoDictionary {
+      if let appName = info["CFBundleDisplayName"] as? String {
+        return appName
+      }
+    }
+    
+    return nil
+  }
+  
+  public static func appVersion() -> String? {
+    if let info = NSBundle.mainBundle().infoDictionary {
+      if let version = info["CFBundleShortVersionString"] as? String {
+        if let build = info["CFBundleVersion"] as? String {
+          return "Version \(version) (build \(build))"
+        }
+      }
+    }
+
+    return nil
+  }
+  
+  public static func appVersionShort() -> String?  {
+    if let info = NSBundle.mainBundle().infoDictionary {
+      if let version = info["CFBundleShortVersionString"] as? String {
+        if let build = info["CFBundleVersion"] as? String {
+          return "\(version).\(build))"
+        }
+      }
+    }
+    
+    return nil
+  }
+}

@@ -33,7 +33,6 @@ class StringTests: XCTestCase {
     let dir = String.documentDirectory()
     XCTAssertNotNil(dir)
     XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
-    pathsToDelete.append(dir!)
   }
   
   func testDocumentDirectoryWithPathComponents() {
@@ -49,7 +48,6 @@ class StringTests: XCTestCase {
     let dir = String.cacheDirectory()
     XCTAssertNotNil(dir)
     XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
-    pathsToDelete.append(dir!)
   }
   
   func testCacheDirectoryWithPathComponents() {
@@ -65,7 +63,6 @@ class StringTests: XCTestCase {
     let dir = String.temporaryDirectory()
     XCTAssertNotNil(dir)
     XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
-    pathsToDelete.append(dir!)
   }
   
   func testTemporaryDirectoryWithPathComponents() {
