@@ -26,9 +26,9 @@ extension UIView {
    
    - returns A `UIImage` representation of the view.
    */
-  public func imageSnapshot -> UIImage {
+  public func imageSnapshot() -> UIImage {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
-    self.layer.renderInContext(UIGraphicsGetCurrentContext())
+    self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
