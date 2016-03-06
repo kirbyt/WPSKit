@@ -1,5 +1,7 @@
 # WPSKit
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 WPSKit contains various tidbits of Swift code for iOS and Mac apps. This library is used at [White Peak Software](http://www.whitepeaksoftware.com) in in-house and client projects. WPSKit is licensed under the MIT license unless stated differently in the individual source files.
 
 # Support, Bugs and Feature requests
