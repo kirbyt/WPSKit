@@ -149,9 +149,9 @@ extension UIColor {
       return
     }
     
-    let redString = hexColor.substringWithRange(Range<String.Index>(start: hexColor.startIndex, end: hexColor.startIndex.advancedBy(2)))
-    let greenString = hexColor.substringWithRange(Range<String.Index>(start: hexColor.startIndex.advancedBy(2), end: hexColor.startIndex.advancedBy(4)))
-    let blueString = hexColor.substringWithRange(Range<String.Index>(start: hexColor.startIndex.advancedBy(4), end: hexColor.startIndex.advancedBy(6)))
+    let redString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex ..< hexColor.startIndex.advancedBy(2)))
+    let greenString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex.advancedBy(2) ..< hexColor.startIndex.advancedBy(4)))
+    let blueString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex.advancedBy(4) ..< hexColor.startIndex.advancedBy(6)))
 
     // Scan values
     var r: UInt32 = 0

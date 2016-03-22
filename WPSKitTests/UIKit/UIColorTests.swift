@@ -28,6 +28,9 @@ class UIColorTests: XCTestCase {
     color = UIColor(hexString: "e3e3e3")
     XCTAssertEqual(color.hexString, "E3E3E3")
 
+    color = UIColor(hexString: "#e3e3e3")
+    XCTAssertEqual(color.hexString, "E3E3E3")
+    
     color = UIColor.whiteColor()
     XCTAssertEqual(color.hexString, "FFFFFF")
 
