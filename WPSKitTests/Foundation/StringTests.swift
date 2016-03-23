@@ -57,7 +57,7 @@ class StringTests: XCTestCase {
     pathsToDelete.append(dir!)
   }
 
-  // MARK: Cache Directory
+  // MARK: Temporary Directory
   
   func testTemporaryDirectory() {
     let dir = String.temporaryDirectory()

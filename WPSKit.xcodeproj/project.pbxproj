@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6829800D1C8BCFD300004B16 /* UIView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829800C1C8BCFD300004B16 /* UIView+WPSKit.swift */; };
+		6847F9951CA1D46E007E126A /* NSURL+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6847F9941CA1D46E007E126A /* NSURL+WPSKit.swift */; };
 		68BC971F1C8B3355009E4DD7 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 68BC971E1C8B3355009E4DD7 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 		68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */; };
 		68BC973C1C8B357D009E4DD7 /* String+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */; };
 		68BC973E1C8B3599009E4DD7 /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */; };
+		68CC83F81CA2E35C0008D437 /* NSURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CC83F71CA2E35C0008D437 /* NSURLTests.swift */; };
 		68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466ED1C8B3950009E657E /* UIColorTests.swift */; };
 		68E466F01C8B39FB009E657E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466EF1C8B39FB009E657E /* StringTests.swift */; };
 		68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */; };
@@ -33,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		6829800C1C8BCFD300004B16 /* UIView+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+WPSKit.swift"; sourceTree = "<group>"; };
+		6847F9941CA1D46E007E126A /* NSURL+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+WPSKit.swift"; sourceTree = "<group>"; };
 		68BC971B1C8B3355009E4DD7 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC971E1C8B3355009E4DD7 /* WPSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSKit.h; sourceTree = "<group>"; };
 		68BC97201C8B3356009E4DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		68BC97351C8B3394009E4DD7 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+WPSKit.swift"; sourceTree = "<group>"; };
 		68BC973D1C8B3599009E4DD7 /* UIColor+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WPSKit.swift"; sourceTree = "<group>"; };
+		68CC83F71CA2E35C0008D437 /* NSURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLTests.swift; sourceTree = "<group>"; };
 		68E466ED1C8B3950009E657E /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 		68E466EF1C8B39FB009E657E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		68E4671B1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNotificationCenter+WPSKit.swift"; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				68E4671D1C8B7208009E657E /* NSError+WPSKit.swift */,
 				68E4671B1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift */,
 				68BC973B1C8B357D009E4DD7 /* String+WPSKit.swift */,
+				6847F9941CA1D46E007E126A /* NSURL+WPSKit.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				68E467211C8B7263009E657E /* NSErrorTests.swift */,
 				68E466EF1C8B39FB009E657E /* StringTests.swift */,
+				68CC83F71CA2E35C0008D437 /* NSURLTests.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			files = (
 				68E4671C1C8B7006009E657E /* NSNotificationCenter+WPSKit.swift in Sources */,
 				68BC973E1C8B3599009E4DD7 /* UIColor+WPSKit.swift in Sources */,
+				6847F9951CA1D46E007E126A /* NSURL+WPSKit.swift in Sources */,
 				68BC973C1C8B357D009E4DD7 /* String+WPSKit.swift in Sources */,
 				68E4671E1C8B7208009E657E /* NSError+WPSKit.swift in Sources */,
 				6829800D1C8BCFD300004B16 /* UIView+WPSKit.swift in Sources */,
@@ -267,6 +274,7 @@
 			files = (
 				68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */,
 				68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */,
+				68CC83F81CA2E35C0008D437 /* NSURLTests.swift in Sources */,
 				68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */,
 				68E466F01C8B39FB009E657E /* StringTests.swift in Sources */,
 				68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */,
