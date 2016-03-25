@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6829800D1C8BCFD300004B16 /* UIView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829800C1C8BCFD300004B16 /* UIView+WPSKit.swift */; };
 		6847F9951CA1D46E007E126A /* NSURL+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6847F9941CA1D46E007E126A /* NSURL+WPSKit.swift */; };
+		68A6E3611CA5883D00745E88 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6E3601CA5883D00745E88 /* UIViewTests.swift */; };
+		68A6E3631CA5886C00745E88 /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */; };
+		68A6E3651CA588B500745E88 /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */; };
 		68BC971F1C8B3355009E4DD7 /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 68BC971E1C8B3355009E4DD7 /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 		68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		6829800C1C8BCFD300004B16 /* UIView+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+WPSKit.swift"; sourceTree = "<group>"; };
 		6847F9941CA1D46E007E126A /* NSURL+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+WPSKit.swift"; sourceTree = "<group>"; };
+		68A6E3601CA5883D00745E88 /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
+		68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadFromNibTestView.xib; sourceTree = "<group>"; };
+		68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTestView.swift; sourceTree = "<group>"; };
 		68BC971B1C8B3355009E4DD7 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC971E1C8B3355009E4DD7 /* WPSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSKit.h; sourceTree = "<group>"; };
 		68BC97201C8B3356009E4DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				68E466ED1C8B3950009E657E /* UIColorTests.swift */,
+				68A6E3601CA5883D00745E88 /* UIViewTests.swift */,
+				68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */,
+				68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A6E3631CA5886C00745E88 /* LoadFromNibTestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A6E3611CA5883D00745E88 /* UIViewTests.swift in Sources */,
 				68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */,
 				68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */,
 				68CC83F81CA2E35C0008D437 /* NSURLTests.swift in Sources */,
 				68E466F11C8B3B16009E657E /* UIColor+WPSKit.swift in Sources */,
+				68A6E3651CA588B500745E88 /* LoadFromNibTestView.swift in Sources */,
 				68E466F01C8B39FB009E657E /* StringTests.swift in Sources */,
 				68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */,
 			);

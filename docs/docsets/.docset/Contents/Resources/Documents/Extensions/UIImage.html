@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UIImage Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/UIImage" class="dashAnchor"></a>
+    <a title="UIImage Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        UIImage Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/NSError.html">NSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSNotificationCenter.html">NSNotificationCenter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSURL.html">NSURL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>UIImage</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">UIImage</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sizes"></a>
+                <a name="//apple_ref/swift/Section/Sizes" class="dashAnchor"></a>
+                <a href="#/Sizes">
+                  <h3 class="section-name">Sizes</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage21suggestedSizeForWidthFS0_FSfVSC6CGSize"></a>
+                    <a name="//apple_ref/swift/Method/suggestedSizeForWidth(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage21suggestedSizeForWidthFS0_FSfVSC6CGSize">suggestedSizeForWidth(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the suggested image size with the specified width. The size returned maintains the image aspect ratio.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">suggestedSizeForWidth</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>width</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The width of the suggested size.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage22suggestedSizeForHeightFS0_FSfVSC6CGSize"></a>
+                    <a name="//apple_ref/swift/Method/suggestedSizeForHeight(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage22suggestedSizeForHeightFS0_FSfVSC6CGSize">suggestedSizeForHeight(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the suggested image size with the specified height. The size returned maintains the image aspect ratio.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">suggestedSizeForHeight</span><span class="p">(</span><span class="nv">height</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>height</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The height of the suggested size.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage28suggestedSizeForMaxDimensionFS0_FSfVSC6CGSize"></a>
+                    <a name="//apple_ref/swift/Method/suggestedSizeForMaxDimension(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage28suggestedSizeForMaxDimensionFS0_FSfVSC6CGSize">suggestedSizeForMaxDimension(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the suggested image size with max dimenson. The size returned maintains the image aspect ratio.</p>
+
+<p>The longest of the two, width or height, will equal the specified dimension based on the actual image size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">suggestedSizeForMaxDimension</span><span class="p">(</span><span class="nv">dimension</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dimension</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The maximum dimension, either width or height.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Scaling"></a>
+                <a name="//apple_ref/swift/Section/Scaling" class="dashAnchor"></a>
+                <a href="#/Scaling">
+                  <h3 class="section-name">Scaling</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage11scaleToSizeFS0_FVSC6CGSizeS0_"></a>
+                    <a name="//apple_ref/swift/Method/scaleToSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage11scaleToSizeFS0_FVSC6CGSizeS0_">scaleToSize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the image to the specified size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scaleToSize</span><span class="p">(</span><span class="nv">newSize</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>New image size.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage20scaleAspectToMaxSizeFS0_FSfS0_"></a>
+                    <a name="//apple_ref/swift/Method/scaleAspectToMaxSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage20scaleAspectToMaxSizeFS0_FSfS0_">scaleAspectToMaxSize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the image to the maximum dimension, width or height, while maintaining the image aspect ratio.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scaleAspectToMaxSize</span><span class="p">(</span><span class="nv">newSize</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Maximum dimension, either width or height.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage21scaleAspectFillToSizeFS0_FVSC6CGSizeS0_"></a>
+                    <a name="//apple_ref/swift/Method/scaleAspectFillToSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage21scaleAspectFillToSizeFS0_FVSC6CGSizeS0_">scaleAspectFillToSize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the image to fill the size. Some portion of the image may be clipped to fill the image&rsquo;s bounds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scaleAspectFillToSize</span><span class="p">(</span><span class="nv">newSize</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>New image size.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage20scaleAspectFitToSizeFS0_FVSC6CGSizeS0_"></a>
+                    <a name="//apple_ref/swift/Method/scaleAspectFitToSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage20scaleAspectFitToSizeFS0_FVSC6CGSizeS0_">scaleAspectFitToSize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the image to fit the size by maintaining the aspect ratio. Any remaining area of the image&rsquo;s bounds is transparent.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scaleAspectFitToSize</span><span class="p">(</span><span class="nv">newSize</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>New image size.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Cropping"></a>
+                <a name="//apple_ref/swift/Section/Cropping" class="dashAnchor"></a>
+                <a href="#/Cropping">
+                  <h3 class="section-name">Cropping</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage10cropToRectFS0_FVSC6CGRectS0_"></a>
+                    <a name="//apple_ref/swift/Method/cropToRect(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage10cropToRectFS0_FVSC6CGRectS0_">cropToRect(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Crops an image to the specified rect.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cropToRect</span><span class="p">(</span><span class="nv">cropRect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cropRect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Rect size of the cropped image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage18scaleAndCropToSizeFS0_FVSC6CGSizeS0_"></a>
+                    <a name="//apple_ref/swift/Method/scaleAndCropToSize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage18scaleAndCropToSizeFS0_FVSC6CGSizeS0_">scaleAndCropToSize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scales the image to the specified size, cropping the image if needed.
+The cropped image will contain the inner most parts of the original image.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scaleAndCropToSize</span><span class="p">(</span><span class="nv">newSize</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newSize</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Size of the new image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Square"></a>
+                <a name="//apple_ref/swift/Section/Square" class="dashAnchor"></a>
+                <a href="#/Square">
+                  <h3 class="section-name">Square</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage11squareImageFS0_FT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/squareImage()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage11squareImageFS0_FT_S0_">squareImage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a square image cropping as needed.</p>
+
+<p>The cropped image will contain the inner most parts of the original image.</p>
+
+<p>The new image will have a size equal to the minimum width or height of the original image.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">squareImage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage24squareImageWithDimensionFS0_FSfS0_"></a>
+                    <a name="//apple_ref/swift/Method/squareImageWithDimension(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage24squareImageWithDimensionFS0_FSfS0_">squareImageWithDimension(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a square image with the provided dimension cropping as needed.</p>
+
+<p>The cropped image will contain the inner most parts of the original image.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">squareImageWithDimension</span><span class="p">(</span><span class="nv">dimension</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dimension</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The dimension of the new image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Rounded"></a>
+                <a name="//apple_ref/swift/Section/Rounded" class="dashAnchor"></a>
+                <a href="#/Rounded">
+                  <h3 class="section-name">Rounded</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage12roundedImageFS0_FT_S0_"></a>
+                    <a name="//apple_ref/swift/Method/roundedImage()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage12roundedImageFS0_FT_S0_">roundedImage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a round image.</p>
+
+<ul>
+<li>return A new <code><a href="../Extensions/UIImage.html">UIImage</a></code>.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">roundedImage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage24roundedImageWithDiameterFS0_FSfS0_"></a>
+                    <a name="//apple_ref/swift/Method/roundedImageWithDiameter(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage24roundedImageWithDiameterFS0_FSfS0_">roundedImageWithDiameter(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a round image with the provided diameter.</p>
+
+<ul>
+<li><p>return A new <code><a href="../Extensions/UIImage.html">UIImage</a></code>.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">roundedImageWithDiameter</span><span class="p">(</span><span class="nv">diameter</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>diameter</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The diameter of the round image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage28roundedImageWithCornerRadiusFS0_FSfS0_"></a>
+                    <a name="//apple_ref/swift/Method/roundedImageWithCornerRadius(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage28roundedImageWithCornerRadiusFS0_FSfS0_">roundedImageWithCornerRadius(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Extensions/UIImage.html">UIImage</a></code> with rounded corners using the provided corner radius.</p>
+
+<ul>
+<li><p>return A new <code><a href="../Extensions/UIImage.html">UIImage</a></code>.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">roundedImageWithCornerRadius</span><span class="p">(</span><span class="nv">cornerRadius</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cornerRadius</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The radius to use when drawing rounded corners.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Color"></a>
+                <a name="//apple_ref/swift/Section/Color" class="dashAnchor"></a>
+                <a href="#/Color">
+                  <h3 class="section-name">Color</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE6WPSKitCSo7UIImage14imageFromColorFMS0_FCSo7UIColorS0_"></a>
+                    <a name="//apple_ref/swift/Method/imageFromColor(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE6WPSKitCSo7UIImage14imageFromColorFMS0_FCSo7UIColorS0_">imageFromColor(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an image of the specified color.</p>
+
+<p>The image returned is 1x1, but can be stretched as needed by the caller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">imageFromColor</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The color drawn in the image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Extensions/UIImage.html">UIImage</a></code> of the color.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE6WPSKitCSo7UIImage14imageFromColorFMS0_FTCSo7UIColor4sizeVSC6CGSize_S0_"></a>
+                    <a name="//apple_ref/swift/Method/imageFromColor(_:size:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE6WPSKitCSo7UIImage14imageFromColorFMS0_FTCSo7UIColor4sizeVSC6CGSize_S0_">imageFromColor(_:size:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an image of the specified color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">imageFromColor</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">CGSize</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The color drawn in the image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>size</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Size of the image.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Extensions/UIImage.html">UIImage</a></code> of the color.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFE6WPSKitCSo7UIImage10imageNamedFMS0_FTSS9maskColorCSo7UIColor_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/imageNamed(_:maskColor:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFE6WPSKitCSo7UIImage10imageNamedFMS0_FTSS9maskColorCSo7UIColor_GSqS0__">imageNamed(_:maskColor:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an image masked with the specified color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">imageNamed</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">maskColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image name.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Mask color.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Extensions/UIImage.html">UIImage</a></code> masked with the specified color.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE6WPSKitCSo7UIImage18imageWithMaskColorFS0_FCSo7UIColorS0_"></a>
+                    <a name="//apple_ref/swift/Method/imageWithMaskColor(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE6WPSKitCSo7UIImage18imageWithMaskColorFS0_FCSo7UIColorS0_">imageWithMaskColor(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an image masked with the specified color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">imageWithMaskColor</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Mask color.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Extensions/UIImage.html">UIImage</a></code> masked with the specified color.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-03-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

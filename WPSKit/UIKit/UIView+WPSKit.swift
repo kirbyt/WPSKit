@@ -53,4 +53,17 @@ extension UIView {
     return image
   }
 
+  /**
+   Load a view from a nib.
+   
+   The view class name must match the nib name. Also, don't forget to 
+   set the class name for your top level view in Interface Builder.
+   */
+  public class func loadFromNib() -> UIView {
+    let nibName = String(self)
+    let bundle = NSBundle(forClass: self)
+    let nib = UINib(nibName: nibName, bundle: bundle)
+    let view = nib.instantiateWithOwner(self, options: nil).first as! UIView
+    return view
+  }
 }
