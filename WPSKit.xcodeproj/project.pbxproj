@@ -46,6 +46,13 @@
 		683C0BD61CBEDFFF00B328EC /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */; };
 		683C0BD71CBEDFFF00B328EC /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC91CBEDFD300B328EC /* UIColorTests.swift */; };
 		683C0BD81CBEDFFF00B328EC /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */; };
+		683C0BFC1CBEE61100B328EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BF31CBEE61100B328EC /* AppDelegate.swift */; };
+		683C0BFD1CBEE61100B328EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF41CBEE61100B328EC /* Assets.xcassets */; };
+		683C0BFE1CBEE61100B328EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */; };
+		683C0BFF1CBEE61100B328EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF71CBEE61100B328EC /* Main.storyboard */; };
+		683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BF91CBEE61100B328EC /* FirstViewController.swift */; };
+		683C0C011CBEE61100B328EC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BFA1CBEE61100B328EC /* Info.plist */; };
+		683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BFB1CBEE61100B328EC /* SecondViewController.swift */; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +97,14 @@
 		683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadFromNibTestView.xib; sourceTree = "<group>"; };
 		683C0BC91CBEDFD300B328EC /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 		683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
+		683C0BDD1CBEE59F00B328EC /* WPSKit-Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WPSKit-Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		683C0BF31CBEE61100B328EC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		683C0BF41CBEE61100B328EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		683C0BF61CBEE61100B328EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		683C0BF81CBEE61100B328EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		683C0BF91CBEE61100B328EC /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		683C0BFA1CBEE61100B328EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		683C0BFB1CBEE61100B328EC /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		68BC971B1C8B3355009E4DD7 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC97251C8B3356009E4DD7 /* WPSKitTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WPSKitTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC97351C8B3394009E4DD7 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
@@ -115,6 +130,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0BB91CBEDF3400B328EC /* WPSKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		683C0BDA1CBEE59F00B328EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,12 +224,35 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		683C0BF11CBEE61100B328EC /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				683C0BF21CBEE61100B328EC /* iOSExample */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		683C0BF21CBEE61100B328EC /* iOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				683C0BF31CBEE61100B328EC /* AppDelegate.swift */,
+				683C0BF41CBEE61100B328EC /* Assets.xcassets */,
+				683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */,
+				683C0BF71CBEE61100B328EC /* Main.storyboard */,
+				683C0BF91CBEE61100B328EC /* FirstViewController.swift */,
+				683C0BFA1CBEE61100B328EC /* Info.plist */,
+				683C0BFB1CBEE61100B328EC /* SecondViewController.swift */,
+			);
+			path = iOSExample;
+			sourceTree = "<group>";
+		};
 		68BC97111C8B3355009E4DD7 = {
 			isa = PBXGroup;
 			children = (
 				68BC97351C8B3394009E4DD7 /* readme.md */,
 				683C0B841CBEDAD400B328EC /* Sources */,
 				683C0BBF1CBEDFD300B328EC /* Tests */,
+				683C0BF11CBEE61100B328EC /* Examples */,
 				68BC971C1C8B3355009E4DD7 /* Products */,
 			);
 			indentWidth = 2;
@@ -222,6 +267,7 @@
 				683C0B601CBEDA8F00B328EC /* WPSKit.framework */,
 				683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */,
 				683C0BB41CBEDF3300B328EC /* WPSKitTests-tvOS.xctest */,
+				683C0BDD1CBEE59F00B328EC /* WPSKit-Example-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,6 +356,23 @@
 			productReference = 683C0BB41CBEDF3300B328EC /* WPSKitTests-tvOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		683C0BDC1CBEE59F00B328EC /* WPSKit-Example-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 683C0BF01CBEE59F00B328EC /* Build configuration list for PBXNativeTarget "WPSKit-Example-iOS" */;
+			buildPhases = (
+				683C0BD91CBEE59F00B328EC /* Sources */,
+				683C0BDA1CBEE59F00B328EC /* Frameworks */,
+				683C0BDB1CBEE59F00B328EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WPSKit-Example-iOS";
+			productName = "WPSKit-AppExample-iOS";
+			productReference = 683C0BDD1CBEE59F00B328EC /* WPSKit-Example-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68BC972F1C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKit-iOS" */;
@@ -365,6 +428,9 @@
 					683C0BB31CBEDF3300B328EC = {
 						CreatedOnToolsVersion = 7.3;
 					};
+					683C0BDC1CBEE59F00B328EC = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					68BC971A1C8B3355009E4DD7 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -379,6 +445,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 68BC97111C8B3355009E4DD7;
 			productRefGroup = 68BC971C1C8B3355009E4DD7 /* Products */;
@@ -390,6 +457,7 @@
 				683C0B5F1CBEDA8F00B328EC /* WPSKit-watchOS */,
 				68BC97241C8B3356009E4DD7 /* WPSKitTests-iOS */,
 				683C0BB31CBEDF3300B328EC /* WPSKitTests-tvOS */,
+				683C0BDC1CBEE59F00B328EC /* WPSKit-Example-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -414,6 +482,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0BD21CBEDFFE00B328EC /* LoadFromNibTestView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		683C0BDB1CBEE59F00B328EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683C0C011CBEE61100B328EC /* Info.plist in Resources */,
+				683C0BFF1CBEE61100B328EC /* Main.storyboard in Resources */,
+				683C0BFD1CBEE61100B328EC /* Assets.xcassets in Resources */,
+				683C0BFE1CBEE61100B328EC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +555,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		683C0BD91CBEE59F00B328EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */,
+				683C0BFC1CBEE61100B328EC /* AppDelegate.swift in Sources */,
+				683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68BC97161C8B3355009E4DD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +606,25 @@
 			targetProxy = 68BC97271C8B3356009E4DD7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				683C0BF61CBEE61100B328EC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		683C0BF71CBEE61100B328EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				683C0BF81CBEE61100B328EC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		683C0B651CBEDA8F00B328EC /* Debug */ = {
@@ -626,6 +734,32 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		683C0BEE1CBEE59F00B328EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = Examples/iOSExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.WPSKit-Example-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		683C0BEF1CBEE59F00B328EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = Examples/iOSExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.WPSKit-Example-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -787,6 +921,7 @@
 				683C0B661CBEDA8F00B328EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		683C0B7E1CBEDAAB00B328EC /* Build configuration list for PBXNativeTarget "WPSKit-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -795,12 +930,22 @@
 				683C0B801CBEDAAB00B328EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		683C0BBC1CBEDF3400B328EC /* Build configuration list for PBXNativeTarget "WPSKitTests-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				683C0BBD1CBEDF3400B328EC /* Debug */,
 				683C0BBE1CBEDF3400B328EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		683C0BF01CBEE59F00B328EC /* Build configuration list for PBXNativeTarget "WPSKit-Example-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				683C0BEE1CBEE59F00B328EC /* Debug */,
+				683C0BEF1CBEE59F00B328EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
