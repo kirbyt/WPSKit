@@ -155,7 +155,9 @@
 				68BC97291C8B3356009E4DD7 /* WPSKitTests */,
 				68BC971C1C8B3355009E4DD7 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		68BC971C1C8B3355009E4DD7 /* Products */ = {
 			isa = PBXGroup;
