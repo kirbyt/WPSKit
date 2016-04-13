@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68BC971A1C8B3355009E4DD7"
-               BuildableName = "WPSKit-iOS.framework"
+               BuildableName = "WPSKit.framework"
                BlueprintName = "WPSKit-iOS"
                ReferencedContainer = "container:WPSKit.xcodeproj">
             </BuildableReference>
@@ -34,8 +34,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "68BC97241C8B3356009E4DD7"
-               BuildableName = "WPSKitTests.xctest"
-               BlueprintName = "WPSKitTests"
+               BuildableName = "WPSKitTests-iOS.xctest"
+               BlueprintName = "WPSKitTests-iOS"
                ReferencedContainer = "container:WPSKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68BC971A1C8B3355009E4DD7"
-            BuildableName = "WPSKit-iOS.framework"
+            BuildableName = "WPSKit.framework"
             BlueprintName = "WPSKit-iOS"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68BC971A1C8B3355009E4DD7"
-            BuildableName = "WPSKit-iOS.framework"
+            BuildableName = "WPSKit.framework"
             BlueprintName = "WPSKit-iOS"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
@@ -84,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "68BC971A1C8B3355009E4DD7"
-            BuildableName = "WPSKit-iOS.framework"
+            BuildableName = "WPSKit.framework"
             BlueprintName = "WPSKit-iOS"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>

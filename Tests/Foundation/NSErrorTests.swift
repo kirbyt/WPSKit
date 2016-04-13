@@ -25,6 +25,7 @@
 //
 
 import XCTest
+@testable import WPSKit
 
 class NSErrorsTest: XCTestCase {
   

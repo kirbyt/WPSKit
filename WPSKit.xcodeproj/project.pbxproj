@@ -31,18 +31,32 @@
 		683C0BAD1CBEDCB300B328EC /* UIView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0B9A1CBEDCB300B328EC /* UIView+WPSKit.swift */; };
 		683C0BAE1CBEDCB300B328EC /* UIView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0B9A1CBEDCB300B328EC /* UIView+WPSKit.swift */; };
 		683C0BAF1CBEDCB300B328EC /* UIView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0B9A1CBEDCB300B328EC /* UIView+WPSKit.swift */; };
-		68A6E3611CA5883D00745E88 /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6E3601CA5883D00745E88 /* UIViewTests.swift */; };
-		68A6E3631CA5886C00745E88 /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */; };
-		68A6E3651CA588B500745E88 /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */; };
+		683C0BB91CBEDF3400B328EC /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */; };
+		683C0BCB1CBEDFF400B328EC /* NSErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC11CBEDFD300B328EC /* NSErrorTests.swift */; };
+		683C0BCC1CBEDFF400B328EC /* NSURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC21CBEDFD300B328EC /* NSURLTests.swift */; };
+		683C0BCD1CBEDFF400B328EC /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC31CBEDFD300B328EC /* StringTests.swift */; };
+		683C0BCE1CBEDFF400B328EC /* NSErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC11CBEDFD300B328EC /* NSErrorTests.swift */; };
+		683C0BCF1CBEDFF400B328EC /* NSURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC21CBEDFD300B328EC /* NSURLTests.swift */; };
+		683C0BD01CBEDFF400B328EC /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC31CBEDFD300B328EC /* StringTests.swift */; };
+		683C0BD11CBEDFFE00B328EC /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */; };
+		683C0BD21CBEDFFE00B328EC /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */; };
+		683C0BD31CBEDFFE00B328EC /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC91CBEDFD300B328EC /* UIColorTests.swift */; };
+		683C0BD41CBEDFFE00B328EC /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */; };
+		683C0BD51CBEDFFF00B328EC /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */; };
+		683C0BD61CBEDFFF00B328EC /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */; };
+		683C0BD71CBEDFFF00B328EC /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC91CBEDFD300B328EC /* UIColorTests.swift */; };
+		683C0BD81CBEDFFF00B328EC /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
-		68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */; };
-		68CC83F81CA2E35C0008D437 /* NSURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CC83F71CA2E35C0008D437 /* NSURLTests.swift */; };
-		68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466ED1C8B3950009E657E /* UIColorTests.swift */; };
-		68E466F01C8B39FB009E657E /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E466EF1C8B39FB009E657E /* StringTests.swift */; };
-		68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E467211C8B7263009E657E /* NSErrorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		683C0BBA1CBEDF3400B328EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68BC97121C8B3355009E4DD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 683C0B6C1CBEDAAB00B328EC;
+			remoteInfo = "WPSKit-tvOS";
+		};
 		68BC97271C8B3356009E4DD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 68BC97121C8B3355009E4DD7 /* Project object */;
@@ -66,18 +80,19 @@
 		683C0B981CBEDCB300B328EC /* UIColor+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WPSKit.swift"; sourceTree = "<group>"; };
 		683C0B991CBEDCB300B328EC /* UIImage+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+WPSKit.swift"; sourceTree = "<group>"; };
 		683C0B9A1CBEDCB300B328EC /* UIView+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+WPSKit.swift"; sourceTree = "<group>"; };
-		68A6E3601CA5883D00745E88 /* UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
-		68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadFromNibTestView.xib; sourceTree = "<group>"; };
-		68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadFromNibTestView.swift; sourceTree = "<group>"; };
+		683C0BB41CBEDF3300B328EC /* WPSKitTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WPSKitTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		683C0BC11CBEDFD300B328EC /* NSErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorTests.swift; sourceTree = "<group>"; };
+		683C0BC21CBEDFD300B328EC /* NSURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLTests.swift; sourceTree = "<group>"; };
+		683C0BC31CBEDFD300B328EC /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		683C0BC41CBEDFD300B328EC /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		683C0BC51CBEDFD300B328EC /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFromNibTestView.swift; sourceTree = "<group>"; };
+		683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadFromNibTestView.xib; sourceTree = "<group>"; };
+		683C0BC91CBEDFD300B328EC /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
 		68BC971B1C8B3355009E4DD7 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68BC97251C8B3356009E4DD7 /* WPSKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPSKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPSKitTests.swift; sourceTree = "<group>"; };
-		68BC972C1C8B3356009E4DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68BC97251C8B3356009E4DD7 /* WPSKitTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WPSKitTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BC97351C8B3394009E4DD7 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		68CC83F71CA2E35C0008D437 /* NSURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLTests.swift; sourceTree = "<group>"; };
-		68E466ED1C8B3950009E657E /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
-		68E466EF1C8B39FB009E657E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
-		68E467211C8B7263009E657E /* NSErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +107,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		683C0BB11CBEDF3300B328EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683C0BB91CBEDF3400B328EC /* WPSKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,12 +170,44 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		683C0BBF1CBEDFD300B328EC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				683C0BC41CBEDFD300B328EC /* Info-iOS.plist */,
+				683C0BC51CBEDFD300B328EC /* Info-tvOS.plist */,
+				683C0BC01CBEDFD300B328EC /* Foundation */,
+				683C0BC61CBEDFD300B328EC /* UIKit */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		683C0BC01CBEDFD300B328EC /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				683C0BC11CBEDFD300B328EC /* NSErrorTests.swift */,
+				683C0BC21CBEDFD300B328EC /* NSURLTests.swift */,
+				683C0BC31CBEDFD300B328EC /* StringTests.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		683C0BC61CBEDFD300B328EC /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */,
+				683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */,
+				683C0BC91CBEDFD300B328EC /* UIColorTests.swift */,
+				683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		68BC97111C8B3355009E4DD7 = {
 			isa = PBXGroup;
 			children = (
 				68BC97351C8B3394009E4DD7 /* readme.md */,
 				683C0B841CBEDAD400B328EC /* Sources */,
-				68BC97291C8B3356009E4DD7 /* WPSKitTests */,
+				683C0BBF1CBEDFD300B328EC /* Tests */,
 				68BC971C1C8B3355009E4DD7 /* Products */,
 			);
 			indentWidth = 2;
@@ -163,43 +218,12 @@
 			isa = PBXGroup;
 			children = (
 				68BC971B1C8B3355009E4DD7 /* WPSKit.framework */,
-				68BC97251C8B3356009E4DD7 /* WPSKitTests.xctest */,
+				68BC97251C8B3356009E4DD7 /* WPSKitTests-iOS.xctest */,
 				683C0B601CBEDA8F00B328EC /* WPSKit.framework */,
 				683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */,
+				683C0BB41CBEDF3300B328EC /* WPSKitTests-tvOS.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		68BC97291C8B3356009E4DD7 /* WPSKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				68BC972A1C8B3356009E4DD7 /* WPSKitTests.swift */,
-				68BC972C1C8B3356009E4DD7 /* Info.plist */,
-				68E466EB1C8B3927009E657E /* Foundation */,
-				68E466EC1C8B3927009E657E /* UIKit */,
-			);
-			path = WPSKitTests;
-			sourceTree = "<group>";
-		};
-		68E466EB1C8B3927009E657E /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				68E467211C8B7263009E657E /* NSErrorTests.swift */,
-				68E466EF1C8B39FB009E657E /* StringTests.swift */,
-				68CC83F71CA2E35C0008D437 /* NSURLTests.swift */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		68E466EC1C8B3927009E657E /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				68E466ED1C8B3950009E657E /* UIColorTests.swift */,
-				68A6E3601CA5883D00745E88 /* UIViewTests.swift */,
-				68A6E3641CA588B500745E88 /* LoadFromNibTestView.swift */,
-				68A6E3621CA5886C00745E88 /* LoadFromNibTestView.xib */,
-			);
-			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +292,24 @@
 			productReference = 683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		683C0BB31CBEDF3300B328EC /* WPSKitTests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 683C0BBC1CBEDF3400B328EC /* Build configuration list for PBXNativeTarget "WPSKitTests-tvOS" */;
+			buildPhases = (
+				683C0BB01CBEDF3300B328EC /* Sources */,
+				683C0BB11CBEDF3300B328EC /* Frameworks */,
+				683C0BB21CBEDF3300B328EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				683C0BBB1CBEDF3400B328EC /* PBXTargetDependency */,
+			);
+			name = "WPSKitTests-tvOS";
+			productName = "WPSKitTests-tvOS";
+			productReference = 683C0BB41CBEDF3300B328EC /* WPSKitTests-tvOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68BC972F1C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKit-iOS" */;
@@ -286,9 +328,9 @@
 			productReference = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		68BC97241C8B3356009E4DD7 /* WPSKitTests */ = {
+		68BC97241C8B3356009E4DD7 /* WPSKitTests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 68BC97321C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKitTests" */;
+			buildConfigurationList = 68BC97321C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKitTests-iOS" */;
 			buildPhases = (
 				68BC97211C8B3356009E4DD7 /* Sources */,
 				68BC97221C8B3356009E4DD7 /* Frameworks */,
@@ -299,9 +341,9 @@
 			dependencies = (
 				68BC97281C8B3356009E4DD7 /* PBXTargetDependency */,
 			);
-			name = WPSKitTests;
+			name = "WPSKitTests-iOS";
 			productName = WPSKitTests;
-			productReference = 68BC97251C8B3356009E4DD7 /* WPSKitTests.xctest */;
+			productReference = 68BC97251C8B3356009E4DD7 /* WPSKitTests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -318,6 +360,9 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					683C0B6C1CBEDAAB00B328EC = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					683C0BB31CBEDF3300B328EC = {
 						CreatedOnToolsVersion = 7.3;
 					};
 					68BC971A1C8B3355009E4DD7 = {
@@ -343,7 +388,8 @@
 				68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */,
 				683C0B6C1CBEDAAB00B328EC /* WPSKit-tvOS */,
 				683C0B5F1CBEDA8F00B328EC /* WPSKit-watchOS */,
-				68BC97241C8B3356009E4DD7 /* WPSKitTests */,
+				68BC97241C8B3356009E4DD7 /* WPSKitTests-iOS */,
+				683C0BB31CBEDF3300B328EC /* WPSKitTests-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -363,6 +409,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		683C0BB21CBEDF3300B328EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683C0BD21CBEDFFE00B328EC /* LoadFromNibTestView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68BC97191C8B3355009E4DD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,7 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A6E3631CA5886C00745E88 /* LoadFromNibTestView.xib in Resources */,
+				683C0BD61CBEDFFF00B328EC /* LoadFromNibTestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +463,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		683C0BB01CBEDF3300B328EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				683C0BD11CBEDFFE00B328EC /* LoadFromNibTestView.swift in Sources */,
+				683C0BCF1CBEDFF400B328EC /* NSURLTests.swift in Sources */,
+				683C0BD41CBEDFFE00B328EC /* UIViewTests.swift in Sources */,
+				683C0BD31CBEDFFE00B328EC /* UIColorTests.swift in Sources */,
+				683C0BD01CBEDFF400B328EC /* StringTests.swift in Sources */,
+				683C0BCE1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		68BC97161C8B3355009E4DD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,19 +494,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A6E3611CA5883D00745E88 /* UIViewTests.swift in Sources */,
-				68BC972B1C8B3356009E4DD7 /* WPSKitTests.swift in Sources */,
-				68E467221C8B7263009E657E /* NSErrorTests.swift in Sources */,
-				68CC83F81CA2E35C0008D437 /* NSURLTests.swift in Sources */,
-				68A6E3651CA588B500745E88 /* LoadFromNibTestView.swift in Sources */,
-				68E466F01C8B39FB009E657E /* StringTests.swift in Sources */,
-				68E466EE1C8B3950009E657E /* UIColorTests.swift in Sources */,
+				683C0BD51CBEDFFF00B328EC /* LoadFromNibTestView.swift in Sources */,
+				683C0BCC1CBEDFF400B328EC /* NSURLTests.swift in Sources */,
+				683C0BD81CBEDFFF00B328EC /* UIViewTests.swift in Sources */,
+				683C0BD71CBEDFFF00B328EC /* UIColorTests.swift in Sources */,
+				683C0BCD1CBEDFF400B328EC /* StringTests.swift in Sources */,
+				683C0BCB1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		683C0BBB1CBEDF3400B328EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 683C0B6C1CBEDAAB00B328EC /* WPSKit-tvOS */;
+			targetProxy = 683C0BBA1CBEDF3400B328EC /* PBXContainerItemProxy */;
+		};
 		68BC97281C8B3356009E4DD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */;
@@ -529,6 +600,32 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		683C0BBD1CBEDF3400B328EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.WPSKitTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		683C0BBE1CBEDF3400B328EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = "Tests/Info-tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.whitepeaksoftware.WPSKitTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
 			};
 			name = Release;
 		};
@@ -663,7 +760,7 @@
 		68BC97331C8B3356009E4DD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = WPSKitTests/Info.plist;
+				INFOPLIST_FILE = "Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -673,7 +770,7 @@
 		68BC97341C8B3356009E4DD7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = WPSKitTests/Info.plist;
+				INFOPLIST_FILE = "Tests/Info-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitepeaksoftware.WPSKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -699,6 +796,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
+		683C0BBC1CBEDF3400B328EC /* Build configuration list for PBXNativeTarget "WPSKitTests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				683C0BBD1CBEDF3400B328EC /* Debug */,
+				683C0BBE1CBEDF3400B328EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		68BC97151C8B3355009E4DD7 /* Build configuration list for PBXProject "WPSKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -717,7 +822,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68BC97321C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKitTests" */ = {
+		68BC97321C8B3356009E4DD7 /* Build configuration list for PBXNativeTarget "WPSKitTests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				68BC97331C8B3356009E4DD7 /* Debug */,

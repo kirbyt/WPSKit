@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "683C0B5F1CBEDA8F00B328EC"
-               BuildableName = "WPSKit-watchOS.framework"
+               BuildableName = "WPSKit.framework"
                BlueprintName = "WPSKit-watchOS"
                ReferencedContainer = "container:WPSKit.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "683C0B5F1CBEDA8F00B328EC"
-            BuildableName = "WPSKit-watchOS.framework"
+            BuildableName = "WPSKit.framework"
             BlueprintName = "WPSKit-watchOS"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "683C0B5F1CBEDA8F00B328EC"
-            BuildableName = "WPSKit-watchOS.framework"
+            BuildableName = "WPSKit.framework"
             BlueprintName = "WPSKit-watchOS"
             ReferencedContainer = "container:WPSKit.xcodeproj">
          </BuildableReference>
