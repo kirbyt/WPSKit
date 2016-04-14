@@ -38,7 +38,7 @@ public class ArrayDataSource: NSObject, DataSource, UICollectionViewDataSource, 
   }
 }
 
-// MARK: - DataSource
+// MARK: - DataSource Public
 
 public extension ArrayDataSource {
   
@@ -61,14 +61,22 @@ public extension ArrayDataSource {
     return array[indexPath.section][indexPath.row]
   }
   
-  /**
-   Adds an array of objects to the speified section.
-   
-   - parameters array:    An array of objects to add to the section.
-   - parameters section:  The section to which the objects are added.
-   */
-  public func addObjects(array: [AnyObject], toSection: Int) {
+}
+
+// MARK: - DataSource Private
+
+public extension ArrayDataSource {
+  
+  func numberOfSections() -> Int {
+    return array.count
+  }
+  
+  func numberOfRowsInSection(section: Int) -> Int {
+    guard section < array.count else {
+      return 0
+    }
     
+    return array[section].count
   }
 
   func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
@@ -83,20 +91,44 @@ public extension ArrayDataSource {
     }
     return id!
   }
+  
+  func reuseIdentifierForSupplementaryViewAtIndexPath(indexPath: NSIndexPath, kind: String) -> String {
+    return reuseIdentifierForSupplementaryView(kind: kind, indexPath: indexPath)
+  }
+  
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension ArrayDataSource {
 
+  public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    return numberOfSections()
+  }
+  
   public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 0
+    return numberOfRowsInSection(section)
   }
   
   public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    return UICollectionViewCell()
+    let identifier = cellIdentifierAtIndexPath(indexPath)
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+    if let configureCell = configureCell {
+      let item = objectAtIndexPath(indexPath)
+      configureCell(cell: cell, indexPath: indexPath, item: item!)
+    }
+    return cell
   }
   
+  public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    let reuseIdentifier = reuseIdentifierForSupplementaryViewAtIndexPath(indexPath, kind: kind)
+    let reusableView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    if let configureSupplementaryView = configureSupplementaryView {
+      configureSupplementaryView(view: reusableView, kind: kind, indexPath: indexPath)
+    }
+    
+    return reusableView
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -104,15 +136,11 @@ extension ArrayDataSource {
 extension ArrayDataSource {
   
   public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return array.count
+    return numberOfSections()
   }
   
   public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard section < array.count else {
-      return 0
-    }
-
-    return array[section].count
+    return numberOfRowsInSection(section)
   }
   
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

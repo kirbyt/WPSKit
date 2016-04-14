@@ -14,7 +14,10 @@ class ArrayDataSourceTests: XCTestCase {
   override func setUp() {
     super.setUp()
   }
-  
+}
+
+extension ArrayDataSourceTests {
+
   func testDataSource_objectAtIndexPath() {
     let dataSource = ArrayDataSource()
     dataSource.array = [["One", "Two"], ["Three", "Four"]]
@@ -25,6 +28,62 @@ class ArrayDataSourceTests: XCTestCase {
     XCTAssertNil((dataSource.objectAtIndexPath(NSIndexPath(forRow: 3, inSection: 5)) as? String), "Should be nil.")
   }
   
+}
+
+extension ArrayDataSourceTests {
+  
+  func testCollectionView_numberOfSections() {
+    let dataSource = ArrayDataSource()
+    dataSource.array = [["One", "Two"], ["Three", "Four"]]
+    
+    let collectionLayout = UICollectionViewFlowLayout()
+    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
+    collectionView.dataSource = dataSource
+    collectionView.reloadData()
+    
+    XCTAssertEqual(collectionView.numberOfSections(), 2, "Should have 2 sections.")
+  }
+  
+  func testCollectionView_numberOfRowsInSections() {
+    let dataSource = ArrayDataSource()
+    dataSource.array = [["One", "Two", "Three", "Four"], ["Five"]]
+    
+    let collectionLayout = UICollectionViewFlowLayout()
+    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
+    collectionView.dataSource = dataSource
+    collectionView.reloadData()
+    
+    XCTAssertEqual(collectionView.numberOfItemsInSection(0), 4, "Should have 4 rows in section 0.")
+    XCTAssertEqual(collectionView.numberOfItemsInSection(1), 1, "Should have 1 row in section 1.")
+  }
+  
+  func testCollectionView_configureCell() {
+    let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
+    dataSource.array = [["One"]]
+    
+    var callCount = 0
+    
+    dataSource.configureCell = { (cell, indexPath, item) in
+      XCTAssertEqual(String(item), "One", "Should be 'One'.")
+      callCount = callCount + 1
+    }
+    
+    let collectionLayout = UICollectionViewFlowLayout()
+    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
+    collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "id")
+    collectionView.dataSource = dataSource
+    collectionView.reloadData()
+    
+    let cell = dataSource.collectionView(collectionView, cellForItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+    
+    XCTAssertNotNil(cell, "Should have a cell.")
+    XCTAssertEqual(callCount, 1, "Should call configureCell 1 time.")
+  }
+  
+}
+
+extension ArrayDataSourceTests {
+
   func testTableView_numberOfSections() {
     let dataSource = ArrayDataSource()
     dataSource.array = [["One", "Two"], ["Three", "Four"]]
