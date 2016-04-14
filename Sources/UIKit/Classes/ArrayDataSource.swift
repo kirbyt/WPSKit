@@ -32,7 +32,7 @@ public class ArrayDataSource: NSObject, DataSource, UICollectionViewDataSource, 
   
   public var reuseIdentifierForSupplementaryView: ((kind: String, indexPath: NSIndexPath) -> String)!
 
-  init(defaultCellIdentifier: String? = nil, sectionHeaderTitles: [String]? = nil) {
+  public init(defaultCellIdentifier: String? = nil, sectionHeaderTitles: [String]? = nil) {
     self.defaultCellIdentifier = defaultCellIdentifier
     self.sectionHeaderTitles = sectionHeaderTitles
   }
