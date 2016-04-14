@@ -22,13 +22,13 @@ public class ArrayDataSource: NSObject, DataSource, UICollectionViewDataSource, 
   
   public var canEdit: ((indexPath: NSIndexPath) -> Bool)!
   
-  public var commitEditingStyle: (tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath)!
+  public var commitEditingStyle: ((tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void)!
   
   public var canMoveItem: ((indexPath: NSIndexPath) -> Bool)!
   
-  public var moveItem: (tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath)!
+  public var moveItem: ((tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void)!
   
-  public var configureSupplementaryView: (view: AnyObject, kind: String, indexPath: NSIndexPath)!
+  public var configureSupplementaryView: ((view: AnyObject, kind: String, indexPath: NSIndexPath) -> Void)!
   
   public var reuseIdentifierForSupplementaryView: ((kind: String, indexPath: NSIndexPath) -> String)!
 
@@ -111,6 +111,7 @@ extension ArrayDataSource {
     guard section < array.count else {
       return 0
     }
+
     return array[section].count
   }
   
@@ -124,4 +125,43 @@ extension ArrayDataSource {
     return cell
   }
   
+  public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    guard let titles = sectionHeaderTitles else {
+      return nil
+    }
+    
+    guard section < titles.count else {
+      return nil
+    }
+    
+    return titles[section]
+  }
+  
+  public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    var edit = false
+    if let canEdit = canEdit {
+      edit = canEdit(indexPath: indexPath)
+    }
+    return edit
+  }
+
+  public func tableView(tableView: UITableView, editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if let commitEditingStyle = commitEditingStyle {
+      commitEditingStyle(tableView: tableView, editingStyle: editingStyle, indexPath: indexPath)
+    }
+  }
+  
+  public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    var canMove = false
+    if let canMoveItem = canMoveItem {
+      canMove = canMoveItem(indexPath: indexPath)
+    }
+    return canMove
+  }
+
+  public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+    if let moveItem = moveItem {
+      moveItem(tableView: tableView, sourceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
+    }
+  }
 }
