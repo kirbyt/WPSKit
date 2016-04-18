@@ -83,13 +83,13 @@ public extension ArrayDataSource {
 
 // MARK: - DataSource Private
 
-public extension ArrayDataSource {
+private extension ArrayDataSource {
   
-  func numberOfSections() -> Int {
+  private func numberOfSections() -> Int {
     return array.count
   }
   
-  func numberOfRowsInSection(section: Int) -> Int {
+  private func numberOfRowsInSection(section: Int) -> Int {
     guard section < array.count else {
       return 0
     }
@@ -97,7 +97,7 @@ public extension ArrayDataSource {
     return array[section].count
   }
 
-  func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
+  private func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
     var id = defaultCellIdentifier
     if let cellIdentifier = cellIdentifier {
       if let item = objectAtIndexPath(indexPath) {
@@ -110,7 +110,7 @@ public extension ArrayDataSource {
     return id!
   }
   
-  func reuseIdentifierForSupplementaryViewAtIndexPath(indexPath: NSIndexPath, kind: String) -> String {
+  private func reuseIdentifierForSupplementaryViewAtIndexPath(indexPath: NSIndexPath, kind: String) -> String {
     return reuseIdentifierForSupplementaryView(kind: kind, indexPath: indexPath)
   }
   

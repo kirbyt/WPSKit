@@ -32,6 +32,11 @@
 		682D51031CC470030006B9D0 /* NibBasedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D51001CC470030006B9D0 /* NibBasedCollectionViewCell.swift */; };
 		682D51041CC470030006B9D0 /* NibBasedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682D51011CC470030006B9D0 /* NibBasedCollectionViewCell.xib */; };
 		682D51051CC470030006B9D0 /* NibBasedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 682D51011CC470030006B9D0 /* NibBasedCollectionViewCell.xib */; };
+		682D51091CC533070006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D51061CC532FF0006B9D0 /* UICollectionReusableView+WPSKit.swift */; };
+		682D510A1CC533070006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D51061CC532FF0006B9D0 /* UICollectionReusableView+WPSKit.swift */; };
+		682D510B1CC533080006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D51061CC532FF0006B9D0 /* UICollectionReusableView+WPSKit.swift */; };
+		682D510D1CC535A10006B9D0 /* UICollectionReusableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D510C1CC535A10006B9D0 /* UICollectionReusableViewTests.swift */; };
+		682D510E1CC535A10006B9D0 /* UICollectionReusableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D510C1CC535A10006B9D0 /* UICollectionReusableViewTests.swift */; };
 		683C0B8F1CBEDC1B00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683C0B901CBEDC1C00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683C0B911CBEDC1C00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +115,8 @@
 		682D50FD1CC46E6B0006B9D0 /* UICollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellTests.swift; sourceTree = "<group>"; };
 		682D51001CC470030006B9D0 /* NibBasedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibBasedCollectionViewCell.swift; sourceTree = "<group>"; };
 		682D51011CC470030006B9D0 /* NibBasedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibBasedCollectionViewCell.xib; sourceTree = "<group>"; };
+		682D51061CC532FF0006B9D0 /* UICollectionReusableView+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+WPSKit.swift"; sourceTree = "<group>"; };
+		682D510C1CC535A10006B9D0 /* UICollectionReusableViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionReusableViewTests.swift; sourceTree = "<group>"; };
 		683C0B601CBEDA8F00B328EC /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683C0B851CBEDB4E00B328EC /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -196,6 +203,7 @@
 		682D50E11CC45C5B0006B9D0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				682D510C1CC535A10006B9D0 /* UICollectionReusableViewTests.swift */,
 				682D50FD1CC46E6B0006B9D0 /* UICollectionViewCellTests.swift */,
 				682D50E21CC45C5B0006B9D0 /* UIColorTests.swift */,
 				682D50E51CC45C910006B9D0 /* UITableViewCellTests.swift */,
@@ -333,6 +341,7 @@
 		68D679721CBEE93300392820 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				682D51061CC532FF0006B9D0 /* UICollectionReusableView+WPSKit.swift */,
 				682D50F71CC46D880006B9D0 /* UICollectionViewCell+WPSKit.swift */,
 				68D679731CBEE93300392820 /* UIColor+WPSKit.swift */,
 				68D679741CBEE93300392820 /* UIImage+WPSKit.swift */,
@@ -609,6 +618,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0BA01CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
+				682D510B1CC533080006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */,
 				68D679901CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9D1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
 				682D50E01CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
@@ -627,6 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0B9F1CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
+				682D510A1CC533070006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */,
 				68D6798F1CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9C1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
 				682D50DF1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
@@ -653,6 +664,7 @@
 				683C0BD01CBEDFF400B328EC /* StringTests.swift in Sources */,
 				682D50EB1CC45F8B0006B9D0 /* LoadFromNibTestView.swift in Sources */,
 				683C0BCE1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
+				682D510E1CC535A10006B9D0 /* UICollectionReusableViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0B9E1CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
+				682D51091CC533070006B9D0 /* UICollectionReusableView+WPSKit.swift in Sources */,
 				68D6798E1CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9B1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
 				682D50DE1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
@@ -697,6 +710,7 @@
 				682D50E31CC45C5B0006B9D0 /* UIColorTests.swift in Sources */,
 				683C0BCD1CBEDFF400B328EC /* StringTests.swift in Sources */,
 				682D50EA1CC45F8B0006B9D0 /* LoadFromNibTestView.swift in Sources */,
+				682D510D1CC535A10006B9D0 /* UICollectionReusableViewTests.swift in Sources */,
 				683C0BCB1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
 				682D51021CC470030006B9D0 /* NibBasedCollectionViewCell.swift in Sources */,
 			);

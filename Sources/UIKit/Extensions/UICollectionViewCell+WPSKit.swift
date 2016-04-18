@@ -28,40 +28,40 @@ import UIKit
 
 public extension UICollectionViewCell {
 
-  /**
-   The cell identifier.
-   
-   This is the same as the class name.
-   
-   - return An `NSString` containing the cell identifier.
-   */
-  public static var cellIdentifier: String {
-    return String(self)
-  }
-  
-  /**
-   Get a reference to the nib associated with this class.
-   
-   - return A reference to the `UINib` associated with this class.
-   */
-  public static var nib: UINib? {
-    let bundle = NSBundle.init(forClass: self)
-    guard let _ = bundle.pathForResource(nibName, ofType: "nib") else {
-      return nil
-    }
-    return UINib.init(nibName: nibName, bundle: bundle)
-  }
-  
-  /**
-   The nib's name.
-   
-   This is the same as the class name.
-   
-   - return An `NSString` representing the nib's name.
-   */
-  public static var nibName: String {
-    return cellIdentifier
-  }
+//  /**
+//   The cell identifier.
+//   
+//   This is the same as the class name.
+//   
+//   - return An `NSString` containing the cell identifier.
+//   */
+//  public static var cellIdentifier: String {
+//    return String(self)
+//  }
+//  
+//  /**
+//   Get a reference to the nib associated with this class.
+//   
+//   - return A reference to the `UINib` associated with this class.
+//   */
+//  public static var nib: UINib? {
+//    let bundle = NSBundle.init(forClass: self)
+//    guard let _ = bundle.pathForResource(nibName, ofType: "nib") else {
+//      return nil
+//    }
+//    return UINib.init(nibName: nibName, bundle: bundle)
+//  }
+//  
+//  /**
+//   The nib's name.
+//   
+//   This is the same as the class name.
+//   
+//   - return An `NSString` representing the nib's name.
+//   */
+//  public static var nibName: String {
+//    return cellIdentifier
+//  }
   
   /**
    Register the class for use as a cell with the provided collection view.
