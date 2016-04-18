@@ -52,8 +52,13 @@ class UITableViewCellTests: XCTestCase {
   }
   
   func testTableView_registerClass() {
-    let tableView = UITableView()
+    let dataSource = dataSourceForCellIdentifier(FakeTableViewCell.cellIdentifier)
+    let tableView = tableViewWithDataSource(dataSource)
+
     FakeTableViewCell.registerClassWithTableView(tableView)
+
+    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    XCTAssertNotNil(cell, "Should have a table view cell.")
   }
   
   func testTableView_registerNib() {
