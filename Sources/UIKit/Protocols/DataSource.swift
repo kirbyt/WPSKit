@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol DataSource {
+public protocol DataSource: UICollectionViewDataSource, UITableViewDataSource {
   
   var defaultCellIdentifier: String? {get}
   var sectionHeaderTitles: [String]? {get}

@@ -26,7 +26,7 @@
 
 import UIKit
 
-public class ArrayDataSource: NSObject, DataSource, UICollectionViewDataSource, UITableViewDataSource {
+public class ArrayDataSource: NSObject, DataSource {
   
   public var array:[[AnyObject]] = [[]]
   

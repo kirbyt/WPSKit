@@ -25,8 +25,62 @@
 //
 
 import XCTest
+import UIKit
 @testable import WPSKit
 
 class UITableViewCellTests: XCTestCase {
+  class FakeTableViewCell : UITableViewCell {
     
+  }
+
+  func testCellIdentifier_equalClassName() {
+    XCTAssertEqual(FakeTableViewCell.cellIdentifier, "FakeTableViewCell", "Should match the class name.")
+    XCTAssertEqual(UITableViewCell.cellIdentifier, "UITableViewCell", "Should match the class name.")
+  }
+  
+  func testNibName_shouldEqualClassName() {
+    XCTAssertEqual(FakeTableViewCell.nibName, "FakeTableViewCell")
+    XCTAssertEqual(UITableViewCell.nibName, "UITableViewCell")
+  }
+
+  func testNib_shouldNotHaveNib() {
+    XCTAssertNil(FakeTableViewCell.nib, "Should not have a nib.")
+  }
+
+  func testNib_shouldHaveNib() {
+    XCTAssertNotNil(NibBasedTableViewCell.nib, "Should have a nib.")
+  }
+  
+  func testTableView_registerClass() {
+    let tableView = UITableView()
+    FakeTableViewCell.registerClassWithTableView(tableView)
+  }
+  
+  func testTableView_registerNib() {
+    let dataSource = dataSourceForCellIdentifier(NibBasedTableViewCell.cellIdentifier)
+    let tableView = tableViewWithDataSource(dataSource)
+    
+    NibBasedTableViewCell.registerNibWithTableView(tableView)
+    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    XCTAssertNotNil(cell, "Should have a table view cell.")
+  }
+}
+
+private extension UITableViewCellTests {
+  private func dataSourceForCellIdentifier(cellIdentifier: String) -> DataSource {
+
+    let dataSource = ArrayDataSource(defaultCellIdentifier: cellIdentifier)
+    dataSource.array = [["1", "2", "3"]]
+    
+    return dataSource
+  }
+  
+  private func tableViewWithDataSource(dataSource: DataSource) -> UITableView {
+    
+    let tableView = UITableView()
+    tableView.dataSource = dataSource
+    tableView.reloadData()
+
+    return tableView
+  }
 }
