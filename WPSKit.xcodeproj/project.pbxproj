@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682D50DE1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */; };
+		682D50DF1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */; };
+		682D50E01CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */; };
+		682D50E31CC45C5B0006B9D0 /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50E21CC45C5B0006B9D0 /* UIColorTests.swift */; };
+		682D50E41CC45C5B0006B9D0 /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50E21CC45C5B0006B9D0 /* UIColorTests.swift */; };
+		682D50E61CC45C910006B9D0 /* UITableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682D50E51CC45C910006B9D0 /* UITableViewCellTests.swift */; };
 		683C0B8F1CBEDC1B00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683C0B901CBEDC1C00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		683C0B911CBEDC1C00B328EC /* WPSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 683C0B8B1CBEDC1600B328EC /* WPSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,11 +37,9 @@
 		683C0BD01CBEDFF400B328EC /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC31CBEDFD300B328EC /* StringTests.swift */; };
 		683C0BD11CBEDFFE00B328EC /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */; };
 		683C0BD21CBEDFFE00B328EC /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */; };
-		683C0BD31CBEDFFE00B328EC /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC91CBEDFD300B328EC /* UIColorTests.swift */; };
 		683C0BD41CBEDFFE00B328EC /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */; };
 		683C0BD51CBEDFFF00B328EC /* LoadFromNibTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */; };
 		683C0BD61CBEDFFF00B328EC /* LoadFromNibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */; };
-		683C0BD71CBEDFFF00B328EC /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BC91CBEDFD300B328EC /* UIColorTests.swift */; };
 		683C0BD81CBEDFFF00B328EC /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */; };
 		683C0BFC1CBEE61100B328EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BF31CBEE61100B328EC /* AppDelegate.swift */; };
 		683C0BFD1CBEE61100B328EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF41CBEE61100B328EC /* Assets.xcassets */; };
@@ -81,6 +85,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+WPSKit.swift"; sourceTree = "<group>"; };
+		682D50E21CC45C5B0006B9D0 /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		682D50E51CC45C910006B9D0 /* UITableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTests.swift; sourceTree = "<group>"; };
 		683C0B601CBEDA8F00B328EC /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683C0B6D1CBEDAAB00B328EC /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683C0B851CBEDB4E00B328EC /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
@@ -99,7 +106,6 @@
 		683C0BC51CBEDFD300B328EC /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFromNibTestView.swift; sourceTree = "<group>"; };
 		683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadFromNibTestView.xib; sourceTree = "<group>"; };
-		683C0BC91CBEDFD300B328EC /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 		683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
 		683C0BDD1CBEE59F00B328EC /* WPSKit-Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WPSKit-Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		683C0BF31CBEE61100B328EC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		682D50E11CC45C5B0006B9D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				682D50E21CC45C5B0006B9D0 /* UIColorTests.swift */,
+				682D50E51CC45C910006B9D0 /* UITableViewCellTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		683C0B841CBEDAD400B328EC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,10 +241,10 @@
 		683C0BC61CBEDFD300B328EC /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				682D50E11CC45C5B0006B9D0 /* Extensions */,
 				68D6798A1CBF0DED00392820 /* ArrayDataSourceTests.swift */,
 				683C0BC71CBEDFD300B328EC /* LoadFromNibTestView.swift */,
 				683C0BC81CBEDFD300B328EC /* LoadFromNibTestView.xib */,
-				683C0BC91CBEDFD300B328EC /* UIColorTests.swift */,
 				683C0BCA1CBEDFD300B328EC /* UIViewTests.swift */,
 			);
 			path = UIKit;
@@ -288,6 +303,7 @@
 			children = (
 				68D679731CBEE93300392820 /* UIColor+WPSKit.swift */,
 				68D679741CBEE93300392820 /* UIImage+WPSKit.swift */,
+				682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */,
 				68D679751CBEE93300392820 /* UIView+WPSKit.swift */,
 			);
 			path = Extensions;
@@ -558,6 +574,7 @@
 				683C0BA01CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
 				68D679901CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9D1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
+				682D50E01CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
 				68D6797F1CBEE93300392820 /* UIView+WPSKit.swift in Sources */,
 				68D679791CBEE93300392820 /* UIColor+WPSKit.swift in Sources */,
 				683C0BA61CBEDCB300B328EC /* String+WPSKit.swift in Sources */,
@@ -574,6 +591,7 @@
 				683C0B9F1CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
 				68D6798F1CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9C1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
+				682D50DF1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
 				68D6797E1CBEE93300392820 /* UIView+WPSKit.swift in Sources */,
 				68D679781CBEE93300392820 /* UIColor+WPSKit.swift in Sources */,
 				683C0BA51CBEDCB300B328EC /* String+WPSKit.swift in Sources */,
@@ -590,7 +608,7 @@
 				683C0BD11CBEDFFE00B328EC /* LoadFromNibTestView.swift in Sources */,
 				683C0BCF1CBEDFF400B328EC /* NSURLTests.swift in Sources */,
 				683C0BD41CBEDFFE00B328EC /* UIViewTests.swift in Sources */,
-				683C0BD31CBEDFFE00B328EC /* UIColorTests.swift in Sources */,
+				682D50E41CC45C5B0006B9D0 /* UIColorTests.swift in Sources */,
 				683C0BD01CBEDFF400B328EC /* StringTests.swift in Sources */,
 				683C0BCE1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
 			);
@@ -613,6 +631,7 @@
 				683C0B9E1CBEDCB300B328EC /* NSNotificationCenter+WPSKit.swift in Sources */,
 				68D6798E1CBF44EF00392820 /* ArrayDataSource.swift in Sources */,
 				683C0B9B1CBEDCB300B328EC /* NSError+WPSKit.swift in Sources */,
+				682D50DE1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift in Sources */,
 				68D6797D1CBEE93300392820 /* UIView+WPSKit.swift in Sources */,
 				68D679771CBEE93300392820 /* UIColor+WPSKit.swift in Sources */,
 				683C0BA41CBEDCB300B328EC /* String+WPSKit.swift in Sources */,
@@ -627,10 +646,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C0BD51CBEDFFF00B328EC /* LoadFromNibTestView.swift in Sources */,
+				682D50E61CC45C910006B9D0 /* UITableViewCellTests.swift in Sources */,
 				683C0BCC1CBEDFF400B328EC /* NSURLTests.swift in Sources */,
 				683C0BD81CBEDFFF00B328EC /* UIViewTests.swift in Sources */,
-				683C0BD71CBEDFFF00B328EC /* UIColorTests.swift in Sources */,
 				68D6798B1CBF0DED00392820 /* ArrayDataSourceTests.swift in Sources */,
+				682D50E31CC45C5B0006B9D0 /* UIColorTests.swift in Sources */,
 				683C0BCD1CBEDFF400B328EC /* StringTests.swift in Sources */,
 				683C0BCB1CBEDFF400B328EC /* NSErrorTests.swift in Sources */,
 			);

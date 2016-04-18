@@ -1,5 +1,5 @@
 //
-//  UIViewTests.swift
+//  UITableViewCell+WPSKit.swift
 //
 // Created by Kirby Turner.
 // Copyright 2016 White Peak Software. All rights reserved.
@@ -24,25 +24,56 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import XCTest
-@testable import WPSKit
+import UIKit
 
-class UIViewTests: XCTestCase {
+public extension UITableViewCell {
   
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+  /**
+   The cell identifier.
+   
+   This is the same as the class name.
+   
+   - return An `NSString` containing the cell identifier.
+   */
+  public static var cellIdentifier: String {
+    return ""
   }
   
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-
-  func testLoadFromNib() {
-    let view = LoadFromNibTestView.loadFromNib()
-    XCTAssertNotNil(view)
-    XCTAssertEqual(String(view.dynamicType), String(LoadFromNibTestView))
+  /**
+   Get a reference to the nib associated with this class.
+   
+   - return A reference to the `UINib` associated with this class.
+   */
+  public static var nib: UINib? {
+    return nil
   }
   
+  /**
+   The nib's name.
+   
+   This is the same as the class name.
+   
+   - return An `NSString` representing the nib's name.
+   */
+  public static var nibName: String {
+    return ""
+  }
+  
+  /**
+   Register the class for use as a cell with the provided table view.
+   
+   - parameter tableView: The table view that will use this cell class.
+   */
+  public static func registerClassWithTableView(tableView: UITableView) {
+    
+  }
+  
+  /**
+   Register the nib for this class for use as a cell with the provided table view.
+   
+   - parameter tableView: The table view that will use this cell class.
+   */
+  public static func registerNibWithTableView(tableView: UITableView) {
+    
+  }
 }
