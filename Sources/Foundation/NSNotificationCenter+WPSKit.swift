@@ -37,7 +37,7 @@ extension NSNotificationCenter {
    - parameter notificationSender:  The object posting the notification.
    - parameter userInfo:            Information about the the notification. May be nil.
    */
-  public func postOnMainThread(name: String, object: AnyObject?, userInfo: [String:AnyObject]?) {
+  public func postOnMainThreadNotificationName(name: String, object: AnyObject?, userInfo: [String:AnyObject]?) {
     if NSThread.isMainThread() {
       postNotificationName(name, object: object, userInfo: userInfo)
     } else {
