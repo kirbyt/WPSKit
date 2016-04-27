@@ -81,3 +81,18 @@ public extension UITableViewCell {
     tableView.registerNib(nib, forCellReuseIdentifier: cellIdentifier)
   }
 }
+
+public extension UITableViewCell {
+  
+  public func tableView() -> UITableView? {
+    var someView = self.superview
+    while someView != nil {
+      if let tableView = someView as? UITableView {
+        return tableView
+      }
+      someView = someView?.superview
+    }
+    return nil
+  }
+  
+}

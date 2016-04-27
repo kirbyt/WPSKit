@@ -69,6 +69,22 @@ class UITableViewCellTests: XCTestCase {
     let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
     XCTAssertNotNil(cell, "Should have a table view cell.")
   }
+  
+  func testFindTableView_shouldHaveNoTableView() {
+    let cell = UITableViewCell()
+    XCTAssertNil(cell.tableView(), "Should not have a table view.")
+  }
+  
+  func testFindTableView_shouldHaveTableView() {
+    let dataSource = dataSourceForCellIdentifier(FakeTableViewCell.cellIdentifier)
+    let tableView = tableViewWithDataSource(dataSource)
+    
+    FakeTableViewCell.registerClassWithTableView(tableView)
+    
+    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    
+    XCTAssertEqual(cell?.tableView(), tableView, "Should have a table view.")
+  }
 }
 
 private extension UITableViewCellTests {
