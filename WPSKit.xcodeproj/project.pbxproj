@@ -63,7 +63,6 @@
 		683C0BFD1CBEE61100B328EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF41CBEE61100B328EC /* Assets.xcassets */; };
 		683C0BFE1CBEE61100B328EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */; };
 		683C0BFF1CBEE61100B328EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF71CBEE61100B328EC /* Main.storyboard */; };
-		683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BF91CBEE61100B328EC /* FirstViewController.swift */; };
 		683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BFB1CBEE61100B328EC /* SecondViewController.swift */; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 		68D679771CBEE93300392820 /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D679731CBEE93300392820 /* UIColor+WPSKit.swift */; };
@@ -162,7 +161,6 @@
 		683C0BF41CBEE61100B328EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		683C0BF61CBEE61100B328EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		683C0BF81CBEE61100B328EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		683C0BF91CBEE61100B328EC /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		683C0BFA1CBEE61100B328EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		683C0BFB1CBEE61100B328EC /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		68BC971B1C8B3355009E4DD7 /* WPSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WPSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,7 +330,6 @@
 				683C0BF41CBEE61100B328EC /* Assets.xcassets */,
 				683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */,
 				683C0BF71CBEE61100B328EC /* Main.storyboard */,
-				683C0BF91CBEE61100B328EC /* FirstViewController.swift */,
 				68E1AD3C1CDFB03C001F2295 /* WPSTextViewController.swift */,
 				683C0BFA1CBEE61100B328EC /* Info.plist */,
 				683C0BFB1CBEE61100B328EC /* SecondViewController.swift */,
@@ -705,7 +702,6 @@
 				68E1AD3D1CDFB03C001F2295 /* WPSTextViewController.swift in Sources */,
 				683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */,
 				683C0BFC1CBEE61100B328EC /* AppDelegate.swift in Sources */,
-				683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

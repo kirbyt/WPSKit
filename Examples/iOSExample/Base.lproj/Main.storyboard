@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--WPSTextView-->
@@ -17,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SWg-Sw-q8Z" customClass="WPSTextView" customModule="WPSKit">
-                                <rect key="frame" x="20" y="20" width="560" height="523"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SWg-Sw-q8Z" customClass="WPSTextView" customModule="WPSKit">
+                                <rect key="frame" x="20" y="20" width="560" height="171.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -26,10 +27,49 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Placeholder"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="R4b-sv-0AJ" customClass="WPSTextView" customModule="WPSKit">
+                                <rect key="frame" x="20" y="199.5" width="560" height="172"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Bordered text view placeholder"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uag-3w-USi">
+                                <rect key="frame" x="20" y="379.5" width="560" height="171.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SWg-Sw-q8Z" firstAttribute="height" secondItem="uag-3w-USi" secondAttribute="height" id="0SZ-Xs-ldA"/>
+                            <constraint firstItem="R4b-sv-0AJ" firstAttribute="leading" secondItem="VGw-zi-8Ed" secondAttribute="leadingMargin" id="3BW-dH-Y75"/>
+                            <constraint firstItem="R4b-sv-0AJ" firstAttribute="trailing" secondItem="VGw-zi-8Ed" secondAttribute="trailingMargin" id="3H0-Cq-3Ir"/>
+                            <constraint firstItem="5La-k5-wg7" firstAttribute="top" secondItem="SWg-Sw-q8Z" secondAttribute="bottom" constant="8" id="52A-Da-cCa"/>
+                            <constraint firstItem="R4b-sv-0AJ" firstAttribute="top" secondItem="SWg-Sw-q8Z" secondAttribute="bottom" constant="8" id="5f2-c1-nnx"/>
+                            <constraint firstItem="uag-3w-USi" firstAttribute="top" secondItem="R4b-sv-0AJ" secondAttribute="bottom" constant="8" id="BO4-xi-coe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uag-3w-USi" secondAttribute="trailing" id="Fdz-Kn-9Uv"/>
+                            <constraint firstItem="5La-k5-wg7" firstAttribute="top" secondItem="uag-3w-USi" secondAttribute="bottom" id="NSK-x9-PSw"/>
+                            <constraint firstItem="SWg-Sw-q8Z" firstAttribute="leading" secondItem="VGw-zi-8Ed" secondAttribute="leadingMargin" id="Zkt-9T-blx"/>
+                            <constraint firstItem="SWg-Sw-q8Z" firstAttribute="height" secondItem="R4b-sv-0AJ" secondAttribute="height" id="cpz-e7-3hq"/>
+                            <constraint firstItem="SWg-Sw-q8Z" firstAttribute="top" secondItem="5qp-PJ-zJu" secondAttribute="bottom" id="hWs-xd-bzg"/>
+                            <constraint firstItem="SWg-Sw-q8Z" firstAttribute="trailing" secondItem="VGw-zi-8Ed" secondAttribute="trailingMargin" id="jfI-Ml-z2y"/>
+                            <constraint firstItem="uag-3w-USi" firstAttribute="leading" secondItem="VGw-zi-8Ed" secondAttribute="leadingMargin" id="mxa-4V-8ey"/>
+                            <constraint firstItem="5La-k5-wg7" firstAttribute="top" secondItem="R4b-sv-0AJ" secondAttribute="bottom" id="tWh-ba-JzC"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="52A-Da-cCa"/>
+                                <exclude reference="tWh-ba-JzC"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="WPSTextView" image="first" id="4Dk-Hb-J63"/>
+                    <connections>
+                        <outlet property="borderedTextView" destination="R4b-sv-0AJ" id="UtB-Yg-Kw4"/>
+                        <outlet property="textView" destination="SWg-Sw-q8Z" id="U31-Df-mdp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0T-fZ-QI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

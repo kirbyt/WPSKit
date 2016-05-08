@@ -46,18 +46,32 @@ public class WPSTextView: UITextView {
     }
   }
   
+  /// The placeholder label used to display the placeholder.
+  private let placeholderLabel: UILabel = UILabel()
+  
   override public var text: String! {
-    get {
-      return super.text
+    didSet {
+      setNeedsLayout()
     }
-    set {
-      super.text = newValue
-      setNeedsDisplay()
+  }
+
+  override public var attributedText: NSAttributedString! {
+    didSet {
+      setNeedsLayout()
     }
   }
   
-  /// The placeholder label used to display the placeholder.
-  private let placeholderLabel: UILabel = UILabel()
+  override public var contentInset: UIEdgeInsets {
+    didSet {
+      setNeedsLayout()
+    }
+  }
+  
+  override public var font: UIFont? {
+    didSet {
+      setNeedsLayout()
+    }
+  }
   
   deinit {
     let nc = NSNotificationCenter.defaultCenter()
