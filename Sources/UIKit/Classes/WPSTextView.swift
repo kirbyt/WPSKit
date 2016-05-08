@@ -51,13 +51,13 @@ public class WPSTextView: UITextView {
   
   override public var text: String! {
     didSet {
-      setNeedsLayout()
+      setNeedsDisplay()
     }
   }
 
   override public var attributedText: NSAttributedString! {
     didSet {
-      setNeedsLayout()
+      setNeedsDisplay()
     }
   }
   
@@ -96,25 +96,16 @@ public class WPSTextView: UITextView {
   override public func drawRect(rect: CGRect) {
     super.drawRect(rect)
     
-    var newAlpha: CGFloat = 0.0
-    
-    guard placeholderText?.characters.count > 0 else {
-      placeholderLabel.alpha = newAlpha
-      return
-    }
-    
-    if text.characters.count == 0 {
-      newAlpha = 1
-    }
-
-    guard placeholderLabel.alpha != newAlpha else {
-      // Nothing changed. Let's exit.
-      return
+    guard placeholderText?.characters.count > 0
+      && placeholderLabel.alpha == 0
+      && text.characters.count == 0 else {
+        placeholderLabel.alpha = 0
+        return
     }
     
     placeholderLabel.frame = placeholderRectForBounds(bounds)
     placeholderLabel.sizeToFit()
-    placeholderLabel.alpha = newAlpha
+    placeholderLabel.alpha = 1
   }
   
 }
@@ -164,12 +155,8 @@ internal extension WPSTextView {
     guard placeholderText?.characters.count > 0 else {
       return
     }
-    
-    if text.characters.count == 0 {
-      placeholderLabel.alpha = 1
-    } else {
-      placeholderLabel.alpha = 0
-    }
+
+    setNeedsDisplay()
   }
   
 }
