@@ -63,13 +63,13 @@ public class WPSTextView: UITextView {
   
   override public var contentInset: UIEdgeInsets {
     didSet {
-      setNeedsLayout()
+      setNeedsDisplay()
     }
   }
   
   override public var font: UIFont? {
     didSet {
-      setNeedsLayout()
+      setNeedsDisplay()
     }
   }
   
@@ -97,7 +97,6 @@ public class WPSTextView: UITextView {
     super.drawRect(rect)
     
     guard placeholderText?.characters.count > 0
-      && placeholderLabel.alpha == 0
       && text.characters.count == 0 else {
         placeholderLabel.alpha = 0
         return
@@ -152,10 +151,6 @@ private extension WPSTextView {
 internal extension WPSTextView {
   
   internal func textChanged(sender: AnyObject) {
-    guard placeholderText?.characters.count > 0 else {
-      return
-    }
-
     setNeedsDisplay()
   }
   
