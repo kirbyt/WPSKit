@@ -64,7 +64,6 @@
 		683C0BFE1CBEE61100B328EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */; };
 		683C0BFF1CBEE61100B328EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BF71CBEE61100B328EC /* Main.storyboard */; };
 		683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BF91CBEE61100B328EC /* FirstViewController.swift */; };
-		683C0C011CBEE61100B328EC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 683C0BFA1CBEE61100B328EC /* Info.plist */; };
 		683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683C0BFB1CBEE61100B328EC /* SecondViewController.swift */; };
 		68BC97261C8B3356009E4DD7 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
 		68D679771CBEE93300392820 /* UIColor+WPSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D679731CBEE93300392820 /* UIColor+WPSKit.swift */; };
@@ -83,6 +82,10 @@
 		68D6798E1CBF44EF00392820 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D6798D1CBF44EF00392820 /* ArrayDataSource.swift */; };
 		68D6798F1CBF44EF00392820 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D6798D1CBF44EF00392820 /* ArrayDataSource.swift */; };
 		68D679901CBF44EF00392820 /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D6798D1CBF44EF00392820 /* ArrayDataSource.swift */; };
+		68E1AD3B1CDFA74E001F2295 /* WPSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1AD3A1CDFA74E001F2295 /* WPSTextView.swift */; };
+		68E1AD3D1CDFB03C001F2295 /* WPSTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1AD3C1CDFB03C001F2295 /* WPSTextViewController.swift */; };
+		68E1AD3E1CDFB2AC001F2295 /* WPSKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; };
+		68E1AD3F1CDFB2AC001F2295 /* WPSKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68BC971B1C8B3355009E4DD7 /* WPSKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +103,28 @@
 			remoteGlobalIDString = 68BC971A1C8B3355009E4DD7;
 			remoteInfo = WPSKit;
 		};
+		68E1AD401CDFB2AC001F2295 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68BC97121C8B3355009E4DD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68BC971A1C8B3355009E4DD7;
+			remoteInfo = "WPSKit-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		68E1AD421CDFB2AC001F2295 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				68E1AD3F1CDFB2AC001F2295 /* WPSKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		682D50DD1CC45BD30006B9D0 /* UITableViewCell+WPSKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+WPSKit.swift"; sourceTree = "<group>"; };
@@ -150,6 +174,8 @@
 		68D679801CBEE9BC00392820 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		68D6798A1CBF0DED00392820 /* ArrayDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDataSourceTests.swift; sourceTree = "<group>"; };
 		68D6798D1CBF44EF00392820 /* ArrayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayDataSource.swift; sourceTree = "<group>"; };
+		68E1AD3A1CDFA74E001F2295 /* WPSTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WPSTextView.swift; sourceTree = "<group>"; };
+		68E1AD3C1CDFB03C001F2295 /* WPSTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WPSTextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E1AD3E1CDFB2AC001F2295 /* WPSKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +333,7 @@
 				683C0BF51CBEE61100B328EC /* LaunchScreen.storyboard */,
 				683C0BF71CBEE61100B328EC /* Main.storyboard */,
 				683C0BF91CBEE61100B328EC /* FirstViewController.swift */,
+				68E1AD3C1CDFB03C001F2295 /* WPSTextViewController.swift */,
 				683C0BFA1CBEE61100B328EC /* Info.plist */,
 				683C0BFB1CBEE61100B328EC /* SecondViewController.swift */,
 			);
@@ -363,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				68D6798D1CBF44EF00392820 /* ArrayDataSource.swift */,
+				68E1AD3A1CDFA74E001F2295 /* WPSTextView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -458,10 +487,12 @@
 				683C0BD91CBEE59F00B328EC /* Sources */,
 				683C0BDA1CBEE59F00B328EC /* Frameworks */,
 				683C0BDB1CBEE59F00B328EC /* Resources */,
+				68E1AD421CDFB2AC001F2295 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				68E1AD411CDFB2AC001F2295 /* PBXTargetDependency */,
 			);
 			name = "WPSKit-Example-iOS";
 			productName = "WPSKit-AppExample-iOS";
@@ -586,7 +617,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				683C0C011CBEE61100B328EC /* Info.plist in Resources */,
 				683C0BFF1CBEE61100B328EC /* Main.storyboard in Resources */,
 				683C0BFD1CBEE61100B328EC /* Assets.xcassets in Resources */,
 				683C0BFE1CBEE61100B328EC /* LaunchScreen.storyboard in Resources */,
@@ -672,6 +702,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E1AD3D1CDFB03C001F2295 /* WPSTextViewController.swift in Sources */,
 				683C0C021CBEE61100B328EC /* SecondViewController.swift in Sources */,
 				683C0BFC1CBEE61100B328EC /* AppDelegate.swift in Sources */,
 				683C0C001CBEE61100B328EC /* FirstViewController.swift in Sources */,
@@ -690,6 +721,7 @@
 				68D6797D1CBEE93300392820 /* UIView+WPSKit.swift in Sources */,
 				68D679771CBEE93300392820 /* UIColor+WPSKit.swift in Sources */,
 				683C0BA41CBEDCB300B328EC /* String+WPSKit.swift in Sources */,
+				68E1AD3B1CDFA74E001F2295 /* WPSTextView.swift in Sources */,
 				682D50FC1CC46E250006B9D0 /* UICollectionViewCell+WPSKit.swift in Sources */,
 				683C0BA11CBEDCB300B328EC /* NSURL+WPSKit.swift in Sources */,
 				68D679811CBEE9BC00392820 /* DataSource.swift in Sources */,
@@ -728,6 +760,11 @@
 			isa = PBXTargetDependency;
 			target = 68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */;
 			targetProxy = 68BC97271C8B3356009E4DD7 /* PBXContainerItemProxy */;
+		};
+		68E1AD411CDFB2AC001F2295 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68BC971A1C8B3355009E4DD7 /* WPSKit-iOS */;
+			targetProxy = 68E1AD401CDFB2AC001F2295 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -866,6 +903,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Examples/iOSExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -879,6 +917,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Examples/iOSExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
