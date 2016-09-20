@@ -57,7 +57,7 @@ class UITableViewCellTests: XCTestCase {
 
     FakeTableViewCell.registerClassWithTableView(tableView)
 
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     XCTAssertNotNil(cell, "Should have a table view cell.")
   }
   
@@ -66,7 +66,7 @@ class UITableViewCellTests: XCTestCase {
     let tableView = tableViewWithDataSource(dataSource)
     
     NibBasedTableViewCell.registerNibWithTableView(tableView)
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     XCTAssertNotNil(cell, "Should have a table view cell.")
   }
   
@@ -81,22 +81,22 @@ class UITableViewCellTests: XCTestCase {
     
     FakeTableViewCell.registerClassWithTableView(tableView)
     
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     
     XCTAssertEqual(cell?.tableView(), tableView, "Should have a table view.")
   }
 }
 
 private extension UITableViewCellTests {
-  private func dataSourceForCellIdentifier(cellIdentifier: String) -> DataSource {
+  func dataSourceForCellIdentifier(_ cellIdentifier: String) -> DataSource {
 
     let dataSource = ArrayDataSource(defaultCellIdentifier: cellIdentifier)
-    dataSource.array = [["1", "2", "3"]]
+    dataSource.array = [["1" as AnyObject, "2" as AnyObject, "3" as AnyObject]]
     
     return dataSource
   }
   
-  private func tableViewWithDataSource(dataSource: DataSource) -> UITableView {
+  func tableViewWithDataSource(_ dataSource: DataSource) -> UITableView {
     
     let tableView = UITableView()
     tableView.dataSource = dataSource

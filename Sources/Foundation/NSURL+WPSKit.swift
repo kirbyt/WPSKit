@@ -26,7 +26,7 @@
 
 import Foundation
 
-extension NSURL {
+extension URL {
   
   // -------------------------------------------------------------------
   // MARK: - User Domain
@@ -43,27 +43,25 @@ extension NSURL {
    
    - returns A new URL with pathComponent appended if provided.
    */
-  public static func userDomainURL(directory: NSSearchPathDirectory, pathComponent: String?, isDirectory: Bool = true) throws -> NSURL? {
-    let fm = NSFileManager.defaultManager()
-    guard var url = fm.URLsForDirectory(directory, inDomains: .UserDomainMask).last else {
+  public static func userDomainURL(_ directory: FileManager.SearchPathDirectory, pathComponent: String?, isDirectory: Bool = true) throws -> URL? {
+    let fm = FileManager.default
+    guard var url = fm.urls(for: directory, in: .userDomainMask).last else {
       return nil
     }
     
     if isDirectory {
       if let pathComponent = pathComponent {
-        url = url.URLByAppendingPathComponent(pathComponent)
+        url = url.appendingPathComponent(pathComponent)
       }
     }
     
     // Create the directory.
-    if let path = url.path {
-      try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
-    }
+    try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
     
     // Add the path component if it is not a directory.
     if isDirectory == false {
       if let pathComponent = pathComponent {
-        url = url.URLByAppendingPathComponent(pathComponent)
+        url = url.appendingPathComponent(pathComponent)
       }
     }
     
@@ -79,7 +77,7 @@ extension NSURL {
    
    - returns A URL containing the path.
    */
-  public static func documentDirectoryURL() -> NSURL? {
+  public static func documentDirectoryURL() -> URL? {
     return try! self.documentDirectoryURL(nil, isDirectory: true)
   }
   
@@ -93,8 +91,8 @@ extension NSURL {
    
    - returns A URL containing the path with `pathComponent` appended.
    */
-  public static func documentDirectoryURL(pathComponent: String?, isDirectory: Bool = true) throws -> NSURL? {
-    return try self.userDomainURL(.DocumentDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
+  public static func documentDirectoryURL(_ pathComponent: String?, isDirectory: Bool = true) throws -> URL? {
+    return try self.userDomainURL(.documentDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
   }
   
   // -------------------------------------------------------------------
@@ -106,7 +104,7 @@ extension NSURL {
    
    - returns A URL containing the path.
    */
-  public static func cacheDirectoryURL() -> NSURL? {
+  public static func cacheDirectoryURL() -> URL? {
     return try! self.cacheDirectoryURL(nil, isDirectory: true)
   }
   
@@ -120,8 +118,8 @@ extension NSURL {
    
    - returns A URL containing the path with `pathComponent` appended.
    */
-  public static func cacheDirectoryURL(pathComponent: String?, isDirectory: Bool = true) throws -> NSURL? {
-    return try self.userDomainURL(.CachesDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
+  public static func cacheDirectoryURL(_ pathComponent: String?, isDirectory: Bool = true) throws -> URL? {
+    return try self.userDomainURL(.cachesDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
   }
   
   // -------------------------------------------------------------------
@@ -133,7 +131,7 @@ extension NSURL {
    
    - returns A URL containing the path.
    */
-  public static func temporaryDirectoryURL() -> NSURL? {
+  public static func temporaryDirectoryURL() -> URL? {
     return try! self.temporaryDirectoryURL(nil, isDirectory: true)
   }
   
@@ -147,25 +145,23 @@ extension NSURL {
    
    - returns A URL containing the path with `pathComponent` appended.
    */
-  public static func temporaryDirectoryURL(pathComponent: String?, isDirectory: Bool = true) throws -> NSURL? {
+  public static func temporaryDirectoryURL(_ pathComponent: String?, isDirectory: Bool = true) throws -> URL? {
     let tmp = NSTemporaryDirectory()
-    var url = NSURL(fileURLWithPath: tmp)
+    var url = URL(fileURLWithPath: tmp)
 
     if isDirectory {
       if let pathComponent = pathComponent {
-        url = url.URLByAppendingPathComponent(pathComponent)
+        url = url.appendingPathComponent(pathComponent)
       }
     }
     
     // Create the directory.
-    if let path = url.path {
-      try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
-    }
+    try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
     
     // Add the path component if it is not a directory.
     if isDirectory == false {
       if let pathComponent = pathComponent {
-        url = url.URLByAppendingPathComponent(pathComponent)
+        url = url.appendingPathComponent(pathComponent)
       }
     }
     

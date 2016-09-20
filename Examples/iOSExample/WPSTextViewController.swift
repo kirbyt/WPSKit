@@ -11,17 +11,17 @@ import WPSKit
 
 class WPSTextViewController: UIViewController {
   
-  @IBOutlet private var textView: WPSTextView!
-  @IBOutlet private var borderedTextView: WPSTextView!
+  @IBOutlet fileprivate var textView: WPSTextView!
+  @IBOutlet fileprivate var borderedTextView: WPSTextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     applyTextViewStyle(borderedTextView)
   }
 
-  private func applyTextViewStyle(textView: WPSTextView) {
-    textView.backgroundColor = UIColor.whiteColor()
-    textView.layer.borderColor = UIColor.blackColor().CGColor
+  fileprivate func applyTextViewStyle(_ textView: WPSTextView) {
+    textView.backgroundColor = UIColor.white
+    textView.layer.borderColor = UIColor.black.cgColor
     textView.layer.borderWidth = 5
     textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
   }

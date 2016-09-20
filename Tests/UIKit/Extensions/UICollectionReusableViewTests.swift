@@ -59,10 +59,10 @@ class UICollectionReusableViewTests: XCTestCase {
 }
 
 private extension UICollectionReusableViewTests {
-  private func dataSourceForReuseIdentifier(reuseIdentifier: String) -> DataSource {
+  func dataSourceForReuseIdentifier(_ reuseIdentifier: String) -> DataSource {
     
     let dataSource = ArrayDataSource()
-    dataSource.array = [["1", "2", "3"], ["1", "2", "3"]]
+    dataSource.array = [["1" as AnyObject, "2" as AnyObject, "3" as AnyObject], ["1" as AnyObject, "2" as AnyObject, "3" as AnyObject]]
     dataSource.reuseIdentifierForSupplementaryView = { (kind, indexPath) -> String in
       return reuseIdentifier
     }
@@ -70,10 +70,10 @@ private extension UICollectionReusableViewTests {
     return dataSource
   }
   
-  private func collectionViewWithDataSource(dataSource: DataSource) -> UICollectionView {
+  func collectionViewWithDataSource(_ dataSource: DataSource) -> UICollectionView {
     
     let layout = UICollectionViewFlowLayout()
-    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.dataSource = dataSource
     collectionView.reloadData()
     

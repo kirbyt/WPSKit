@@ -30,11 +30,12 @@ import XCTest
 class NSErrorsTest: XCTestCase {
   
   func testHTTPError () {
-    let error = NSError.HTTPError(NSURL(string: "http://www.thecave.com/badpage.html"), statusCode: 404, message: "Page not found", data: nil)
+    let error = NSError.HTTPError(URL(string: "http://www.thecave.com/badpage.html"), statusCode: 404, message: "Page not found", data: nil)
     XCTAssertNotNil(error)
     XCTAssertEqual(error.domain, "HTTPErrorDomain")
     XCTAssertEqual(error.code, 404)
-    XCTAssertEqual(error.userInfo["HTTPStatusCode"]?.integerValue, 404)
+    XCTAssertEqual(error.userInfo["HTTPStatusCode"] as? Int, 404)
+    XCTAssertEqual(error.userInfo["NSLocalizedDescription"] as? String, "not found")
   }
   
 }

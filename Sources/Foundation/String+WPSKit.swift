@@ -43,8 +43,8 @@ extension String {
   
    - returns A `String` containing the path with pathComponent appended if provided.
   */
-  public static func userDomainPath(directory: NSSearchPathDirectory, pathComponent: String?, isDirectory: Bool = true) throws -> String? {
-    let url = try NSURL.userDomainURL(directory, pathComponent: pathComponent, isDirectory: isDirectory)
+  public static func userDomainPath(_ directory: FileManager.SearchPathDirectory, pathComponent: String?, isDirectory: Bool = true) throws -> String? {
+    let url = try URL.userDomainURL(directory, pathComponent: pathComponent, isDirectory: isDirectory)
     return url?.path
   }
   
@@ -71,8 +71,8 @@ extension String {
 
    - returns A String containing the path with `pathComponent` appended.
    */
-  public static func documentDirectory(pathComponent: String?, isDirectory: Bool = true) throws -> String? {
-    return try self.userDomainPath(.DocumentDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
+  public static func documentDirectory(_ pathComponent: String?, isDirectory: Bool = true) throws -> String? {
+    return try self.userDomainPath(.documentDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
   }
   
   // -------------------------------------------------------------------
@@ -98,8 +98,8 @@ extension String {
    
    - returns A String containing the path with `pathComponent` appended.
    */
-  public static func cacheDirectory(pathComponent: String?, isDirectory: Bool = true) throws -> String? {
-    return try self.userDomainPath(.CachesDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
+  public static func cacheDirectory(_ pathComponent: String?, isDirectory: Bool = true) throws -> String? {
+    return try self.userDomainPath(.cachesDirectory, pathComponent: pathComponent, isDirectory: isDirectory)
   }
   
   // -------------------------------------------------------------------
@@ -125,25 +125,23 @@ extension String {
    
    - returns A String containing the path with `pathComponent` appended.
    */
-  public static func temporaryDirectory(pathComponent: String?, isDirectory: Bool = true) throws -> String? {
+  public static func temporaryDirectory(_ pathComponent: String?, isDirectory: Bool = true) throws -> String? {
     if let tmpDirectory = self.temporaryDirectory() {
-      if var url = NSURL(string: tmpDirectory) {
+      if var url = URL(string: tmpDirectory) {
 
         if isDirectory {
           if let pathComponent = pathComponent {
-            url = url.URLByAppendingPathComponent(pathComponent)
+            url = url.appendingPathComponent(pathComponent)
           }
         }
         
         // Create the directory.
-        if let path = url.path {
-          try NSFileManager.defaultManager().createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: nil)
-        }
+        try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
         
         // Add the path component if it is not a directory.
         if isDirectory == false {
           if let pathComponent = pathComponent {
-            url = url.URLByAppendingPathComponent(pathComponent)
+            url = url.appendingPathComponent(pathComponent)
           }
         }
         
@@ -164,7 +162,7 @@ extension String {
     - returns A string containing the app name.
     */
   public static func appName() -> String? {
-    if let info = NSBundle.mainBundle().infoDictionary {
+    if let info = Bundle.main.infoDictionary {
       if let appName = info["CFBundleDisplayName"] as? String {
         return appName
       }
@@ -181,7 +179,7 @@ extension String {
    - returns A string containing the app version.
    */
   public static func appVersion() -> String? {
-    if let info = NSBundle.mainBundle().infoDictionary {
+    if let info = Bundle.main.infoDictionary {
       if let version = info["CFBundleShortVersionString"] as? String {
         if let build = info["CFBundleVersion"] as? String {
           return "Version \(version) (build \(build))"
@@ -200,7 +198,7 @@ extension String {
    - returns A string containing the app version.
    */
   public static func appVersionShort() -> String?  {
-    if let info = NSBundle.mainBundle().infoDictionary {
+    if let info = Bundle.main.infoDictionary {
       if let version = info["CFBundleShortVersionString"] as? String {
         if let build = info["CFBundleVersion"] as? String {
           return "\(version).\(build))"

@@ -37,7 +37,7 @@ extension UIImage {
    
    - parameter width: The width of the suggested size.
    */
-  public func suggestedSizeForWidth(width: Float) -> CGSize {
+  public func suggestedSizeForWidth(_ width: Float) -> CGSize {
     let size: CGSize = self.size
     let cgFloatWidth = CGFloat(width)
     var ratio: CGFloat
@@ -47,7 +47,7 @@ extension UIImage {
       ratio = size.width / cgFloatWidth
     }
     
-    let scaleToSize: CGSize = CGSizeMake(ratio * size.width, ratio * size.height)
+    let scaleToSize: CGSize = CGSize(width: ratio * size.width, height: ratio * size.height)
     return scaleToSize
   }
   
@@ -56,7 +56,7 @@ extension UIImage {
    
    - parameter height: The height of the suggested size.
    */
-  public func suggestedSizeForHeight(height: Float) -> CGSize {
+  public func suggestedSizeForHeight(_ height: Float) -> CGSize {
     let size = self.size
     let ratio: CGFloat
     let cgFloatHeight = CGFloat(height)
@@ -66,7 +66,7 @@ extension UIImage {
       ratio = size.height / cgFloatHeight;
     }
     
-    let scaleToSize: CGSize = CGSizeMake(ratio * size.width, ratio * size.height)
+    let scaleToSize: CGSize = CGSize(width: ratio * size.width, height: ratio * size.height)
     return scaleToSize
     
   }
@@ -78,7 +78,7 @@ extension UIImage {
    
    - parameter dimension: The maximum dimension, either width or height.
    */
-  public func suggestedSizeForMaxDimension(dimension: Float) -> CGSize {
+  public func suggestedSizeForMaxDimension(_ dimension: Float) -> CGSize {
     var scaleToSize: CGSize
     let size: CGSize = self.size
     if (size.width > size.height) {
@@ -100,11 +100,11 @@ extension UIImage {
    
    - returns A new `UIImage`.
    */
-  public func scaleToSize(newSize: CGSize) -> UIImage {
+  public func scaleToSize(_ newSize: CGSize) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(newSize, true, 1.0)
-    let rect:CGRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-    self.drawInRect(rect)
-    let scaledImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    let rect:CGRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height).integral;
+    self.draw(in: rect)
+    let scaledImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return scaledImage
   }
@@ -116,7 +116,7 @@ extension UIImage {
 
    - returns A new `UIImage`.
    */
-  public func scaleAspectToMaxSize(newSize: Float) -> UIImage {
+  public func scaleAspectToMaxSize(_ newSize: Float) -> UIImage {
     let scaleToSize: CGSize = self.suggestedSizeForMaxDimension(newSize)
     return self.scaleToSize(scaleToSize)
   }
@@ -128,13 +128,13 @@ extension UIImage {
 
    - returns A new `UIImage`.
    */
-  public func scaleAspectFillToSize(newSize: CGSize) -> UIImage {
+  public func scaleAspectFillToSize(_ newSize: CGSize) -> UIImage {
     let imageSize: CGSize = self.size
     let horizontalRatio: CGFloat = newSize.width / imageSize.width
     let verticalRatio: CGFloat = newSize.height / imageSize.height
     let ratio: CGFloat = max(horizontalRatio, verticalRatio)
     
-    let scaleToSize: CGSize = CGSizeMake(imageSize.width * ratio, imageSize.height * ratio)
+    let scaleToSize: CGSize = CGSize(width: imageSize.width * ratio, height: imageSize.height * ratio)
     return self.scaleToSize(scaleToSize)
     
   }
@@ -146,13 +146,13 @@ extension UIImage {
 
    - returns A new `UIImage`.
    */
-  public func scaleAspectFitToSize(newSize: CGSize) -> UIImage {
+  public func scaleAspectFitToSize(_ newSize: CGSize) -> UIImage {
     let imageSize: CGSize = self.size
     let horizontalRatio: CGFloat = newSize.width / imageSize.width
     let verticalRatio: CGFloat = newSize.height / imageSize.height
     let ratio: CGFloat = min(horizontalRatio, verticalRatio)
     
-    let scaleToSize:CGSize = CGSizeMake(imageSize.width * ratio, imageSize.height * ratio)
+    let scaleToSize:CGSize = CGSize(width: imageSize.width * ratio, height: imageSize.height * ratio)
     return self.scaleToSize(scaleToSize)
   }
   
@@ -167,11 +167,11 @@ extension UIImage {
 
    - returns A new `UIImage`.
    */
-  public func cropToRect(cropRect: CGRect) -> UIImage {
+  public func cropToRect(_ cropRect: CGRect) -> UIImage {
     var croppedImage: UIImage = self
-    let cropRectIntegral: CGRect = CGRectIntegral(cropRect)
-    if let croppedImageRef: CGImageRef = CGImageCreateWithImageInRect(self.CGImage, cropRectIntegral) {
-      croppedImage = UIImage(CGImage: croppedImageRef)
+    let cropRectIntegral: CGRect = cropRect.integral
+    if let croppedImageRef: CGImage = self.cgImage?.cropping(to: cropRectIntegral) {
+      croppedImage = UIImage(cgImage: croppedImageRef)
     }
     
     return croppedImage
@@ -185,7 +185,7 @@ extension UIImage {
    
    - returns A new `UIImage`.
    */
-  public func scaleAndCropToSize(newSize: CGSize) -> UIImage {
+  public func scaleAndCropToSize(_ newSize: CGSize) -> UIImage {
     let scaledImage: UIImage = self.scaleAspectFillToSize(newSize)
     
     // Crop the image to the requested new size maintaining
@@ -199,7 +199,7 @@ extension UIImage {
       let offsetY: CGFloat = CGFloat(roundf((Float(imageSize.height) / 2.0) - (Float(newSize.height) / 2.0)))
     #endif
   
-    let cropRect: CGRect = CGRectMake(offsetX, offsetY, newSize.width, newSize.height);
+    let cropRect: CGRect = CGRect(x: offsetX, y: offsetY, width: newSize.width, height: newSize.height);
     let croppedImage: UIImage = scaledImage.cropToRect(cropRect)
     return croppedImage
   }
@@ -232,7 +232,7 @@ extension UIImage {
    
    - returns A new `UIImage`.
    */
-  public func squareImageWithDimension(dimension: Float) -> UIImage {
+  public func squareImageWithDimension(_ dimension: Float) -> UIImage {
     let imageSize: CGSize = self.size
     #if CGFLOAT_IS_DOUBLE
       let offsetX: CGFloat = round((imageSize.width / 2.0) - (CGFloat(dimension) / 2.0));
@@ -242,7 +242,7 @@ extension UIImage {
       let offsetY: CGFloat = CGFloat(roundf((Float(imageSize.height) / 2.0) - (dimension / 2.0)))
     #endif
     
-    let cropRect: CGRect = CGRectMake(offsetX, offsetY, CGFloat(dimension), CGFloat(dimension))
+    let cropRect: CGRect = CGRect(x: offsetX, y: offsetY, width: CGFloat(dimension), height: CGFloat(dimension))
     let squareImage: UIImage = self.cropToRect(cropRect)
     return squareImage
   }
@@ -269,9 +269,9 @@ extension UIImage {
 
    - return A new `UIImage`.
    */
-  public func roundedImageWithDiameter(diameter: Float) -> UIImage {
+  public func roundedImageWithDiameter(_ diameter: Float) -> UIImage {
     let squareImage: UIImage = self.squareImage()
-    let scaledImage: UIImage = squareImage.scaleToSize(CGSizeMake(CGFloat(diameter), CGFloat(diameter)))
+    let scaledImage: UIImage = squareImage.scaleToSize(CGSize(width: CGFloat(diameter), height: CGFloat(diameter)))
     let imageSize: CGSize = scaledImage.size
     return scaledImage.roundedImageWithCornerRadius(Float(imageSize.width/2.0))
   }
@@ -283,12 +283,12 @@ extension UIImage {
    
    - return A new `UIImage`.
    */
-  public func roundedImageWithCornerRadius(cornerRadius: Float) -> UIImage {
+  public func roundedImageWithCornerRadius(_ cornerRadius: Float) -> UIImage {
     let imageSize: CGSize = self.size
     
     let imageLayer: CALayer = CALayer()
-    imageLayer.frame = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height)
-    imageLayer.contents = self.CGImage
+    imageLayer.frame = CGRect(x: 0.0, y: 0.0, width: imageSize.width, height: imageSize.height)
+    imageLayer.contents = self.cgImage
     imageLayer.masksToBounds = true
     imageLayer.cornerRadius = CGFloat(cornerRadius)
     
@@ -297,8 +297,8 @@ extension UIImage {
     }
     
     UIGraphicsBeginImageContext(imageSize);
-    imageLayer.renderInContext(context)
-    let roundedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    imageLayer.render(in: context)
+    let roundedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     
     return roundedImage
@@ -317,8 +317,8 @@ extension UIImage {
    
    - returns `UIImage` of the color.
    */
-  public class func imageFromColor(color: UIColor) -> UIImage {
-    return self.imageFromColor(color, size: CGSizeMake(1.0, 1.0))
+  public class func imageFromColor(_ color: UIColor) -> UIImage {
+    return self.imageFromColor(color, size: CGSize(width: 1.0, height: 1.0))
   
   }
   
@@ -330,16 +330,16 @@ extension UIImage {
    
    - returns `UIImage` of the color.
    */
-  public class func imageFromColor(color: UIColor, size: CGSize) -> UIImage {
-    let rect: CGRect = CGRectMake(0.0, 0.0, size.width, size.height)
+  public class func imageFromColor(_ color: UIColor, size: CGSize) -> UIImage {
+    let rect: CGRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
     UIGraphicsBeginImageContext(rect.size);
-    guard let context: CGContextRef = UIGraphicsGetCurrentContext() else {
+    guard let context: CGContext = UIGraphicsGetCurrentContext() else {
       UIGraphicsEndImageContext()
       return UIImage()
     }
-    CGContextSetFillColorWithColor(context, color.CGColor)
-    CGContextFillRect(context, rect)
-    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    context.setFillColor(color.cgColor)
+    context.fill(rect)
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return image
   }
@@ -352,7 +352,7 @@ extension UIImage {
    
    - returns `UIImage` masked with the specified color.
    */
-  public class func imageNamed(name: String, maskColor: UIColor) -> UIImage? {
+  public class func imageNamed(_ name: String, maskColor: UIColor) -> UIImage? {
     guard let image: UIImage = UIImage(named: name) else {
       return nil
     }
@@ -367,19 +367,19 @@ extension UIImage {
    
    - returns `UIImage` masked with the specified color.
    */
-  public func imageWithMaskColor(color: UIColor) -> UIImage {
-    let rect: CGRect = CGRectMake(0, 0, self.size.width, self.size.height)
+  public func imageWithMaskColor(_ color: UIColor) -> UIImage {
+    let rect: CGRect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
     UIGraphicsBeginImageContextWithOptions(rect.size, false, self.scale)
-    guard let c: CGContextRef = UIGraphicsGetCurrentContext() else {
+    guard let c: CGContext = UIGraphicsGetCurrentContext() else {
       UIGraphicsEndImageContext()
       return UIImage()
     }
     
-    self.drawInRect(rect)
-    CGContextSetFillColorWithColor(c, color.CGColor)
-    CGContextSetBlendMode(c, .SourceAtop)
-    CGContextFillRect(c, rect)
-    let maskedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    self.draw(in: rect)
+    c.setFillColor(color.cgColor)
+    c.setBlendMode(.sourceAtop)
+    c.fill(rect)
+    let maskedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     return maskedImage
   }

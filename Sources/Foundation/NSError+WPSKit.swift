@@ -38,28 +38,28 @@ extension NSError {
    
    - returns: An `NSError` containing the HTTP error.
    */
-  public static func HTTPError(responseURL: NSURL!, statusCode: Int, message: String!, data: NSData!) -> NSError {
+  public static func HTTPError(_ responseURL: URL!, statusCode: Int, message: String!, data: Data!) -> NSError {
     var userInfo: [String: AnyObject] = [:]
     
-    userInfo[NSLocalizedFailureReasonErrorKey] = message
+    userInfo[NSLocalizedFailureReasonErrorKey] = message as AnyObject?
     
-    if data != nil && data.length > 0 {
-      if let httpBody: String = NSString(bytes: data.bytes, length: data.length, encoding: NSUTF8StringEncoding) as? String {
-        userInfo["HTTPBody"] = httpBody
+    if data != nil && data.count > 0 {
+      if let httpBody = String(data: data, encoding: .utf8) {
+        userInfo["HTTPBody"] = httpBody as AnyObject?
         if message == nil {
-          userInfo[NSLocalizedFailureReasonErrorKey] = httpBody
+          userInfo[NSLocalizedFailureReasonErrorKey] = httpBody as AnyObject?
         }
       }
     }
     
     if responseURL != nil {
-      userInfo[NSURLErrorKey] = responseURL
-      userInfo["NSErrorFailingURLKey"] = responseURL
-      userInfo["NSErrorFailingURLStringKey"] = responseURL.absoluteString
+      userInfo[NSURLErrorKey] = responseURL as AnyObject?
+      userInfo["NSErrorFailingURLKey"] = responseURL as AnyObject?
+      userInfo["NSErrorFailingURLStringKey"] = responseURL.absoluteString as AnyObject?
     }
     
-    userInfo[NSLocalizedDescriptionKey] = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
-    userInfo["HTTPStatusCode"] = statusCode;
+    userInfo[NSLocalizedDescriptionKey] = HTTPURLResponse.localizedString(forStatusCode: statusCode) as AnyObject?
+    userInfo["HTTPStatusCode"] = statusCode as AnyObject?
     
     return NSError(domain: "HTTPErrorDomain", code: statusCode, userInfo: userInfo)
   }

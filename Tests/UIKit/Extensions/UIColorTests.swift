@@ -50,19 +50,19 @@ class UIColorTests: XCTestCase {
     color = UIColor(hexString: "#e3e3e3")
     XCTAssertEqual(color.hexString, "E3E3E3")
     
-    color = UIColor.whiteColor()
+    color = UIColor.white
     XCTAssertEqual(color.hexString, "FFFFFF")
 
-    color = UIColor.yellowColor()
+    color = UIColor.yellow
     XCTAssertEqual(color.hexString, "FFFF00")
 
-    color = UIColor.redColor()
+    color = UIColor.red
     XCTAssertEqual(color.hexString, "FF0000")
     
-    color = UIColor.lightGrayColor()
+    color = UIColor.lightGray
     XCTAssertEqual(color.hexString, "AAAAAA")
 
-    color = UIColor.blackColor()
+    color = UIColor.black
     XCTAssertEqual(color.hexString, "000000")
   }
   

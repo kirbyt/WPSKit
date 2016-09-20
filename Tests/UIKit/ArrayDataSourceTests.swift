@@ -38,12 +38,12 @@ extension ArrayDataSourceTests {
 
   func testDataSource_objectAtIndexPath() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One", "Two"], ["Three", "Four"]]
-    XCTAssertEqual((dataSource.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? String), "One", "Should be 'One'.")
-    XCTAssertEqual((dataSource.objectAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? String), "Two", "Should be 'Two'.")
-    XCTAssertEqual((dataSource.objectAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as? String), "Three", "Should be 'Three'.")
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject], ["Three" as AnyObject, "Four" as AnyObject]]
+    XCTAssertEqual((dataSource.objectAtIndexPath(IndexPath(row: 0, section: 0)) as? String), "One", "Should be 'One'.")
+    XCTAssertEqual((dataSource.objectAtIndexPath(IndexPath(row: 1, section: 0)) as? String), "Two", "Should be 'Two'.")
+    XCTAssertEqual((dataSource.objectAtIndexPath(IndexPath(row: 0, section: 1)) as? String), "Three", "Should be 'Three'.")
     
-    XCTAssertNil((dataSource.objectAtIndexPath(NSIndexPath(forRow: 3, inSection: 5)) as? String), "Should be nil.")
+    XCTAssertNil((dataSource.objectAtIndexPath(IndexPath(row: 3, section: 5)) as? String), "Should be nil.")
   }
   
 }
@@ -52,47 +52,47 @@ extension ArrayDataSourceTests {
   
   func testCollectionView_numberOfSections() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One", "Two"], ["Three", "Four"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject], ["Three" as AnyObject, "Four" as AnyObject]]
     
     let collectionLayout = UICollectionViewFlowLayout()
-    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionLayout)
     collectionView.dataSource = dataSource
     collectionView.reloadData()
     
-    XCTAssertEqual(collectionView.numberOfSections(), 2, "Should have 2 sections.")
+    XCTAssertEqual(collectionView.numberOfSections, 2, "Should have 2 sections.")
   }
   
   func testCollectionView_numberOfRowsInSections() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One", "Two", "Three", "Four"], ["Five"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject, "Three" as AnyObject, "Four" as AnyObject], ["Five" as AnyObject]]
     
     let collectionLayout = UICollectionViewFlowLayout()
-    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionLayout)
     collectionView.dataSource = dataSource
     collectionView.reloadData()
     
-    XCTAssertEqual(collectionView.numberOfItemsInSection(0), 4, "Should have 4 rows in section 0.")
-    XCTAssertEqual(collectionView.numberOfItemsInSection(1), 1, "Should have 1 row in section 1.")
+    XCTAssertEqual(collectionView.numberOfItems(inSection: 0), 4, "Should have 4 rows in section 0.")
+    XCTAssertEqual(collectionView.numberOfItems(inSection: 1), 1, "Should have 1 row in section 1.")
   }
   
   func testCollectionView_configureCell() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One"]]
+    dataSource.array = [["One" as AnyObject]]
     
     var callCount = 0
     
     dataSource.configureCell = { (cell, indexPath, item) in
-      XCTAssertEqual(String(item), "One", "Should be 'One'.")
+      XCTAssertEqual(String(describing: item), "One", "Should be 'One'.")
       callCount = callCount + 1
     }
     
     let collectionLayout = UICollectionViewFlowLayout()
-    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionLayout)
-    collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "id")
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: collectionLayout)
+    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "id")
     collectionView.dataSource = dataSource
     collectionView.reloadData()
     
-    let cell = dataSource.collectionView(collectionView, cellForItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+    let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
     
     XCTAssertNotNil(cell, "Should have a cell.")
     XCTAssertEqual(callCount, 1, "Should call configureCell 1 time.")
@@ -104,7 +104,7 @@ extension ArrayDataSourceTests {
 
   func testTableView_numberOfSections() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One", "Two"], ["Three", "Four"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject], ["Three" as AnyObject, "Four" as AnyObject]]
     
     let tableView = UITableView()
     tableView.dataSource = dataSource
@@ -115,33 +115,33 @@ extension ArrayDataSourceTests {
 
   func testTableView_numberOfRowsInSections() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One", "Two", "Three", "Four"], ["Five"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject, "Three" as AnyObject, "Four" as AnyObject], ["Five" as AnyObject]]
     
     let tableView = UITableView()
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    XCTAssertEqual(tableView.numberOfRowsInSection(0), 4, "Should have 4 rows in section 0.")
-    XCTAssertEqual(tableView.numberOfRowsInSection(1), 1, "Should have 1 row in section 1.")
+    XCTAssertEqual(tableView.numberOfRows(inSection: 0), 4, "Should have 4 rows in section 0.")
+    XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1, "Should have 1 row in section 1.")
   }
 
   func testTableView_defaultCellIdentifier() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One"]]
+    dataSource.array = [["One" as AnyObject]]
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     
     XCTAssertNotNil(cell, "Should have a cell.")
   }
 
   func testTableView_cellIdentifierClosure() {
     let dataSource = ArrayDataSource()
-    dataSource.array = [["One"]]
+    dataSource.array = [["One" as AnyObject]]
     
     var callCount = 0
     dataSource.cellIdentifier = { (indexPath, item) in
@@ -150,32 +150,32 @@ extension ArrayDataSourceTests {
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     
     XCTAssertNotNil(cell, "Should have a cell.")
   }
   
   func testTableView_configureCell() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One"]]
+    dataSource.array = [["One" as AnyObject]]
     
     var callCount = 0
     
     dataSource.configureCell = { (cell, indexPath, item) in
-      XCTAssertEqual(String(item), "One", "Should be 'One'.")
+      XCTAssertEqual(String(describing: item), "One", "Should be 'One'.")
       callCount = callCount + 1
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+    let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
     
     XCTAssertNotNil(cell, "Should have a cell.")
     XCTAssertEqual(callCount, 1, "Should call configureCell 1 time.")
@@ -183,10 +183,10 @@ extension ArrayDataSourceTests {
   
   func testTableView_sectionHeaderTitle() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id", sectionHeaderTitles: ["Header One"])
-    dataSource.array = [["One"]]
+    dataSource.array = [["One" as AnyObject]]
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
@@ -196,20 +196,20 @@ extension ArrayDataSourceTests {
 
   func testTableView_canEditRowNoEdits() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
 
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
 
-    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)), "Should not be able to edit.")
-    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)), "Should not be able to edit.")
+    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 0)), "Should not be able to edit.")
+    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAt: IndexPath(row: 1, section: 0)), "Should not be able to edit.")
   }
 
   func testTableView_canEditRow() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
     
     dataSource.canEdit = { (indexPath) in
       if indexPath.row == 1 {
@@ -220,17 +220,17 @@ extension ArrayDataSourceTests {
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)), "Should not be able to edit row 0.")
-    XCTAssertTrue(dataSource.tableView(tableView, canEditRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)), "Should be able to edit row 1.")
+    XCTAssertFalse(dataSource.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 0)), "Should not be able to edit row 0.")
+    XCTAssertTrue(dataSource.tableView(tableView, canEditRowAt: IndexPath(row: 1, section: 0)), "Should be able to edit row 1.")
   }
 
   func testTableView_commitEditingStyle() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
   
     var callCount = 0
     dataSource.commitEditingStyle = { (tableView, editingStyle, indexPath) in
@@ -238,30 +238,30 @@ extension ArrayDataSourceTests {
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
 
-    dataSource.tableView(tableView, editingStyle: .Insert, forRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+    dataSource.tableView(tableView, editingStyle: .insert, forRowAtIndexPath: IndexPath(row: 0, section: 0))
     XCTAssertEqual(callCount, 1, "Call count should be 1.")
   }
 
   func testTableView_canMoveRowNo() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)), "Should not be able to move.")
-    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)), "Should not be able to move.")
+    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAt: IndexPath(row: 0, section: 0)), "Should not be able to move.")
+    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAt: IndexPath(row: 1, section: 0)), "Should not be able to move.")
   }
 
   func testTableView_canMoveRow() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
     
     dataSource.canMoveItem = { (indexPath) in
       if indexPath.row == 1 {
@@ -272,17 +272,17 @@ extension ArrayDataSourceTests {
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)), "Should not be able to move row 0.")
-    XCTAssertTrue(dataSource.tableView(tableView, canMoveRowAtIndexPath: NSIndexPath(forRow: 1, inSection: 0)), "Should be able to move row 1.")
+    XCTAssertFalse(dataSource.tableView(tableView, canMoveRowAt: IndexPath(row: 0, section: 0)), "Should not be able to move row 0.")
+    XCTAssertTrue(dataSource.tableView(tableView, canMoveRowAt: IndexPath(row: 1, section: 0)), "Should be able to move row 1.")
   }
 
   func testTableView_moveItem() {
     let dataSource = ArrayDataSource(defaultCellIdentifier: "id")
-    dataSource.array = [["One", "Two"]]
+    dataSource.array = [["One" as AnyObject, "Two" as AnyObject]]
     
     var callCount = 0
     dataSource.moveItem = { (tableView, sourceIndexPath, destinationIndexPath) in
@@ -290,11 +290,11 @@ extension ArrayDataSourceTests {
     }
     
     let tableView = UITableView()
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "id")
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
     tableView.dataSource = dataSource
     tableView.reloadData()
     
-    dataSource.tableView(tableView, moveRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0), toIndexPath: NSIndexPath(forRow: 1, inSection: 0))
+    dataSource.tableView(tableView, moveRowAt: IndexPath(row: 0, section: 0), to: IndexPath(row: 1, section: 0))
     XCTAssertEqual(callCount, 1, "Call count should be 1.")
   }
   

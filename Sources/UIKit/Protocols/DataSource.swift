@@ -12,13 +12,13 @@ public protocol DataSource: UICollectionViewDataSource, UITableViewDataSource {
   
   var defaultCellIdentifier: String? {get}
   var sectionHeaderTitles: [String]? {get}
-  var configureCell: ((cell: AnyObject, indexPath: NSIndexPath, item: AnyObject) -> Void)! {get set}
-  var cellIdentifier: ((indexPath: NSIndexPath, item: AnyObject) -> String)! {get set}
-  var canEdit: ((indexPath: NSIndexPath) -> Bool)! {get set}
-  var commitEditingStyle: ((tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void)! {get set}
-  var canMoveItem: ((indexPath: NSIndexPath) -> Bool)! {get set}
-  var moveItem: ((tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void)! {get set}
-  var configureSupplementaryView: ((view: AnyObject, kind: String, indexPath: NSIndexPath) -> Void)! {get set}
-  var reuseIdentifierForSupplementaryView: ((kind: String, indexPath: NSIndexPath) -> String)! {get set}
+  var configureCell: ((_ cell: AnyObject, _ indexPath: IndexPath, _ item: AnyObject) -> Void)! {get set}
+  var cellIdentifier: ((_ indexPath: IndexPath, _ item: AnyObject) -> String)! {get set}
+  var canEdit: ((_ indexPath: IndexPath) -> Bool)! {get set}
+  var commitEditingStyle: ((_ tableView: UITableView, _ editingStyle: UITableViewCellEditingStyle, _ indexPath: IndexPath) -> Void)! {get set}
+  var canMoveItem: ((_ indexPath: IndexPath) -> Bool)! {get set}
+  var moveItem: ((_ tableView: UITableView, _ sourceIndexPath: IndexPath, _ destinationIndexPath: IndexPath) -> Void)! {get set}
+  var configureSupplementaryView: ((_ view: AnyObject, _ kind: String, _ indexPath: IndexPath) -> Void)! {get set}
+  var reuseIdentifierForSupplementaryView: ((_ kind: String, _ indexPath: IndexPath) -> String)! {get set}
   
 }

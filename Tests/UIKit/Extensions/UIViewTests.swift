@@ -27,6 +27,16 @@
 import XCTest
 @testable import WPSKit
 
+private extension NSObject{
+  class var nameOfClass: String{
+    return NSStringFromClass(self).components(separatedBy: ".").last!
+  }
+  
+  var nameOfClass: String{
+    return NSStringFromClass(type(of: self)).components(separatedBy: ".").last!
+  }
+}
+
 class UIViewTests: XCTestCase {
   
   override func setUp() {
@@ -42,7 +52,7 @@ class UIViewTests: XCTestCase {
   func testLoadFromNib() {
     let view = LoadFromNibTestView.loadFromNib()
     XCTAssertNotNil(view)
-    XCTAssertEqual(String(view.dynamicType), String(LoadFromNibTestView))
+    XCTAssertEqual(view.nameOfClass, LoadFromNibTestView.nameOfClass)
   }
   
 }

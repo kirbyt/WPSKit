@@ -36,7 +36,7 @@ public extension UICollectionReusableView {
    - return An `NSString` containing the cell identifier.
    */
   public static var cellIdentifier: String {
-    return String(self)
+    return String(describing: self)
   }
   
   /**
@@ -45,8 +45,8 @@ public extension UICollectionReusableView {
    - return A reference to the `UINib` associated with this class.
    */
   public static var nib: UINib? {
-    let bundle = NSBundle.init(forClass: self)
-    guard let _ = bundle.pathForResource(nibName, ofType: "nib") else {
+    let bundle = Bundle.init(for: self)
+    guard let _ = bundle.path(forResource: nibName, ofType: "nib") else {
       return nil
     }
     return UINib.init(nibName: nibName, bundle: bundle)
@@ -69,8 +69,8 @@ public extension UICollectionReusableView {
    - parameter kind: The kind of supplementary view to create. This value is defined by the layout object. This parameter must not be `nil`.
    - parameter collectionView: The collection view that will use this cell class.
    */
-  public static func registerClassForSupplementaryViewOfKind(kind: String, withCollectionView collectionView: UICollectionView) {
-    collectionView.registerClass(self, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellIdentifier)
+  public static func registerClassForSupplementaryViewOfKind(_ kind: String, withCollectionView collectionView: UICollectionView) {
+    collectionView.register(self, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellIdentifier)
   }
   
   /**
@@ -79,8 +79,8 @@ public extension UICollectionReusableView {
    - parameter kind: The kind of supplementary view to create. This value is defined by the layout object. This parameter must not be `nil`.
    - parameter collectionView: The collection view that will use this cell class.
    */
-  public static func registerNibForSupplementaryViewOfKind(kind: String, withCollectionView collectionView: UICollectionView) {
-    collectionView.registerNib(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellIdentifier)
+  public static func registerNibForSupplementaryViewOfKind(_ kind: String, withCollectionView collectionView: UICollectionView) {
+    collectionView.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: cellIdentifier)
   }
   
 }

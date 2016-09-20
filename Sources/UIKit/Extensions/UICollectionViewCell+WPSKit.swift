@@ -68,8 +68,8 @@ public extension UICollectionViewCell {
    
    - parameter collectionView: The collection view that will use this cell class.
    */
-  public static func registerClassWithCollectionView(collectionView: UICollectionView) {
-    collectionView.registerClass(self, forCellWithReuseIdentifier: cellIdentifier)
+  public static func registerClassWithCollectionView(_ collectionView: UICollectionView) {
+    collectionView.register(self, forCellWithReuseIdentifier: cellIdentifier)
   }
   
   /**
@@ -77,8 +77,8 @@ public extension UICollectionViewCell {
    
    - parameter collectionView: The collection view that will use this cell class.
    */
-  public static func registerNibWithCollectionView(collectionView: UICollectionView) {
-    collectionView.registerNib(nib, forCellWithReuseIdentifier: cellIdentifier)
+  public static func registerNibWithCollectionView(_ collectionView: UICollectionView) {
+    collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
   }
   
 }

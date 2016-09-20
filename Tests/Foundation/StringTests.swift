@@ -37,10 +37,10 @@ class StringTests: XCTestCase {
   }
   
   override func tearDown() {
-    let fm = NSFileManager.defaultManager()
+    let fm = FileManager.default
     for path in pathsToDelete {
-      if fm.fileExistsAtPath(path) {
-        try! fm.removeItemAtPath(path)
+      if fm.fileExists(atPath: path) {
+        try! fm.removeItem(atPath: path)
       }
     }
     super.tearDown()
@@ -51,13 +51,13 @@ class StringTests: XCTestCase {
   func testDocumentDirectory() {
     let dir = String.documentDirectory()
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
   }
   
   func testDocumentDirectoryWithPathComponents() {
     let dir = try! String.documentDirectory(pathComponents)
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
     pathsToDelete.append(dir!)
   }
 
@@ -66,13 +66,13 @@ class StringTests: XCTestCase {
   func testCacheDirectory() {
     let dir = String.cacheDirectory()
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
   }
   
   func testCacheDirectoryWithPathComponents() {
     let dir = try! String.cacheDirectory(pathComponents)
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
     pathsToDelete.append(dir!)
   }
 
@@ -81,13 +81,13 @@ class StringTests: XCTestCase {
   func testTemporaryDirectory() {
     let dir = String.temporaryDirectory()
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
   }
   
   func testTemporaryDirectoryWithPathComponents() {
     let dir = try! String.temporaryDirectory(pathComponents)
     XCTAssertNotNil(dir)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(dir!))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: dir!))
     pathsToDelete.append(dir!)
   }
 

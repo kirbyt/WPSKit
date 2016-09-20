@@ -39,8 +39,8 @@ class UICollectionViewCellTests: XCTestCase {
     
     FakeCollectionViewCell.registerClassWithCollectionView(collectionView)
 
-    let indexPath = NSIndexPath(forItem: 0, inSection: 0)
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FakeCollectionViewCell.cellIdentifier, forIndexPath: indexPath)
+    let indexPath = IndexPath(item: 0, section: 0)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FakeCollectionViewCell.cellIdentifier, for: indexPath)
     XCTAssertNotNil(cell, "Should have a cell.")
   }
   
@@ -50,25 +50,25 @@ class UICollectionViewCellTests: XCTestCase {
     
     NibBasedCollectionViewCell.registerNibWithCollectionView(collectionView)
 
-    let indexPath = NSIndexPath(forItem: 0, inSection: 0)
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(NibBasedCollectionViewCell.cellIdentifier, forIndexPath: indexPath)
+    let indexPath = IndexPath(item: 0, section: 0)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NibBasedCollectionViewCell.cellIdentifier, for: indexPath)
     XCTAssertNotNil(cell, "Should have a cell.")
   }
 }
 
 private extension UICollectionViewCellTests {
-  private func dataSourceForCellIdentifier(cellIdentifier: String) -> DataSource {
+  func dataSourceForCellIdentifier(_ cellIdentifier: String) -> DataSource {
     
     let dataSource = ArrayDataSource(defaultCellIdentifier: cellIdentifier)
-    dataSource.array = [["1", "2", "3"]]
+    dataSource.array = [["1" as AnyObject, "2" as AnyObject, "3" as AnyObject]]
     
     return dataSource
   }
   
-  private func collectionViewWithDataSource(dataSource: DataSource) -> UICollectionView {
+  func collectionViewWithDataSource(_ dataSource: DataSource) -> UICollectionView {
     
     let layout = UICollectionViewFlowLayout()
-    let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.dataSource = dataSource
     collectionView.reloadData()
     

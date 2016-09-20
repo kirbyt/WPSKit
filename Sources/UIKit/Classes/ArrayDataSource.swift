@@ -34,21 +34,21 @@ public class ArrayDataSource: NSObject, DataSource {
 
   public let sectionHeaderTitles: [String]?
   
-  public var configureCell: ((cell: AnyObject, indexPath: NSIndexPath, item: AnyObject) -> Void)!
+  public var configureCell: ((_ cell: AnyObject, _ indexPath: IndexPath, _ item: AnyObject) -> Void)!
   
-  public var cellIdentifier: ((indexPath: NSIndexPath, item: AnyObject) -> String)!
+  public var cellIdentifier: ((_ indexPath: IndexPath, _ item: AnyObject) -> String)!
   
-  public var canEdit: ((indexPath: NSIndexPath) -> Bool)!
+  public var canEdit: ((_ indexPath: IndexPath) -> Bool)!
   
-  public var commitEditingStyle: ((tableView: UITableView, editingStyle: UITableViewCellEditingStyle, indexPath: NSIndexPath) -> Void)!
+  public var commitEditingStyle: ((_ tableView: UITableView, _ editingStyle: UITableViewCellEditingStyle, _ indexPath: IndexPath) -> Void)!
   
-  public var canMoveItem: ((indexPath: NSIndexPath) -> Bool)!
+  public var canMoveItem: ((_ indexPath: IndexPath) -> Bool)!
   
-  public var moveItem: ((tableView: UITableView, sourceIndexPath: NSIndexPath, destinationIndexPath: NSIndexPath) -> Void)!
+  public var moveItem: ((_ tableView: UITableView, _ sourceIndexPath: IndexPath, _ destinationIndexPath: IndexPath) -> Void)!
   
-  public var configureSupplementaryView: ((view: AnyObject, kind: String, indexPath: NSIndexPath) -> Void)!
+  public var configureSupplementaryView: ((_ view: AnyObject, _ kind: String, _ indexPath: IndexPath) -> Void)!
   
-  public var reuseIdentifierForSupplementaryView: ((kind: String, indexPath: NSIndexPath) -> String)!
+  public var reuseIdentifierForSupplementaryView: ((_ kind: String, _ indexPath: IndexPath) -> String)!
 
   public init(defaultCellIdentifier: String? = nil, sectionHeaderTitles: [String]? = nil) {
     self.defaultCellIdentifier = defaultCellIdentifier
@@ -67,16 +67,16 @@ public extension ArrayDataSource {
    
    - return Returns the object.
    */
-  public func objectAtIndexPath(indexPath: NSIndexPath) -> AnyObject? {
-    guard indexPath.section < array.count else {
+  public func objectAtIndexPath(_ indexPath: IndexPath) -> AnyObject? {
+    guard (indexPath as NSIndexPath).section < array.count else {
       return nil
     }
     
-    guard indexPath.row < array[indexPath.section].count else {
+    guard (indexPath as NSIndexPath).row < array[(indexPath as NSIndexPath).section].count else {
       return nil
     }
     
-    return array[indexPath.section][indexPath.row]
+    return array[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
   }
   
 }
@@ -85,11 +85,11 @@ public extension ArrayDataSource {
 
 private extension ArrayDataSource {
   
-  private func numberOfSections() -> Int {
+  func numberOfSections() -> Int {
     return array.count
   }
   
-  private func numberOfRowsInSection(section: Int) -> Int {
+  func numberOfRowsInSection(_ section: Int) -> Int {
     guard section < array.count else {
       return 0
     }
@@ -97,11 +97,11 @@ private extension ArrayDataSource {
     return array[section].count
   }
 
-  private func cellIdentifierAtIndexPath(indexPath: NSIndexPath) -> String {
+  func cellIdentifierAtIndexPath(_ indexPath: IndexPath) -> String {
     var id = defaultCellIdentifier
     if let cellIdentifier = cellIdentifier {
       if let item = objectAtIndexPath(indexPath) {
-        id = cellIdentifier(indexPath: indexPath, item: item)
+        id = cellIdentifier(indexPath, item)
       }
     }
     if id == nil {
@@ -110,8 +110,8 @@ private extension ArrayDataSource {
     return id!
   }
   
-  private func reuseIdentifierForSupplementaryViewAtIndexPath(indexPath: NSIndexPath, kind: String) -> String {
-    return reuseIdentifierForSupplementaryView(kind: kind, indexPath: indexPath)
+  func reuseIdentifierForSupplementaryViewAtIndexPath(_ indexPath: IndexPath, kind: String) -> String {
+    return reuseIdentifierForSupplementaryView(kind, indexPath)
   }
   
 }
@@ -120,29 +120,29 @@ private extension ArrayDataSource {
 
 extension ArrayDataSource {
 
-  public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+  @objc(numberOfSectionsInCollectionView:) public func numberOfSections(in collectionView: UICollectionView) -> Int {
     return numberOfSections()
   }
   
-  public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return numberOfRowsInSection(section)
   }
   
-  public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+  @objc(collectionView:cellForItemAtIndexPath:) public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let identifier = cellIdentifierAtIndexPath(indexPath)
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
     if let configureCell = configureCell {
       let item = objectAtIndexPath(indexPath)
-      configureCell(cell: cell, indexPath: indexPath, item: item!)
+      configureCell(cell, indexPath, item!)
     }
     return cell
   }
   
-  public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+  @objc(collectionView:viewForSupplementaryElementOfKind:atIndexPath:) public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let reuseIdentifier = reuseIdentifierForSupplementaryViewAtIndexPath(indexPath, kind: kind)
-    let reusableView = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    let reusableView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     if let configureSupplementaryView = configureSupplementaryView {
-      configureSupplementaryView(view: reusableView, kind: kind, indexPath: indexPath)
+      configureSupplementaryView(reusableView, kind, indexPath)
     }
     
     return reusableView
@@ -153,25 +153,25 @@ extension ArrayDataSource {
 
 extension ArrayDataSource {
   
-  public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  @objc(numberOfSectionsInTableView:) public func numberOfSections(in tableView: UITableView) -> Int {
     return numberOfSections()
   }
   
-  public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return numberOfRowsInSection(section)
   }
   
-  public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  @objc(tableView:cellForRowAtIndexPath:) public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let identifier = cellIdentifierAtIndexPath(indexPath)
-    let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
     if let configureCell = configureCell {
       let item = objectAtIndexPath(indexPath)
-      configureCell(cell: cell, indexPath: indexPath, item: item!)
+      configureCell(cell, indexPath, item!)
     }
     return cell
   }
   
-  public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     guard let titles = sectionHeaderTitles else {
       return nil
     }
@@ -183,31 +183,31 @@ extension ArrayDataSource {
     return titles[section]
   }
   
-  public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  @objc(tableView:canEditRowAtIndexPath:) public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     var edit = false
     if let canEdit = canEdit {
-      edit = canEdit(indexPath: indexPath)
+      edit = canEdit(indexPath)
     }
     return edit
   }
 
-  public func tableView(tableView: UITableView, editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  public func tableView(_ tableView: UITableView, editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
     if let commitEditingStyle = commitEditingStyle {
-      commitEditingStyle(tableView: tableView, editingStyle: editingStyle, indexPath: indexPath)
+      commitEditingStyle(tableView, editingStyle, indexPath)
     }
   }
   
-  public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  @objc(tableView:canMoveRowAtIndexPath:) public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
     var canMove = false
     if let canMoveItem = canMoveItem {
-      canMove = canMoveItem(indexPath: indexPath)
+      canMove = canMoveItem(indexPath)
     }
     return canMove
   }
 
-  public func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+  @objc(tableView:moveRowAtIndexPath:toIndexPath:) public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
     if let moveItem = moveItem {
-      moveItem(tableView: tableView, sourceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
+      moveItem(tableView, sourceIndexPath, destinationIndexPath)
     }
   }
 }

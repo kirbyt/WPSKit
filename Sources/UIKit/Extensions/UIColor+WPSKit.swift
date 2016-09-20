@@ -44,20 +44,20 @@ extension UIColor {
       var green: CGFloat = 0.0
       var blue: CGFloat = 0.0
       
-      let numberOfComponents: size_t = CGColorGetNumberOfComponents(self.CGColor);
-      let components = CGColorGetComponents(self.CGColor);
+      let numberOfComponents: size_t = self.cgColor.numberOfComponents;
+      let components = self.cgColor.components;
       
       if (numberOfComponents == 2) {
         // Assume white color space.
-        let white: CGFloat = components[0]
+        let white: CGFloat = components![0]
         red = white
         green = white
         blue = white
       } else if (numberOfComponents == 4) {
         // RBG plus Alpha.
-        red = components[0]
-        green = components[1]
-        blue = components[2]
+        red = (components?[0])!
+        green = (components?[1])!
+        blue = (components?[2])!
       }
       
       // Fix range if needed. Color should be between 0.0 and 1.0.
@@ -138,10 +138,10 @@ extension UIColor {
     // The following code is a modified version from NachoMan.
     // https://github.com/NachoMan/phonegap/blob/bedf10f873a79c66aea5d89e380479273269eaf7/iphone/Classes/NSString+HexColor.m
     
-    var hexColor = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
-
+    var hexColor = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+    
     if hexColor.hasPrefix("#") {
-      hexColor = hexColor.substringFromIndex(hexColor.startIndex.advancedBy(1))
+      hexColor = hexColor.substring(from: hexColor.characters.index(hexColor.startIndex, offsetBy: 1))
     }
     
     guard hexColor.characters.count == 6 else {
@@ -149,17 +149,17 @@ extension UIColor {
       return
     }
     
-    let redString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex ..< hexColor.startIndex.advancedBy(2)))
-    let greenString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex.advancedBy(2) ..< hexColor.startIndex.advancedBy(4)))
-    let blueString = hexColor.substringWithRange(Range<String.Index>(hexColor.startIndex.advancedBy(4) ..< hexColor.startIndex.advancedBy(6)))
+    let redString = hexColor.substring(with: Range<String.Index>(hexColor.startIndex ..< hexColor.characters.index(hexColor.startIndex, offsetBy: 2)))
+    let greenString = hexColor.substring(with: Range<String.Index>(hexColor.characters.index(hexColor.startIndex, offsetBy: 2) ..< hexColor.characters.index(hexColor.startIndex, offsetBy: 4)))
+    let blueString = hexColor.substring(with: Range<String.Index>(hexColor.characters.index(hexColor.startIndex, offsetBy: 4) ..< hexColor.characters.index(hexColor.startIndex, offsetBy: 6)))
 
     // Scan values
     var r: UInt32 = 0
     var g: UInt32 = 0
     var b: UInt32 = 0
-    NSScanner(string: redString).scanHexInt(&r)
-    NSScanner(string: greenString).scanHexInt(&g)
-    NSScanner(string: blueString).scanHexInt(&b)
+    Scanner(string: redString).scanHexInt32(&r)
+    Scanner(string: greenString).scanHexInt32(&g)
+    Scanner(string: blueString).scanHexInt32(&b)
     
     let red = CGFloat(r) / 255.0
     let green = CGFloat(g) / 255.0

@@ -36,7 +36,7 @@ public extension UITableViewCell {
    - return An `NSString` containing the cell identifier.
    */
   public static var cellIdentifier: String {
-    return String(self)
+    return String(describing: self)
   }
   
   /**
@@ -45,8 +45,8 @@ public extension UITableViewCell {
    - return A reference to the `UINib` associated with this class.
    */
   public static var nib: UINib? {
-    let bundle = NSBundle.init(forClass: self)
-    guard let _ = bundle.pathForResource(nibName, ofType: "nib") else {
+    let bundle = Bundle.init(for: self)
+    guard let _ = bundle.path(forResource: nibName, ofType: "nib") else {
       return nil
     }
     return UINib.init(nibName: nibName, bundle: bundle)
@@ -68,8 +68,8 @@ public extension UITableViewCell {
    
    - parameter tableView: The table view that will use this cell class.
    */
-  public static func registerClassWithTableView(tableView: UITableView) {
-    tableView.registerClass(self, forCellReuseIdentifier: cellIdentifier)
+  public static func registerClassWithTableView(_ tableView: UITableView) {
+    tableView.register(self, forCellReuseIdentifier: cellIdentifier)
   }
   
   /**
@@ -77,8 +77,8 @@ public extension UITableViewCell {
    
    - parameter tableView: The table view that will use this cell class.
    */
-  public static func registerNibWithTableView(tableView: UITableView) {
-    tableView.registerNib(nib, forCellReuseIdentifier: cellIdentifier)
+  public static func registerNibWithTableView(_ tableView: UITableView) {
+    tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
   }
 }
 

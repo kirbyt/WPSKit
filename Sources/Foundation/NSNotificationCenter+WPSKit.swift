@@ -26,7 +26,7 @@
 
 import Foundation
 
-extension NSNotificationCenter {
+extension NotificationCenter {
 
   /**
    Post a notification on the main thread.
@@ -37,12 +37,12 @@ extension NSNotificationCenter {
    - parameter notificationSender:  The object posting the notification.
    - parameter userInfo:            Information about the the notification. May be nil.
    */
-  public func postOnMainThreadNotificationName(name: String, object: AnyObject?, userInfo: [String:AnyObject]? = nil) {
-    if NSThread.isMainThread() {
-      postNotificationName(name, object: object, userInfo: userInfo)
+  public func postOnMainThreadNotificationName(_ name: String, object: AnyObject?, userInfo: [String:AnyObject]? = nil) {
+    if Thread.isMainThread {
+      post(name: Notification.Name(rawValue: name), object: object, userInfo: userInfo)
     } else {
-      dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-        self.postNotificationName(name, object: object, userInfo: userInfo)
+      DispatchQueue.main.async { [unowned self] in
+        self.post(name: Notification.Name(rawValue: name), object: object, userInfo: userInfo)
       }
     }
   }

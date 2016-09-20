@@ -33,9 +33,9 @@ extension UIView {
    
    - parameter color: The frame border color.
    */
-  public func showFrame(color: UIColor) {
+  public func showFrame(_ color: UIColor) {
     let layer: CALayer = self.layer
-    layer.borderColor = color.CGColor
+    layer.borderColor = color.cgColor
     layer.borderWidth = 1.0
   }
 
@@ -46,11 +46,11 @@ extension UIView {
    */
   public func imageSnapshot() -> UIImage {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
-    self.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+    self.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
-    return image
+    return image!
   }
 
   /**
@@ -60,10 +60,10 @@ extension UIView {
    set the class name for your top level view in Interface Builder.
    */
   public class func loadFromNib() -> UIView {
-    let nibName = String(self)
-    let bundle = NSBundle(forClass: self)
+    let nibName = String(describing: self)
+    let bundle = Bundle(for: self)
     let nib = UINib(nibName: nibName, bundle: bundle)
-    let view = nib.instantiateWithOwner(self, options: nil).first as! UIView
+    let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
     return view
   }
 }

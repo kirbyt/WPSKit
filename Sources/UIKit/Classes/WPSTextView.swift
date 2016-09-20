@@ -25,57 +25,77 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 /**
  `WPSTextView` is a replacement for `UITextView` providing the option of displaying placeholder text.
  */
 @IBDesignable
-public class WPSTextView: UITextView {
+open class WPSTextView: UITextView {
   
   /// The text displayed in the placeholder.
-  @IBInspectable public var placeholderText: String? = nil {
+  @IBInspectable open var placeholderText: String? = nil {
     didSet {
       applyPlaceholderStyle()
     }
   }
   
   /// The color of the placeholder text.
-  @IBInspectable public var placeholderTextColor: UIColor = UIColor.lightGrayColor() {
+  @IBInspectable open var placeholderTextColor: UIColor = UIColor.lightGray {
     didSet {
       applyPlaceholderStyle()
     }
   }
   
   /// The placeholder label used to display the placeholder.
-  private let placeholderLabel: UILabel = UILabel()
+  fileprivate let placeholderLabel: UILabel = UILabel()
   
-  override public var text: String! {
+  override open var text: String! {
     didSet {
       setNeedsDisplay()
     }
   }
 
-  override public var attributedText: NSAttributedString! {
+  override open var attributedText: NSAttributedString! {
     didSet {
       setNeedsDisplay()
     }
   }
   
-  override public var contentInset: UIEdgeInsets {
+  override open var contentInset: UIEdgeInsets {
     didSet {
       setNeedsDisplay()
     }
   }
   
-  override public var font: UIFont? {
+  override open var font: UIFont? {
     didSet {
       setNeedsDisplay()
     }
   }
   
   deinit {
-    let nc = NSNotificationCenter.defaultCenter()
-    nc.removeObserver(self, name: UITextViewTextDidChangeNotification, object: self)
+    let nc = NotificationCenter.default
+    nc.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: self)
   }
   
   required public init?(coder aDecoder: NSCoder) {
@@ -88,13 +108,13 @@ public class WPSTextView: UITextView {
     setup()
   }
   
-  override public func awakeFromNib() {
+  override open func awakeFromNib() {
     super.awakeFromNib()
     setup()
   }
   
-  override public func drawRect(rect: CGRect) {
-    super.drawRect(rect)
+  override open func draw(_ rect: CGRect) {
+    super.draw(rect)
     
     guard placeholderText?.characters.count > 0
       && text.characters.count == 0 else {
@@ -111,28 +131,28 @@ public class WPSTextView: UITextView {
 
 private extension WPSTextView {
   
-  private func setup() {
-    placeholderLabel.lineBreakMode = .ByWordWrapping
+  func setup() {
+    placeholderLabel.lineBreakMode = .byWordWrapping
     placeholderLabel.numberOfLines = 0
-    placeholderLabel.backgroundColor = UIColor.clearColor()
+    placeholderLabel.backgroundColor = UIColor.clear
     placeholderLabel.alpha = 0
     
     addSubview(placeholderLabel)
-    sendSubviewToBack(placeholderLabel)
+    sendSubview(toBack: placeholderLabel)
     
     applyPlaceholderStyle()
     
-    let nc = NSNotificationCenter.defaultCenter()
-    nc.addObserver(self, selector: #selector(WPSTextView.textChanged(_:)), name: UITextViewTextDidChangeNotification, object: self)
+    let nc = NotificationCenter.default
+    nc.addObserver(self, selector: #selector(WPSTextView.textChanged(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: self)
   }
   
-  private func applyPlaceholderStyle() {
+  func applyPlaceholderStyle() {
     placeholderLabel.font = font
     placeholderLabel.textColor = placeholderTextColor
     placeholderLabel.text = placeholderText
   }
   
-  private func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+  func placeholderRectForBounds(_ bounds: CGRect) -> CGRect {
     //
     // Created by Sam Soffes on 8/18/10.
     // From: https://github.com/soffes/SAMTextView
@@ -150,7 +170,7 @@ private extension WPSTextView {
 
 internal extension WPSTextView {
   
-  internal func textChanged(sender: AnyObject) {
+  internal func textChanged(_ sender: AnyObject) {
     setNeedsDisplay()
   }
   

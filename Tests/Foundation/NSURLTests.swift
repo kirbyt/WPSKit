@@ -37,10 +37,10 @@ class NSURLTests: XCTestCase {
   }
   
   override func tearDown() {
-    let fm = NSFileManager.defaultManager()
+    let fm = FileManager.default
     for path in pathsToDelete {
-      if fm.fileExistsAtPath(path) {
-        try! fm.removeItemAtPath(path)
+      if fm.fileExists(atPath: path) {
+        try! fm.removeItem(atPath: path)
       }
     }
     super.tearDown()
@@ -49,76 +49,76 @@ class NSURLTests: XCTestCase {
   // MARK: - Document Directory
   
   func testDocumentDirectoryURL() {
-    guard let url = NSURL.documentDirectoryURL() else {
+    guard let url = URL.documentDirectoryURL() else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
   }
   
   func testDocumentDirectoryWithPathComponents() {
-    guard let url = try! NSURL.documentDirectoryURL(pathComponents) else {
+    guard let url = try! URL.documentDirectoryURL(pathComponents) else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
-    pathsToDelete.append(url.path!)
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
+    pathsToDelete.append(url.path)
   }
   
   // MARK: Cache Directory
   
   func testCacheDirectory() {
-    guard let url = NSURL.cacheDirectoryURL() else {
+    guard let url = URL.cacheDirectoryURL() else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
   }
   
   func testCacheDirectoryWithPathComponents() {
-    guard let url = try! NSURL.cacheDirectoryURL(pathComponents) else {
+    guard let url = try! URL.cacheDirectoryURL(pathComponents) else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
-    pathsToDelete.append(url.path!)
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
+    pathsToDelete.append(url.path)
   }
   
   // MARK: Temporary Directory
   
   func testTemporaryDirectory() {
-    guard let url = NSURL.temporaryDirectoryURL() else {
+    guard let url = URL.temporaryDirectoryURL() else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
   }
   
   func testTemporaryDirectoryWithPathComponents() {
-    guard let url = try! NSURL.temporaryDirectoryURL(pathComponents) else {
+    guard let url = try! URL.temporaryDirectoryURL(pathComponents) else {
       XCTFail()
       return
     }
     
     XCTAssertNotNil(url)
-    XCTAssertTrue(url.fileURL)
-    XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(url.path!))
-    pathsToDelete.append(url.path!)
+    XCTAssertTrue(url.isFileURL)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: url.path))
+    pathsToDelete.append(url.path)
   }
 
 }
