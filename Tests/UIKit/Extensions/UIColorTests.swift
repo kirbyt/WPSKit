@@ -38,6 +38,9 @@ class UIColorTests: XCTestCase {
     
     color = UIColor(hex: 0xAAAAAA)
     XCTAssertEqual(color.hexString, "AAAAAA")
+
+    color = UIColor(hex: 0x0000FF)
+    XCTAssertEqual(color.hexString, "0000FF")
   }
   
   func testColorWithHexString() {
